@@ -1,0 +1,187 @@
+{
+  "nav": {
+    "home": "Startseite",
+    "services": "Dienste",
+    "pricing": "Preise",
+    "faq": "FAQ",
+    "contact": "Kontakt",
+    "start": "Starten",
+    "dashboard": "Dashboard"
+  },
+  "hero": {
+    "title": "MIA IA SYSTEM",
+    "subtitle": "Ihr Intelligenter Trading-Assistent",
+    "description": "Ein Roboter, der die Märkte rund um die Uhr für Sie analysiert. Treffen Sie bessere Entscheidungen, stressfrei, ohne Emotionen.",
+    "cta_primary": "🚀 Kostenlos Starten",
+    "cta_dashboard": "📊 Dashboard öffnen",
+    "cta_secondary": "▶ Mehr erfahren",
+    "scroll": "Scrollen"
+  },
+  "stats": {
+    "analysis": "Kontinuierliche Analyse",
+    "markets": "Gehandelte Märkte",
+    "reaction": "Reaktionszeit",
+    "experience": "Jahre Forschung"
+  },
+  "features": {
+    "title": "Funktionen",
+    "subtitle": "Alles was Sie für intelligentes Trading brauchen",
+    "realtime": {
+      "title": "Echtzeit-Analyse",
+      "description": "Kontinuierliche Überwachung der ES, NQ und RTY Futures-Märkte, 24/7."
+    },
+    "signals": {
+      "title": "Präzise Signale",
+      "description": "Ein- und Ausstiege optimiert durch künstliche Intelligenz."
+    },
+    "automated": {
+      "title": "100% Automatisiert",
+      "description": "Trading ohne manuelle Eingriffe, ohne Emotionen, ohne Stress."
+    },
+    "accessible": {
+      "title": "Überall Zugänglich",
+      "description": "Dashboard von jedem Gerät aus zugänglich, wo immer Sie sind."
+    },
+    "alerts": {
+      "title": "Sofortige Benachrichtigungen",
+      "description": "Discord-Benachrichtigungen in Echtzeit für jedes Signal und jeden Trade."
+    },
+    "dashboard": {
+      "title": "Live Dashboard",
+      "description": "Sehen Sie Performance, Statistiken und Trades in Echtzeit."
+    },
+    "education": {
+      "title": "Trading Ausbildung",
+      "description": "Bildungsressourcen zum Verständnis der Märkte und zur Verbesserung Ihrer Fähigkeiten."
+    },
+    "calendar": {
+      "title": "Wirtschaftskalender",
+      "description": "Verfolgung wichtiger wirtschaftlicher Ankündigungen, die die Märkte beeinflussen."
+    }
+  },
+  "pricing": {
+    "title": "Preise",
+    "subtitle": "Starten Sie kostenlos, skalieren Sie nach Bedarf",
+    "free": {
+      "name": "Kostenlos",
+      "badge": "AKTUELL",
+      "price": "0€",
+      "period": "/Monat",
+      "features": [
+        "Dashboard-Zugang",
+        "Echtzeit-Signale",
+        "Discord-Benachrichtigungen",
+        "Vollständige Statistiken",
+        "Community-Support"
+      ],
+      "cta": "Kostenlos starten"
+    },
+    "premium": {
+      "name": "Premium",
+      "badge": "BALD VERFÜGBAR",
+      "price": "---",
+      "period": "",
+      "features": [
+        "Alles aus dem Gratis-Plan",
+        "Erweiterte Funktionen",
+        "Prioritäts-Support",
+        "API-Zugang",
+        "Und mehr..."
+      ],
+      "cta": "Bald verfügbar"
+    },
+    "note": "Keine Kreditkarte erforderlich • Jederzeit kündbar"
+  },
+  "faq": {
+    "title": "Häufig Gestellte Fragen",
+    "subtitle": "Alles was Sie über MIA IA SYSTEM wissen müssen",
+    "questions": [
+      {
+        "question": "Was ist MIA IA SYSTEM?",
+        "answer": "MIA ist ein algorithmisches Handelssystem, das Futures-Märkte (ES, NQ, RTY) rund um die Uhr analysiert und Trading-Signale basierend auf einer proprietären Strategie generiert, die über 10 Jahre entwickelt wurde."
+      },
+      {
+        "question": "Brauche ich Trading-Kenntnisse?",
+        "answer": "Grundlegende Marktkenntnisse werden empfohlen. MIA ist ein Entscheidungsunterstützungswerkzeug, kein System für garantierte Gewinne. Das Verständnis der Trading-Risiken ist wesentlich."
+      },
+      {
+        "question": "Wie werden die Signale generiert?",
+        "answer": "MIA verwendet eine proprietäre Strategie, die fortschrittliche technische Analyse und künstliche Intelligenz kombiniert, um die besten Trading-Möglichkeiten zu identifizieren."
+      },
+      {
+        "question": "Ist es kostenlos?",
+        "answer": "Ja! Der Zugang zum MIA Dashboard ist derzeit 100% kostenlos. Premium-Angebote mit erweiterten Funktionen werden bald verfügbar sein."
+      },
+      {
+        "question": "Kann ich Geld verlieren?",
+        "answer": "Ja. Trading beinhaltet das Risiko von Kapitalverlust. Vergangene Leistungen garantieren keine zukünftigen Ergebnisse. Investieren Sie nie mehr als Sie sich leisten können zu verlieren."
+      },
+      {
+        "question": "Wie greife ich auf das Dashboard zu?",
+        "answer": "Erstellen Sie ein kostenloses Konto oder melden Sie sich mit Google an, dann klicken Sie auf 'Dashboard öffnen'. Sie werden zur MIA-Oberfläche weitergeleitet."
+      }
+    ],
+    "more": "Finden Sie die gesuchte Antwort nicht?",
+    "contact_us": "Kontaktieren Sie uns"
+  },
+  "contact": {
+    "title": "Kontaktieren Sie uns",
+    "subtitle": "Haben Sie eine Frage? Zögern Sie nicht, uns zu kontaktieren.",
+    "info_title": "Bleiben wir in Kontakt",
+    "info_text": "Ob Sie eine Frage zu Funktionen, Preisen haben, oder einfach Hilfe beim Einstieg brauchen, unser Team ist für Sie da.",
+    "email": "E-Mail",
+    "newsletter": "Newsletter",
+    "newsletter_text": "Abonnieren Sie, um die neuesten Nachrichten über MIA zu erhalten.",
+    "newsletter_placeholder": "Ihre E-Mail",
+    "form": {
+      "name": "Ihr Name",
+      "name_placeholder": "Max Mustermann",
+      "email": "Ihre E-Mail",
+      "email_placeholder": "max@beispiel.de",
+      "message": "Ihre Nachricht",
+      "message_placeholder": "Wie können wir Ihnen helfen?",
+      "submit": "Senden",
+      "sending": "Wird gesendet...",
+      "success": "Nachricht gesendet!",
+      "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+    }
+  },
+  "footer": {
+    "description": "Künstliche Intelligenz für Futures-Trading. Analysieren Sie Märkte rund um die Uhr ohne Stress und Emotionen.",
+    "links": "Links",
+    "legal": "Rechtliches",
+    "legal_terms": "AGB",
+    "legal_privacy": "Datenschutz",
+    "legal_mentions": "Impressum",
+    "legal_risk": "Risiken",
+    "contact": "Kontakt",
+    "rights": "Alle Rechte vorbehalten.",
+    "warning": "Warnung: Trading beinhaltet das Risiko von Kapitalverlust. Vergangene Leistungen garantieren keine zukünftigen Ergebnisse. Investieren Sie nie mehr als Sie sich leisten können zu verlieren. MIA IA SYSTEM ist ein Entscheidungsunterstützungswerkzeug und stellt keine Anlageberatung dar."
+  },
+  "calendar": {
+    "page_title": "Wirtschaftskalender",
+    "page_subtitle": "Sehen Sie wichtige Wirtschaftsereignisse und verstehen Sie, wie MIA Ihr Kapital bei Ankündigungen mit hoher Auswirkung automatisch schützt.",
+    "title": "Wirtschaftskalender",
+    "subtitle": "Ereignisse mit Auswirkung auf ES, NQ, RTY (US Futures)",
+    "back": "Zurück",
+    "current_time": "Aktuelle Zeit (Paris)",
+    "legend_title": "Wie MIA wirtschaftliche Ankündigungen handhabt",
+    "filter_all": "Alle",
+    "critical_title": "KRITISCH - Trading BLOCKIERT",
+    "critical_warning": "MIA blockiert automatisch den Handel 15 Min. vor und 30 Min. nach diesen Ereignissen",
+    "high_title": "HOCH - Normaler Handel",
+    "medium_title": "MITTEL - Normaler Handel",
+    "forecast": "Prognose",
+    "previous": "Vorherig",
+    "live_calendar": "Live-Kalender",
+    "live_description": "Sehen Sie den vollständigen Wirtschaftskalender auf Investing.com für Echtzeit-Daten.",
+    "open_investing": "Investing.com öffnen",
+    "protection_title": "MIA Automatischer Schutz",
+    "step1_title": "Erkennung",
+    "step1_text": "MIA analysiert den Wirtschaftskalender alle 2 Stunden und identifiziert Ereignisse mit hoher Auswirkung.",
+    "step2_title": "Präventive Blockierung",
+    "step2_text": "15 Minuten vor einem ⭐⭐⭐ Ereignis stoppt MIA automatisch alle neuen Trades zum Schutz Ihres Kapitals.",
+    "step3_title": "Sichere Wiederaufnahme",
+    "step3_text": "30 Minuten nach der Ankündigung, sobald sich die Volatilität stabilisiert hat, nimmt MIA den Handel normal wieder auf."
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "pricing": "Precios",
+    "faq": "FAQ",
+    "contact": "Contacto",
+    "start": "Empezar",
+    "dashboard": "Dashboard"
+  },
+  "hero": {
+    "title": "MIA IA SYSTEM",
+    "subtitle": "Tu Asistente Inteligente de Trading",
+    "description": "Un robot que analiza los mercados 24/7 por ti. Toma mejores decisiones, sin estrés, sin emociones.",
+    "cta_primary": "🚀 Empezar Gratis",
+    "cta_dashboard": "📊 Acceder al Dashboard",
+    "cta_secondary": "▶ Saber más",
+    "scroll": "Scroll"
+  },
+  "stats": {
+    "analysis": "Análisis Continuo",
+    "markets": "Mercados Operados",
+    "reaction": "Tiempo de Reacción",
+    "experience": "Años de Investigación"
+  },
+  "features": {
+    "title": "Funcionalidades",
+    "subtitle": "Todo lo que necesitas para un trading inteligente",
+    "realtime": {
+      "title": "Análisis en Tiempo Real",
+      "description": "Monitoreo continuo de los mercados de futuros ES, NQ y RTY, 24/7."
+    },
+    "signals": {
+      "title": "Señales Precisas",
+      "description": "Entradas y salidas optimizadas por inteligencia artificial."
+    },
+    "automated": {
+      "title": "100% Automatizado",
+      "description": "Trading sin intervención manual, sin emociones, sin estrés."
+    },
+    "accessible": {
+      "title": "Accesible en Cualquier Lugar",
+      "description": "Dashboard accesible desde cualquier dispositivo, donde estés."
+    },
+    "alerts": {
+      "title": "Alertas Instantáneas",
+      "description": "Notificaciones Discord en tiempo real para cada señal y operación."
+    },
+    "dashboard": {
+      "title": "Dashboard en Vivo",
+      "description": "Visualiza rendimiento, estadísticas y operaciones en tiempo real."
+    },
+    "education": {
+      "title": "Educación Trading",
+      "description": "Recursos educativos para entender los mercados y mejorar tus habilidades."
+    },
+    "calendar": {
+      "title": "Calendario Económico",
+      "description": "Seguimiento de anuncios económicos importantes que impactan los mercados."
+    }
+  },
+  "pricing": {
+    "title": "Precios",
+    "subtitle": "Empieza gratis, escala según tus necesidades",
+    "free": {
+      "name": "Gratis",
+      "badge": "ACTUAL",
+      "price": "0€",
+      "period": "/mes",
+      "features": [
+        "Acceso al dashboard",
+        "Señales en tiempo real",
+        "Alertas Discord",
+        "Estadísticas completas",
+        "Soporte comunitario"
+      ],
+      "cta": "Empezar gratis"
+    },
+    "premium": {
+      "name": "Premium",
+      "badge": "PRÓXIMAMENTE",
+      "price": "---",
+      "period": "",
+      "features": [
+        "Todo del plan Gratis",
+        "Funciones avanzadas",
+        "Soporte prioritario",
+        "Acceso API",
+        "Y más..."
+      ],
+      "cta": "Próximamente"
+    },
+    "note": "Sin tarjeta de crédito • Cancela cuando quieras"
+  },
+  "faq": {
+    "title": "Preguntas Frecuentes",
+    "subtitle": "Todo lo que necesitas saber sobre MIA IA SYSTEM",
+    "questions": [
+      {
+        "question": "¿Qué es MIA IA SYSTEM?",
+        "answer": "MIA es un sistema de trading algorítmico que analiza los mercados de futuros (ES, NQ, RTY) 24/7 y genera señales de trading basadas en una estrategia propietaria desarrollada durante más de 10 años."
+      },
+      {
+        "question": "¿Necesito conocimientos de trading?",
+        "answer": "Se recomienda conocimiento básico de los mercados. MIA es una herramienta de apoyo a la decisión, no un sistema de ganancias garantizadas. Entender los riesgos del trading es esencial."
+      },
+      {
+        "question": "¿Cómo se generan las señales?",
+        "answer": "MIA utiliza una estrategia propietaria que combina análisis técnico avanzado e inteligencia artificial para identificar las mejores oportunidades de trading."
+      },
+      {
+        "question": "¿Es gratis?",
+        "answer": "¡Sí! El acceso al dashboard de MIA es actualmente 100% gratis. Ofertas premium con funciones avanzadas estarán disponibles próximamente."
+      },
+      {
+        "question": "¿Puedo perder dinero?",
+        "answer": "Sí. El trading implica riesgo de pérdida de capital. El rendimiento pasado no garantiza resultados futuros. Nunca inviertas más de lo que puedes permitirte perder."
+      },
+      {
+        "question": "¿Cómo accedo al dashboard?",
+        "answer": "Crea una cuenta gratuita o inicia sesión con Google, luego haz clic en 'Acceder al Dashboard'. Serás redirigido a la interfaz de MIA."
+      }
+    ],
+    "more": "¿No encuentras la respuesta que buscas?",
+    "contact_us": "Contáctanos"
+  },
+  "contact": {
+    "title": "Contáctanos",
+    "subtitle": "¿Tienes una pregunta? No dudes en contactarnos.",
+    "info_title": "Mantengamos el contacto",
+    "info_text": "Ya sea que tengas una pregunta sobre funcionalidades, precios, o simplemente necesites ayuda para empezar, nuestro equipo está aquí para ti.",
+    "email": "Email",
+    "newsletter": "Newsletter",
+    "newsletter_text": "Suscríbete para recibir las últimas noticias sobre MIA.",
+    "newsletter_placeholder": "Tu email",
+    "form": {
+      "name": "Tu nombre",
+      "name_placeholder": "Juan García",
+      "email": "Tu email",
+      "email_placeholder": "juan@ejemplo.com",
+      "message": "Tu mensaje",
+      "message_placeholder": "¿Cómo podemos ayudarte?",
+      "submit": "Enviar",
+      "sending": "Enviando...",
+      "success": "¡Mensaje enviado!",
+      "error": "Ocurrió un error. Por favor intenta de nuevo."
+    }
+  },
+  "footer": {
+    "description": "Inteligencia Artificial para Trading de Futuros. Analiza los mercados 24/7 sin estrés y sin emociones.",
+    "links": "Enlaces",
+    "legal": "Legal",
+    "legal_terms": "Términos",
+    "legal_privacy": "Privacidad",
+    "legal_mentions": "Aviso Legal",
+    "legal_risk": "Riesgos",
+    "contact": "Contacto",
+    "rights": "Todos los derechos reservados.",
+    "warning": "Advertencia: El trading implica riesgo de pérdida de capital. El rendimiento pasado no garantiza resultados futuros. Nunca inviertas más de lo que puedes permitirte perder. MIA IA SYSTEM es una herramienta de apoyo a la decisión y no constituye asesoramiento de inversión."
+  },
+  "calendar": {
+    "page_title": "Calendario Económico",
+    "page_subtitle": "Visualiza los eventos económicos importantes y comprende cómo MIA protege automáticamente tu capital durante los anuncios de alto impacto.",
+    "title": "Calendario Económico",
+    "subtitle": "Eventos que impactan ES, NQ, RTY (Futuros US)",
+    "back": "Volver",
+    "current_time": "Hora actual (París)",
+    "legend_title": "Cómo MIA gestiona los anuncios económicos",
+    "filter_all": "Todos",
+    "critical_title": "CRÍTICO - Trading BLOQUEADO",
+    "critical_warning": "MIA bloquea automáticamente el trading 15 min antes y 30 min después de estos eventos",
+    "high_title": "ALTO - Trading normal",
+    "medium_title": "MEDIO - Trading normal",
+    "forecast": "Previsto",
+    "previous": "Anterior",
+    "live_calendar": "Calendario en tiempo real",
+    "live_description": "Consulta el calendario económico completo en Investing.com para datos en tiempo real.",
+    "open_investing": "Abrir Investing.com",
+    "protection_title": "Protección automática MIA",
+    "step1_title": "Detección",
+    "step1_text": "MIA analiza el calendario económico cada 2 horas e identifica los eventos de alto impacto.",
+    "step2_title": "Bloqueo preventivo",
+    "step2_text": "15 minutos antes de un evento ⭐⭐⭐, MIA detiene automáticamente todas las nuevas operaciones para proteger tu capital.",
+    "step3_title": "Reanudación segura",
+    "step3_text": "30 minutos después del anuncio, una vez estabilizada la volatilidad, MIA reanuda el trading normalmente."
+  }
+}
