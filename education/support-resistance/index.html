@@ -5,334 +5,569 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="/_next/static/css/0f34aadfba7d8fab.css"/>
     <link rel="icon" href="/images/logo-dark.jpg"/>
-    <title>Support &amp; Résistance - MIA Trading Academy</title>
-    <meta name="description" content="Identifiez les niveaux clés du marché."/>
+    <title>Support &amp; Résistance - MIA Academy</title>
+    <style>
+        .sidebar-section { margin-bottom: 0.5rem; }
+        .sidebar-header { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem; cursor: pointer; border-radius: 0.5rem; }
+        .sidebar-header:hover { background: rgba(255,255,255,0.05); }
+        .sidebar-content { display: none; padding-left: 0.25rem; }
+        .sidebar-section.open .sidebar-content { display: block; }
+        .sidebar-section.open .chevron { transform: rotate(180deg); }
+        .nav-link { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.6rem; border-radius: 0.375rem; font-size: 0.8rem; text-decoration: none; transition: all 0.2s; }
+    </style>
 </head>
 <body class="bg-dark text-white overflow-x-hidden">
-<div class="min-h-screen bg-dark">
-    <header class="fixed top-0 left-0 right-0 z-50 bg-dark-100/80 backdrop-blur-xl border-b border-white/10">
-        <div class="container-custom">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center gap-4">
-                    <a class="flex items-center gap-2 text-light-400 hover:text-white transition-colors" href="/education/">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
-                        <span class="hidden sm:inline">Education</span>
-                    </a>
-                    <div class="h-6 w-px bg-white/20"></div>
-                    <a class="flex items-center gap-3 hover:opacity-80 transition-opacity" href="/">
-                        <div class="relative w-8 h-8">
-                            <img alt="MIA IA SYSTEM" class="rounded-full object-cover border border-mia-gold/50 w-full h-full" src="/images/logo-dark.jpg"/>
-                        </div>
-                        <span class="font-bold text-white hidden sm:inline">MIA IA SYSTEM</span>
-                    </a>
-                </div>
+<div class="min-h-screen bg-dark flex flex-col">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-dark-100/95 backdrop-blur-xl border-b border-white/10">
+        <div class="flex items-center justify-between h-14 px-4">
+            <div class="flex items-center gap-3">
+                <a class="flex items-center gap-2 text-light-400 hover:text-white" href="/">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    <span class="text-sm hidden sm:inline">Accueil</span>
+                </a>
+                <div class="h-5 w-px bg-white/20"></div>
+                <a class="flex items-center gap-2" href="/">
+                    <img alt="MIA" class="w-7 h-7 rounded-full border border-mia-gold/50" src="/images/logo-dark.jpg"/>
+                    <span class="font-bold text-sm hidden sm:inline">MIA IA SYSTEM</span>
+                </a>
             </div>
+            <a href="https://discord.gg/mia-ia-system" target="_blank" class="flex items-center gap-1 px-3 py-1.5 bg-accent-purple/20 text-accent-purple rounded-lg text-sm">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                Discord
+            </a>
         </div>
     </header>
+
+    <div class="flex flex-1 pt-14">
+        
+        <aside class="hidden lg:block w-64 flex-shrink-0 border-r border-white/10 bg-dark-100 fixed top-14 bottom-0 overflow-y-auto z-40">
+            <div class="p-3">
     
-    <main class="pt-24 pb-16">
-        <div class="container-custom">
-            <nav class="flex items-center gap-2 text-sm text-light-500 mb-8 overflow-x-auto">
-                <a class="hover:text-white transition-colors whitespace-nowrap" href="/education/">Education</a>
-                <span class="text-light-600">›</span>
-                <span class="px-2 py-0.5 rounded text-xs bg-green-500/20 text-green-400 whitespace-nowrap">Débutant</span>
-                <span class="text-light-600">›</span>
-                <span class="text-white whitespace-nowrap">Support &amp; Résistance</span>
+                <div class="sidebar-section open" id="nav-débutant">
+                    <div class="sidebar-header" onclick="toggleNav('débutant')">
+                        <div class="flex items-center gap-2">
+                            <span>🌱</span>
+                            <span class="text-xs font-bold text-mia-cyan uppercase">Débutant</span>
+                            <span class="text-xs text-light-500">(10)</span>
+                        </div>
+                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="sidebar-content">
+        
+                        <a href="/education/futures-101/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">Les Futures US: ES, NQ, RTY</span>
+                        </a>
+            
+                        <a href="/education/trading-sessions/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🕐</span>
+                            <span class="truncate">Les Sessions de Trading</span>
+                        </a>
+            
+                        <a href="/education/candlestick-basics/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🕯️</span>
+                            <span class="truncate">Lecture des Chandeliers</span>
+                        </a>
+            
+                        <a href="/education/support-resistance/" class="nav-link bg-mia-cyan/20 text-white">
+                            <span>📏</span>
+                            <span class="truncate">Support & Résistance</span>
+                        </a>
+            
+                        <a href="/education/volume-importance/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">L'Importance du Volume</span>
+                        </a>
+            
+                        <a href="/education/risk-management/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🛡️</span>
+                            <span class="truncate">Gestion du Risque</span>
+                        </a>
+            
+                        <a href="/education/trading-psychology/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🧠</span>
+                            <span class="truncate">Psychologie du Trading</span>
+                        </a>
+            
+                        <a href="/education/order-types/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📝</span>
+                            <span class="truncate">Types d'Ordres</span>
+                        </a>
+            
+                        <a href="/education/journaling-backtesting/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📓</span>
+                            <span class="truncate">Journaling & Backtesting</span>
+                        </a>
+            
+                        <a href="/education/economic-calendar/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📅</span>
+                            <span class="truncate">Calendrier Économique</span>
+                        </a>
+            
+                    </div>
+                </div>
+        
+                <div class="sidebar-section " id="nav-intermédiaire">
+                    <div class="sidebar-header" onclick="toggleNav('intermédiaire')">
+                        <div class="flex items-center gap-2">
+                            <span>📈</span>
+                            <span class="text-xs font-bold text-yellow-400 uppercase">Intermédiaire</span>
+                            <span class="text-xs text-light-500">(11)</span>
+                        </div>
+                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="sidebar-content">
+        
+                        <a href="/education/multi-timeframe-analysis/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🔍</span>
+                            <span class="truncate">Analyse Multi-Timeframe</span>
+                        </a>
+            
+                        <a href="/education/call-resistance-put-support/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📞</span>
+                            <span class="truncate">Call Resistance & Put Support</span>
+                        </a>
+            
+                        <a href="/education/hvl-gamma-flip/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🎯</span>
+                            <span class="truncate">HVL & Gamma Flip</span>
+                        </a>
+            
+                        <a href="/education/positive-negative-gamma/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>⚡</span>
+                            <span class="truncate">Gamma Positif vs Négatif</span>
+                        </a>
+            
+                        <a href="/education/0dte-options-impact/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>💥</span>
+                            <span class="truncate">Impact des Options 0DTE</span>
+                        </a>
+            
+                        <a href="/education/expected-move-range/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📐</span>
+                            <span class="truncate">Expected Move & Range</span>
+                        </a>
+            
+                        <a href="/education/gamma-exposure/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📈</span>
+                            <span class="truncate">Gamma Exposure (GEX)</span>
+                        </a>
+            
+                        <a href="/education/high-volume-levels/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">High Volume Levels</span>
+                        </a>
+            
+                        <a href="/education/options-impact/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🎰</span>
+                            <span class="truncate">Impact des Options</span>
+                        </a>
+            
+                        <a href="/education/market-makers/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🏦</span>
+                            <span class="truncate">Market Makers</span>
+                        </a>
+            
+                        <a href="/education/vwap-intraday/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📉</span>
+                            <span class="truncate">VWAP & Niveaux Intraday</span>
+                        </a>
+            
+                    </div>
+                </div>
+        
+                <div class="sidebar-section " id="nav-avancé">
+                    <div class="sidebar-header" onclick="toggleNav('avancé')">
+                        <div class="flex items-center gap-2">
+                            <span>🚀</span>
+                            <span class="text-xs font-bold text-red-400 uppercase">Avancé</span>
+                            <span class="text-xs text-light-500">(14)</span>
+                        </div>
+                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="sidebar-content">
+        
+                        <a href="/education/orderflow/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🌊</span>
+                            <span class="truncate">OrderFlow Basics</span>
+                        </a>
+            
+                        <a href="/education/money-management/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>💰</span>
+                            <span class="truncate">Money Management Avancé</span>
+                        </a>
+            
+                        <a href="/education/correlation-intermarches/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🔗</span>
+                            <span class="truncate">Corrélations Inter-Marchés</span>
+                        </a>
+            
+                        <a href="/education/liquidity-sweeps/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🧹</span>
+                            <span class="truncate">Liquidity Sweeps</span>
+                        </a>
+            
+                        <a href="/education/market-profile/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">Market Profile</span>
+                        </a>
+            
+                        <a href="/education/fibonacci-extensions/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🌀</span>
+                            <span class="truncate">Fibonacci Extensions</span>
+                        </a>
+            
+                        <a href="/education/gex-levels-1-10/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🎯</span>
+                            <span class="truncate">GEX Levels 1-10</span>
+                        </a>
+            
+                        <a href="/education/blind-spots-trading/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>👁️</span>
+                            <span class="truncate">Blind Spots Trading</span>
+                        </a>
+            
+                        <a href="/education/delta-exposure-dex/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">Delta Exposure (DEX)</span>
+                        </a>
+            
+                        <a href="/education/dealer-hedging-mechanics/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>⚙️</span>
+                            <span class="truncate">Dealer Hedging</span>
+                        </a>
+            
+                        <a href="/education/gamma-walls-magnets/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🧲</span>
+                            <span class="truncate">Gamma Walls & Magnets</span>
+                        </a>
+            
+                        <a href="/education/vix-vvix-volatility/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🌪️</span>
+                            <span class="truncate">VIX & VVIX</span>
+                        </a>
+            
+                        <a href="/education/option-greeks-traders/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🇬🇷</span>
+                            <span class="truncate">Option Greeks</span>
+                        </a>
+            
+                        <a href="/education/regime-based-trading/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🔄</span>
+                            <span class="truncate">Regime-Based Trading</span>
+                        </a>
+            
+                    </div>
+                </div>
+        
+                <div class="sidebar-section " id="nav-bonus">
+                    <div class="sidebar-header" onclick="toggleNav('bonus')">
+                        <div class="flex items-center gap-2">
+                            <span>⭐</span>
+                            <span class="text-xs font-bold text-purple-400 uppercase">Bonus</span>
+                            <span class="text-xs text-light-500">(5)</span>
+                        </div>
+                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="sidebar-content">
+        
+                        <a href="/education/battle-navale/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>⚔️</span>
+                            <span class="truncate">Battle Navale</span>
+                        </a>
+            
+                        <a href="/education/une-journee-avec-mia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>☀️</span>
+                            <span class="truncate">Une Journée avec MIA</span>
+                        </a>
+            
+                        <a href="/education/pourquoi-bots-meurent/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>💀</span>
+                            <span class="truncate">Pourquoi les Bots Meurent</span>
+                        </a>
+            
+                        <a href="/education/quand-couper-mia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🔌</span>
+                            <span class="truncate">Quand Couper MIA</span>
+                        </a>
+            
+                        <a href="/education/mental-discipline-ia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🧘</span>
+                            <span class="truncate">Mental & Discipline</span>
+                        </a>
+            
+                    </div>
+                </div>
+        
+            </div>
+        </aside>
+    
+        
+        <main class="flex-1 lg:ml-64 p-4 lg:p-6">
+            <nav class="flex items-center gap-2 text-xs text-light-500 mb-4">
+                <a href="/education/" class="hover:text-white">Education</a>
+                <span>›</span>
+                <span class="px-2 py-0.5 rounded bg-green-500/20 text-green-400">Débutant</span>
+                <span>›</span>
+                <span class="text-white">Support &amp; Résistance</span>
             </nav>
             
-            <div class="grid lg:grid-cols-4 gap-8">
-                <div class="lg:col-span-3">
-                    <header class="mb-8">
-                        <span class="text-5xl mb-4 block">📏</span>
-                        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Support &amp; Résistance</h1>
-                        <p class="text-lg sm:text-xl text-light-400 mb-6">Identifiez les niveaux clés du marché.</p>
-                        <div class="flex flex-wrap items-center gap-4 text-sm">
-                            <span class="flex items-center gap-2 text-light-400">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                                12 min
-                            </span>
-                            <span class="px-3 py-1 rounded-full bg-green-500/20 text-green-400">Débutant</span>
-                        </div>
-                    </header>
-                    
-                    <article class="space-y-6">
-                        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">🎯 Introduction: Les fondations du Price Action</h2>
-            <div class="text-light-300 space-y-4">
-                <p>Les supports et résistances sont les concepts les PLUS FONDAMENTAUX de l&#x27;analyse technique. Sans les comprendre, vous tradez à l&#x27;aveugle.</p>
+            <header class="mb-6">
+                <span class="text-4xl mb-2 block">📏</span>
+                <h1 class="text-2xl lg:text-3xl font-bold text-white mb-2">Support &amp; Résistance</h1>
+                <p class="text-light-400 mb-3">Identifiez les niveaux clés.</p>
+                <div class="flex items-center gap-3 text-sm">
+                    <span class="flex items-center gap-1 text-light-400">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        12 min
+                    </span>
+                    <span class="px-2 py-1 rounded bg-green-500/20 text-green-400">Débutant</span>
+                </div>
+            </header>
+            
+            <article class="space-y-4">
+                
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">🎯 Introduction: Les fondations du Price Action</h2>
+            <div class="text-light-300 text-sm space-y-3"><p>Les supports et résistances sont les concepts les PLUS FONDAMENTAUX de l&#x27;analyse technique. Sans les comprendre, vous tradez à l&#x27;aveugle.</p>
 <p>Un support est un niveau de prix où la DEMANDE est suffisamment forte pour arrêter/inverser une baisse. Une résistance est un niveau où l&#x27;OFFRE est suffisamment forte pour arrêter/inverser une hausse.</p>
 <p>Ces niveaux existent parce que les traders ont une MÉMOIRE. Ils se souviennent des prix importants et agissent en conséquence quand le marché y revient.</p>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">📊 SCHÉMA: Supports et Résistances visuels</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│              SUPPORTS ET RÉSISTANCES - VISUALISATION                     │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  RÉSISTANCE (Prix &quot;plafond&quot;)                                            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ══════════════════════════════════════════════════════════             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│         ↑      ↑                    ↑                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│        /‾\    /‾\                  /                                    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│       /   \  /   \                /  ← Breakout = Signal LONG          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│      /     \/     \              /                                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     /               \           /                                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│    /                 \         /                                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│   /                   \       /                                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  /                     \     /                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                         \   /                                           │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                          \_/                                            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ══════════════════════════════════════════════════════════             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  SUPPORT (Prix &quot;plancher&quot;)                                              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│         ↓      ↓         ↓                                              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│        Rebond  Rebond    Rebond                                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│ PRINCIPE CLÉ:                                                            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│ • Plus un niveau est testé, PLUS il est significatif                    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│ • 2 touches = Niveau valide                                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│ • 3+ touches = Niveau FORT                                              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│ • Niveau cassé = INVERSION (support → résistance et vice-versa)         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">📈 Types de Supports/Résistances</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│              HIÉRARCHIE DES NIVEAUX (du + fort au - fort)               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  🥇 NIVEAUX INSTITUTIONNELS (MenthorQ)                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ GEX Levels (Gamma Exposure)                                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ HVL (High Volume Level)                                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Call/Put Walls                                                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └─ Blind Spots                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  → Fiabilité: ⭐⭐⭐⭐⭐ (80%+)                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  🥈 NIVEAUX TECHNIQUES MAJEURS                                           │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Previous Day High/Low (PDH/PDL)                                     │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Weekly High/Low                                                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ VWAP (Volume Weighted Average Price)                                │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └─ Nombres ronds (5000, 5050, 5100...)                                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  → Fiabilité: ⭐⭐⭐⭐ (70%+)                                            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  🥉 NIVEAUX TECHNIQUES MINEURS                                           │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Swing Highs/Lows récents                                            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Fibonacci Retracements                                              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Moving Averages (EMA 20, 50, 200)                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └─ Pivot Points                                                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  → Fiabilité: ⭐⭐⭐ (55-65%)                                            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ⚠️ NIVEAUX SUBJECTIFS (à éviter)                                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Trendlines &quot;dessinées à la main&quot;                                    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Niveaux sans touches multiples                                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └─ Niveaux vus sur réseaux sociaux                                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  → Fiabilité: ⭐⭐ (50% = hasard)                                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">🔍 Comment IDENTIFIER les bons niveaux</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│              CHECKLIST D&#x27;IDENTIFICATION                                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ☑️ ÉTAPE 1: Identifier les zones de RÉACTION                            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Où le prix a-t-il REBONDI dans le passé?                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Minimum 2 touches (idéalement 3+)                                     │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Réactions CLAIRES (pas juste une pause)                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ☑️ ÉTAPE 2: Vérifier le VOLUME                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Y a-t-il eu une augmentation de volume à ce niveau?                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Volume = conviction des participants                                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ☑️ ÉTAPE 3: Confirmer sur PLUSIEURS timeframes                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Un niveau visible sur Daily ET 4H = très fort                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Un niveau visible seulement sur 5min = faible                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ☑️ ÉTAPE 4: Croiser avec niveaux INSTITUTIONNELS                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Support technique + GEX level = CONFLUENCE = entrée idéale           │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Plus il y a de confluence, plus le niveau est fort                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ☑️ ÉTAPE 5: Considérer le CONTEXTE                                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Support dans une tendance haussière = plus susceptible de tenir      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Support dans une tendance baissière = plus susceptible de casser     │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">💰 Stratégies de Trading sur les niveaux</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                    2 STRATÉGIES PRINCIPALES                              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  📈 STRATÉGIE 1: REBOND (Mean Reversion)                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ──────────────────────────────────────                                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  Principe: Acheter au support, vendre à la résistance                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  Conditions pour un LONG sur support:                                    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  1. Prix approche un support identifié                                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  2. Pattern de retournement (hammer, engulfing...)                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  3. Volume qui augmente au toucher                                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  4. RSI en survente (&lt;30) = bonus                                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  Entrée: Au-dessus du high du pattern de retournement                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  Stop: Sous le support (avec marge de 2-3 ticks)                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  Target: Prochaine résistance ou niveau GEX                              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  📉 STRATÉGIE 2: BREAKOUT (Trend Following)                              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ──────────────────────────────────────                                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  Principe: Suivre la cassure d&#x27;un niveau majeur                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  Conditions pour un LONG sur breakout résistance:                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  1. Prix casse AU-DESSUS d&#x27;une résistance claire                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  2. VOLUME en forte augmentation (+50% min)                              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  3. Bougie de cassure avec CORPS (pas juste mèche)                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  4. Pas de news majeure dans les 30 prochaines minutes                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  Entrée: Au retest de la résistance devenue support                     │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  Stop: Sous le nouveau support (ancienne résistance)                    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  Target: Extension du mouvement (1.5x à 2x la distance)                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">📝 CAS PRATIQUE: Trade sur Previous Day Low + GEX</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│              CAS PRATIQUE - CONFLUENCE PARFAITE                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  CONTEXTE:                                                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Previous Day Low (PDL) ES = 4980                                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • GEX Level #3 = 4978                                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • VWAP du jour = 4982                                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  → TRIPLE CONFLUENCE dans la zone 4978-4982!                            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  SETUP:                                                                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • 16h00: ES en baisse rapide après news                                │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • 16h15: ES touche 4979 (dans la zone de confluence)                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • 16h20: Formation d&#x27;un Bullish Engulfing sur 5min                     │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Volume: +65% vs moyenne - CONFIRMATION                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  EXÉCUTION:                                                              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Entrée: 4983 (au-dessus du high de l&#x27;engulfing)                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Stop: 4975 (sous la zone de confluence) = -8 points = -$400          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Target 1: 4995 (GEX #2) = +12 points = +$600                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Target 2: 5010 (HVL) = +27 points = +$1,350                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  RÉSULTAT:                                                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • ES rebondit fortement, T1 atteint en 25 minutes                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Sortie 50% à T1 (+$300), laisse courir 50%                           │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • T2 atteint 1h plus tard (+$675)                                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Profit total: $975 avec un risque initial de $400                    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • R/R réalisé: 2.4:1 ✅                                                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">❌ ERREURS COMMUNES avec S/R</h2>
-            <div class="text-light-300 space-y-4">
-                
-            </div>
-            <ul class="mt-4 space-y-2">
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #1: Tracer des niveaux PARTOUT → Le graphique devient illisible. Max 5-7 niveaux pertinents.</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #2: Ignorer le contexte de tendance → Un support en tendance baissière est plus susceptible de casser.</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #3: Entrer AVANT confirmation → Le prix peut traverser un niveau puis revenir. Attendez le pattern.</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #4: Stop trop serré → Mettez le stop SOUS/AU-DESSUS du niveau, pas pile dessus.</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #5: Ne pas actualiser les niveaux → Un niveau cassé devient l&#x27;inverse. Mettez à jour!</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #6: Traiter tous les niveaux également → Un GEX level &gt;&gt; un swing high aléatoire.</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #7: Oublier le volume → Sans volume, un &quot;rebond&quot; n&#x27;est qu&#x27;une pause.</li>
-</ul>
-
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">✅ POINTS CLÉS à retenir</h2>
-            <div class="text-light-300 space-y-4">
-                
-            </div>
-            <ul class="mt-4 space-y-2">
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Support = zone d&#x27;achat (demande), Résistance = zone de vente (offre)</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Plus un niveau est testé, plus il est significatif</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Un niveau cassé S&#x27;INVERSE: support → résistance et vice-versa</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ La CONFLUENCE de niveaux = entrées les plus fiables</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Toujours confirmer avec pattern + volume avant d&#x27;entrer</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Hiérarchie: Niveaux GEX &gt; PDH/PDL &gt; Swing Highs/Lows</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Le retest après breakout est souvent meilleur que le breakout</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Ne tradez pas &quot;dans le vide&quot; - uniquement près de niveaux clés</li>
-</ul>
-
-        </section>
-        
-                    </article>
-                    
-                    <nav class="flex justify-between mt-12 pt-8 border-t border-white/10">
-                        <a class="flex items-center gap-3 p-4 bg-dark-200 hover:bg-dark-300 rounded-xl transition-all group max-w-[45%]" href="/education/candlestick-basics/">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5 text-light-500"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
-            <div class="text-left"><div class="text-xs text-light-500">Leçon précédente</div><div class="text-sm text-white font-medium truncate">Lecture des Chandeliers</div></div>
-        </a>
-                        <a class="flex items-center gap-3 p-4 bg-dark-200 hover:bg-dark-300 rounded-xl transition-all group max-w-[45%]" href="/education/volume-importance/">
-            <div class="text-right"><div class="text-xs text-light-500">Leçon suivante</div><div class="text-sm text-white font-medium truncate">L&#x27;Importance du Volume</div></div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5 text-light-500"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-        </a>
-                    </nav>
-                </div>
-                
-                <aside class="lg:col-span-1 hidden lg:block">
-                    <div class="sticky top-24 space-y-6">
-                        <a class="flex items-center gap-2 text-light-400 hover:text-white transition-colors" href="/education/">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
-                            ← Retour
-                        </a>
-                        <div class="card-glass p-4 rounded-xl">
-                            <h4 class="text-sm font-bold text-white mb-3">Dans cette leçon</h4>
-                            <ul class="space-y-2 text-sm">
-                                <li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">🎯 Introduction: Les fondations du Price Action</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">📊 SCHÉMA: Supports et Résistances visuels</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">📈 Types de Supports/Résistances</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">🔍 Comment IDENTIFIER les bons niveaux</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">💰 Stratégies de Trading sur les niveaux</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">📝 CAS PRATIQUE: Trade sur Previous Day Low + GEX</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">❌ ERREURS COMMUNES avec S/R</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">✅ POINTS CLÉS à retenir</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </aside>
-            </div>
-        </div>
-    </main>
 </div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">📊 SCHÉMA: Supports et Résistances visuels</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              SUPPORTS ET RÉSISTANCES - VISUALISATION                     │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  RÉSISTANCE (Prix &quot;plafond&quot;)                                            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ══════════════════════════════════════════════════════════             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│         ↑      ↑                    ↑                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        /‾\    /‾\                  /                                    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│       /   \  /   \                /  ← Breakout = Signal LONG          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│      /     \/     \              /                                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     /               \           /                                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│    /                 \         /                                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│   /                   \       /                                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  /                     \     /                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                         \   /                                           │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                          \_/                                            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ══════════════════════════════════════════════════════════             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  SUPPORT (Prix &quot;plancher&quot;)                                              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│         ↓      ↓         ↓                                              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        Rebond  Rebond    Rebond                                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│ PRINCIPE CLÉ:                                                            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│ • Plus un niveau est testé, PLUS il est significatif                    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│ • 2 touches = Niveau valide                                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│ • 3+ touches = Niveau FORT                                              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│ • Niveau cassé = INVERSION (support → résistance et vice-versa)         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">📈 Types de Supports/Résistances</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              HIÉRARCHIE DES NIVEAUX (du + fort au - fort)               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  🥇 NIVEAUX INSTITUTIONNELS (MenthorQ)                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ GEX Levels (Gamma Exposure)                                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ HVL (High Volume Level)                                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Call/Put Walls                                                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └─ Blind Spots                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  → Fiabilité: ⭐⭐⭐⭐⭐ (80%+)                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  🥈 NIVEAUX TECHNIQUES MAJEURS                                           │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Previous Day High/Low (PDH/PDL)                                     │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Weekly High/Low                                                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ VWAP (Volume Weighted Average Price)                                │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └─ Nombres ronds (5000, 5050, 5100...)                                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  → Fiabilité: ⭐⭐⭐⭐ (70%+)                                            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  🥉 NIVEAUX TECHNIQUES MINEURS                                           │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Swing Highs/Lows récents                                            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Fibonacci Retracements                                              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Moving Averages (EMA 20, 50, 200)                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └─ Pivot Points                                                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  → Fiabilité: ⭐⭐⭐ (55-65%)                                            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ⚠️ NIVEAUX SUBJECTIFS (à éviter)                                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Trendlines &quot;dessinées à la main&quot;                                    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Niveaux sans touches multiples                                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └─ Niveaux vus sur réseaux sociaux                                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  → Fiabilité: ⭐⭐ (50% = hasard)                                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">🔍 Comment IDENTIFIER les bons niveaux</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              CHECKLIST D&#x27;IDENTIFICATION                                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ☑️ ÉTAPE 1: Identifier les zones de RÉACTION                            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Où le prix a-t-il REBONDI dans le passé?                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Minimum 2 touches (idéalement 3+)                                     │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Réactions CLAIRES (pas juste une pause)                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ☑️ ÉTAPE 2: Vérifier le VOLUME                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Y a-t-il eu une augmentation de volume à ce niveau?                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Volume = conviction des participants                                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ☑️ ÉTAPE 3: Confirmer sur PLUSIEURS timeframes                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Un niveau visible sur Daily ET 4H = très fort                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Un niveau visible seulement sur 5min = faible                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ☑️ ÉTAPE 4: Croiser avec niveaux INSTITUTIONNELS                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Support technique + GEX level = CONFLUENCE = entrée idéale           │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Plus il y a de confluence, plus le niveau est fort                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ☑️ ÉTAPE 5: Considérer le CONTEXTE                                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Support dans une tendance haussière = plus susceptible de tenir      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Support dans une tendance baissière = plus susceptible de casser     │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">💰 Stratégies de Trading sur les niveaux</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                    2 STRATÉGIES PRINCIPALES                              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  📈 STRATÉGIE 1: REBOND (Mean Reversion)                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ──────────────────────────────────────                                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Principe: Acheter au support, vendre à la résistance                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Conditions pour un LONG sur support:                                    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  1. Prix approche un support identifié                                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  2. Pattern de retournement (hammer, engulfing...)                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  3. Volume qui augmente au toucher                                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  4. RSI en survente (&lt;30) = bonus                                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Entrée: Au-dessus du high du pattern de retournement                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Stop: Sous le support (avec marge de 2-3 ticks)                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Target: Prochaine résistance ou niveau GEX                              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  📉 STRATÉGIE 2: BREAKOUT (Trend Following)                              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ──────────────────────────────────────                                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Principe: Suivre la cassure d&#x27;un niveau majeur                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Conditions pour un LONG sur breakout résistance:                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  1. Prix casse AU-DESSUS d&#x27;une résistance claire                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  2. VOLUME en forte augmentation (+50% min)                              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  3. Bougie de cassure avec CORPS (pas juste mèche)                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  4. Pas de news majeure dans les 30 prochaines minutes                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Entrée: Au retest de la résistance devenue support                     │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Stop: Sous le nouveau support (ancienne résistance)                    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Target: Extension du mouvement (1.5x à 2x la distance)                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">📝 CAS PRATIQUE: Trade sur Previous Day Low + GEX</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              CAS PRATIQUE - CONFLUENCE PARFAITE                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  CONTEXTE:                                                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Previous Day Low (PDL) ES = 4980                                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • GEX Level #3 = 4978                                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • VWAP du jour = 4982                                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  → TRIPLE CONFLUENCE dans la zone 4978-4982!                            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  SETUP:                                                                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • 16h00: ES en baisse rapide après news                                │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • 16h15: ES touche 4979 (dans la zone de confluence)                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • 16h20: Formation d&#x27;un Bullish Engulfing sur 5min                     │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Volume: +65% vs moyenne - CONFIRMATION                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  EXÉCUTION:                                                              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Entrée: 4983 (au-dessus du high de l&#x27;engulfing)                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Stop: 4975 (sous la zone de confluence) = -8 points = -$400          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Target 1: 4995 (GEX #2) = +12 points = +$600                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Target 2: 5010 (HVL) = +27 points = +$1,350                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  RÉSULTAT:                                                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • ES rebondit fortement, T1 atteint en 25 minutes                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Sortie 50% à T1 (+$300), laisse courir 50%                           │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • T2 atteint 1h plus tard (+$675)                                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Profit total: $975 avec un risque initial de $400                    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • R/R réalisé: 2.4:1 ✅                                                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">❌ ERREURS COMMUNES avec S/R</h2>
+            <div class="text-light-300 text-sm space-y-3"></div>
+            <ul class="mt-3 space-y-1">
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #1: Tracer des niveaux PARTOUT → Le graphique devient illisible. Max 5-7 niveaux pertinents.</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #2: Ignorer le contexte de tendance → Un support en tendance baissière est plus susceptible de casser.</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #3: Entrer AVANT confirmation → Le prix peut traverser un niveau puis revenir. Attendez le pattern.</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #4: Stop trop serré → Mettez le stop SOUS/AU-DESSUS du niveau, pas pile dessus.</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #5: Ne pas actualiser les niveaux → Un niveau cassé devient l&#x27;inverse. Mettez à jour!</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #6: Traiter tous les niveaux également → Un GEX level &gt;&gt; un swing high aléatoire.</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #7: Oublier le volume → Sans volume, un &quot;rebond&quot; n&#x27;est qu&#x27;une pause.</li>
+</ul>
+
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">✅ POINTS CLÉS à retenir</h2>
+            <div class="text-light-300 text-sm space-y-3"></div>
+            <ul class="mt-3 space-y-1">
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Support = zone d&#x27;achat (demande), Résistance = zone de vente (offre)</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Plus un niveau est testé, plus il est significatif</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Un niveau cassé S&#x27;INVERSE: support → résistance et vice-versa</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ La CONFLUENCE de niveaux = entrées les plus fiables</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Toujours confirmer avec pattern + volume avant d&#x27;entrer</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Hiérarchie: Niveaux GEX &gt; PDH/PDL &gt; Swing Highs/Lows</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Le retest après breakout est souvent meilleur que le breakout</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Ne tradez pas &quot;dans le vide&quot; - uniquement près de niveaux clés</li>
+</ul>
+
+        </section>
+        
+            </article>
+            
+            <nav class="flex justify-between mt-8 pt-6 border-t border-white/10">
+                <a class="flex items-center gap-2 p-3 bg-dark-200 hover:bg-dark-300 rounded-lg transition-all group" href="/education/candlestick-basics/">
+            <svg class="w-4 h-4 text-light-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
+            <div class="text-left"><div class="text-xs text-light-500">Précédent</div><div class="text-sm text-white truncate">Lecture des Chandeliers</div></div>
+        </a>
+                <a class="flex items-center gap-2 p-3 bg-dark-200 hover:bg-dark-300 rounded-lg transition-all group" href="/education/volume-importance/">
+            <div class="text-right"><div class="text-xs text-light-500">Suivant</div><div class="text-sm text-white truncate">L&#x27;Importance du Volume</div></div>
+            <svg class="w-4 h-4 text-light-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </a>
+            </nav>
+        </main>
+    </div>
+</div>
+<script>
+function toggleNav(id) {
+    document.getElementById('nav-' + id).classList.toggle('open');
+}
+</script>
 <script src="/ticker.js" defer></script>
 </body>
 </html>

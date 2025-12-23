@@ -5,327 +5,562 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="/_next/static/css/0f34aadfba7d8fab.css"/>
     <link rel="icon" href="/images/logo-dark.jpg"/>
-    <title>L&#x27;Importance du Volume - MIA Trading Academy</title>
-    <meta name="description" content="Comprenez le rôle crucial du volume dans le trading."/>
+    <title>L&#x27;Importance du Volume - MIA Academy</title>
+    <style>
+        .sidebar-section { margin-bottom: 0.5rem; }
+        .sidebar-header { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem; cursor: pointer; border-radius: 0.5rem; }
+        .sidebar-header:hover { background: rgba(255,255,255,0.05); }
+        .sidebar-content { display: none; padding-left: 0.25rem; }
+        .sidebar-section.open .sidebar-content { display: block; }
+        .sidebar-section.open .chevron { transform: rotate(180deg); }
+        .nav-link { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.6rem; border-radius: 0.375rem; font-size: 0.8rem; text-decoration: none; transition: all 0.2s; }
+    </style>
 </head>
 <body class="bg-dark text-white overflow-x-hidden">
-<div class="min-h-screen bg-dark">
-    <header class="fixed top-0 left-0 right-0 z-50 bg-dark-100/80 backdrop-blur-xl border-b border-white/10">
-        <div class="container-custom">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center gap-4">
-                    <a class="flex items-center gap-2 text-light-400 hover:text-white transition-colors" href="/education/">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
-                        <span class="hidden sm:inline">Education</span>
-                    </a>
-                    <div class="h-6 w-px bg-white/20"></div>
-                    <a class="flex items-center gap-3 hover:opacity-80 transition-opacity" href="/">
-                        <div class="relative w-8 h-8">
-                            <img alt="MIA IA SYSTEM" class="rounded-full object-cover border border-mia-gold/50 w-full h-full" src="/images/logo-dark.jpg"/>
-                        </div>
-                        <span class="font-bold text-white hidden sm:inline">MIA IA SYSTEM</span>
-                    </a>
-                </div>
+<div class="min-h-screen bg-dark flex flex-col">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-dark-100/95 backdrop-blur-xl border-b border-white/10">
+        <div class="flex items-center justify-between h-14 px-4">
+            <div class="flex items-center gap-3">
+                <a class="flex items-center gap-2 text-light-400 hover:text-white" href="/">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    <span class="text-sm hidden sm:inline">Accueil</span>
+                </a>
+                <div class="h-5 w-px bg-white/20"></div>
+                <a class="flex items-center gap-2" href="/">
+                    <img alt="MIA" class="w-7 h-7 rounded-full border border-mia-gold/50" src="/images/logo-dark.jpg"/>
+                    <span class="font-bold text-sm hidden sm:inline">MIA IA SYSTEM</span>
+                </a>
             </div>
+            <a href="https://discord.gg/mia-ia-system" target="_blank" class="flex items-center gap-1 px-3 py-1.5 bg-accent-purple/20 text-accent-purple rounded-lg text-sm">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                Discord
+            </a>
         </div>
     </header>
+
+    <div class="flex flex-1 pt-14">
+        
+        <aside class="hidden lg:block w-64 flex-shrink-0 border-r border-white/10 bg-dark-100 fixed top-14 bottom-0 overflow-y-auto z-40">
+            <div class="p-3">
     
-    <main class="pt-24 pb-16">
-        <div class="container-custom">
-            <nav class="flex items-center gap-2 text-sm text-light-500 mb-8 overflow-x-auto">
-                <a class="hover:text-white transition-colors whitespace-nowrap" href="/education/">Education</a>
-                <span class="text-light-600">›</span>
-                <span class="px-2 py-0.5 rounded text-xs bg-green-500/20 text-green-400 whitespace-nowrap">Débutant</span>
-                <span class="text-light-600">›</span>
-                <span class="text-white whitespace-nowrap">L&#x27;Importance du Volume</span>
+                <div class="sidebar-section open" id="nav-débutant">
+                    <div class="sidebar-header" onclick="toggleNav('débutant')">
+                        <div class="flex items-center gap-2">
+                            <span>🌱</span>
+                            <span class="text-xs font-bold text-mia-cyan uppercase">Débutant</span>
+                            <span class="text-xs text-light-500">(10)</span>
+                        </div>
+                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="sidebar-content">
+        
+                        <a href="/education/futures-101/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">Les Futures US: ES, NQ, RTY</span>
+                        </a>
+            
+                        <a href="/education/trading-sessions/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🕐</span>
+                            <span class="truncate">Les Sessions de Trading</span>
+                        </a>
+            
+                        <a href="/education/candlestick-basics/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🕯️</span>
+                            <span class="truncate">Lecture des Chandeliers</span>
+                        </a>
+            
+                        <a href="/education/support-resistance/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📏</span>
+                            <span class="truncate">Support & Résistance</span>
+                        </a>
+            
+                        <a href="/education/volume-importance/" class="nav-link bg-mia-cyan/20 text-white">
+                            <span>📊</span>
+                            <span class="truncate">L'Importance du Volume</span>
+                        </a>
+            
+                        <a href="/education/risk-management/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🛡️</span>
+                            <span class="truncate">Gestion du Risque</span>
+                        </a>
+            
+                        <a href="/education/trading-psychology/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🧠</span>
+                            <span class="truncate">Psychologie du Trading</span>
+                        </a>
+            
+                        <a href="/education/order-types/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📝</span>
+                            <span class="truncate">Types d'Ordres</span>
+                        </a>
+            
+                        <a href="/education/journaling-backtesting/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📓</span>
+                            <span class="truncate">Journaling & Backtesting</span>
+                        </a>
+            
+                        <a href="/education/economic-calendar/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📅</span>
+                            <span class="truncate">Calendrier Économique</span>
+                        </a>
+            
+                    </div>
+                </div>
+        
+                <div class="sidebar-section " id="nav-intermédiaire">
+                    <div class="sidebar-header" onclick="toggleNav('intermédiaire')">
+                        <div class="flex items-center gap-2">
+                            <span>📈</span>
+                            <span class="text-xs font-bold text-yellow-400 uppercase">Intermédiaire</span>
+                            <span class="text-xs text-light-500">(11)</span>
+                        </div>
+                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="sidebar-content">
+        
+                        <a href="/education/multi-timeframe-analysis/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🔍</span>
+                            <span class="truncate">Analyse Multi-Timeframe</span>
+                        </a>
+            
+                        <a href="/education/call-resistance-put-support/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📞</span>
+                            <span class="truncate">Call Resistance & Put Support</span>
+                        </a>
+            
+                        <a href="/education/hvl-gamma-flip/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🎯</span>
+                            <span class="truncate">HVL & Gamma Flip</span>
+                        </a>
+            
+                        <a href="/education/positive-negative-gamma/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>⚡</span>
+                            <span class="truncate">Gamma Positif vs Négatif</span>
+                        </a>
+            
+                        <a href="/education/0dte-options-impact/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>💥</span>
+                            <span class="truncate">Impact des Options 0DTE</span>
+                        </a>
+            
+                        <a href="/education/expected-move-range/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📐</span>
+                            <span class="truncate">Expected Move & Range</span>
+                        </a>
+            
+                        <a href="/education/gamma-exposure/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📈</span>
+                            <span class="truncate">Gamma Exposure (GEX)</span>
+                        </a>
+            
+                        <a href="/education/high-volume-levels/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">High Volume Levels</span>
+                        </a>
+            
+                        <a href="/education/options-impact/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🎰</span>
+                            <span class="truncate">Impact des Options</span>
+                        </a>
+            
+                        <a href="/education/market-makers/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🏦</span>
+                            <span class="truncate">Market Makers</span>
+                        </a>
+            
+                        <a href="/education/vwap-intraday/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📉</span>
+                            <span class="truncate">VWAP & Niveaux Intraday</span>
+                        </a>
+            
+                    </div>
+                </div>
+        
+                <div class="sidebar-section " id="nav-avancé">
+                    <div class="sidebar-header" onclick="toggleNav('avancé')">
+                        <div class="flex items-center gap-2">
+                            <span>🚀</span>
+                            <span class="text-xs font-bold text-red-400 uppercase">Avancé</span>
+                            <span class="text-xs text-light-500">(14)</span>
+                        </div>
+                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="sidebar-content">
+        
+                        <a href="/education/orderflow/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🌊</span>
+                            <span class="truncate">OrderFlow Basics</span>
+                        </a>
+            
+                        <a href="/education/money-management/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>💰</span>
+                            <span class="truncate">Money Management Avancé</span>
+                        </a>
+            
+                        <a href="/education/correlation-intermarches/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🔗</span>
+                            <span class="truncate">Corrélations Inter-Marchés</span>
+                        </a>
+            
+                        <a href="/education/liquidity-sweeps/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🧹</span>
+                            <span class="truncate">Liquidity Sweeps</span>
+                        </a>
+            
+                        <a href="/education/market-profile/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">Market Profile</span>
+                        </a>
+            
+                        <a href="/education/fibonacci-extensions/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🌀</span>
+                            <span class="truncate">Fibonacci Extensions</span>
+                        </a>
+            
+                        <a href="/education/gex-levels-1-10/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🎯</span>
+                            <span class="truncate">GEX Levels 1-10</span>
+                        </a>
+            
+                        <a href="/education/blind-spots-trading/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>👁️</span>
+                            <span class="truncate">Blind Spots Trading</span>
+                        </a>
+            
+                        <a href="/education/delta-exposure-dex/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">Delta Exposure (DEX)</span>
+                        </a>
+            
+                        <a href="/education/dealer-hedging-mechanics/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>⚙️</span>
+                            <span class="truncate">Dealer Hedging</span>
+                        </a>
+            
+                        <a href="/education/gamma-walls-magnets/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🧲</span>
+                            <span class="truncate">Gamma Walls & Magnets</span>
+                        </a>
+            
+                        <a href="/education/vix-vvix-volatility/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🌪️</span>
+                            <span class="truncate">VIX & VVIX</span>
+                        </a>
+            
+                        <a href="/education/option-greeks-traders/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🇬🇷</span>
+                            <span class="truncate">Option Greeks</span>
+                        </a>
+            
+                        <a href="/education/regime-based-trading/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🔄</span>
+                            <span class="truncate">Regime-Based Trading</span>
+                        </a>
+            
+                    </div>
+                </div>
+        
+                <div class="sidebar-section " id="nav-bonus">
+                    <div class="sidebar-header" onclick="toggleNav('bonus')">
+                        <div class="flex items-center gap-2">
+                            <span>⭐</span>
+                            <span class="text-xs font-bold text-purple-400 uppercase">Bonus</span>
+                            <span class="text-xs text-light-500">(5)</span>
+                        </div>
+                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="sidebar-content">
+        
+                        <a href="/education/battle-navale/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>⚔️</span>
+                            <span class="truncate">Battle Navale</span>
+                        </a>
+            
+                        <a href="/education/une-journee-avec-mia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>☀️</span>
+                            <span class="truncate">Une Journée avec MIA</span>
+                        </a>
+            
+                        <a href="/education/pourquoi-bots-meurent/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>💀</span>
+                            <span class="truncate">Pourquoi les Bots Meurent</span>
+                        </a>
+            
+                        <a href="/education/quand-couper-mia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🔌</span>
+                            <span class="truncate">Quand Couper MIA</span>
+                        </a>
+            
+                        <a href="/education/mental-discipline-ia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🧘</span>
+                            <span class="truncate">Mental & Discipline</span>
+                        </a>
+            
+                    </div>
+                </div>
+        
+            </div>
+        </aside>
+    
+        
+        <main class="flex-1 lg:ml-64 p-4 lg:p-6">
+            <nav class="flex items-center gap-2 text-xs text-light-500 mb-4">
+                <a href="/education/" class="hover:text-white">Education</a>
+                <span>›</span>
+                <span class="px-2 py-0.5 rounded bg-green-500/20 text-green-400">Débutant</span>
+                <span>›</span>
+                <span class="text-white">L&#x27;Importance du Volume</span>
             </nav>
             
-            <div class="grid lg:grid-cols-4 gap-8">
-                <div class="lg:col-span-3">
-                    <header class="mb-8">
-                        <span class="text-5xl mb-4 block">📊</span>
-                        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">L&#x27;Importance du Volume</h1>
-                        <p class="text-lg sm:text-xl text-light-400 mb-6">Comprenez le rôle crucial du volume dans le trading.</p>
-                        <div class="flex flex-wrap items-center gap-4 text-sm">
-                            <span class="flex items-center gap-2 text-light-400">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                                10 min
-                            </span>
-                            <span class="px-3 py-1 rounded-full bg-green-500/20 text-green-400">Débutant</span>
-                        </div>
-                    </header>
-                    
-                    <article class="space-y-6">
-                        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">🎯 Le Volume: Le &quot;Carburant&quot; du Marché</h2>
-            <div class="text-light-300 space-y-4">
-                <p>Le volume est le SEUL indicateur qui ne dérive pas du prix. Il mesure directement la PARTICIPATION des traders au marché.</p>
+            <header class="mb-6">
+                <span class="text-4xl mb-2 block">📊</span>
+                <h1 class="text-2xl lg:text-3xl font-bold text-white mb-2">L&#x27;Importance du Volume</h1>
+                <p class="text-light-400 mb-3">Le rôle crucial du volume.</p>
+                <div class="flex items-center gap-3 text-sm">
+                    <span class="flex items-center gap-1 text-light-400">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        10 min
+                    </span>
+                    <span class="px-2 py-1 rounded bg-green-500/20 text-green-400">Débutant</span>
+                </div>
+            </header>
+            
+            <article class="space-y-4">
+                
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">🎯 Le Volume: Le &quot;Carburant&quot; du Marché</h2>
+            <div class="text-light-300 text-sm space-y-3"><p>Le volume est le SEUL indicateur qui ne dérive pas du prix. Il mesure directement la PARTICIPATION des traders au marché.</p>
 <p>Un mouvement de prix SANS volume est suspect. Un mouvement AVEC volume est significatif. C&#x27;est aussi simple que ça.</p>
 <p>Sur les Futures, le volume est encore plus important car il reflète l&#x27;activité institutionnelle en temps réel.</p>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">📊 SCHÉMA: Relations Volume-Prix</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│              MATRICE VOLUME-PRIX - INTERPRÉTATION                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                     VOLUME ÉLEVÉ           VOLUME FAIBLE                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│           ┌────────────────────────┬────────────────────────┐            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│           │                        │                        │            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  PRIX     │   ✅ HAUSSE SAINE      │   ⚠️ HAUSSE SUSPECTE   │            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  MONTE    │   • Tendance confirmée │   • Manque de conviction│           │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│           │   • Acheteurs actifs   │   • Potentiel reversal │            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│           │   • Continuation prob. │   • Méfiance requise   │            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│           │                        │                        │            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│           ├────────────────────────┼────────────────────────┤            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│           │                        │                        │            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  PRIX     │   ✅ BAISSE SAINE      │   ⚠️ BAISSE SUSPECTE   │            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  BAISSE   │   • Pression vendeuse  │   • Manque de vendeurs │            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│           │   • Continuation prob. │   • Potentiel rebond   │            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│           │   • Traders actifs     │   • Pas de capitulation│            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│           │                        │                        │            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│           └────────────────────────┴────────────────────────┘            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  RÈGLE D&#x27;OR: Le volume CONFIRME ou INFIRME le mouvement de prix         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">📈 Les différents types de Volume</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│              TYPES DE VOLUME SUR FUTURES                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  1. VOLUME PAR BARRE (Standard)                                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ────────────────────────────────                                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Nombre de contrats échangés par période (5min, 1h, etc.)             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Le plus simple et le plus utilisé                                     │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Sur TradingView: barre verte/rouge sous le graphique                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  2. VOLUME PROFILE (Avancé)                                              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ────────────────────────────────                                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Volume échangé à CHAQUE NIVEAU de prix                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Identifie les zones de forte activité (POC, Value Area)              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Utilisé par les institutions                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  3. DELTA (Volume Directionnel)                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ────────────────────────────────                                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Delta = Volume acheteur - Volume vendeur                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Delta positif = plus d&#x27;achats agressifs                              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Delta négatif = plus de ventes agressives                            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Très utilisé par MIA pour confirmer la direction                     │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  4. CVD (Cumulative Volume Delta)                                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ────────────────────────────────                                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Somme cumulée du delta sur la journée                                │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Divergence CVD/Prix = signal de retournement                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Avancé mais très puissant                                            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">🚦 Les SIGNAUX de Volume à connaître</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│              SIGNAUX DE VOLUME CRITIQUES                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  🔥 VOLUME SPIKE (Pic de volume)                                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Volume 2-3x supérieur à la moyenne                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Signale un événement significatif                                    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Souvent au début ou à la fin d&#x27;un mouvement                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • ATTENTION: Peut être climax (fin) ou initiation (début)              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  📉 VOLUME EN DÉCLIN (Pendant tendance)                                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Volume qui diminue progressivement                                    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • La tendance s&#x27;essouffle                                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Préparez-vous à un reversal ou une pause                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  💥 CLIMAX VOLUME (Volume de capitulation)                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Volume ÉNORME après une forte tendance                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Souvent près des bottoms ou tops                                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Les derniers traders &quot;jettent l&#x27;éponge&quot;                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Signal de retournement potentiel                                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  😴 VOLUME SEC (Low Volume)                                              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Volume significativement sous la moyenne                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Peu de participants = mouvement non fiable                           │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Typique du lunch block                                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • ÉVITEZ de trader                                                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">🎯 Volume + Niveaux = Confirmation parfaite</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│              COMBO VOLUME + NIVEAUX                                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  SCÉNARIO 1: Prix touche support + Volume SPIKE                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ───────────────────────────────────────────                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│       Prix                                                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│        │    ╲                                                            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│        │     ╲                                                           │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│        │      ╲                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ══════│═══════╲════════════  ← Support                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│        │        ↑ REBOND avec volume                                    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│        └────────────────────  Temps                                     │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  Volume   ▁▂▁▂█████▂▁                                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                 ↑ Spike au toucher = Confirmation FORTE                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  → Signal d&#x27;ACHAT fiable                                                │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  SCÉNARIO 2: Prix touche support + Volume FAIBLE                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ───────────────────────────────────────────                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  Volume   ▁▂▁▂▁▁▁▂▁                                                     │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                 ↑ Pas de spike = Méfiance                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  → Le support peut CASSER. Attendez confirmation.                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">📝 CAS PRATIQUE: Divergence Volume-Prix</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│              DIVERGENCE VOLUME-PRIX - TRADE RÉEL                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  CONTEXTE:                                                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • NQ en hausse depuis l&#x27;open (+150 points)                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • 3 nouveaux highs successifs                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • MAIS volume en DÉCLIN sur chaque high                                │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  OBSERVATION:                                                            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  Prix:     ─────/‾‾\───/‾‾‾\───/‾‾‾‾\                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                 H1       H2        H3    (nouveaux highs)               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  Volume:   ████▓▓▓▓░░░░                                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│            H1   H2   H3   (volume décroissant)                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  → DIVERGENCE BAISSIÈRE: Prix monte, volume baisse                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  → Les acheteurs s&#x27;épuisent, retournement probable                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  TRADE:                                                                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Short NQ après cassure du support 15min                              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Entrée: 17450                                                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Stop: 17490 (au-dessus du H3)                                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Target: 17350 (support précédent)                                    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  RÉSULTAT:                                                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • NQ chute de 120 points dans l&#x27;heure suivante                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Profit: +$2,000 sur 1 contrat                                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">❌ ERREURS COMMUNES avec le Volume</h2>
-            <div class="text-light-300 space-y-4">
-                
-            </div>
-            <ul class="mt-4 space-y-2">
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #1: Ignorer le volume complètement → Vous tradez sans &quot;carburant&quot;, c&#x27;est risqué.</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #2: Regarder le volume de manière isolée → Toujours comparer à la MOYENNE.</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #3: Confondre climax et initiation → Un spike peut être fin OU début de mouvement.</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #4: Trader pendant les heures de faible volume → Lunch block = piège.</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #5: Ne pas ajuster aux sessions → Le volume &quot;normal&quot; change selon l&#x27;heure.</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #6: Ignorer les divergences → Prix vs volume = signal puissant de retournement.</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #7: Se fier au volume seul → C&#x27;est un CONFIRMATEUR, pas un signal d&#x27;entrée.</li>
-</ul>
-
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">✅ POINTS CLÉS à retenir</h2>
-            <div class="text-light-300 space-y-4">
-                
-            </div>
-            <ul class="mt-4 space-y-2">
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Le volume mesure la PARTICIPATION - c&#x27;est le &quot;carburant&quot; du marché</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Hausse prix + Hausse volume = Mouvement sain et confirmé</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Hausse prix + Baisse volume = Mouvement suspect, prudence</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Volume spike = Événement significatif (climax ou initiation)</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Climax volume = Potentiel de retournement (capitulation)</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Volume + Niveau = Meilleure confirmation possible</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Divergence volume/prix = Signal avancé de retournement</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Évitez de trader quand le volume est anormalement faible</li>
-</ul>
-
-        </section>
-        
-                    </article>
-                    
-                    <nav class="flex justify-between mt-12 pt-8 border-t border-white/10">
-                        <a class="flex items-center gap-3 p-4 bg-dark-200 hover:bg-dark-300 rounded-xl transition-all group max-w-[45%]" href="/education/support-resistance/">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5 text-light-500"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
-            <div class="text-left"><div class="text-xs text-light-500">Leçon précédente</div><div class="text-sm text-white font-medium truncate">Support &amp; Résistance</div></div>
-        </a>
-                        <a class="flex items-center gap-3 p-4 bg-dark-200 hover:bg-dark-300 rounded-xl transition-all group max-w-[45%]" href="/education/risk-management/">
-            <div class="text-right"><div class="text-xs text-light-500">Leçon suivante</div><div class="text-sm text-white font-medium truncate">Gestion du Risque</div></div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5 text-light-500"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-        </a>
-                    </nav>
-                </div>
-                
-                <aside class="lg:col-span-1 hidden lg:block">
-                    <div class="sticky top-24 space-y-6">
-                        <a class="flex items-center gap-2 text-light-400 hover:text-white transition-colors" href="/education/">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
-                            ← Retour
-                        </a>
-                        <div class="card-glass p-4 rounded-xl">
-                            <h4 class="text-sm font-bold text-white mb-3">Dans cette leçon</h4>
-                            <ul class="space-y-2 text-sm">
-                                <li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">🎯 Le Volume: Le &quot;Carburant&quot; du Marché</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">📊 SCHÉMA: Relations Volume-Prix</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">📈 Les différents types de Volume</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">🚦 Les SIGNAUX de Volume à connaître</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">🎯 Volume + Niveaux = Confirmation parfaite</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">📝 CAS PRATIQUE: Divergence Volume-Prix</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">❌ ERREURS COMMUNES avec le Volume</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">✅ POINTS CLÉS à retenir</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </aside>
-            </div>
-        </div>
-    </main>
 </div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">📊 SCHÉMA: Relations Volume-Prix</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              MATRICE VOLUME-PRIX - INTERPRÉTATION                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                     VOLUME ÉLEVÉ           VOLUME FAIBLE                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│           ┌────────────────────────┬────────────────────────┐            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│           │                        │                        │            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  PRIX     │   ✅ HAUSSE SAINE      │   ⚠️ HAUSSE SUSPECTE   │            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  MONTE    │   • Tendance confirmée │   • Manque de conviction│           │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│           │   • Acheteurs actifs   │   • Potentiel reversal │            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│           │   • Continuation prob. │   • Méfiance requise   │            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│           │                        │                        │            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│           ├────────────────────────┼────────────────────────┤            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│           │                        │                        │            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  PRIX     │   ✅ BAISSE SAINE      │   ⚠️ BAISSE SUSPECTE   │            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  BAISSE   │   • Pression vendeuse  │   • Manque de vendeurs │            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│           │   • Continuation prob. │   • Potentiel rebond   │            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│           │   • Traders actifs     │   • Pas de capitulation│            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│           │                        │                        │            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│           └────────────────────────┴────────────────────────┘            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  RÈGLE D&#x27;OR: Le volume CONFIRME ou INFIRME le mouvement de prix         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">📈 Les différents types de Volume</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              TYPES DE VOLUME SUR FUTURES                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  1. VOLUME PAR BARRE (Standard)                                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ────────────────────────────────                                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Nombre de contrats échangés par période (5min, 1h, etc.)             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Le plus simple et le plus utilisé                                     │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Sur TradingView: barre verte/rouge sous le graphique                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  2. VOLUME PROFILE (Avancé)                                              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ────────────────────────────────                                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Volume échangé à CHAQUE NIVEAU de prix                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Identifie les zones de forte activité (POC, Value Area)              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Utilisé par les institutions                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  3. DELTA (Volume Directionnel)                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ────────────────────────────────                                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Delta = Volume acheteur - Volume vendeur                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Delta positif = plus d&#x27;achats agressifs                              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Delta négatif = plus de ventes agressives                            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Très utilisé par MIA pour confirmer la direction                     │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  4. CVD (Cumulative Volume Delta)                                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ────────────────────────────────                                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Somme cumulée du delta sur la journée                                │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Divergence CVD/Prix = signal de retournement                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Avancé mais très puissant                                            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">🚦 Les SIGNAUX de Volume à connaître</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              SIGNAUX DE VOLUME CRITIQUES                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  🔥 VOLUME SPIKE (Pic de volume)                                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Volume 2-3x supérieur à la moyenne                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Signale un événement significatif                                    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Souvent au début ou à la fin d&#x27;un mouvement                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • ATTENTION: Peut être climax (fin) ou initiation (début)              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  📉 VOLUME EN DÉCLIN (Pendant tendance)                                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Volume qui diminue progressivement                                    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • La tendance s&#x27;essouffle                                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Préparez-vous à un reversal ou une pause                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  💥 CLIMAX VOLUME (Volume de capitulation)                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Volume ÉNORME après une forte tendance                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Souvent près des bottoms ou tops                                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Les derniers traders &quot;jettent l&#x27;éponge&quot;                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Signal de retournement potentiel                                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  😴 VOLUME SEC (Low Volume)                                              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Volume significativement sous la moyenne                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Peu de participants = mouvement non fiable                           │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Typique du lunch block                                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • ÉVITEZ de trader                                                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">🎯 Volume + Niveaux = Confirmation parfaite</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              COMBO VOLUME + NIVEAUX                                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  SCÉNARIO 1: Prix touche support + Volume SPIKE                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ───────────────────────────────────────────                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│       Prix                                                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        │    ╲                                                            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        │     ╲                                                           │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        │      ╲                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ══════│═══════╲════════════  ← Support                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        │        ↑ REBOND avec volume                                    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        └────────────────────  Temps                                     │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Volume   ▁▂▁▂█████▂▁                                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                 ↑ Spike au toucher = Confirmation FORTE                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  → Signal d&#x27;ACHAT fiable                                                │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  SCÉNARIO 2: Prix touche support + Volume FAIBLE                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ───────────────────────────────────────────                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Volume   ▁▂▁▂▁▁▁▂▁                                                     │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                 ↑ Pas de spike = Méfiance                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  → Le support peut CASSER. Attendez confirmation.                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">📝 CAS PRATIQUE: Divergence Volume-Prix</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              DIVERGENCE VOLUME-PRIX - TRADE RÉEL                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  CONTEXTE:                                                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • NQ en hausse depuis l&#x27;open (+150 points)                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • 3 nouveaux highs successifs                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • MAIS volume en DÉCLIN sur chaque high                                │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  OBSERVATION:                                                            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Prix:     ─────/‾‾\───/‾‾‾\───/‾‾‾‾\                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                 H1       H2        H3    (nouveaux highs)               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Volume:   ████▓▓▓▓░░░░                                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│            H1   H2   H3   (volume décroissant)                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  → DIVERGENCE BAISSIÈRE: Prix monte, volume baisse                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  → Les acheteurs s&#x27;épuisent, retournement probable                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  TRADE:                                                                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Short NQ après cassure du support 15min                              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Entrée: 17450                                                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Stop: 17490 (au-dessus du H3)                                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Target: 17350 (support précédent)                                    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  RÉSULTAT:                                                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • NQ chute de 120 points dans l&#x27;heure suivante                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Profit: +$2,000 sur 1 contrat                                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">❌ ERREURS COMMUNES avec le Volume</h2>
+            <div class="text-light-300 text-sm space-y-3"></div>
+            <ul class="mt-3 space-y-1">
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #1: Ignorer le volume complètement → Vous tradez sans &quot;carburant&quot;, c&#x27;est risqué.</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #2: Regarder le volume de manière isolée → Toujours comparer à la MOYENNE.</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #3: Confondre climax et initiation → Un spike peut être fin OU début de mouvement.</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #4: Trader pendant les heures de faible volume → Lunch block = piège.</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #5: Ne pas ajuster aux sessions → Le volume &quot;normal&quot; change selon l&#x27;heure.</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #6: Ignorer les divergences → Prix vs volume = signal puissant de retournement.</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #7: Se fier au volume seul → C&#x27;est un CONFIRMATEUR, pas un signal d&#x27;entrée.</li>
+</ul>
+
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">✅ POINTS CLÉS à retenir</h2>
+            <div class="text-light-300 text-sm space-y-3"></div>
+            <ul class="mt-3 space-y-1">
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Le volume mesure la PARTICIPATION - c&#x27;est le &quot;carburant&quot; du marché</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Hausse prix + Hausse volume = Mouvement sain et confirmé</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Hausse prix + Baisse volume = Mouvement suspect, prudence</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Volume spike = Événement significatif (climax ou initiation)</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Climax volume = Potentiel de retournement (capitulation)</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Volume + Niveau = Meilleure confirmation possible</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Divergence volume/prix = Signal avancé de retournement</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Évitez de trader quand le volume est anormalement faible</li>
+</ul>
+
+        </section>
+        
+            </article>
+            
+            <nav class="flex justify-between mt-8 pt-6 border-t border-white/10">
+                <a class="flex items-center gap-2 p-3 bg-dark-200 hover:bg-dark-300 rounded-lg transition-all group" href="/education/support-resistance/">
+            <svg class="w-4 h-4 text-light-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
+            <div class="text-left"><div class="text-xs text-light-500">Précédent</div><div class="text-sm text-white truncate">Support &amp; Résistance</div></div>
+        </a>
+                <a class="flex items-center gap-2 p-3 bg-dark-200 hover:bg-dark-300 rounded-lg transition-all group" href="/education/risk-management/">
+            <div class="text-right"><div class="text-xs text-light-500">Suivant</div><div class="text-sm text-white truncate">Gestion du Risque</div></div>
+            <svg class="w-4 h-4 text-light-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </a>
+            </nav>
+        </main>
+    </div>
+</div>
+<script>
+function toggleNav(id) {
+    document.getElementById('nav-' + id).classList.toggle('open');
+}
+</script>
 <script src="/ticker.js" defer></script>
 </body>
 </html>

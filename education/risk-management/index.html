@@ -5,412 +5,645 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="/_next/static/css/0f34aadfba7d8fab.css"/>
     <link rel="icon" href="/images/logo-dark.jpg"/>
-    <title>Gestion du Risque - MIA Trading Academy</title>
-    <meta name="description" content="Protégez votre capital avec une gestion du risque solide."/>
+    <title>Gestion du Risque - MIA Academy</title>
+    <style>
+        .sidebar-section { margin-bottom: 0.5rem; }
+        .sidebar-header { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem; cursor: pointer; border-radius: 0.5rem; }
+        .sidebar-header:hover { background: rgba(255,255,255,0.05); }
+        .sidebar-content { display: none; padding-left: 0.25rem; }
+        .sidebar-section.open .sidebar-content { display: block; }
+        .sidebar-section.open .chevron { transform: rotate(180deg); }
+        .nav-link { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.6rem; border-radius: 0.375rem; font-size: 0.8rem; text-decoration: none; transition: all 0.2s; }
+    </style>
 </head>
 <body class="bg-dark text-white overflow-x-hidden">
-<div class="min-h-screen bg-dark">
-    <header class="fixed top-0 left-0 right-0 z-50 bg-dark-100/80 backdrop-blur-xl border-b border-white/10">
-        <div class="container-custom">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center gap-4">
-                    <a class="flex items-center gap-2 text-light-400 hover:text-white transition-colors" href="/education/">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
-                        <span class="hidden sm:inline">Education</span>
-                    </a>
-                    <div class="h-6 w-px bg-white/20"></div>
-                    <a class="flex items-center gap-3 hover:opacity-80 transition-opacity" href="/">
-                        <div class="relative w-8 h-8">
-                            <img alt="MIA IA SYSTEM" class="rounded-full object-cover border border-mia-gold/50 w-full h-full" src="/images/logo-dark.jpg"/>
-                        </div>
-                        <span class="font-bold text-white hidden sm:inline">MIA IA SYSTEM</span>
-                    </a>
-                </div>
+<div class="min-h-screen bg-dark flex flex-col">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-dark-100/95 backdrop-blur-xl border-b border-white/10">
+        <div class="flex items-center justify-between h-14 px-4">
+            <div class="flex items-center gap-3">
+                <a class="flex items-center gap-2 text-light-400 hover:text-white" href="/">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    <span class="text-sm hidden sm:inline">Accueil</span>
+                </a>
+                <div class="h-5 w-px bg-white/20"></div>
+                <a class="flex items-center gap-2" href="/">
+                    <img alt="MIA" class="w-7 h-7 rounded-full border border-mia-gold/50" src="/images/logo-dark.jpg"/>
+                    <span class="font-bold text-sm hidden sm:inline">MIA IA SYSTEM</span>
+                </a>
             </div>
+            <a href="https://discord.gg/mia-ia-system" target="_blank" class="flex items-center gap-1 px-3 py-1.5 bg-accent-purple/20 text-accent-purple rounded-lg text-sm">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                Discord
+            </a>
         </div>
     </header>
+
+    <div class="flex flex-1 pt-14">
+        
+        <aside class="hidden lg:block w-64 flex-shrink-0 border-r border-white/10 bg-dark-100 fixed top-14 bottom-0 overflow-y-auto z-40">
+            <div class="p-3">
     
-    <main class="pt-24 pb-16">
-        <div class="container-custom">
-            <nav class="flex items-center gap-2 text-sm text-light-500 mb-8 overflow-x-auto">
-                <a class="hover:text-white transition-colors whitespace-nowrap" href="/education/">Education</a>
-                <span class="text-light-600">›</span>
-                <span class="px-2 py-0.5 rounded text-xs bg-green-500/20 text-green-400 whitespace-nowrap">Débutant</span>
-                <span class="text-light-600">›</span>
-                <span class="text-white whitespace-nowrap">Gestion du Risque</span>
+                <div class="sidebar-section open" id="nav-débutant">
+                    <div class="sidebar-header" onclick="toggleNav('débutant')">
+                        <div class="flex items-center gap-2">
+                            <span>🌱</span>
+                            <span class="text-xs font-bold text-mia-cyan uppercase">Débutant</span>
+                            <span class="text-xs text-light-500">(10)</span>
+                        </div>
+                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="sidebar-content">
+        
+                        <a href="/education/futures-101/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">Les Futures US: ES, NQ, RTY</span>
+                        </a>
+            
+                        <a href="/education/trading-sessions/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🕐</span>
+                            <span class="truncate">Les Sessions de Trading</span>
+                        </a>
+            
+                        <a href="/education/candlestick-basics/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🕯️</span>
+                            <span class="truncate">Lecture des Chandeliers</span>
+                        </a>
+            
+                        <a href="/education/support-resistance/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📏</span>
+                            <span class="truncate">Support & Résistance</span>
+                        </a>
+            
+                        <a href="/education/volume-importance/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">L'Importance du Volume</span>
+                        </a>
+            
+                        <a href="/education/risk-management/" class="nav-link bg-mia-cyan/20 text-white">
+                            <span>🛡️</span>
+                            <span class="truncate">Gestion du Risque</span>
+                        </a>
+            
+                        <a href="/education/trading-psychology/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🧠</span>
+                            <span class="truncate">Psychologie du Trading</span>
+                        </a>
+            
+                        <a href="/education/order-types/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📝</span>
+                            <span class="truncate">Types d'Ordres</span>
+                        </a>
+            
+                        <a href="/education/journaling-backtesting/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📓</span>
+                            <span class="truncate">Journaling & Backtesting</span>
+                        </a>
+            
+                        <a href="/education/economic-calendar/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📅</span>
+                            <span class="truncate">Calendrier Économique</span>
+                        </a>
+            
+                    </div>
+                </div>
+        
+                <div class="sidebar-section " id="nav-intermédiaire">
+                    <div class="sidebar-header" onclick="toggleNav('intermédiaire')">
+                        <div class="flex items-center gap-2">
+                            <span>📈</span>
+                            <span class="text-xs font-bold text-yellow-400 uppercase">Intermédiaire</span>
+                            <span class="text-xs text-light-500">(11)</span>
+                        </div>
+                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="sidebar-content">
+        
+                        <a href="/education/multi-timeframe-analysis/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🔍</span>
+                            <span class="truncate">Analyse Multi-Timeframe</span>
+                        </a>
+            
+                        <a href="/education/call-resistance-put-support/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📞</span>
+                            <span class="truncate">Call Resistance & Put Support</span>
+                        </a>
+            
+                        <a href="/education/hvl-gamma-flip/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🎯</span>
+                            <span class="truncate">HVL & Gamma Flip</span>
+                        </a>
+            
+                        <a href="/education/positive-negative-gamma/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>⚡</span>
+                            <span class="truncate">Gamma Positif vs Négatif</span>
+                        </a>
+            
+                        <a href="/education/0dte-options-impact/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>💥</span>
+                            <span class="truncate">Impact des Options 0DTE</span>
+                        </a>
+            
+                        <a href="/education/expected-move-range/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📐</span>
+                            <span class="truncate">Expected Move & Range</span>
+                        </a>
+            
+                        <a href="/education/gamma-exposure/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📈</span>
+                            <span class="truncate">Gamma Exposure (GEX)</span>
+                        </a>
+            
+                        <a href="/education/high-volume-levels/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">High Volume Levels</span>
+                        </a>
+            
+                        <a href="/education/options-impact/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🎰</span>
+                            <span class="truncate">Impact des Options</span>
+                        </a>
+            
+                        <a href="/education/market-makers/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🏦</span>
+                            <span class="truncate">Market Makers</span>
+                        </a>
+            
+                        <a href="/education/vwap-intraday/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📉</span>
+                            <span class="truncate">VWAP & Niveaux Intraday</span>
+                        </a>
+            
+                    </div>
+                </div>
+        
+                <div class="sidebar-section " id="nav-avancé">
+                    <div class="sidebar-header" onclick="toggleNav('avancé')">
+                        <div class="flex items-center gap-2">
+                            <span>🚀</span>
+                            <span class="text-xs font-bold text-red-400 uppercase">Avancé</span>
+                            <span class="text-xs text-light-500">(14)</span>
+                        </div>
+                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="sidebar-content">
+        
+                        <a href="/education/orderflow/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🌊</span>
+                            <span class="truncate">OrderFlow Basics</span>
+                        </a>
+            
+                        <a href="/education/money-management/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>💰</span>
+                            <span class="truncate">Money Management Avancé</span>
+                        </a>
+            
+                        <a href="/education/correlation-intermarches/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🔗</span>
+                            <span class="truncate">Corrélations Inter-Marchés</span>
+                        </a>
+            
+                        <a href="/education/liquidity-sweeps/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🧹</span>
+                            <span class="truncate">Liquidity Sweeps</span>
+                        </a>
+            
+                        <a href="/education/market-profile/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">Market Profile</span>
+                        </a>
+            
+                        <a href="/education/fibonacci-extensions/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🌀</span>
+                            <span class="truncate">Fibonacci Extensions</span>
+                        </a>
+            
+                        <a href="/education/gex-levels-1-10/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🎯</span>
+                            <span class="truncate">GEX Levels 1-10</span>
+                        </a>
+            
+                        <a href="/education/blind-spots-trading/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>👁️</span>
+                            <span class="truncate">Blind Spots Trading</span>
+                        </a>
+            
+                        <a href="/education/delta-exposure-dex/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">Delta Exposure (DEX)</span>
+                        </a>
+            
+                        <a href="/education/dealer-hedging-mechanics/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>⚙️</span>
+                            <span class="truncate">Dealer Hedging</span>
+                        </a>
+            
+                        <a href="/education/gamma-walls-magnets/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🧲</span>
+                            <span class="truncate">Gamma Walls & Magnets</span>
+                        </a>
+            
+                        <a href="/education/vix-vvix-volatility/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🌪️</span>
+                            <span class="truncate">VIX & VVIX</span>
+                        </a>
+            
+                        <a href="/education/option-greeks-traders/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🇬🇷</span>
+                            <span class="truncate">Option Greeks</span>
+                        </a>
+            
+                        <a href="/education/regime-based-trading/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🔄</span>
+                            <span class="truncate">Regime-Based Trading</span>
+                        </a>
+            
+                    </div>
+                </div>
+        
+                <div class="sidebar-section " id="nav-bonus">
+                    <div class="sidebar-header" onclick="toggleNav('bonus')">
+                        <div class="flex items-center gap-2">
+                            <span>⭐</span>
+                            <span class="text-xs font-bold text-purple-400 uppercase">Bonus</span>
+                            <span class="text-xs text-light-500">(5)</span>
+                        </div>
+                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="sidebar-content">
+        
+                        <a href="/education/battle-navale/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>⚔️</span>
+                            <span class="truncate">Battle Navale</span>
+                        </a>
+            
+                        <a href="/education/une-journee-avec-mia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>☀️</span>
+                            <span class="truncate">Une Journée avec MIA</span>
+                        </a>
+            
+                        <a href="/education/pourquoi-bots-meurent/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>💀</span>
+                            <span class="truncate">Pourquoi les Bots Meurent</span>
+                        </a>
+            
+                        <a href="/education/quand-couper-mia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🔌</span>
+                            <span class="truncate">Quand Couper MIA</span>
+                        </a>
+            
+                        <a href="/education/mental-discipline-ia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🧘</span>
+                            <span class="truncate">Mental & Discipline</span>
+                        </a>
+            
+                    </div>
+                </div>
+        
+            </div>
+        </aside>
+    
+        
+        <main class="flex-1 lg:ml-64 p-4 lg:p-6">
+            <nav class="flex items-center gap-2 text-xs text-light-500 mb-4">
+                <a href="/education/" class="hover:text-white">Education</a>
+                <span>›</span>
+                <span class="px-2 py-0.5 rounded bg-green-500/20 text-green-400">Débutant</span>
+                <span>›</span>
+                <span class="text-white">Gestion du Risque</span>
             </nav>
             
-            <div class="grid lg:grid-cols-4 gap-8">
-                <div class="lg:col-span-3">
-                    <header class="mb-8">
-                        <span class="text-5xl mb-4 block">🛡️</span>
-                        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Gestion du Risque</h1>
-                        <p class="text-lg sm:text-xl text-light-400 mb-6">Protégez votre capital avec une gestion du risque solide.</p>
-                        <div class="flex flex-wrap items-center gap-4 text-sm">
-                            <span class="flex items-center gap-2 text-light-400">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                                15 min
-                            </span>
-                            <span class="px-3 py-1 rounded-full bg-green-500/20 text-green-400">Débutant</span>
-                        </div>
-                    </header>
-                    
-                    <article class="space-y-6">
-                        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">🎯 La Règle #1 du Trading: Protéger son Capital</h2>
-            <div class="text-light-300 space-y-4">
-                <p>Voici la vérité que personne ne veut entendre: la GESTION DU RISQUE est plus importante que votre stratégie d&#x27;entrée. Vous pouvez avoir un win rate de 40% et être rentable. Vous pouvez avoir un win rate de 70% et perdre tout votre capital.</p>
+            <header class="mb-6">
+                <span class="text-4xl mb-2 block">🛡️</span>
+                <h1 class="text-2xl lg:text-3xl font-bold text-white mb-2">Gestion du Risque</h1>
+                <p class="text-light-400 mb-3">Protégez votre capital.</p>
+                <div class="flex items-center gap-3 text-sm">
+                    <span class="flex items-center gap-1 text-light-400">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        15 min
+                    </span>
+                    <span class="px-2 py-1 rounded bg-green-500/20 text-green-400">Débutant</span>
+                </div>
+            </header>
+            
+            <article class="space-y-4">
+                
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">🎯 La Règle #1 du Trading: Protéger son Capital</h2>
+            <div class="text-light-300 text-sm space-y-3"><p>Voici la vérité que personne ne veut entendre: la GESTION DU RISQUE est plus importante que votre stratégie d&#x27;entrée. Vous pouvez avoir un win rate de 40% et être rentable. Vous pouvez avoir un win rate de 70% et perdre tout votre capital.</p>
 <p>Les meilleurs traders du monde ne sont pas ceux qui gagnent le plus souvent. Ce sont ceux qui PERDENT PEU quand ils ont tort et GAGNENT BEAUCOUP quand ils ont raison.</p>
 <p>Warren Buffett résume parfaitement: &quot;Règle #1: Ne jamais perdre d&#x27;argent. Règle #2: Ne jamais oublier la règle #1.&quot; En trading, cela se traduit par: contrôlez vos pertes, les gains suivront.</p>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">📊 SCHÉMA: La Règle des 1-2% par Trade</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│              LA RÈGLE DES 1-2% - FONDAMENTALE                            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  PRINCIPE: Ne JAMAIS risquer plus de 1-2% de votre capital par trade    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  EXEMPLE avec un compte de $10,000:                                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Risque 1% = $100 maximum par trade                                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Risque 2% = $200 maximum par trade                                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └─ Risque 5% = $500 → TROP RISQUÉ ❌                                    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  POURQUOI CETTE RÈGLE?                                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  Série de pertes consécutives avec RISQUE 2%:                           │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ┌────────┬────────────┬────────────┐                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ Pertes │  Capital   │  Restant   │                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├────────┼────────────┼────────────┤                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │   1    │  $10,000   │   $9,800   │                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │   5    │   $9,800   │   $9,039   │                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │  10    │   $9,039   │   $8,171   │                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │  20    │   $8,171   │   $6,676   │  ← Encore tradable!               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └────────┴────────────┴────────────┘                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  Série de pertes consécutives avec RISQUE 10%:                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ┌────────┬────────────┬────────────┐                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ Pertes │  Capital   │  Restant   │                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├────────┼────────────┼────────────┤                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │   1    │  $10,000   │   $9,000   │                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │   5    │   $9,000   │   $5,905   │                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │  10    │   $5,905   │   $3,487   │  ← CATASTROPHE!                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └────────┴────────────┴────────────┘                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  → Avec 2%, vous survivez 20 pertes. Avec 10%, vous êtes ruiné en 10.  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">🧮 Position Sizing: Calculer la taille de position CORRECTE</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│              FORMULE DE POSITION SIZING                                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  FORMULE:                                                                │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ┌─────────────────────────────────────────────────────────────────┐    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │                                                                 │    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │   Nombre de contrats = (Capital × Risque%) ÷ (Stop × $/point)  │    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │                                                                 │    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └─────────────────────────────────────────────────────────────────┘    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  EXEMPLE CONCRET - ES:                                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Capital: $10,000                                                    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Risque: 2% = $200                                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Stop-loss prévu: 8 points                                           │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ ES: $50 par point                                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │                                                                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │  Calcul: $200 ÷ (8 × $50) = $200 ÷ $400 = 0.5 contrat              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │                                                                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └─ RÉSULTAT: Vous ne pouvez PAS trader ES! Passez au MES.             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  MÊME EXEMPLE avec MES (Micro):                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ MES: $5 par point                                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Calcul: $200 ÷ (8 × $5) = $200 ÷ $40 = 5 contrats                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └─ RÉSULTAT: Vous pouvez trader 5 MES avec ce risque. ✅               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  TABLEAU RAPIDE - COMBIEN DE CONTRATS?                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  (Capital $10,000, Risque 2% = $200, Stop 10 points)                    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ┌──────────┬──────────────┬──────────────┐                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ Contrat  │  $/point     │  Nb contrats │                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├──────────┼──────────────┼──────────────┤                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ ES       │    $50       │    0.4 ❌    │                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ MES      │    $5        │    4 ✅      │                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ NQ       │    $20       │    1 ✅      │                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ MNQ      │    $2        │    10 ✅     │                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └──────────┴──────────────┴──────────────┘                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">🛑 Stop-Loss: Votre assurance vie en trading</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│              TYPES DE STOP-LOSS                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  1. STOP FIXE (Distance en points)                                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ─────────────────────────────────                                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Ex: Stop à 10 points de l&#x27;entrée                                     │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Simple mais ne respecte pas la structure du marché                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Peut être trop serré ou trop large                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Usage: Débutants, backtesting                                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  2. STOP TECHNIQUE (Basé sur les niveaux)                                │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ─────────────────────────────────                                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Sous le support (long) / Au-dessus de la résistance (short)          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Respecte la structure du marché                                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Plus intelligent mais distance variable                              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Usage: Traders expérimentés                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  3. STOP ATR (Average True Range)                                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ─────────────────────────────────                                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Stop = 1.5x à 2x ATR                                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • S&#x27;adapte automatiquement à la volatilité                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Évite les stops trop serrés en haute volatilité                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Usage: Swing trading, marchés volatils                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  4. STOP MIA (Basé sur les niveaux GEX) ⭐                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ─────────────────────────────────                                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Stop calculé dynamiquement selon les niveaux MenthorQ                │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Protégé par les gamma walls et blind spots                           │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Optimisé pour chaque trade                                           │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Usage: MIA IA System                                                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">⚖️ Risk/Reward Ratio: La clé de la rentabilité</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│              RISK/REWARD RATIO (R:R)                                     │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  DÉFINITION:                                                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  R:R = Profit potentiel ÷ Perte potentielle                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  EXEMPLE:                                                                │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Entrée ES: 5000                                                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Stop: 4990 (-10 points = -$500)                                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Target: 5030 (+30 points = +$1,500)                                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • R:R = $1,500 ÷ $500 = 3:1 ✅                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  TABLEAU: WIN RATE REQUIS SELON LE R:R                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ┌──────────┬──────────────────┬──────────────────────────────────────┐ │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │   R:R    │ Win Rate minimum │          Commentaire                 │ │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├──────────┼──────────────────┼──────────────────────────────────────┤ │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │   1:1    │      50%         │ Break-even (sans frais)              │ │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │   1.5:1  │      40%         │ Minimum recommandé                   │ │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │   2:1    │      34%         │ Standard professionnel ⭐            │ │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │   3:1    │      25%         │ Excellent, cible MIA                 │ │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │   5:1    │      17%         │ Rare mais très rentable              │ │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └──────────┴──────────────────┴──────────────────────────────────────┘ │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  💡 INSIGHT: Avec un R:R de 2:1, vous pouvez perdre 66% du temps        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     et QUAND MÊME être rentable!                                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  SIMULATION SUR 100 TRADES (R:R 2:1, Win Rate 45%):                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Trades gagnants: 45 × $200 = +$9,000                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Trades perdants: 55 × $100 = -$5,500                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • PROFIT NET: +$3,500 ✅                                                │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  MÊME WIN RATE avec R:R 1:1:                                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Trades gagnants: 45 × $100 = +$4,500                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Trades perdants: 55 × $100 = -$5,500                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • PERTE NETTE: -$1,000 ❌                                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">📉 Gestion du Drawdown: Survivre aux mauvaises périodes</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│              GESTION DU DRAWDOWN                                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  DÉFINITION: Le drawdown est la baisse entre un pic de capital          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  et le point le plus bas avant un nouveau pic.                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  Capital                                                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│    ↑                                                                     │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│    │    ╱‾‾‾╲              ╱‾‾‾‾‾‾                                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│    │   ╱     ╲    ╱‾╲    ╱                                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│    │  ╱       ╲  ╱   ╲  ╱                                                │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│    │ ╱         ╲╱     ╲╱                                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│    │╱           ↓                                                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│    └─────────── Drawdown ──────────────→ Temps                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  RÈGLES DE DRAWDOWN:                                                     │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ┌──────────────────┬───────────────────────────────────────────────┐   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │    Drawdown      │              Action                           │   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├──────────────────┼───────────────────────────────────────────────┤   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │    -5%           │ Réduire taille de position de 50%             │   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │   -10%           │ STOP trading, review complet                  │   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │   -15%           │ Pause 1 semaine minimum                       │   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │   -20%           │ Retour en paper trading obligatoire           │   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └──────────────────┴───────────────────────────────────────────────┘   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  RÈGLE DES 3 PERTES:                                                     │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  Après 3 pertes consécutives → ARRÊTEZ de trader pour la journée.       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  C&#x27;est soit un mauvais jour pour le marché, soit vous n&#x27;êtes pas        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  dans le bon état d&#x27;esprit.                                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">📝 CAS PRATIQUE: Plan de Risk Management complet</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│              PLAN DE RISK MANAGEMENT - EXEMPLE COMPLET                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  PROFIL:                                                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Capital: $15,000                                                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Instrument: MES (Micro E-mini S&amp;P)                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Style: Day trading                                                    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  RÈGLES ÉTABLIES:                                                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Risque par trade: 1.5% = $225                                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Max trades simultanés: 2                                            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Risque journalier max: 4% = $600                                    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ R:R minimum: 2:1                                                    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └─ Drawdown max avant pause: 10% = $1,500                              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  CALCUL POUR UN TRADE:                                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Signal MIA: Long MES à 5000                                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Stop technique: 4988 (sous le GEX support)                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Distance stop: 12 points                                            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ $ par point MES: $5                                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Risque par contrat: 12 × $5 = $60                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Nb contrats: $225 ÷ $60 = 3.75 → 3 contrats                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Target (R:R 2:1): 5000 + 24 = 5024                                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └─ Profit potentiel: 24 × $5 × 3 = $360                                │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  EXÉCUTION:                                                              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Entrée: 3 MES @ 5000                                                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Stop: 4988 (risque réel: $180)                                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • TP1 (50%): 5015 → Sortie 1.5 contrats = +$112                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • TP2 (50%): 5024 → Sortie 1.5 contrats = +$180                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Move stop à breakeven après TP1                                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  RÉSULTAT: +$292 avec risque max de $180. R:R réalisé: 1.6:1            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">❌ ERREURS COMMUNES en Risk Management</h2>
-            <div class="text-light-300 space-y-4">
-                
-            </div>
-            <ul class="mt-4 space-y-2">
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #1: Pas de stop-loss → Un trade sans stop peut effacer des mois de gains en minutes</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #2: Déplacer son stop dans le mauvais sens → &quot;Il va revenir&quot; est la phrase la plus coûteuse</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #3: Risquer plus après une perte → Le &quot;revenge trading&quot; amplifie les pertes</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #4: Position trop grande → Over-leveraging est le tueur #1 des traders</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #5: Ignorer le R:R → Un trade avec R:R 1:3 (risquer 3 pour gagner 1) est stupide</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #6: Pas de limite journalière → Sans &quot;circuit breaker&quot;, une mauvaise journée devient catastrophique</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #7: Moyenner à la baisse → Ajouter à un perdant = doubler votre risque</li>
-</ul>
-
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">✅ POINTS CLÉS à retenir</h2>
-            <div class="text-light-300 space-y-4">
-                
-            </div>
-            <ul class="mt-4 space-y-2">
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Règle des 1-2%: Ne jamais risquer plus de 2% par trade</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Position sizing: Calculez AVANT d&#x27;entrer, pas après</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Stop-loss: TOUJOURS en place AVANT l&#x27;exécution</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ R:R minimum 2:1: Vous pouvez perdre 60% du temps et être rentable</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Drawdown rules: -5% réduit, -10% stop, -15% pause</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Règle des 3 pertes: 3 losses consécutives = fin de journée</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Capital = munitions: Sans capital, pas de trading. Protégez-le!</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Le risk management bat toujours la stratégie d&#x27;entrée</li>
-</ul>
-
-        </section>
-        
-                    </article>
-                    
-                    <nav class="flex justify-between mt-12 pt-8 border-t border-white/10">
-                        <a class="flex items-center gap-3 p-4 bg-dark-200 hover:bg-dark-300 rounded-xl transition-all group max-w-[45%]" href="/education/volume-importance/">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5 text-light-500"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
-            <div class="text-left"><div class="text-xs text-light-500">Leçon précédente</div><div class="text-sm text-white font-medium truncate">L&#x27;Importance du Volume</div></div>
-        </a>
-                        <a class="flex items-center gap-3 p-4 bg-dark-200 hover:bg-dark-300 rounded-xl transition-all group max-w-[45%]" href="/education/trading-psychology/">
-            <div class="text-right"><div class="text-xs text-light-500">Leçon suivante</div><div class="text-sm text-white font-medium truncate">Psychologie du Trading</div></div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5 text-light-500"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-        </a>
-                    </nav>
-                </div>
-                
-                <aside class="lg:col-span-1 hidden lg:block">
-                    <div class="sticky top-24 space-y-6">
-                        <a class="flex items-center gap-2 text-light-400 hover:text-white transition-colors" href="/education/">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
-                            ← Retour
-                        </a>
-                        <div class="card-glass p-4 rounded-xl">
-                            <h4 class="text-sm font-bold text-white mb-3">Dans cette leçon</h4>
-                            <ul class="space-y-2 text-sm">
-                                <li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">🎯 La Règle #1 du Trading: Protéger son Capital</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">📊 SCHÉMA: La Règle des 1-2% par Trade</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">🧮 Position Sizing: Calculer la taille de position </span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">🛑 Stop-Loss: Votre assurance vie en trading</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">⚖️ Risk/Reward Ratio: La clé de la rentabilité</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">📉 Gestion du Drawdown: Survivre aux mauvaises péri</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">📝 CAS PRATIQUE: Plan de Risk Management complet</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">❌ ERREURS COMMUNES en Risk Management</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </aside>
-            </div>
-        </div>
-    </main>
 </div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">📊 SCHÉMA: La Règle des 1-2% par Trade</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              LA RÈGLE DES 1-2% - FONDAMENTALE                            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  PRINCIPE: Ne JAMAIS risquer plus de 1-2% de votre capital par trade    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  EXEMPLE avec un compte de $10,000:                                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Risque 1% = $100 maximum par trade                                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Risque 2% = $200 maximum par trade                                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └─ Risque 5% = $500 → TROP RISQUÉ ❌                                    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  POURQUOI CETTE RÈGLE?                                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Série de pertes consécutives avec RISQUE 2%:                           │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ┌────────┬────────────┬────────────┐                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Pertes │  Capital   │  Restant   │                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├────────┼────────────┼────────────┤                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │   1    │  $10,000   │   $9,800   │                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │   5    │   $9,800   │   $9,039   │                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │  10    │   $9,039   │   $8,171   │                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │  20    │   $8,171   │   $6,676   │  ← Encore tradable!               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └────────┴────────────┴────────────┘                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Série de pertes consécutives avec RISQUE 10%:                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ┌────────┬────────────┬────────────┐                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Pertes │  Capital   │  Restant   │                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├────────┼────────────┼────────────┤                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │   1    │  $10,000   │   $9,000   │                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │   5    │   $9,000   │   $5,905   │                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │  10    │   $5,905   │   $3,487   │  ← CATASTROPHE!                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └────────┴────────────┴────────────┘                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  → Avec 2%, vous survivez 20 pertes. Avec 10%, vous êtes ruiné en 10.  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">🧮 Position Sizing: Calculer la taille de position CORRECTE</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              FORMULE DE POSITION SIZING                                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  FORMULE:                                                                │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ┌─────────────────────────────────────────────────────────────────┐    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │                                                                 │    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │   Nombre de contrats = (Capital × Risque%) ÷ (Stop × $/point)  │    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │                                                                 │    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └─────────────────────────────────────────────────────────────────┘    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  EXEMPLE CONCRET - ES:                                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Capital: $10,000                                                    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Risque: 2% = $200                                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Stop-loss prévu: 8 points                                           │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ ES: $50 par point                                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │                                                                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │  Calcul: $200 ÷ (8 × $50) = $200 ÷ $400 = 0.5 contrat              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │                                                                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └─ RÉSULTAT: Vous ne pouvez PAS trader ES! Passez au MES.             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  MÊME EXEMPLE avec MES (Micro):                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ MES: $5 par point                                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Calcul: $200 ÷ (8 × $5) = $200 ÷ $40 = 5 contrats                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └─ RÉSULTAT: Vous pouvez trader 5 MES avec ce risque. ✅               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  TABLEAU RAPIDE - COMBIEN DE CONTRATS?                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  (Capital $10,000, Risque 2% = $200, Stop 10 points)                    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ┌──────────┬──────────────┬──────────────┐                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Contrat  │  $/point     │  Nb contrats │                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├──────────┼──────────────┼──────────────┤                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ ES       │    $50       │    0.4 ❌    │                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ MES      │    $5        │    4 ✅      │                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ NQ       │    $20       │    1 ✅      │                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ MNQ      │    $2        │    10 ✅     │                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └──────────┴──────────────┴──────────────┘                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">🛑 Stop-Loss: Votre assurance vie en trading</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              TYPES DE STOP-LOSS                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  1. STOP FIXE (Distance en points)                                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ─────────────────────────────────                                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Ex: Stop à 10 points de l&#x27;entrée                                     │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Simple mais ne respecte pas la structure du marché                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Peut être trop serré ou trop large                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Usage: Débutants, backtesting                                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  2. STOP TECHNIQUE (Basé sur les niveaux)                                │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ─────────────────────────────────                                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Sous le support (long) / Au-dessus de la résistance (short)          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Respecte la structure du marché                                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Plus intelligent mais distance variable                              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Usage: Traders expérimentés                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  3. STOP ATR (Average True Range)                                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ─────────────────────────────────                                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Stop = 1.5x à 2x ATR                                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • S&#x27;adapte automatiquement à la volatilité                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Évite les stops trop serrés en haute volatilité                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Usage: Swing trading, marchés volatils                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  4. STOP MIA (Basé sur les niveaux GEX) ⭐                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ─────────────────────────────────                                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Stop calculé dynamiquement selon les niveaux MenthorQ                │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Protégé par les gamma walls et blind spots                           │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Optimisé pour chaque trade                                           │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Usage: MIA IA System                                                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">⚖️ Risk/Reward Ratio: La clé de la rentabilité</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              RISK/REWARD RATIO (R:R)                                     │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  DÉFINITION:                                                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  R:R = Profit potentiel ÷ Perte potentielle                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  EXEMPLE:                                                                │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Entrée ES: 5000                                                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Stop: 4990 (-10 points = -$500)                                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Target: 5030 (+30 points = +$1,500)                                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • R:R = $1,500 ÷ $500 = 3:1 ✅                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  TABLEAU: WIN RATE REQUIS SELON LE R:R                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ┌──────────┬──────────────────┬──────────────────────────────────────┐ │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │   R:R    │ Win Rate minimum │          Commentaire                 │ │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├──────────┼──────────────────┼──────────────────────────────────────┤ │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │   1:1    │      50%         │ Break-even (sans frais)              │ │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │   1.5:1  │      40%         │ Minimum recommandé                   │ │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │   2:1    │      34%         │ Standard professionnel ⭐            │ │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │   3:1    │      25%         │ Excellent, cible MIA                 │ │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │   5:1    │      17%         │ Rare mais très rentable              │ │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └──────────┴──────────────────┴──────────────────────────────────────┘ │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  💡 INSIGHT: Avec un R:R de 2:1, vous pouvez perdre 66% du temps        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     et QUAND MÊME être rentable!                                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  SIMULATION SUR 100 TRADES (R:R 2:1, Win Rate 45%):                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Trades gagnants: 45 × $200 = +$9,000                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Trades perdants: 55 × $100 = -$5,500                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • PROFIT NET: +$3,500 ✅                                                │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  MÊME WIN RATE avec R:R 1:1:                                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Trades gagnants: 45 × $100 = +$4,500                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Trades perdants: 55 × $100 = -$5,500                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • PERTE NETTE: -$1,000 ❌                                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">📉 Gestion du Drawdown: Survivre aux mauvaises périodes</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              GESTION DU DRAWDOWN                                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  DÉFINITION: Le drawdown est la baisse entre un pic de capital          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  et le point le plus bas avant un nouveau pic.                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Capital                                                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│    ↑                                                                     │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│    │    ╱‾‾‾╲              ╱‾‾‾‾‾‾                                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│    │   ╱     ╲    ╱‾╲    ╱                                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│    │  ╱       ╲  ╱   ╲  ╱                                                │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│    │ ╱         ╲╱     ╲╱                                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│    │╱           ↓                                                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│    └─────────── Drawdown ──────────────→ Temps                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  RÈGLES DE DRAWDOWN:                                                     │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ┌──────────────────┬───────────────────────────────────────────────┐   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │    Drawdown      │              Action                           │   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├──────────────────┼───────────────────────────────────────────────┤   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │    -5%           │ Réduire taille de position de 50%             │   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │   -10%           │ STOP trading, review complet                  │   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │   -15%           │ Pause 1 semaine minimum                       │   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │   -20%           │ Retour en paper trading obligatoire           │   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └──────────────────┴───────────────────────────────────────────────┘   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  RÈGLE DES 3 PERTES:                                                     │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Après 3 pertes consécutives → ARRÊTEZ de trader pour la journée.       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  C&#x27;est soit un mauvais jour pour le marché, soit vous n&#x27;êtes pas        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  dans le bon état d&#x27;esprit.                                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">📝 CAS PRATIQUE: Plan de Risk Management complet</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              PLAN DE RISK MANAGEMENT - EXEMPLE COMPLET                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  PROFIL:                                                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Capital: $15,000                                                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Instrument: MES (Micro E-mini S&amp;P)                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Style: Day trading                                                    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  RÈGLES ÉTABLIES:                                                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Risque par trade: 1.5% = $225                                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Max trades simultanés: 2                                            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Risque journalier max: 4% = $600                                    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ R:R minimum: 2:1                                                    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └─ Drawdown max avant pause: 10% = $1,500                              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  CALCUL POUR UN TRADE:                                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Signal MIA: Long MES à 5000                                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Stop technique: 4988 (sous le GEX support)                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Distance stop: 12 points                                            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ $ par point MES: $5                                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Risque par contrat: 12 × $5 = $60                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Nb contrats: $225 ÷ $60 = 3.75 → 3 contrats                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Target (R:R 2:1): 5000 + 24 = 5024                                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └─ Profit potentiel: 24 × $5 × 3 = $360                                │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  EXÉCUTION:                                                              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Entrée: 3 MES @ 5000                                                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Stop: 4988 (risque réel: $180)                                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • TP1 (50%): 5015 → Sortie 1.5 contrats = +$112                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • TP2 (50%): 5024 → Sortie 1.5 contrats = +$180                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Move stop à breakeven après TP1                                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  RÉSULTAT: +$292 avec risque max de $180. R:R réalisé: 1.6:1            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">❌ ERREURS COMMUNES en Risk Management</h2>
+            <div class="text-light-300 text-sm space-y-3"></div>
+            <ul class="mt-3 space-y-1">
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #1: Pas de stop-loss → Un trade sans stop peut effacer des mois de gains en minutes</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #2: Déplacer son stop dans le mauvais sens → &quot;Il va revenir&quot; est la phrase la plus coûteuse</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #3: Risquer plus après une perte → Le &quot;revenge trading&quot; amplifie les pertes</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #4: Position trop grande → Over-leveraging est le tueur #1 des traders</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #5: Ignorer le R:R → Un trade avec R:R 1:3 (risquer 3 pour gagner 1) est stupide</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #6: Pas de limite journalière → Sans &quot;circuit breaker&quot;, une mauvaise journée devient catastrophique</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #7: Moyenner à la baisse → Ajouter à un perdant = doubler votre risque</li>
+</ul>
+
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">✅ POINTS CLÉS à retenir</h2>
+            <div class="text-light-300 text-sm space-y-3"></div>
+            <ul class="mt-3 space-y-1">
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Règle des 1-2%: Ne jamais risquer plus de 2% par trade</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Position sizing: Calculez AVANT d&#x27;entrer, pas après</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Stop-loss: TOUJOURS en place AVANT l&#x27;exécution</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ R:R minimum 2:1: Vous pouvez perdre 60% du temps et être rentable</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Drawdown rules: -5% réduit, -10% stop, -15% pause</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Règle des 3 pertes: 3 losses consécutives = fin de journée</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Capital = munitions: Sans capital, pas de trading. Protégez-le!</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Le risk management bat toujours la stratégie d&#x27;entrée</li>
+</ul>
+
+        </section>
+        
+            </article>
+            
+            <nav class="flex justify-between mt-8 pt-6 border-t border-white/10">
+                <a class="flex items-center gap-2 p-3 bg-dark-200 hover:bg-dark-300 rounded-lg transition-all group" href="/education/volume-importance/">
+            <svg class="w-4 h-4 text-light-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
+            <div class="text-left"><div class="text-xs text-light-500">Précédent</div><div class="text-sm text-white truncate">L&#x27;Importance du Volume</div></div>
+        </a>
+                <a class="flex items-center gap-2 p-3 bg-dark-200 hover:bg-dark-300 rounded-lg transition-all group" href="/education/trading-psychology/">
+            <div class="text-right"><div class="text-xs text-light-500">Suivant</div><div class="text-sm text-white truncate">Psychologie du Trading</div></div>
+            <svg class="w-4 h-4 text-light-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </a>
+            </nav>
+        </main>
+    </div>
+</div>
+<script>
+function toggleNav(id) {
+    document.getElementById('nav-' + id).classList.toggle('open');
+}
+</script>
 <script src="/ticker.js" defer></script>
 </body>
 </html>

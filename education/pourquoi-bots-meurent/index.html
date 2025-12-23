@@ -5,231 +5,475 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="/_next/static/css/0f34aadfba7d8fab.css"/>
     <link rel="icon" href="/images/logo-dark.jpg"/>
-    <title>Pourquoi les Bots Meurent - MIA Trading Academy</title>
-    <meta name="description" content="Pourquoi 90% des bots de trading échouent."/>
+    <title>Pourquoi les Bots Meurent - MIA Academy</title>
+    <style>
+        .sidebar-section { margin-bottom: 0.5rem; }
+        .sidebar-header { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem; cursor: pointer; border-radius: 0.5rem; }
+        .sidebar-header:hover { background: rgba(255,255,255,0.05); }
+        .sidebar-content { display: none; padding-left: 0.25rem; }
+        .sidebar-section.open .sidebar-content { display: block; }
+        .sidebar-section.open .chevron { transform: rotate(180deg); }
+        .nav-link { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.6rem; border-radius: 0.375rem; font-size: 0.8rem; text-decoration: none; transition: all 0.2s; }
+    </style>
 </head>
 <body class="bg-dark text-white overflow-x-hidden">
-<div class="min-h-screen bg-dark">
-    <header class="fixed top-0 left-0 right-0 z-50 bg-dark-100/80 backdrop-blur-xl border-b border-white/10">
-        <div class="container-custom">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center gap-4">
-                    <a class="flex items-center gap-2 text-light-400 hover:text-white transition-colors" href="/education/">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
-                        <span class="hidden sm:inline">Education</span>
-                    </a>
-                    <div class="h-6 w-px bg-white/20"></div>
-                    <a class="flex items-center gap-3 hover:opacity-80 transition-opacity" href="/">
-                        <div class="relative w-8 h-8">
-                            <img alt="MIA IA SYSTEM" class="rounded-full object-cover border border-mia-gold/50 w-full h-full" src="/images/logo-dark.jpg"/>
-                        </div>
-                        <span class="font-bold text-white hidden sm:inline">MIA IA SYSTEM</span>
-                    </a>
-                </div>
+<div class="min-h-screen bg-dark flex flex-col">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-dark-100/95 backdrop-blur-xl border-b border-white/10">
+        <div class="flex items-center justify-between h-14 px-4">
+            <div class="flex items-center gap-3">
+                <a class="flex items-center gap-2 text-light-400 hover:text-white" href="/">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    <span class="text-sm hidden sm:inline">Accueil</span>
+                </a>
+                <div class="h-5 w-px bg-white/20"></div>
+                <a class="flex items-center gap-2" href="/">
+                    <img alt="MIA" class="w-7 h-7 rounded-full border border-mia-gold/50" src="/images/logo-dark.jpg"/>
+                    <span class="font-bold text-sm hidden sm:inline">MIA IA SYSTEM</span>
+                </a>
             </div>
+            <a href="https://discord.gg/mia-ia-system" target="_blank" class="flex items-center gap-1 px-3 py-1.5 bg-accent-purple/20 text-accent-purple rounded-lg text-sm">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                Discord
+            </a>
         </div>
     </header>
+
+    <div class="flex flex-1 pt-14">
+        
+        <aside class="hidden lg:block w-64 flex-shrink-0 border-r border-white/10 bg-dark-100 fixed top-14 bottom-0 overflow-y-auto z-40">
+            <div class="p-3">
     
-    <main class="pt-24 pb-16">
-        <div class="container-custom">
-            <nav class="flex items-center gap-2 text-sm text-light-500 mb-8 overflow-x-auto">
-                <a class="hover:text-white transition-colors whitespace-nowrap" href="/education/">Education</a>
-                <span class="text-light-600">›</span>
-                <span class="px-2 py-0.5 rounded text-xs bg-purple-500/20 text-purple-400 whitespace-nowrap">Bonus</span>
-                <span class="text-light-600">›</span>
-                <span class="text-white whitespace-nowrap">Pourquoi les Bots Meurent</span>
+                <div class="sidebar-section " id="nav-débutant">
+                    <div class="sidebar-header" onclick="toggleNav('débutant')">
+                        <div class="flex items-center gap-2">
+                            <span>🌱</span>
+                            <span class="text-xs font-bold text-mia-cyan uppercase">Débutant</span>
+                            <span class="text-xs text-light-500">(10)</span>
+                        </div>
+                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="sidebar-content">
+        
+                        <a href="/education/futures-101/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">Les Futures US: ES, NQ, RTY</span>
+                        </a>
+            
+                        <a href="/education/trading-sessions/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🕐</span>
+                            <span class="truncate">Les Sessions de Trading</span>
+                        </a>
+            
+                        <a href="/education/candlestick-basics/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🕯️</span>
+                            <span class="truncate">Lecture des Chandeliers</span>
+                        </a>
+            
+                        <a href="/education/support-resistance/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📏</span>
+                            <span class="truncate">Support & Résistance</span>
+                        </a>
+            
+                        <a href="/education/volume-importance/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">L'Importance du Volume</span>
+                        </a>
+            
+                        <a href="/education/risk-management/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🛡️</span>
+                            <span class="truncate">Gestion du Risque</span>
+                        </a>
+            
+                        <a href="/education/trading-psychology/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🧠</span>
+                            <span class="truncate">Psychologie du Trading</span>
+                        </a>
+            
+                        <a href="/education/order-types/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📝</span>
+                            <span class="truncate">Types d'Ordres</span>
+                        </a>
+            
+                        <a href="/education/journaling-backtesting/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📓</span>
+                            <span class="truncate">Journaling & Backtesting</span>
+                        </a>
+            
+                        <a href="/education/economic-calendar/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📅</span>
+                            <span class="truncate">Calendrier Économique</span>
+                        </a>
+            
+                    </div>
+                </div>
+        
+                <div class="sidebar-section " id="nav-intermédiaire">
+                    <div class="sidebar-header" onclick="toggleNav('intermédiaire')">
+                        <div class="flex items-center gap-2">
+                            <span>📈</span>
+                            <span class="text-xs font-bold text-yellow-400 uppercase">Intermédiaire</span>
+                            <span class="text-xs text-light-500">(11)</span>
+                        </div>
+                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="sidebar-content">
+        
+                        <a href="/education/multi-timeframe-analysis/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🔍</span>
+                            <span class="truncate">Analyse Multi-Timeframe</span>
+                        </a>
+            
+                        <a href="/education/call-resistance-put-support/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📞</span>
+                            <span class="truncate">Call Resistance & Put Support</span>
+                        </a>
+            
+                        <a href="/education/hvl-gamma-flip/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🎯</span>
+                            <span class="truncate">HVL & Gamma Flip</span>
+                        </a>
+            
+                        <a href="/education/positive-negative-gamma/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>⚡</span>
+                            <span class="truncate">Gamma Positif vs Négatif</span>
+                        </a>
+            
+                        <a href="/education/0dte-options-impact/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>💥</span>
+                            <span class="truncate">Impact des Options 0DTE</span>
+                        </a>
+            
+                        <a href="/education/expected-move-range/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📐</span>
+                            <span class="truncate">Expected Move & Range</span>
+                        </a>
+            
+                        <a href="/education/gamma-exposure/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📈</span>
+                            <span class="truncate">Gamma Exposure (GEX)</span>
+                        </a>
+            
+                        <a href="/education/high-volume-levels/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">High Volume Levels</span>
+                        </a>
+            
+                        <a href="/education/options-impact/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🎰</span>
+                            <span class="truncate">Impact des Options</span>
+                        </a>
+            
+                        <a href="/education/market-makers/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🏦</span>
+                            <span class="truncate">Market Makers</span>
+                        </a>
+            
+                        <a href="/education/vwap-intraday/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📉</span>
+                            <span class="truncate">VWAP & Niveaux Intraday</span>
+                        </a>
+            
+                    </div>
+                </div>
+        
+                <div class="sidebar-section " id="nav-avancé">
+                    <div class="sidebar-header" onclick="toggleNav('avancé')">
+                        <div class="flex items-center gap-2">
+                            <span>🚀</span>
+                            <span class="text-xs font-bold text-red-400 uppercase">Avancé</span>
+                            <span class="text-xs text-light-500">(14)</span>
+                        </div>
+                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="sidebar-content">
+        
+                        <a href="/education/orderflow/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🌊</span>
+                            <span class="truncate">OrderFlow Basics</span>
+                        </a>
+            
+                        <a href="/education/money-management/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>💰</span>
+                            <span class="truncate">Money Management Avancé</span>
+                        </a>
+            
+                        <a href="/education/correlation-intermarches/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🔗</span>
+                            <span class="truncate">Corrélations Inter-Marchés</span>
+                        </a>
+            
+                        <a href="/education/liquidity-sweeps/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🧹</span>
+                            <span class="truncate">Liquidity Sweeps</span>
+                        </a>
+            
+                        <a href="/education/market-profile/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">Market Profile</span>
+                        </a>
+            
+                        <a href="/education/fibonacci-extensions/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🌀</span>
+                            <span class="truncate">Fibonacci Extensions</span>
+                        </a>
+            
+                        <a href="/education/gex-levels-1-10/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🎯</span>
+                            <span class="truncate">GEX Levels 1-10</span>
+                        </a>
+            
+                        <a href="/education/blind-spots-trading/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>👁️</span>
+                            <span class="truncate">Blind Spots Trading</span>
+                        </a>
+            
+                        <a href="/education/delta-exposure-dex/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">Delta Exposure (DEX)</span>
+                        </a>
+            
+                        <a href="/education/dealer-hedging-mechanics/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>⚙️</span>
+                            <span class="truncate">Dealer Hedging</span>
+                        </a>
+            
+                        <a href="/education/gamma-walls-magnets/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🧲</span>
+                            <span class="truncate">Gamma Walls & Magnets</span>
+                        </a>
+            
+                        <a href="/education/vix-vvix-volatility/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🌪️</span>
+                            <span class="truncate">VIX & VVIX</span>
+                        </a>
+            
+                        <a href="/education/option-greeks-traders/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🇬🇷</span>
+                            <span class="truncate">Option Greeks</span>
+                        </a>
+            
+                        <a href="/education/regime-based-trading/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🔄</span>
+                            <span class="truncate">Regime-Based Trading</span>
+                        </a>
+            
+                    </div>
+                </div>
+        
+                <div class="sidebar-section open" id="nav-bonus">
+                    <div class="sidebar-header" onclick="toggleNav('bonus')">
+                        <div class="flex items-center gap-2">
+                            <span>⭐</span>
+                            <span class="text-xs font-bold text-purple-400 uppercase">Bonus</span>
+                            <span class="text-xs text-light-500">(5)</span>
+                        </div>
+                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="sidebar-content">
+        
+                        <a href="/education/battle-navale/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>⚔️</span>
+                            <span class="truncate">Battle Navale</span>
+                        </a>
+            
+                        <a href="/education/une-journee-avec-mia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>☀️</span>
+                            <span class="truncate">Une Journée avec MIA</span>
+                        </a>
+            
+                        <a href="/education/pourquoi-bots-meurent/" class="nav-link bg-purple-400/20 text-white">
+                            <span>💀</span>
+                            <span class="truncate">Pourquoi les Bots Meurent</span>
+                        </a>
+            
+                        <a href="/education/quand-couper-mia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🔌</span>
+                            <span class="truncate">Quand Couper MIA</span>
+                        </a>
+            
+                        <a href="/education/mental-discipline-ia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🧘</span>
+                            <span class="truncate">Mental & Discipline</span>
+                        </a>
+            
+                    </div>
+                </div>
+        
+            </div>
+        </aside>
+    
+        
+        <main class="flex-1 lg:ml-64 p-4 lg:p-6">
+            <nav class="flex items-center gap-2 text-xs text-light-500 mb-4">
+                <a href="/education/" class="hover:text-white">Education</a>
+                <span>›</span>
+                <span class="px-2 py-0.5 rounded bg-purple-500/20 text-purple-400">Bonus</span>
+                <span>›</span>
+                <span class="text-white">Pourquoi les Bots Meurent</span>
             </nav>
             
-            <div class="grid lg:grid-cols-4 gap-8">
-                <div class="lg:col-span-3">
-                    <header class="mb-8">
-                        <span class="text-5xl mb-4 block">💀</span>
-                        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Pourquoi les Bots Meurent</h1>
-                        <p class="text-lg sm:text-xl text-light-400 mb-6">Pourquoi 90% des bots de trading échouent.</p>
-                        <div class="flex flex-wrap items-center gap-4 text-sm">
-                            <span class="flex items-center gap-2 text-light-400">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                                15 min
-                            </span>
-                            <span class="px-3 py-1 rounded-full bg-purple-500/20 text-purple-400">Bonus</span>
-                        </div>
-                    </header>
-                    
-                    <article class="space-y-6">
-                        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">🎯 Pourquoi 90% des bots de trading échouent</h2>
-            <div class="text-light-300 space-y-4">
-                <p>Chaque année, des milliers de traders achètent ou créent des bots qui finissent à la poubelle. Pourquoi?</p>
+            <header class="mb-6">
+                <span class="text-4xl mb-2 block">💀</span>
+                <h1 class="text-2xl lg:text-3xl font-bold text-white mb-2">Pourquoi les Bots Meurent</h1>
+                <p class="text-light-400 mb-3">Pourquoi 90% échouent.</p>
+                <div class="flex items-center gap-3 text-sm">
+                    <span class="flex items-center gap-1 text-light-400">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        15 min
+                    </span>
+                    <span class="px-2 py-1 rounded bg-purple-500/20 text-purple-400">Bonus</span>
+                </div>
+            </header>
+            
+            <article class="space-y-4">
+                
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">🎯 Pourquoi 90% des bots de trading échouent</h2>
+            <div class="text-light-300 text-sm space-y-3"><p>Chaque année, des milliers de traders achètent ou créent des bots qui finissent à la poubelle. Pourquoi?</p>
 <p>Comprendre ces échecs vous aidera à apprécier pourquoi MIA est construite différemment.</p>
 <p>Cette leçon est un &quot;anti-bullshit&quot; guide pour éviter les pièges classiques.</p>
-
-            </div>
+</div>
             
         </section>
         
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">💀 Cause #1: Sur-optimisation (Overfitting)</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│              💀 LE TUEUR SILENCIEUX: OVERFITTING                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  DÉFINITION:                                                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  Ajuster les paramètres jusqu&#x27;à ce que le backtest soit &quot;parfait&quot;       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  → Le bot mémorise le passé au lieu d&#x27;apprendre des patterns            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  EXEMPLE TYPIQUE:                                                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ┌─────────────────────────────────────────────────────────────────┐    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ &quot;Mon bot a 85% de win rate sur 2023!&quot;                          │    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │                                                                 │    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ Réalité: Il a été ajusté avec:                                  │    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ • RSI = 14.7 (pas 14)                                           │    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ • MA = 23 périodes (pourquoi 23?)                               │    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ • Stop = 11.3 points (nombre magique?)                          │    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ • Entrée entre 10h23 et 10h47 uniquement                        │    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │                                                                 │    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ En 2024: Le bot perd 40% en 2 mois                              │    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ → Il a mémorisé 2023, pas appris à trader                       │    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └─────────────────────────────────────────────────────────────────┘    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  🛡️ COMMENT MIA ÉVITE ÇA:                                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Paramètres basés sur la LOGIQUE (niveaux gamma, pas de magic numbers)│</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Validation out-of-sample obligatoire                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Seuils larges (pas de 14.7, mais 14 ou 15)                           │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Focus sur les CONCEPTS, pas les chiffres précis                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">💀 Cause #1: Sur-optimisation (Overfitting)</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              💀 LE TUEUR SILENCIEUX: OVERFITTING                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  DÉFINITION:                                                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Ajuster les paramètres jusqu&#x27;à ce que le backtest soit &quot;parfait&quot;       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  → Le bot mémorise le passé au lieu d&#x27;apprendre des patterns            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  EXEMPLE TYPIQUE:                                                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ┌─────────────────────────────────────────────────────────────────┐    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ &quot;Mon bot a 85% de win rate sur 2023!&quot;                          │    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │                                                                 │    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Réalité: Il a été ajusté avec:                                  │    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ • RSI = 14.7 (pas 14)                                           │    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ • MA = 23 périodes (pourquoi 23?)                               │    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ • Stop = 11.3 points (nombre magique?)                          │    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ • Entrée entre 10h23 et 10h47 uniquement                        │    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │                                                                 │    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ En 2024: Le bot perd 40% en 2 mois                              │    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ → Il a mémorisé 2023, pas appris à trader                       │    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └─────────────────────────────────────────────────────────────────┘    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  🛡️ COMMENT MIA ÉVITE ÇA:                                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Paramètres basés sur la LOGIQUE (niveaux gamma, pas de magic numbers)│</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Validation out-of-sample obligatoire                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Seuils larges (pas de 14.7, mais 14 ou 15)                           │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Focus sur les CONCEPTS, pas les chiffres précis                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
             
         </section>
         
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">💀 Cause #2: Backtests mensongers</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│              💀 LES BACKTESTS QUI MENTENT                                │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  PROBLÈMES COURANTS:                                                     │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  1. LOOK-AHEAD BIAS                                                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     Le bot &quot;voit&quot; le futur sans le savoir                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     Ex: Utiliser le high/low du jour pour décider le matin              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  2. SLIPPAGE IGNORÉ                                                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     Backtest: Entrée à 6050.00                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     Réalité: Entrée à 6050.25 (slippage)                                │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     × 1000 trades = Différence massive                                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  3. SPREAD NON INCLUS                                                    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     Backtest: Profit de 2 ticks                                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     Réalité: Spread de 1 tick = Profit de 1 tick seulement              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  4. CONDITIONS IRRÉALISTES                                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     &quot;J&#x27;ai backtesté sur 10 ans de données 1-minute&quot;                     │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     → Les conditions de marché de 2014 ≠ 2024                           │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  🛡️ COMMENT MIA ÉVITE ÇA:                                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Données LIVE uniquement pour validation finale                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Slippage de 0.25 point intégré dans les calculs                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Commissions réelles comptées                                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Paper trading extensif AVANT live                                    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">💀 Cause #2: Backtests mensongers</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              💀 LES BACKTESTS QUI MENTENT                                │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  PROBLÈMES COURANTS:                                                     │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  1. LOOK-AHEAD BIAS                                                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     Le bot &quot;voit&quot; le futur sans le savoir                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     Ex: Utiliser le high/low du jour pour décider le matin              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  2. SLIPPAGE IGNORÉ                                                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     Backtest: Entrée à 6050.00                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     Réalité: Entrée à 6050.25 (slippage)                                │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     × 1000 trades = Différence massive                                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  3. SPREAD NON INCLUS                                                    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     Backtest: Profit de 2 ticks                                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     Réalité: Spread de 1 tick = Profit de 1 tick seulement              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  4. CONDITIONS IRRÉALISTES                                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     &quot;J&#x27;ai backtesté sur 10 ans de données 1-minute&quot;                     │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     → Les conditions de marché de 2014 ≠ 2024                           │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  🛡️ COMMENT MIA ÉVITE ÇA:                                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Données LIVE uniquement pour validation finale                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Slippage de 0.25 point intégré dans les calculs                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Commissions réelles comptées                                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Paper trading extensif AVANT live                                    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
             
         </section>
         
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">💀 Cause #3: Absence de contexte marché</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│              💀 LE BOT AVEUGLE AU CONTEXTE                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  PROBLÈME:                                                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  La plupart des bots tradent les MÊMES règles peu importe le contexte   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ┌─────────────────────────────────────────────────────────────────┐    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ BOT CLASSIQUE:                                                  │    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ &quot;RSI &lt; 30 = ACHAT&quot;                                              │    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │                                                                 │    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ Jour 1: Marché range, RSI 30 → Achat → +10 pts ✅               │    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ Jour 2: Crash, RSI 30 → Achat → -50 pts ❌                       │    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ Jour 3: Crash continue, RSI 25 → Achat → -80 pts ❌              │    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │                                                                 │    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ Le bot ne sait pas que le CONTEXTE a changé                     │    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └─────────────────────────────────────────────────────────────────┘    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  🛡️ COMMENT MIA GÈRE LE CONTEXTE:                                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Détection du régime GAMMA (positif vs négatif)                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Stratégies DIFFÉRENTES par régime                                    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Filtres calendrier (FOMC, NFP, CPI = prudence)                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Filtres horaires (heures toxiques évitées)                           │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • VIX monitoring (volatilité extrême = réduction)                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">💀 Cause #3: Absence de contexte marché</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              💀 LE BOT AVEUGLE AU CONTEXTE                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  PROBLÈME:                                                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  La plupart des bots tradent les MÊMES règles peu importe le contexte   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ┌─────────────────────────────────────────────────────────────────┐    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ BOT CLASSIQUE:                                                  │    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ &quot;RSI &lt; 30 = ACHAT&quot;                                              │    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │                                                                 │    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Jour 1: Marché range, RSI 30 → Achat → +10 pts ✅               │    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Jour 2: Crash, RSI 30 → Achat → -50 pts ❌                       │    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Jour 3: Crash continue, RSI 25 → Achat → -80 pts ❌              │    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │                                                                 │    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Le bot ne sait pas que le CONTEXTE a changé                     │    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └─────────────────────────────────────────────────────────────────┘    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  🛡️ COMMENT MIA GÈRE LE CONTEXTE:                                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Détection du régime GAMMA (positif vs négatif)                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Stratégies DIFFÉRENTES par régime                                    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Filtres calendrier (FOMC, NFP, CPI = prudence)                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Filtres horaires (heures toxiques évitées)                           │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • VIX monitoring (volatilité extrême = réduction)                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
             
         </section>
         
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">📝 À RETENIR</h2>
-            <div class="text-light-300 space-y-4">
-                
-            </div>
-            <ul class="mt-4 space-y-2">
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>💀 90% des bots échouent pour 3 raisons principales</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>⚠️ Sur-optimisation: Mémoriser le passé ≠ Apprendre à trader</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>⚠️ Backtests mensongers: Slippage, spread, look-ahead bias</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>⚠️ Pas de contexte: Mêmes règles quel que soit le marché</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>🛡️ MIA évite ces pièges avec des paramètres logiques, pas magiques</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>🛡️ MIA s&#x27;adapte au régime gamma, au calendrier, aux heures</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>💡 Un bon bot est SIMPLE dans ses règles mais INTELLIGENT dans son contexte</li>
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">📝 À RETENIR</h2>
+            <div class="text-light-300 text-sm space-y-3"></div>
+            <ul class="mt-3 space-y-1">
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>💀 90% des bots échouent pour 3 raisons principales</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>⚠️ Sur-optimisation: Mémoriser le passé ≠ Apprendre à trader</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>⚠️ Backtests mensongers: Slippage, spread, look-ahead bias</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>⚠️ Pas de contexte: Mêmes règles quel que soit le marché</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>🛡️ MIA évite ces pièges avec des paramètres logiques, pas magiques</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>🛡️ MIA s&#x27;adapte au régime gamma, au calendrier, aux heures</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>💡 Un bon bot est SIMPLE dans ses règles mais INTELLIGENT dans son contexte</li>
 </ul>
 
         </section>
         
-                    </article>
-                    
-                    <nav class="flex justify-between mt-12 pt-8 border-t border-white/10">
-                        <a class="flex items-center gap-3 p-4 bg-dark-200 hover:bg-dark-300 rounded-xl transition-all group max-w-[45%]" href="/education/une-journee-avec-mia/">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5 text-light-500"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
-            <div class="text-left"><div class="text-xs text-light-500">Leçon précédente</div><div class="text-sm text-white font-medium truncate">Une Journée avec MIA</div></div>
+            </article>
+            
+            <nav class="flex justify-between mt-8 pt-6 border-t border-white/10">
+                <a class="flex items-center gap-2 p-3 bg-dark-200 hover:bg-dark-300 rounded-lg transition-all group" href="/education/une-journee-avec-mia/">
+            <svg class="w-4 h-4 text-light-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
+            <div class="text-left"><div class="text-xs text-light-500">Précédent</div><div class="text-sm text-white truncate">Une Journée avec MIA</div></div>
         </a>
-                        <a class="flex items-center gap-3 p-4 bg-dark-200 hover:bg-dark-300 rounded-xl transition-all group max-w-[45%]" href="/education/quand-couper-mia/">
-            <div class="text-right"><div class="text-xs text-light-500">Leçon suivante</div><div class="text-sm text-white font-medium truncate">Quand Couper MIA</div></div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5 text-light-500"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+                <a class="flex items-center gap-2 p-3 bg-dark-200 hover:bg-dark-300 rounded-lg transition-all group" href="/education/quand-couper-mia/">
+            <div class="text-right"><div class="text-xs text-light-500">Suivant</div><div class="text-sm text-white truncate">Quand Couper MIA</div></div>
+            <svg class="w-4 h-4 text-light-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
         </a>
-                    </nav>
-                </div>
-                
-                <aside class="lg:col-span-1 hidden lg:block">
-                    <div class="sticky top-24 space-y-6">
-                        <a class="flex items-center gap-2 text-light-400 hover:text-white transition-colors" href="/education/">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
-                            ← Retour
-                        </a>
-                        <div class="card-glass p-4 rounded-xl">
-                            <h4 class="text-sm font-bold text-white mb-3">Dans cette leçon</h4>
-                            <ul class="space-y-2 text-sm">
-                                <li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">🎯 Pourquoi 90% des bots de trading échouent</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">💀 Cause #1: Sur-optimisation (Overfitting)</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">💀 Cause #2: Backtests mensongers</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">💀 Cause #3: Absence de contexte marché</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">📝 À RETENIR</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </aside>
-            </div>
-        </div>
-    </main>
+            </nav>
+        </main>
+    </div>
 </div>
+<script>
+function toggleNav(id) {
+    document.getElementById('nav-' + id).classList.toggle('open');
+}
+</script>
 <script src="/ticker.js" defer></script>
 </body>
 </html>

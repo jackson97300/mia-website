@@ -5,354 +5,589 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="/_next/static/css/0f34aadfba7d8fab.css"/>
     <link rel="icon" href="/images/logo-dark.jpg"/>
-    <title>Journaling &amp; Backtesting - MIA Trading Academy</title>
-    <meta name="description" content="Améliorez vos performances avec un journal de trading."/>
+    <title>Journaling &amp; Backtesting - MIA Academy</title>
+    <style>
+        .sidebar-section { margin-bottom: 0.5rem; }
+        .sidebar-header { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem; cursor: pointer; border-radius: 0.5rem; }
+        .sidebar-header:hover { background: rgba(255,255,255,0.05); }
+        .sidebar-content { display: none; padding-left: 0.25rem; }
+        .sidebar-section.open .sidebar-content { display: block; }
+        .sidebar-section.open .chevron { transform: rotate(180deg); }
+        .nav-link { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.6rem; border-radius: 0.375rem; font-size: 0.8rem; text-decoration: none; transition: all 0.2s; }
+    </style>
 </head>
 <body class="bg-dark text-white overflow-x-hidden">
-<div class="min-h-screen bg-dark">
-    <header class="fixed top-0 left-0 right-0 z-50 bg-dark-100/80 backdrop-blur-xl border-b border-white/10">
-        <div class="container-custom">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center gap-4">
-                    <a class="flex items-center gap-2 text-light-400 hover:text-white transition-colors" href="/education/">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
-                        <span class="hidden sm:inline">Education</span>
-                    </a>
-                    <div class="h-6 w-px bg-white/20"></div>
-                    <a class="flex items-center gap-3 hover:opacity-80 transition-opacity" href="/">
-                        <div class="relative w-8 h-8">
-                            <img alt="MIA IA SYSTEM" class="rounded-full object-cover border border-mia-gold/50 w-full h-full" src="/images/logo-dark.jpg"/>
-                        </div>
-                        <span class="font-bold text-white hidden sm:inline">MIA IA SYSTEM</span>
-                    </a>
-                </div>
+<div class="min-h-screen bg-dark flex flex-col">
+    <header class="fixed top-0 left-0 right-0 z-50 bg-dark-100/95 backdrop-blur-xl border-b border-white/10">
+        <div class="flex items-center justify-between h-14 px-4">
+            <div class="flex items-center gap-3">
+                <a class="flex items-center gap-2 text-light-400 hover:text-white" href="/">
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    <span class="text-sm hidden sm:inline">Accueil</span>
+                </a>
+                <div class="h-5 w-px bg-white/20"></div>
+                <a class="flex items-center gap-2" href="/">
+                    <img alt="MIA" class="w-7 h-7 rounded-full border border-mia-gold/50" src="/images/logo-dark.jpg"/>
+                    <span class="font-bold text-sm hidden sm:inline">MIA IA SYSTEM</span>
+                </a>
             </div>
+            <a href="https://discord.gg/mia-ia-system" target="_blank" class="flex items-center gap-1 px-3 py-1.5 bg-accent-purple/20 text-accent-purple rounded-lg text-sm">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                Discord
+            </a>
         </div>
     </header>
+
+    <div class="flex flex-1 pt-14">
+        
+        <aside class="hidden lg:block w-64 flex-shrink-0 border-r border-white/10 bg-dark-100 fixed top-14 bottom-0 overflow-y-auto z-40">
+            <div class="p-3">
     
-    <main class="pt-24 pb-16">
-        <div class="container-custom">
-            <nav class="flex items-center gap-2 text-sm text-light-500 mb-8 overflow-x-auto">
-                <a class="hover:text-white transition-colors whitespace-nowrap" href="/education/">Education</a>
-                <span class="text-light-600">›</span>
-                <span class="px-2 py-0.5 rounded text-xs bg-green-500/20 text-green-400 whitespace-nowrap">Débutant</span>
-                <span class="text-light-600">›</span>
-                <span class="text-white whitespace-nowrap">Journaling &amp; Backtesting</span>
+                <div class="sidebar-section open" id="nav-débutant">
+                    <div class="sidebar-header" onclick="toggleNav('débutant')">
+                        <div class="flex items-center gap-2">
+                            <span>🌱</span>
+                            <span class="text-xs font-bold text-mia-cyan uppercase">Débutant</span>
+                            <span class="text-xs text-light-500">(10)</span>
+                        </div>
+                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="sidebar-content">
+        
+                        <a href="/education/futures-101/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">Les Futures US: ES, NQ, RTY</span>
+                        </a>
+            
+                        <a href="/education/trading-sessions/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🕐</span>
+                            <span class="truncate">Les Sessions de Trading</span>
+                        </a>
+            
+                        <a href="/education/candlestick-basics/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🕯️</span>
+                            <span class="truncate">Lecture des Chandeliers</span>
+                        </a>
+            
+                        <a href="/education/support-resistance/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📏</span>
+                            <span class="truncate">Support & Résistance</span>
+                        </a>
+            
+                        <a href="/education/volume-importance/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">L'Importance du Volume</span>
+                        </a>
+            
+                        <a href="/education/risk-management/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🛡️</span>
+                            <span class="truncate">Gestion du Risque</span>
+                        </a>
+            
+                        <a href="/education/trading-psychology/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🧠</span>
+                            <span class="truncate">Psychologie du Trading</span>
+                        </a>
+            
+                        <a href="/education/order-types/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📝</span>
+                            <span class="truncate">Types d'Ordres</span>
+                        </a>
+            
+                        <a href="/education/journaling-backtesting/" class="nav-link bg-mia-cyan/20 text-white">
+                            <span>📓</span>
+                            <span class="truncate">Journaling & Backtesting</span>
+                        </a>
+            
+                        <a href="/education/economic-calendar/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📅</span>
+                            <span class="truncate">Calendrier Économique</span>
+                        </a>
+            
+                    </div>
+                </div>
+        
+                <div class="sidebar-section " id="nav-intermédiaire">
+                    <div class="sidebar-header" onclick="toggleNav('intermédiaire')">
+                        <div class="flex items-center gap-2">
+                            <span>📈</span>
+                            <span class="text-xs font-bold text-yellow-400 uppercase">Intermédiaire</span>
+                            <span class="text-xs text-light-500">(11)</span>
+                        </div>
+                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="sidebar-content">
+        
+                        <a href="/education/multi-timeframe-analysis/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🔍</span>
+                            <span class="truncate">Analyse Multi-Timeframe</span>
+                        </a>
+            
+                        <a href="/education/call-resistance-put-support/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📞</span>
+                            <span class="truncate">Call Resistance & Put Support</span>
+                        </a>
+            
+                        <a href="/education/hvl-gamma-flip/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🎯</span>
+                            <span class="truncate">HVL & Gamma Flip</span>
+                        </a>
+            
+                        <a href="/education/positive-negative-gamma/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>⚡</span>
+                            <span class="truncate">Gamma Positif vs Négatif</span>
+                        </a>
+            
+                        <a href="/education/0dte-options-impact/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>💥</span>
+                            <span class="truncate">Impact des Options 0DTE</span>
+                        </a>
+            
+                        <a href="/education/expected-move-range/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📐</span>
+                            <span class="truncate">Expected Move & Range</span>
+                        </a>
+            
+                        <a href="/education/gamma-exposure/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📈</span>
+                            <span class="truncate">Gamma Exposure (GEX)</span>
+                        </a>
+            
+                        <a href="/education/high-volume-levels/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">High Volume Levels</span>
+                        </a>
+            
+                        <a href="/education/options-impact/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🎰</span>
+                            <span class="truncate">Impact des Options</span>
+                        </a>
+            
+                        <a href="/education/market-makers/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🏦</span>
+                            <span class="truncate">Market Makers</span>
+                        </a>
+            
+                        <a href="/education/vwap-intraday/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📉</span>
+                            <span class="truncate">VWAP & Niveaux Intraday</span>
+                        </a>
+            
+                    </div>
+                </div>
+        
+                <div class="sidebar-section " id="nav-avancé">
+                    <div class="sidebar-header" onclick="toggleNav('avancé')">
+                        <div class="flex items-center gap-2">
+                            <span>🚀</span>
+                            <span class="text-xs font-bold text-red-400 uppercase">Avancé</span>
+                            <span class="text-xs text-light-500">(14)</span>
+                        </div>
+                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="sidebar-content">
+        
+                        <a href="/education/orderflow/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🌊</span>
+                            <span class="truncate">OrderFlow Basics</span>
+                        </a>
+            
+                        <a href="/education/money-management/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>💰</span>
+                            <span class="truncate">Money Management Avancé</span>
+                        </a>
+            
+                        <a href="/education/correlation-intermarches/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🔗</span>
+                            <span class="truncate">Corrélations Inter-Marchés</span>
+                        </a>
+            
+                        <a href="/education/liquidity-sweeps/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🧹</span>
+                            <span class="truncate">Liquidity Sweeps</span>
+                        </a>
+            
+                        <a href="/education/market-profile/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">Market Profile</span>
+                        </a>
+            
+                        <a href="/education/fibonacci-extensions/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🌀</span>
+                            <span class="truncate">Fibonacci Extensions</span>
+                        </a>
+            
+                        <a href="/education/gex-levels-1-10/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🎯</span>
+                            <span class="truncate">GEX Levels 1-10</span>
+                        </a>
+            
+                        <a href="/education/blind-spots-trading/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>👁️</span>
+                            <span class="truncate">Blind Spots Trading</span>
+                        </a>
+            
+                        <a href="/education/delta-exposure-dex/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>📊</span>
+                            <span class="truncate">Delta Exposure (DEX)</span>
+                        </a>
+            
+                        <a href="/education/dealer-hedging-mechanics/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>⚙️</span>
+                            <span class="truncate">Dealer Hedging</span>
+                        </a>
+            
+                        <a href="/education/gamma-walls-magnets/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🧲</span>
+                            <span class="truncate">Gamma Walls & Magnets</span>
+                        </a>
+            
+                        <a href="/education/vix-vvix-volatility/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🌪️</span>
+                            <span class="truncate">VIX & VVIX</span>
+                        </a>
+            
+                        <a href="/education/option-greeks-traders/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🇬🇷</span>
+                            <span class="truncate">Option Greeks</span>
+                        </a>
+            
+                        <a href="/education/regime-based-trading/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🔄</span>
+                            <span class="truncate">Regime-Based Trading</span>
+                        </a>
+            
+                    </div>
+                </div>
+        
+                <div class="sidebar-section " id="nav-bonus">
+                    <div class="sidebar-header" onclick="toggleNav('bonus')">
+                        <div class="flex items-center gap-2">
+                            <span>⭐</span>
+                            <span class="text-xs font-bold text-purple-400 uppercase">Bonus</span>
+                            <span class="text-xs text-light-500">(5)</span>
+                        </div>
+                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                    </div>
+                    <div class="sidebar-content">
+        
+                        <a href="/education/battle-navale/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>⚔️</span>
+                            <span class="truncate">Battle Navale</span>
+                        </a>
+            
+                        <a href="/education/une-journee-avec-mia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>☀️</span>
+                            <span class="truncate">Une Journée avec MIA</span>
+                        </a>
+            
+                        <a href="/education/pourquoi-bots-meurent/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>💀</span>
+                            <span class="truncate">Pourquoi les Bots Meurent</span>
+                        </a>
+            
+                        <a href="/education/quand-couper-mia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🔌</span>
+                            <span class="truncate">Quand Couper MIA</span>
+                        </a>
+            
+                        <a href="/education/mental-discipline-ia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                            <span>🧘</span>
+                            <span class="truncate">Mental & Discipline</span>
+                        </a>
+            
+                    </div>
+                </div>
+        
+            </div>
+        </aside>
+    
+        
+        <main class="flex-1 lg:ml-64 p-4 lg:p-6">
+            <nav class="flex items-center gap-2 text-xs text-light-500 mb-4">
+                <a href="/education/" class="hover:text-white">Education</a>
+                <span>›</span>
+                <span class="px-2 py-0.5 rounded bg-green-500/20 text-green-400">Débutant</span>
+                <span>›</span>
+                <span class="text-white">Journaling &amp; Backtesting</span>
             </nav>
             
-            <div class="grid lg:grid-cols-4 gap-8">
-                <div class="lg:col-span-3">
-                    <header class="mb-8">
-                        <span class="text-5xl mb-4 block">📓</span>
-                        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">Journaling &amp; Backtesting</h1>
-                        <p class="text-lg sm:text-xl text-light-400 mb-6">Améliorez vos performances avec un journal de trading.</p>
-                        <div class="flex flex-wrap items-center gap-4 text-sm">
-                            <span class="flex items-center gap-2 text-light-400">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                                12 min
-                            </span>
-                            <span class="px-3 py-1 rounded-full bg-green-500/20 text-green-400">Débutant</span>
-                        </div>
-                    </header>
-                    
-                    <article class="space-y-6">
-                        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">🎯 Le Journal: Votre arme secrète d\</h2>
-            <div class="text-light-300 space-y-4">
-                <p>Les meilleurs traders du monde ont TOUS un point commun: ils tiennent un journal de trading détaillé. Ce n&#x27;est pas une coïncidence.</p>
+            <header class="mb-6">
+                <span class="text-4xl mb-2 block">📓</span>
+                <h1 class="text-2xl lg:text-3xl font-bold text-white mb-2">Journaling &amp; Backtesting</h1>
+                <p class="text-light-400 mb-3">Améliorez vos performances.</p>
+                <div class="flex items-center gap-3 text-sm">
+                    <span class="flex items-center gap-1 text-light-400">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        12 min
+                    </span>
+                    <span class="px-2 py-1 rounded bg-green-500/20 text-green-400">Débutant</span>
+                </div>
+            </header>
+            
+            <article class="space-y-4">
+                
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">🎯 Le Journal: Votre arme secrète d\</h2>
+            <div class="text-light-300 text-sm space-y-3"><p>Les meilleurs traders du monde ont TOUS un point commun: ils tiennent un journal de trading détaillé. Ce n&#x27;est pas une coïncidence.</p>
 <p>Un journal vous permet de transformer chaque trade - gagnant ou perdant - en une leçon. Sans journal, vous répétez les mêmes erreurs encore et encore sans même vous en rendre compte.</p>
 <p>Le backtesting, lui, vous permet de tester vos idées sur des données historiques AVANT de risquer de l&#x27;argent réel. Ensemble, journal + backtest = amélioration continue.</p>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">📓 Structure d\</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│              TEMPLATE DE JOURNAL - CHAQUE TRADE                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  📅 DATE &amp; HEURE: 2024-01-15, 15:45                                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  📊 INSTRUMENT: ES (E-mini S&amp;P 500)                                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  📈 DIRECTION: LONG                                                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ─── SETUP ───                                                           │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Signal: Rebond sur GEX Level #2                                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Confluences: PDL + VWAP + Hammer 5min                                │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Contexte marché: Tendance haussière HTF, gamma positif               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ─── EXÉCUTION ───                                                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Entrée: 5000.50                                                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Stop: 4992.00 (-8.5 pts)                                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Target: 5018.00 (+17.5 pts)                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • R:R planifié: 2.06:1                                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Taille: 2 MES                                                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Risque $: $85                                                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ─── RÉSULTAT ───                                                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Sortie: 5015.25                                                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • P&amp;L: +$147.50                                                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • R:R réalisé: 1.74:1                                                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Durée: 47 minutes                                                     │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ─── ANALYSE POST-TRADE ───                                              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Ce qui a fonctionné: Patience à l&#x27;entrée, niveau respecté           │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Ce qui pourrait être amélioré: Sorti trop tôt, target non atteint   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Émotions pendant le trade: Anxiété quand -5 pts, puis calme         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Leçon apprise: Faire confiance au setup, ne pas bouger le target    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Screenshot: [lien vers le graphique]                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ─── NOTATION ───                                                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Qualité du setup: 8/10                                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Qualité de l&#x27;exécution: 7/10                                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Respect du plan: 9/10                                                │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">📊 Métriques ESSENTIELLES à suivre</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│              MÉTRIQUES DE PERFORMANCE                                    │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  MÉTRIQUES DE BASE:                                                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Win Rate: % de trades gagnants                                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Avg Win: Gain moyen par trade gagnant                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Avg Loss: Perte moyenne par trade perdant                           │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Profit Factor: Gains totaux ÷ Pertes totales                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ R:R moyen réalisé: Avg Win ÷ Avg Loss                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └─ Expectancy: (Win Rate × Avg Win) - (Loss Rate × Avg Loss)           │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  MÉTRIQUES AVANCÉES:                                                     │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Max Drawdown: Plus grosse baisse depuis un pic                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Sharpe Ratio: Rendement ajusté au risque                            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Consecutive Losses Max: Plus longue série de pertes                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Recovery Factor: Profit net ÷ Max Drawdown                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └─ Trades par jour/semaine/mois                                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  EXEMPLE DE TABLEAU MENSUEL:                                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ┌──────────────────┬─────────────────┐                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ Métrique         │ Janvier 2024    │                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├──────────────────┼─────────────────┤                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ Trades totaux    │      47         │                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ Win Rate         │      53%        │                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ Avg Win          │     $215        │                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ Avg Loss         │     $98         │                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ Profit Factor    │      2.3        │                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ P&amp;L Total        │   +$3,240       │                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ Max Drawdown     │     $780        │                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ Meilleur trade   │    +$520        │                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  │ Pire trade       │    -$210        │                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └──────────────────┴─────────────────┘                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">🔍 Analyse SEGMENTÉE: Trouver vos forces et faiblesses</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│              SEGMENTATION DE VOS TRADES                                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  Analysez vos résultats PAR CATÉGORIE pour identifier les patterns:     │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  📊 PAR INSTRUMENT:                                                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • ES: Win Rate 55%, P&amp;L +$2,500                                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • NQ: Win Rate 42%, P&amp;L -$800  ← PROBLÈME ICI!                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  → Action: Réduire ou arrêter NQ, se concentrer sur ES                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ⏰ PAR SESSION:                                                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • London (8h-11h): Win Rate 58%, P&amp;L +$1,200                           │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • US Open (15h30-17h): Win Rate 54%, P&amp;L +$1,800                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Lunch (17h-20h): Win Rate 35%, P&amp;L -$650  ← TOXIQUE!                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  → Action: STOP trading pendant le lunch                                │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  📈 PAR TYPE DE SETUP:                                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Rebond GEX: Win Rate 62%, Avg R:R 2.1                                │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Breakout: Win Rate 38%, Avg R:R 1.5  ← FAIBLE                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Mean reversion: Win Rate 55%, Avg R:R 1.8                            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  → Action: Prioriser les rebonds GEX, éviter les breakouts             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  📅 PAR JOUR DE LA SEMAINE:                                              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Lundi: Win Rate 48% ← Marchés encore en &quot;digestion&quot; du weekend      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Mardi-Jeudi: Win Rate 56% ← SWEET SPOT                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  • Vendredi: Win Rate 45% ← Prises de profits, moins de conviction      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  → Action: Trader plus agressivement mardi-jeudi                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">🔬 BACKTESTING: Tester avant de risquer</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│              GUIDE DU BACKTESTING                                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  DÉFINITION: Tester une stratégie sur des données historiques          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  pour évaluer sa performance AVANT de l&#x27;utiliser en réel.              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ÉTAPES D&#x27;UN BON BACKTEST:                                              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  1. DÉFINIR LES RÈGLES PRÉCISES                                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     • Entrée: &quot;Long quand le prix touche GEX + hammer 5min&quot;            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     • Stop: &quot;Sous le GEX level - 2 points&quot;                              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     • Target: &quot;Prochain GEX ou 2x le risque&quot;                            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     • Filtre: &quot;Uniquement pendant US Open&quot;                              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  2. CHOISIR LA PÉRIODE                                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     • Minimum: 3 mois de données                                        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     • Idéal: 6-12 mois                                                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     • Inclure différentes conditions (trend, range, volatilité)        │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  3. EXÉCUTER LE BACKTEST                                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     • Manuellement: Repasser les charts jour par jour                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     • Automatisé: Script ou plateforme de backtest                      │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  4. ANALYSER LES RÉSULTATS                                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     • Win Rate, Profit Factor, Max Drawdown                             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     • Nombre de trades (min 50-100 pour être significatif)             │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  5. FORWARD TEST (Paper Trading)                                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     • Appliquer la stratégie en temps réel SANS argent                  │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     • Minimum 2-4 semaines                                              │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│     • Valide que le backtest n&#x27;était pas &quot;sur-optimisé&quot;                │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">🛠️ OUTILS recommandés pour Journal &amp; Backtest</h2>
-            <div class="text-light-300 space-y-4">
-                <pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│              OUTILS DE JOURNALING &amp; BACKTESTING                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  📓 JOURNALING:                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  GRATUIT:                                                                │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Google Sheets/Excel: Simple mais efficace                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Notion: Templates flexibles, base de données                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └─ TradingView: Notes sur les charts                                   │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  PAYANT:                                                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Tradervue (~$30/mois): Référence pour Futures                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Edgewonk (~$170 one-time): Analyse avancée                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └─ TraderSync (~$30/mois): Import automatique                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  🔬 BACKTESTING:                                                         │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  GRATUIT:                                                                │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ TradingView Replay: Simulation manuelle                            │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ Python + Backtrader: Pour les codeurs                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └─ Excel: Backtest manuel simple                                       │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  PAYANT:                                                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ TradingView Premium: Replay + indicateurs                           │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  ├─ NinjaTrader: Backtest Futures natif                                 │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│  └─ Sierra Chart: Professionnel, complexe                               │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-4 rounded-lg overflow-x-auto text-xs sm:text-sm text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-
-            </div>
-            
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">❌ ERREURS COMMUNES en Journaling &amp; Backtesting</h2>
-            <div class="text-light-300 space-y-4">
-                
-            </div>
-            <ul class="mt-4 space-y-2">
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #1: Ne pas tenir de journal → Vous répétez les mêmes erreurs sans le savoir</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #2: Journal trop simple → &quot;Long ES, +$200&quot; ne vous apprend RIEN</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #3: Ne pas inclure les émotions → La psycho est aussi importante que la technique</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #4: Backtester sur trop peu de trades → 20 trades = non significatif statistiquement</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #5: Curve fitting → Sur-optimiser pour des résultats passés parfaits = échec futur</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #6: Ignorer le forward test → Passer directement du backtest au réel = risqué</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>❌ ERREUR #7: Ne pas analyser par segment → Votre edge peut être dans une seule session/setup</li>
-</ul>
-
-        </section>
-        
-        <section class="card-glass p-6 rounded-2xl">
-            <h2 class="text-xl sm:text-2xl font-bold text-white mb-4">✅ POINTS CLÉS à retenir</h2>
-            <div class="text-light-300 space-y-4">
-                
-            </div>
-            <ul class="mt-4 space-y-2">
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Le journal transforme chaque trade en leçon d&#x27;apprentissage</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Notez: setup, exécution, résultat, émotions, leçon apprise</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Suivez les métriques clés: Win Rate, Profit Factor, Max Drawdown</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Analysez par segment: instrument, session, type de setup, jour</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Le backtest valide une idée AVANT de risquer de l&#x27;argent</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Minimum 50-100 trades pour des statistiques significatives</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Forward test (paper) obligatoire entre backtest et trading réel</li>
-<li class="flex items-start gap-2 text-light-300"><span class="text-mia-cyan mt-1">•</span>✅ Vos données sont votre or: plus vous en avez, mieux vous comprenez votre edge</li>
-</ul>
-
-        </section>
-        
-                    </article>
-                    
-                    <nav class="flex justify-between mt-12 pt-8 border-t border-white/10">
-                        <a class="flex items-center gap-3 p-4 bg-dark-200 hover:bg-dark-300 rounded-xl transition-all group max-w-[45%]" href="/education/order-types/">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5 text-light-500"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
-            <div class="text-left"><div class="text-xs text-light-500">Leçon précédente</div><div class="text-sm text-white font-medium truncate">Types d&#x27;Ordres</div></div>
-        </a>
-                        <a class="flex items-center gap-3 p-4 bg-dark-200 hover:bg-dark-300 rounded-xl transition-all group max-w-[45%]" href="/education/economic-calendar/">
-            <div class="text-right"><div class="text-xs text-light-500">Leçon suivante</div><div class="text-sm text-white font-medium truncate">Calendrier Économique</div></div>
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5 text-light-500"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-        </a>
-                    </nav>
-                </div>
-                
-                <aside class="lg:col-span-1 hidden lg:block">
-                    <div class="sticky top-24 space-y-6">
-                        <a class="flex items-center gap-2 text-light-400 hover:text-white transition-colors" href="/education/">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><path d="m12 19-7-7 7-7"></path><path d="M19 12H5"></path></svg>
-                            ← Retour
-                        </a>
-                        <div class="card-glass p-4 rounded-xl">
-                            <h4 class="text-sm font-bold text-white mb-3">Dans cette leçon</h4>
-                            <ul class="space-y-2 text-sm">
-                                <li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">🎯 Le Journal: Votre arme secrète d\</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">📓 Structure d\</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">📊 Métriques ESSENTIELLES à suivre</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">🔍 Analyse SEGMENTÉE: Trouver vos forces et faibles</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">🔬 BACKTESTING: Tester avant de risquer</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">🛠️ OUTILS recommandés pour Journal &amp; Backtest</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">❌ ERREURS COMMUNES en Journaling &amp; Backtesting</span></li>
-<li><span class="text-light-400 hover:text-mia-cyan transition-colors cursor-pointer">✅ POINTS CLÉS à retenir</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </aside>
-            </div>
-        </div>
-    </main>
 </div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">📓 Structure d\</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              TEMPLATE DE JOURNAL - CHAQUE TRADE                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  📅 DATE &amp; HEURE: 2024-01-15, 15:45                                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  📊 INSTRUMENT: ES (E-mini S&amp;P 500)                                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  📈 DIRECTION: LONG                                                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ─── SETUP ───                                                           │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Signal: Rebond sur GEX Level #2                                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Confluences: PDL + VWAP + Hammer 5min                                │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Contexte marché: Tendance haussière HTF, gamma positif               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ─── EXÉCUTION ───                                                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Entrée: 5000.50                                                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Stop: 4992.00 (-8.5 pts)                                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Target: 5018.00 (+17.5 pts)                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • R:R planifié: 2.06:1                                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Taille: 2 MES                                                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Risque $: $85                                                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ─── RÉSULTAT ───                                                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Sortie: 5015.25                                                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • P&amp;L: +$147.50                                                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • R:R réalisé: 1.74:1                                                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Durée: 47 minutes                                                     │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ─── ANALYSE POST-TRADE ───                                              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Ce qui a fonctionné: Patience à l&#x27;entrée, niveau respecté           │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Ce qui pourrait être amélioré: Sorti trop tôt, target non atteint   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Émotions pendant le trade: Anxiété quand -5 pts, puis calme         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Leçon apprise: Faire confiance au setup, ne pas bouger le target    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Screenshot: [lien vers le graphique]                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ─── NOTATION ───                                                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Qualité du setup: 8/10                                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Qualité de l&#x27;exécution: 7/10                                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Respect du plan: 9/10                                                │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">📊 Métriques ESSENTIELLES à suivre</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              MÉTRIQUES DE PERFORMANCE                                    │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  MÉTRIQUES DE BASE:                                                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Win Rate: % de trades gagnants                                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Avg Win: Gain moyen par trade gagnant                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Avg Loss: Perte moyenne par trade perdant                           │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Profit Factor: Gains totaux ÷ Pertes totales                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ R:R moyen réalisé: Avg Win ÷ Avg Loss                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └─ Expectancy: (Win Rate × Avg Win) - (Loss Rate × Avg Loss)           │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  MÉTRIQUES AVANCÉES:                                                     │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Max Drawdown: Plus grosse baisse depuis un pic                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Sharpe Ratio: Rendement ajusté au risque                            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Consecutive Losses Max: Plus longue série de pertes                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Recovery Factor: Profit net ÷ Max Drawdown                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └─ Trades par jour/semaine/mois                                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  EXEMPLE DE TABLEAU MENSUEL:                                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ┌──────────────────┬─────────────────┐                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Métrique         │ Janvier 2024    │                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├──────────────────┼─────────────────┤                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Trades totaux    │      47         │                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Win Rate         │      53%        │                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Avg Win          │     $215        │                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Avg Loss         │     $98         │                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Profit Factor    │      2.3        │                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ P&amp;L Total        │   +$3,240       │                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Max Drawdown     │     $780        │                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Meilleur trade   │    +$520        │                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Pire trade       │    -$210        │                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └──────────────────┴─────────────────┘                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">🔍 Analyse SEGMENTÉE: Trouver vos forces et faiblesses</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              SEGMENTATION DE VOS TRADES                                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Analysez vos résultats PAR CATÉGORIE pour identifier les patterns:     │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  📊 PAR INSTRUMENT:                                                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • ES: Win Rate 55%, P&amp;L +$2,500                                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • NQ: Win Rate 42%, P&amp;L -$800  ← PROBLÈME ICI!                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  → Action: Réduire ou arrêter NQ, se concentrer sur ES                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ⏰ PAR SESSION:                                                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • London (8h-11h): Win Rate 58%, P&amp;L +$1,200                           │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • US Open (15h30-17h): Win Rate 54%, P&amp;L +$1,800                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Lunch (17h-20h): Win Rate 35%, P&amp;L -$650  ← TOXIQUE!                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  → Action: STOP trading pendant le lunch                                │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  📈 PAR TYPE DE SETUP:                                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Rebond GEX: Win Rate 62%, Avg R:R 2.1                                │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Breakout: Win Rate 38%, Avg R:R 1.5  ← FAIBLE                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Mean reversion: Win Rate 55%, Avg R:R 1.8                            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  → Action: Prioriser les rebonds GEX, éviter les breakouts             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  📅 PAR JOUR DE LA SEMAINE:                                              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Lundi: Win Rate 48% ← Marchés encore en &quot;digestion&quot; du weekend      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Mardi-Jeudi: Win Rate 56% ← SWEET SPOT                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Vendredi: Win Rate 45% ← Prises de profits, moins de conviction      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  → Action: Trader plus agressivement mardi-jeudi                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">🔬 BACKTESTING: Tester avant de risquer</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              GUIDE DU BACKTESTING                                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  DÉFINITION: Tester une stratégie sur des données historiques          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  pour évaluer sa performance AVANT de l&#x27;utiliser en réel.              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ÉTAPES D&#x27;UN BON BACKTEST:                                              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  1. DÉFINIR LES RÈGLES PRÉCISES                                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • Entrée: &quot;Long quand le prix touche GEX + hammer 5min&quot;            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • Stop: &quot;Sous le GEX level - 2 points&quot;                              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • Target: &quot;Prochain GEX ou 2x le risque&quot;                            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • Filtre: &quot;Uniquement pendant US Open&quot;                              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  2. CHOISIR LA PÉRIODE                                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • Minimum: 3 mois de données                                        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • Idéal: 6-12 mois                                                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • Inclure différentes conditions (trend, range, volatilité)        │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  3. EXÉCUTER LE BACKTEST                                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • Manuellement: Repasser les charts jour par jour                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • Automatisé: Script ou plateforme de backtest                      │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  4. ANALYSER LES RÉSULTATS                                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • Win Rate, Profit Factor, Max Drawdown                             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • Nombre de trades (min 50-100 pour être significatif)             │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  5. FORWARD TEST (Paper Trading)                                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • Appliquer la stratégie en temps réel SANS argent                  │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • Minimum 2-4 semaines                                              │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • Valide que le backtest n&#x27;était pas &quot;sur-optimisé&quot;                │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">🛠️ OUTILS recommandés pour Journal &amp; Backtest</h2>
+            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              OUTILS DE JOURNALING &amp; BACKTESTING                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  📓 JOURNALING:                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  GRATUIT:                                                                │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Google Sheets/Excel: Simple mais efficace                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Notion: Templates flexibles, base de données                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └─ TradingView: Notes sur les charts                                   │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  PAYANT:                                                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Tradervue (~$30/mois): Référence pour Futures                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Edgewonk (~$170 one-time): Analyse avancée                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └─ TraderSync (~$30/mois): Import automatique                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  🔬 BACKTESTING:                                                         │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  GRATUIT:                                                                │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ TradingView Replay: Simulation manuelle                            │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Python + Backtrader: Pour les codeurs                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └─ Excel: Backtest manuel simple                                       │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  PAYANT:                                                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ TradingView Premium: Replay + indicateurs                           │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ NinjaTrader: Backtest Futures natif                                 │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └─ Sierra Chart: Professionnel, complexe                               │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
+<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+</div>
+            
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">❌ ERREURS COMMUNES en Journaling &amp; Backtesting</h2>
+            <div class="text-light-300 text-sm space-y-3"></div>
+            <ul class="mt-3 space-y-1">
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #1: Ne pas tenir de journal → Vous répétez les mêmes erreurs sans le savoir</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #2: Journal trop simple → &quot;Long ES, +$200&quot; ne vous apprend RIEN</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #3: Ne pas inclure les émotions → La psycho est aussi importante que la technique</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #4: Backtester sur trop peu de trades → 20 trades = non significatif statistiquement</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #5: Curve fitting → Sur-optimiser pour des résultats passés parfaits = échec futur</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #6: Ignorer le forward test → Passer directement du backtest au réel = risqué</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #7: Ne pas analyser par segment → Votre edge peut être dans une seule session/setup</li>
+</ul>
+
+        </section>
+        
+        <section class="card-glass p-5 rounded-xl">
+            <h2 class="text-lg font-bold text-white mb-3">✅ POINTS CLÉS à retenir</h2>
+            <div class="text-light-300 text-sm space-y-3"></div>
+            <ul class="mt-3 space-y-1">
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Le journal transforme chaque trade en leçon d&#x27;apprentissage</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Notez: setup, exécution, résultat, émotions, leçon apprise</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Suivez les métriques clés: Win Rate, Profit Factor, Max Drawdown</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Analysez par segment: instrument, session, type de setup, jour</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Le backtest valide une idée AVANT de risquer de l&#x27;argent</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Minimum 50-100 trades pour des statistiques significatives</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Forward test (paper) obligatoire entre backtest et trading réel</li>
+<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Vos données sont votre or: plus vous en avez, mieux vous comprenez votre edge</li>
+</ul>
+
+        </section>
+        
+            </article>
+            
+            <nav class="flex justify-between mt-8 pt-6 border-t border-white/10">
+                <a class="flex items-center gap-2 p-3 bg-dark-200 hover:bg-dark-300 rounded-lg transition-all group" href="/education/order-types/">
+            <svg class="w-4 h-4 text-light-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
+            <div class="text-left"><div class="text-xs text-light-500">Précédent</div><div class="text-sm text-white truncate">Types d&#x27;Ordres</div></div>
+        </a>
+                <a class="flex items-center gap-2 p-3 bg-dark-200 hover:bg-dark-300 rounded-lg transition-all group" href="/education/economic-calendar/">
+            <div class="text-right"><div class="text-xs text-light-500">Suivant</div><div class="text-sm text-white truncate">Calendrier Économique</div></div>
+            <svg class="w-4 h-4 text-light-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+        </a>
+            </nav>
+        </main>
+    </div>
+</div>
+<script>
+function toggleNav(id) {
+    document.getElementById('nav-' + id).classList.toggle('open');
+}
+</script>
 <script src="/ticker.js" defer></script>
 </body>
 </html>
