@@ -1,14 +1,13 @@
-// TradingView Ticker - MIA IA SYSTEM v7 FINAL
+// TradingView Ticker - MIA IA SYSTEM v8 FINAL
 (function() {
-  // Anti-doublon
   if (window.MIA_TICKER_DONE) return;
   window.MIA_TICKER_DONE = true;
   
   function createTicker() {
-    // Créer la barre
+    // Créer la barre ticker
     var bar = document.createElement('div');
     bar.id = 'mia-tv-ticker';
-    bar.style.cssText = 'background:#0a0e17;border-bottom:1px solid rgba(0,212,255,0.15);';
+    bar.style.cssText = 'position:fixed;top:0;left:0;right:0;height:46px;background:#0a0e17;border-bottom:1px solid rgba(0,212,255,0.15);z-index:9999;';
     
     // Container TradingView
     var container = document.createElement('div');
@@ -18,7 +17,7 @@
     widgetDiv.className = 'tradingview-widget-container__widget';
     container.appendChild(widgetDiv);
     
-    // Script TradingView (créé correctement)
+    // Script TradingView
     var script = document.createElement('script');
     script.type = 'text/javascript';
     script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
@@ -43,8 +42,20 @@
     container.appendChild(script);
     bar.appendChild(container);
     
-    // Insérer tout en haut
+    // Insérer le ticker
     document.body.insertBefore(bar, document.body.firstChild);
+    
+    // IMPORTANT: Décaler le header et le body vers le bas
+    document.body.style.paddingTop = '46px';
+    
+    // Trouver et ajuster le header fixed
+    var header = document.querySelector('header');
+    if (header) {
+      var headerStyle = window.getComputedStyle(header);
+      if (headerStyle.position === 'fixed' || headerStyle.position === 'sticky') {
+        header.style.top = '46px';
+      }
+    }
   }
   
   // Exécuter
