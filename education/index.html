@@ -1,372 +1,267 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="/_next/static/css/0f34aadfba7d8fab.css"/>
     <link rel="icon" href="/images/logo-dark.jpg"/>
-    <title>MIA Trading Academy - Formation Trading</title>
-    <meta name="description" content="Apprenez le trading des Futures avec MIA. 40 leçons complètes."/>
+    <title>MIA Trading Academy</title>
     <style>
-        .sidebar-section { margin-bottom: 1rem; }
-        .sidebar-section-header { 
-            display: flex; align-items: center; justify-content: space-between; 
-            width: 100%; padding: 0.5rem; cursor: pointer; border-radius: 0.5rem;
-            transition: background 0.2s;
+        @media (min-width: 1024px) {
+            .sidebar-desktop { display: block !important; }
+            .main-content { margin-left: 220px !important; }
         }
-        .sidebar-section-header:hover { background: rgba(255,255,255,0.05); }
-        .sidebar-section-content { display: none; padding-left: 0.5rem; }
-        .sidebar-section.open .sidebar-section-content { display: block; }
-        .sidebar-section.open .chevron { transform: rotate(180deg); }
-        .lesson-link { 
-            display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.75rem;
-            border-radius: 0.5rem; color: #94a3b8; text-decoration: none; font-size: 0.875rem;
-            transition: all 0.2s;
-        }
-        .lesson-link:hover { background: rgba(255,255,255,0.1); color: white; }
+        .lesson-card { background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; text-decoration: none; transition: all 0.2s; }
+        .lesson-card:hover { border-color: rgba(34,211,238,0.5); transform: translateY(-2px); }
     </style>
 </head>
-<body class="bg-dark text-white overflow-x-hidden">
-<div class="min-h-screen bg-dark flex flex-col">
+<body style="background: #0a0e14; color: #fff; margin: 0; font-family: system-ui, -apple-system, sans-serif;">
     <!-- Header -->
-    <header class="fixed top-0 left-0 right-0 z-50 bg-dark-100/95 backdrop-blur-xl border-b border-white/10">
-        <div class="flex items-center justify-between h-14 px-4">
-            <div class="flex items-center gap-3">
-                <a class="flex items-center gap-2 text-light-400 hover:text-white transition-colors" href="/">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                    <span class="hidden sm:inline text-sm">Accueil</span>
-                </a>
-                <div class="h-5 w-px bg-white/20"></div>
-                <a class="flex items-center gap-2 hover:opacity-80 transition-opacity" href="/">
-                    <div class="relative w-7 h-7">
-                        <img alt="MIA" class="rounded-full object-cover border border-mia-gold/50 w-full h-full" src="/images/logo-dark.jpg"/>
-                    </div>
-                    <span class="font-bold text-white text-sm hidden sm:inline">MIA IA SYSTEM</span>
-                </a>
-            </div>
-            <a href="https://discord.gg/mia-ia-system" target="_blank" class="flex items-center gap-2 px-3 py-1.5 bg-accent-purple/20 text-accent-purple rounded-lg text-sm hover:bg-accent-purple/30 transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-4 h-4"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                Discord
+    <header style="position: fixed; top: 0; left: 0; right: 0; height: 56px; background: rgba(15,20,25,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 0 16px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <a href="/" style="display: flex; align-items: center; gap: 6px; color: #94a3b8; text-decoration: none;">
+                <svg style="width: 16px; height: 16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                <span style="font-size: 13px;">Accueil</span>
+            </a>
+            <div style="width: 1px; height: 20px; background: rgba(255,255,255,0.2);"></div>
+            <a href="/" style="display: flex; align-items: center; gap: 8px; text-decoration: none;">
+                <img src="/images/logo-dark.jpg" alt="MIA" style="width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(212,175,55,0.5);"/>
+                <span style="font-weight: 700; font-size: 14px; color: #fff;">MIA IA SYSTEM</span>
             </a>
         </div>
+        <a href="https://discord.gg/mia-ia-system" target="_blank" style="display: flex; align-items: center; gap: 6px; padding: 6px 12px; background: rgba(139,92,246,0.2); color: #a78bfa; border-radius: 8px; font-size: 13px; text-decoration: none;">
+            <svg style="width: 16px; height: 16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            Discord
+        </a>
     </header>
 
-    <div class="flex flex-1 pt-14">
-        <!-- Sidebar -->
-        <aside class="hidden lg:block w-72 flex-shrink-0 border-r border-white/10 bg-dark-100 fixed top-14 bottom-0 overflow-y-auto">
-            <div class="p-4">
-                <!-- Search -->
-                <div class="relative mb-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-light-500"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
-                    <input type="text" placeholder="Rechercher..." class="w-full pl-10 pr-4 py-2.5 bg-dark-300 border border-white/10 rounded-xl text-white placeholder-light-500 focus:outline-none focus:border-mia-cyan/50 text-sm" id="searchInput"/>
+    <!-- Sidebar -->
+    <aside style="display: none; position: fixed; top: 56px; left: 0; bottom: 0; width: 220px; background: #0f1419; border-right: 1px solid rgba(255,255,255,0.1); overflow-y: auto; z-index: 40;" class="sidebar-desktop">
+        <div style="padding: 12px;">
+            <!-- Débutant -->
+            <div class="nav-section">
+                <div onclick="toggleNav('debutant')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;">
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <span>🌱</span>
+                        <span style="font-size: 11px; font-weight: 700; color: #22d3ee; text-transform: uppercase;">Débutant</span>
+                        <span style="font-size: 11px; color: #64748b;">(10)</span>
+                    </div>
+                    <svg class="chevron-debutant" style="width: 14px; height: 14px; color: #64748b; transform: rotate(180deg);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                 </div>
-
-                <!-- Débutant -->
-                <div class="sidebar-section open" id="section-debutant">
-                    <div class="sidebar-section-header" onclick="toggleSection('section-debutant')">
-                        <div class="flex items-center gap-2">
-                            <span class="text-mia-cyan">🌱</span>
-                            <span class="text-sm font-semibold text-mia-cyan uppercase tracking-wider">Débutant</span>
-                            <span class="text-xs text-light-500">(10)</span>
-                        </div>
-                        <svg class="w-4 h-4 text-light-500 transition-transform chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
-                    </div>
-                    <div class="sidebar-section-content">
-                        <a href="/education/futures-101/" class="lesson-link"><span>📊</span><span>Les Futures US: ES, NQ, RTY</span></a>
-                        <a href="/education/trading-sessions/" class="lesson-link"><span>🕐</span><span>Les Sessions de Trading</span></a>
-                        <a href="/education/candlestick-basics/" class="lesson-link"><span>🕯️</span><span>Lecture des Chandeliers</span></a>
-                        <a href="/education/support-resistance/" class="lesson-link"><span>📏</span><span>Support & Résistance</span></a>
-                        <a href="/education/volume-importance/" class="lesson-link"><span>📊</span><span>L'Importance du Volume</span></a>
-                        <a href="/education/risk-management/" class="lesson-link"><span>🛡️</span><span>Gestion du Risque</span></a>
-                        <a href="/education/trading-psychology/" class="lesson-link"><span>🧠</span><span>Psychologie du Trading</span></a>
-                        <a href="/education/order-types/" class="lesson-link"><span>📝</span><span>Types d'Ordres</span></a>
-                        <a href="/education/journaling-backtesting/" class="lesson-link"><span>📓</span><span>Journaling & Backtesting</span></a>
-                        <a href="/education/economic-calendar/" class="lesson-link"><span>📅</span><span>Calendrier Économique</span></a>
-                    </div>
-                </div>
-
-                <!-- Intermédiaire -->
-                <div class="sidebar-section" id="section-intermediaire">
-                    <div class="sidebar-section-header" onclick="toggleSection('section-intermediaire')">
-                        <div class="flex items-center gap-2">
-                            <span class="text-yellow-400">📈</span>
-                            <span class="text-sm font-semibold text-yellow-400 uppercase tracking-wider">Intermédiaire</span>
-                            <span class="text-xs text-light-500">(11)</span>
-                        </div>
-                        <svg class="w-4 h-4 text-light-500 transition-transform chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
-                    </div>
-                    <div class="sidebar-section-content">
-                        <a href="/education/multi-timeframe-analysis/" class="lesson-link"><span>🔍</span><span>Analyse Multi-Timeframe</span></a>
-                        <a href="/education/call-resistance-put-support/" class="lesson-link"><span>📞</span><span>Call Resistance & Put Support</span></a>
-                        <a href="/education/hvl-gamma-flip/" class="lesson-link"><span>🎯</span><span>HVL & Gamma Flip</span></a>
-                        <a href="/education/positive-negative-gamma/" class="lesson-link"><span>⚡</span><span>Gamma Positif vs Négatif</span></a>
-                        <a href="/education/0dte-options-impact/" class="lesson-link"><span>💥</span><span>Impact des Options 0DTE</span></a>
-                        <a href="/education/expected-move-range/" class="lesson-link"><span>📐</span><span>Expected Move & Range</span></a>
-                        <a href="/education/gamma-exposure/" class="lesson-link"><span>📈</span><span>Gamma Exposure (GEX)</span></a>
-                        <a href="/education/high-volume-levels/" class="lesson-link"><span>📊</span><span>High Volume Levels</span></a>
-                        <a href="/education/options-impact/" class="lesson-link"><span>🎰</span><span>Impact des Options</span></a>
-                        <a href="/education/market-makers/" class="lesson-link"><span>🏦</span><span>Market Makers</span></a>
-                        <a href="/education/vwap-intraday/" class="lesson-link"><span>📉</span><span>VWAP & Niveaux Intraday</span></a>
-                    </div>
-                </div>
-
-                <!-- Avancé -->
-                <div class="sidebar-section" id="section-avance">
-                    <div class="sidebar-section-header" onclick="toggleSection('section-avance')">
-                        <div class="flex items-center gap-2">
-                            <span class="text-red-400">🚀</span>
-                            <span class="text-sm font-semibold text-red-400 uppercase tracking-wider">Avancé</span>
-                            <span class="text-xs text-light-500">(14)</span>
-                        </div>
-                        <svg class="w-4 h-4 text-light-500 transition-transform chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
-                    </div>
-                    <div class="sidebar-section-content">
-                        <a href="/education/orderflow/" class="lesson-link"><span>🌊</span><span>OrderFlow Basics</span></a>
-                        <a href="/education/money-management/" class="lesson-link"><span>💰</span><span>Money Management Avancé</span></a>
-                        <a href="/education/correlation-intermarches/" class="lesson-link"><span>🔗</span><span>Corrélations Inter-Marchés</span></a>
-                        <a href="/education/liquidity-sweeps/" class="lesson-link"><span>🧹</span><span>Liquidity Sweeps</span></a>
-                        <a href="/education/market-profile/" class="lesson-link"><span>📊</span><span>Market Profile</span></a>
-                        <a href="/education/fibonacci-extensions/" class="lesson-link"><span>🌀</span><span>Fibonacci Extensions</span></a>
-                        <a href="/education/gex-levels-1-10/" class="lesson-link"><span>🎯</span><span>GEX Levels 1-10</span></a>
-                        <a href="/education/blind-spots-trading/" class="lesson-link"><span>👁️</span><span>Blind Spots Trading</span></a>
-                        <a href="/education/delta-exposure-dex/" class="lesson-link"><span>📊</span><span>Delta Exposure (DEX)</span></a>
-                        <a href="/education/dealer-hedging-mechanics/" class="lesson-link"><span>⚙️</span><span>Dealer Hedging</span></a>
-                        <a href="/education/gamma-walls-magnets/" class="lesson-link"><span>🧲</span><span>Gamma Walls & Magnets</span></a>
-                        <a href="/education/vix-vvix-volatility/" class="lesson-link"><span>🌪️</span><span>VIX & VVIX</span></a>
-                        <a href="/education/option-greeks-traders/" class="lesson-link"><span>🇬🇷</span><span>Option Greeks</span></a>
-                        <a href="/education/regime-based-trading/" class="lesson-link"><span>🔄</span><span>Regime-Based Trading</span></a>
-                    </div>
-                </div>
-
-                <!-- Bonus -->
-                <div class="sidebar-section" id="section-bonus">
-                    <div class="sidebar-section-header" onclick="toggleSection('section-bonus')">
-                        <div class="flex items-center gap-2">
-                            <span class="text-purple-400">⭐</span>
-                            <span class="text-sm font-semibold text-purple-400 uppercase tracking-wider">Bonus</span>
-                            <span class="text-xs text-light-500">(5)</span>
-                            <span class="px-1.5 py-0.5 bg-mia-gold/20 text-mia-gold rounded text-xs">NEW</span>
-                        </div>
-                        <svg class="w-4 h-4 text-light-500 transition-transform chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
-                    </div>
-                    <div class="sidebar-section-content">
-                        <a href="/education/battle-navale/" class="lesson-link"><span>⚔️</span><span>Battle Navale</span></a>
-                        <a href="/education/une-journee-avec-mia/" class="lesson-link"><span>☀️</span><span>Une Journée avec MIA</span></a>
-                        <a href="/education/pourquoi-bots-meurent/" class="lesson-link"><span>💀</span><span>Pourquoi les Bots Meurent</span></a>
-                        <a href="/education/quand-couper-mia/" class="lesson-link"><span>🔌</span><span>Quand Couper MIA</span></a>
-                        <a href="/education/mental-discipline-ia/" class="lesson-link"><span>🧘</span><span>Mental & Discipline</span></a>
-                    </div>
+                <div class="nav-content-debutant" style="padding-left: 8px;">
+                    <a href="/education/futures-101/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>📊</span><span>Les Futures US</span></a>
+                    <a href="/education/trading-sessions/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>🕐</span><span>Sessions de Trading</span></a>
+                    <a href="/education/candlestick-basics/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>🕯️</span><span>Chandeliers</span></a>
+                    <a href="/education/support-resistance/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>📏</span><span>Support & Résistance</span></a>
+                    <a href="/education/volume-importance/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>📊</span><span>Volume</span></a>
+                    <a href="/education/risk-management/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>🛡️</span><span>Gestion du Risque</span></a>
+                    <a href="/education/trading-psychology/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>🧠</span><span>Psychologie</span></a>
+                    <a href="/education/order-types/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>📝</span><span>Types d'Ordres</span></a>
+                    <a href="/education/journaling-backtesting/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>📓</span><span>Journaling</span></a>
+                    <a href="/education/economic-calendar/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>📅</span><span>Calendrier Éco</span></a>
                 </div>
             </div>
-        </aside>
 
-        <!-- Main Content -->
-        <main class="flex-1 lg:ml-72">
-            <div class="p-6 lg:p-8">
-                <!-- Hero -->
-                <div class="text-center mb-12">
-                    <span class="text-6xl mb-4 block">🎓</span>
-                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">MIA Trading Academy</h1>
-                    <p class="text-xl text-light-400 max-w-2xl mx-auto">40 leçons complètes pour maîtriser le trading des Futures avec l'intelligence artificielle</p>
-                    <div class="flex justify-center gap-4 mt-6 flex-wrap">
-                        <span class="px-4 py-2 bg-green-500/20 text-green-400 rounded-full text-sm">10 Débutant</span>
-                        <span class="px-4 py-2 bg-yellow-500/20 text-yellow-400 rounded-full text-sm">11 Intermédiaire</span>
-                        <span class="px-4 py-2 bg-red-500/20 text-red-400 rounded-full text-sm">14 Avancé</span>
-                        <span class="px-4 py-2 bg-purple-500/20 text-purple-400 rounded-full text-sm">5 Bonus</span>
+            <!-- Intermédiaire -->
+            <div class="nav-section">
+                <div onclick="toggleNav('inter')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;">
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <span>📈</span>
+                        <span style="font-size: 11px; font-weight: 700; color: #facc15; text-transform: uppercase;">Intermédiaire</span>
+                        <span style="font-size: 11px; color: #64748b;">(11)</span>
                     </div>
+                    <svg class="chevron-inter" style="width: 14px; height: 14px; color: #64748b;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                 </div>
-
-                <!-- Grid des leçons -->
-                <!-- DÉBUTANT -->
-                <section class="mb-12">
-                    <div class="flex items-center gap-3 mb-6">
-                        <span class="text-3xl">🌱</span>
-                        <h2 class="text-2xl font-bold text-white">Niveau Débutant</h2>
-                        <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm">10 leçons</span>
-                    </div>
-                    <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
-                        <a href="/education/futures-101/" class="card-glass p-5 rounded-xl hover:border-mia-cyan/50 transition-all group">
-                            <span class="text-3xl mb-3 block">📊</span>
-                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-mia-cyan transition-colors">Les Futures US: ES, NQ, RTY</h3>
-                            <p class="text-light-400 text-sm mb-3">Découvrez les 3 marchés Futures principaux.</p>
-                            <span class="text-xs text-light-500">10 min</span>
-                        </a>
-                        <a href="/education/trading-sessions/" class="card-glass p-5 rounded-xl hover:border-mia-cyan/50 transition-all group">
-                            <span class="text-3xl mb-3 block">🕐</span>
-                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-mia-cyan transition-colors">Les Sessions de Trading</h3>
-                            <p class="text-light-400 text-sm mb-3">Maîtrisez les différentes sessions.</p>
-                            <span class="text-xs text-light-500">12 min</span>
-                        </a>
-                        <a href="/education/candlestick-basics/" class="card-glass p-5 rounded-xl hover:border-mia-cyan/50 transition-all group">
-                            <span class="text-3xl mb-3 block">🕯️</span>
-                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-mia-cyan transition-colors">Lecture des Chandeliers</h3>
-                            <p class="text-light-400 text-sm mb-3">Apprenez à lire les chandeliers japonais.</p>
-                            <span class="text-xs text-light-500">15 min</span>
-                        </a>
-                        <a href="/education/support-resistance/" class="card-glass p-5 rounded-xl hover:border-mia-cyan/50 transition-all group">
-                            <span class="text-3xl mb-3 block">📏</span>
-                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-mia-cyan transition-colors">Support & Résistance</h3>
-                            <p class="text-light-400 text-sm mb-3">Identifiez les niveaux clés.</p>
-                            <span class="text-xs text-light-500">12 min</span>
-                        </a>
-                        <a href="/education/volume-importance/" class="card-glass p-5 rounded-xl hover:border-mia-cyan/50 transition-all group">
-                            <span class="text-3xl mb-3 block">📊</span>
-                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-mia-cyan transition-colors">L'Importance du Volume</h3>
-                            <p class="text-light-400 text-sm mb-3">Le rôle crucial du volume.</p>
-                            <span class="text-xs text-light-500">10 min</span>
-                        </a>
-                        <a href="/education/risk-management/" class="card-glass p-5 rounded-xl hover:border-mia-cyan/50 transition-all group">
-                            <span class="text-3xl mb-3 block">🛡️</span>
-                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-mia-cyan transition-colors">Gestion du Risque</h3>
-                            <p class="text-light-400 text-sm mb-3">Protégez votre capital.</p>
-                            <span class="text-xs text-light-500">15 min</span>
-                        </a>
-                        <a href="/education/trading-psychology/" class="card-glass p-5 rounded-xl hover:border-mia-cyan/50 transition-all group">
-                            <span class="text-3xl mb-3 block">🧠</span>
-                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-mia-cyan transition-colors">Psychologie du Trading</h3>
-                            <p class="text-light-400 text-sm mb-3">Maîtrisez vos émotions.</p>
-                            <span class="text-xs text-light-500">12 min</span>
-                        </a>
-                        <a href="/education/order-types/" class="card-glass p-5 rounded-xl hover:border-mia-cyan/50 transition-all group">
-                            <span class="text-3xl mb-3 block">📝</span>
-                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-mia-cyan transition-colors">Types d'Ordres</h3>
-                            <p class="text-light-400 text-sm mb-3">Les différents types d'ordres.</p>
-                            <span class="text-xs text-light-500">10 min</span>
-                        </a>
-                        <a href="/education/journaling-backtesting/" class="card-glass p-5 rounded-xl hover:border-mia-cyan/50 transition-all group">
-                            <span class="text-3xl mb-3 block">📓</span>
-                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-mia-cyan transition-colors">Journaling & Backtesting</h3>
-                            <p class="text-light-400 text-sm mb-3">Améliorez vos performances.</p>
-                            <span class="text-xs text-light-500">12 min</span>
-                        </a>
-                        <a href="/education/economic-calendar/" class="card-glass p-5 rounded-xl hover:border-mia-cyan/50 transition-all group">
-                            <span class="text-3xl mb-3 block">📅</span>
-                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-mia-cyan transition-colors">Calendrier Économique</h3>
-                            <p class="text-light-400 text-sm mb-3">Anticipez les mouvements.</p>
-                            <span class="text-xs text-light-500">10 min</span>
-                        </a>
-                    </div>
-                </section>
-
-                <!-- INTERMÉDIAIRE -->
-                <section class="mb-12">
-                    <div class="flex items-center gap-3 mb-6">
-                        <span class="text-3xl">📈</span>
-                        <h2 class="text-2xl font-bold text-white">Niveau Intermédiaire</h2>
-                        <span class="px-3 py-1 bg-yellow-500/20 text-yellow-400 rounded-full text-sm">11 leçons</span>
-                    </div>
-                    <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
-                        <a href="/education/multi-timeframe-analysis/" class="card-glass p-5 rounded-xl hover:border-yellow-500/50 transition-all group"><span class="text-3xl mb-3 block">🔍</span><h3 class="text-lg font-bold text-white mb-2">Analyse Multi-Timeframe</h3><p class="text-light-400 text-sm">15 min</p></a>
-                        <a href="/education/call-resistance-put-support/" class="card-glass p-5 rounded-xl hover:border-yellow-500/50 transition-all group"><span class="text-3xl mb-3 block">📞</span><h3 class="text-lg font-bold text-white mb-2">Call Resistance & Put Support</h3><p class="text-light-400 text-sm">12 min</p></a>
-                        <a href="/education/hvl-gamma-flip/" class="card-glass p-5 rounded-xl hover:border-yellow-500/50 transition-all group"><span class="text-3xl mb-3 block">🎯</span><h3 class="text-lg font-bold text-white mb-2">HVL & Gamma Flip</h3><p class="text-light-400 text-sm">15 min</p></a>
-                        <a href="/education/positive-negative-gamma/" class="card-glass p-5 rounded-xl hover:border-yellow-500/50 transition-all group"><span class="text-3xl mb-3 block">⚡</span><h3 class="text-lg font-bold text-white mb-2">Gamma Positif vs Négatif</h3><p class="text-light-400 text-sm">15 min</p></a>
-                        <a href="/education/0dte-options-impact/" class="card-glass p-5 rounded-xl hover:border-yellow-500/50 transition-all group"><span class="text-3xl mb-3 block">💥</span><h3 class="text-lg font-bold text-white mb-2">Impact des Options 0DTE</h3><p class="text-light-400 text-sm">12 min</p></a>
-                        <a href="/education/expected-move-range/" class="card-glass p-5 rounded-xl hover:border-yellow-500/50 transition-all group"><span class="text-3xl mb-3 block">📐</span><h3 class="text-lg font-bold text-white mb-2">Expected Move & Range</h3><p class="text-light-400 text-sm">10 min</p></a>
-                        <a href="/education/gamma-exposure/" class="card-glass p-5 rounded-xl hover:border-yellow-500/50 transition-all group"><span class="text-3xl mb-3 block">📈</span><h3 class="text-lg font-bold text-white mb-2">Gamma Exposure (GEX)</h3><p class="text-light-400 text-sm">15 min</p></a>
-                        <a href="/education/high-volume-levels/" class="card-glass p-5 rounded-xl hover:border-yellow-500/50 transition-all group"><span class="text-3xl mb-3 block">📊</span><h3 class="text-lg font-bold text-white mb-2">High Volume Levels</h3><p class="text-light-400 text-sm">12 min</p></a>
-                        <a href="/education/options-impact/" class="card-glass p-5 rounded-xl hover:border-yellow-500/50 transition-all group"><span class="text-3xl mb-3 block">🎰</span><h3 class="text-lg font-bold text-white mb-2">Impact des Options</h3><p class="text-light-400 text-sm">12 min</p></a>
-                        <a href="/education/market-makers/" class="card-glass p-5 rounded-xl hover:border-yellow-500/50 transition-all group"><span class="text-3xl mb-3 block">🏦</span><h3 class="text-lg font-bold text-white mb-2">Market Makers</h3><p class="text-light-400 text-sm">15 min</p></a>
-                        <a href="/education/vwap-intraday/" class="card-glass p-5 rounded-xl hover:border-yellow-500/50 transition-all group"><span class="text-3xl mb-3 block">📉</span><h3 class="text-lg font-bold text-white mb-2">VWAP & Niveaux Intraday</h3><p class="text-light-400 text-sm">12 min</p></a>
-                    </div>
-                </section>
-
-                <!-- AVANCÉ -->
-                <section class="mb-12">
-                    <div class="flex items-center gap-3 mb-6">
-                        <span class="text-3xl">🚀</span>
-                        <h2 class="text-2xl font-bold text-white">Niveau Avancé</h2>
-                        <span class="px-3 py-1 bg-red-500/20 text-red-400 rounded-full text-sm">14 leçons</span>
-                    </div>
-                    <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
-                        <a href="/education/orderflow/" class="card-glass p-5 rounded-xl hover:border-red-500/50 transition-all group"><span class="text-3xl mb-3 block">🌊</span><h3 class="text-lg font-bold text-white mb-2">OrderFlow Basics</h3><p class="text-light-400 text-sm">20 min</p></a>
-                        <a href="/education/money-management/" class="card-glass p-5 rounded-xl hover:border-red-500/50 transition-all group"><span class="text-3xl mb-3 block">💰</span><h3 class="text-lg font-bold text-white mb-2">Money Management Avancé</h3><p class="text-light-400 text-sm">15 min</p></a>
-                        <a href="/education/correlation-intermarches/" class="card-glass p-5 rounded-xl hover:border-red-500/50 transition-all group"><span class="text-3xl mb-3 block">🔗</span><h3 class="text-lg font-bold text-white mb-2">Corrélations Inter-Marchés</h3><p class="text-light-400 text-sm">15 min</p></a>
-                        <a href="/education/liquidity-sweeps/" class="card-glass p-5 rounded-xl hover:border-red-500/50 transition-all group"><span class="text-3xl mb-3 block">🧹</span><h3 class="text-lg font-bold text-white mb-2">Liquidity Sweeps</h3><p class="text-light-400 text-sm">12 min</p></a>
-                        <a href="/education/market-profile/" class="card-glass p-5 rounded-xl hover:border-red-500/50 transition-all group"><span class="text-3xl mb-3 block">📊</span><h3 class="text-lg font-bold text-white mb-2">Market Profile</h3><p class="text-light-400 text-sm">15 min</p></a>
-                        <a href="/education/fibonacci-extensions/" class="card-glass p-5 rounded-xl hover:border-red-500/50 transition-all group"><span class="text-3xl mb-3 block">🌀</span><h3 class="text-lg font-bold text-white mb-2">Fibonacci Extensions</h3><p class="text-light-400 text-sm">12 min</p></a>
-                        <a href="/education/gex-levels-1-10/" class="card-glass p-5 rounded-xl hover:border-red-500/50 transition-all group"><span class="text-3xl mb-3 block">🎯</span><h3 class="text-lg font-bold text-white mb-2">GEX Levels 1-10</h3><p class="text-light-400 text-sm">20 min</p></a>
-                        <a href="/education/blind-spots-trading/" class="card-glass p-5 rounded-xl hover:border-red-500/50 transition-all group"><span class="text-3xl mb-3 block">👁️</span><h3 class="text-lg font-bold text-white mb-2">Blind Spots Trading</h3><p class="text-light-400 text-sm">15 min</p></a>
-                        <a href="/education/delta-exposure-dex/" class="card-glass p-5 rounded-xl hover:border-red-500/50 transition-all group"><span class="text-3xl mb-3 block">📊</span><h3 class="text-lg font-bold text-white mb-2">Delta Exposure (DEX)</h3><p class="text-light-400 text-sm">15 min</p></a>
-                        <a href="/education/dealer-hedging-mechanics/" class="card-glass p-5 rounded-xl hover:border-red-500/50 transition-all group"><span class="text-3xl mb-3 block">⚙️</span><h3 class="text-lg font-bold text-white mb-2">Dealer Hedging</h3><p class="text-light-400 text-sm">20 min</p></a>
-                        <a href="/education/gamma-walls-magnets/" class="card-glass p-5 rounded-xl hover:border-red-500/50 transition-all group"><span class="text-3xl mb-3 block">🧲</span><h3 class="text-lg font-bold text-white mb-2">Gamma Walls & Magnets</h3><p class="text-light-400 text-sm">15 min</p></a>
-                        <a href="/education/vix-vvix-volatility/" class="card-glass p-5 rounded-xl hover:border-red-500/50 transition-all group"><span class="text-3xl mb-3 block">🌪️</span><h3 class="text-lg font-bold text-white mb-2">VIX & VVIX</h3><p class="text-light-400 text-sm">15 min</p></a>
-                        <a href="/education/option-greeks-traders/" class="card-glass p-5 rounded-xl hover:border-red-500/50 transition-all group"><span class="text-3xl mb-3 block">🇬🇷</span><h3 class="text-lg font-bold text-white mb-2">Option Greeks</h3><p class="text-light-400 text-sm">18 min</p></a>
-                        <a href="/education/regime-based-trading/" class="card-glass p-5 rounded-xl hover:border-red-500/50 transition-all group"><span class="text-3xl mb-3 block">🔄</span><h3 class="text-lg font-bold text-white mb-2">Regime-Based Trading</h3><p class="text-light-400 text-sm">20 min</p></a>
-                    </div>
-                </section>
-
-                <!-- BONUS -->
-                <section class="mb-12">
-                    <div class="flex items-center gap-3 mb-6">
-                        <span class="text-3xl">⭐</span>
-                        <h2 class="text-2xl font-bold text-white">Leçons Bonus</h2>
-                        <span class="px-3 py-1 bg-purple-500/20 text-purple-400 rounded-full text-sm">5 leçons</span>
-                        <span class="px-3 py-1 bg-mia-gold/20 text-mia-gold rounded-full text-sm">NOUVEAU</span>
-                    </div>
-                    <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
-                        <a href="/education/battle-navale/" class="card-glass p-5 rounded-xl hover:border-purple-500/50 transition-all group border-2 border-purple-500/30">
-                            <div class="flex items-center gap-2 mb-3"><span class="text-3xl">⚔️</span><span class="px-2 py-0.5 bg-mia-gold/20 text-mia-gold rounded text-xs">SIGNATURE</span></div>
-                            <h3 class="text-lg font-bold text-white mb-2">Battle Navale - La Métaphore</h3>
-                            <p class="text-light-400 text-sm">La métaphore signature de MIA.</p>
-                        </a>
-                        <a href="/education/une-journee-avec-mia/" class="card-glass p-5 rounded-xl hover:border-purple-500/50 transition-all group border-2 border-purple-500/30">
-                            <div class="flex items-center gap-2 mb-3"><span class="text-3xl">☀️</span><span class="px-2 py-0.5 bg-mia-gold/20 text-mia-gold rounded text-xs">NEW</span></div>
-                            <h3 class="text-lg font-bold text-white mb-2">Une Journée avec MIA</h3>
-                            <p class="text-light-400 text-sm">Suivez une journée type.</p>
-                        </a>
-                        <a href="/education/pourquoi-bots-meurent/" class="card-glass p-5 rounded-xl hover:border-purple-500/50 transition-all group border-2 border-purple-500/30">
-                            <div class="flex items-center gap-2 mb-3"><span class="text-3xl">💀</span><span class="px-2 py-0.5 bg-mia-gold/20 text-mia-gold rounded text-xs">NEW</span></div>
-                            <h3 class="text-lg font-bold text-white mb-2">Pourquoi les Bots Meurent</h3>
-                            <p class="text-light-400 text-sm">Pourquoi 90% échouent.</p>
-                        </a>
-                        <a href="/education/quand-couper-mia/" class="card-glass p-5 rounded-xl hover:border-purple-500/50 transition-all group border-2 border-purple-500/30">
-                            <div class="flex items-center gap-2 mb-3"><span class="text-3xl">🔌</span><span class="px-2 py-0.5 bg-mia-gold/20 text-mia-gold rounded text-xs">NEW</span></div>
-                            <h3 class="text-lg font-bold text-white mb-2">Quand Couper MIA</h3>
-                            <p class="text-light-400 text-sm">Quand désactiver MIA.</p>
-                        </a>
-                        <a href="/education/mental-discipline-ia/" class="card-glass p-5 rounded-xl hover:border-purple-500/50 transition-all group border-2 border-purple-500/30">
-                            <div class="flex items-center gap-2 mb-3"><span class="text-3xl">🧘</span><span class="px-2 py-0.5 bg-mia-gold/20 text-mia-gold rounded text-xs">NEW</span></div>
-                            <h3 class="text-lg font-bold text-white mb-2">Mental & Discipline</h3>
-                            <p class="text-light-400 text-sm">Discipline avec IA.</p>
-                        </a>
-                    </div>
-                </section>
-
-                <!-- CTA -->
-                <section class="text-center py-12 px-6 bg-gradient-to-r from-accent-purple/20 to-mia-cyan/20 rounded-2xl border border-accent-purple/30">
-                    <span class="text-5xl mb-4 block">💬</span>
-                    <h2 class="text-2xl font-bold text-white mb-4">Rejoignez la communauté MIA</h2>
-                    <p class="text-light-400 mb-6">Posez vos questions et apprenez avec d'autres traders.</p>
-                    <a href="https://discord.gg/mia-ia-system" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 bg-accent-purple hover:bg-accent-purple/80 text-white rounded-xl font-semibold transition-colors">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="w-5 h-5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                        Rejoindre le Discord
-                    </a>
-                </section>
+                <div class="nav-content-inter" style="padding-left: 8px; display: none;">
+                    <a href="/education/multi-timeframe-analysis/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>🔍</span><span>Multi-Timeframe</span></a>
+                    <a href="/education/call-resistance-put-support/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>📞</span><span>Call/Put</span></a>
+                    <a href="/education/hvl-gamma-flip/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>🎯</span><span>HVL & Gamma Flip</span></a>
+                    <a href="/education/positive-negative-gamma/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>⚡</span><span>Gamma +/-</span></a>
+                    <a href="/education/0dte-options-impact/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>💥</span><span>Options 0DTE</span></a>
+                    <a href="/education/expected-move-range/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>📐</span><span>Expected Move</span></a>
+                    <a href="/education/gamma-exposure/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>📈</span><span>GEX</span></a>
+                    <a href="/education/high-volume-levels/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>📊</span><span>High Volume</span></a>
+                    <a href="/education/options-impact/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>🎰</span><span>Impact Options</span></a>
+                    <a href="/education/market-makers/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>🏦</span><span>Market Makers</span></a>
+                    <a href="/education/vwap-intraday/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>📉</span><span>VWAP</span></a>
+                </div>
             </div>
-        </main>
-    </div>
-</div>
 
-<script>
-function toggleSection(id) {
-    const section = document.getElementById(id);
-    section.classList.toggle('open');
-}
+            <!-- Avancé -->
+            <div class="nav-section">
+                <div onclick="toggleNav('avance')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;">
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <span>🚀</span>
+                        <span style="font-size: 11px; font-weight: 700; color: #f87171; text-transform: uppercase;">Avancé</span>
+                        <span style="font-size: 11px; color: #64748b;">(14)</span>
+                    </div>
+                    <svg class="chevron-avance" style="width: 14px; height: 14px; color: #64748b;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                </div>
+                <div class="nav-content-avance" style="padding-left: 8px; display: none;">
+                    <a href="/education/orderflow/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>🌊</span><span>OrderFlow</span></a>
+                    <a href="/education/money-management/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>💰</span><span>Money Management</span></a>
+                    <a href="/education/correlation-intermarches/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>🔗</span><span>Corrélations</span></a>
+                    <a href="/education/liquidity-sweeps/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>🧹</span><span>Liquidity Sweeps</span></a>
+                    <a href="/education/market-profile/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>📊</span><span>Market Profile</span></a>
+                    <a href="/education/fibonacci-extensions/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>🌀</span><span>Fibonacci</span></a>
+                    <a href="/education/gex-levels-1-10/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>🎯</span><span>GEX Levels</span></a>
+                    <a href="/education/blind-spots-trading/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>👁️</span><span>Blind Spots</span></a>
+                    <a href="/education/delta-exposure-dex/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>📊</span><span>DEX</span></a>
+                    <a href="/education/dealer-hedging-mechanics/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>⚙️</span><span>Dealer Hedging</span></a>
+                    <a href="/education/gamma-walls-magnets/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>🧲</span><span>Gamma Walls</span></a>
+                    <a href="/education/vix-vvix-volatility/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>🌪️</span><span>VIX & VVIX</span></a>
+                    <a href="/education/option-greeks-traders/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>🇬🇷</span><span>Option Greeks</span></a>
+                    <a href="/education/regime-based-trading/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>🔄</span><span>Regime Trading</span></a>
+                </div>
+            </div>
 
-// Search functionality
-document.getElementById('searchInput').addEventListener('input', function(e) {
-    const query = e.target.value.toLowerCase();
-    const links = document.querySelectorAll('.lesson-link');
-    links.forEach(link => {
-        const text = link.textContent.toLowerCase();
-        link.style.display = text.includes(query) ? 'flex' : 'none';
-    });
-    // Open all sections when searching
-    if (query.length > 0) {
-        document.querySelectorAll('.sidebar-section').forEach(s => s.classList.add('open'));
+            <!-- Bonus -->
+            <div class="nav-section">
+                <div onclick="toggleNav('bonus')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;">
+                    <div style="display: flex; align-items: center; gap: 6px;">
+                        <span>⭐</span>
+                        <span style="font-size: 11px; font-weight: 700; color: #c084fc; text-transform: uppercase;">Bonus</span>
+                        <span style="font-size: 11px; color: #64748b;">(5)</span>
+                        <span style="font-size: 9px; padding: 2px 6px; background: rgba(212,175,55,0.2); color: #d4af37; border-radius: 4px;">NEW</span>
+                    </div>
+                    <svg class="chevron-bonus" style="width: 14px; height: 14px; color: #64748b;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                </div>
+                <div class="nav-content-bonus" style="padding-left: 8px; display: none;">
+                    <a href="/education/battle-navale/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>⚔️</span><span>Battle Navale</span></a>
+                    <a href="/education/une-journee-avec-mia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>☀️</span><span>Journée avec MIA</span></a>
+                    <a href="/education/pourquoi-bots-meurent/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>💀</span><span>Pourquoi Bots Meurent</span></a>
+                    <a href="/education/quand-couper-mia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>🔌</span><span>Quand Couper MIA</span></a>
+                    <a href="/education/mental-discipline-ia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none;"><span>🧘</span><span>Mental & Discipline</span></a>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content" style="padding-top: 72px; padding-bottom: 40px; padding-left: 24px; padding-right: 24px;">
+        <!-- Hero -->
+        <div style="text-align: center; margin-bottom: 48px;">
+            <span style="font-size: 64px; display: block; margin-bottom: 16px;">🎓</span>
+            <h1 style="font-size: 40px; font-weight: 700; margin: 0 0 16px 0;">MIA Trading Academy</h1>
+            <p style="font-size: 18px; color: #94a3b8; max-width: 600px; margin: 0 auto 24px;">40 leçons complètes pour maîtriser le trading des Futures avec l'intelligence artificielle</p>
+            <div style="display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+                <span style="padding: 8px 16px; background: rgba(34,211,238,0.2); color: #22d3ee; border-radius: 20px; font-size: 14px;">10 Débutant</span>
+                <span style="padding: 8px 16px; background: rgba(250,204,21,0.2); color: #facc15; border-radius: 20px; font-size: 14px;">11 Intermédiaire</span>
+                <span style="padding: 8px 16px; background: rgba(248,113,113,0.2); color: #f87171; border-radius: 20px; font-size: 14px;">14 Avancé</span>
+                <span style="padding: 8px 16px; background: rgba(192,132,252,0.2); color: #c084fc; border-radius: 20px; font-size: 14px;">5 Bonus</span>
+            </div>
+        </div>
+
+        <!-- Débutant -->
+        <section style="margin-bottom: 48px;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                <span style="font-size: 32px;">🌱</span>
+                <h2 style="font-size: 24px; font-weight: 700; margin: 0;">Niveau Débutant</h2>
+                <span style="padding: 4px 12px; background: rgba(34,211,238,0.2); color: #22d3ee; border-radius: 20px; font-size: 13px;">10 leçons</span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
+                <a href="/education/futures-101/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">📊</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Les Futures US: ES, NQ, RTY</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">10 min</p></a>
+                <a href="/education/trading-sessions/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">🕐</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Les Sessions de Trading</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">12 min</p></a>
+                <a href="/education/candlestick-basics/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">🕯️</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Lecture des Chandeliers</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">15 min</p></a>
+                <a href="/education/support-resistance/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">📏</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Support & Résistance</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">12 min</p></a>
+                <a href="/education/volume-importance/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">📊</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">L'Importance du Volume</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">10 min</p></a>
+                <a href="/education/risk-management/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">🛡️</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Gestion du Risque</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">15 min</p></a>
+                <a href="/education/trading-psychology/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">🧠</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Psychologie du Trading</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">12 min</p></a>
+                <a href="/education/order-types/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">📝</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Types d'Ordres</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">10 min</p></a>
+                <a href="/education/journaling-backtesting/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">📓</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Journaling & Backtesting</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">12 min</p></a>
+                <a href="/education/economic-calendar/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">📅</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Calendrier Économique</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">10 min</p></a>
+            </div>
+        </section>
+
+        <!-- Intermédiaire -->
+        <section style="margin-bottom: 48px;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                <span style="font-size: 32px;">📈</span>
+                <h2 style="font-size: 24px; font-weight: 700; margin: 0;">Niveau Intermédiaire</h2>
+                <span style="padding: 4px 12px; background: rgba(250,204,21,0.2); color: #facc15; border-radius: 20px; font-size: 13px;">11 leçons</span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
+                <a href="/education/multi-timeframe-analysis/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">🔍</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Analyse Multi-Timeframe</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">15 min</p></a>
+                <a href="/education/call-resistance-put-support/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">📞</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Call Resistance & Put Support</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">12 min</p></a>
+                <a href="/education/hvl-gamma-flip/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">🎯</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">HVL & Gamma Flip</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">15 min</p></a>
+                <a href="/education/positive-negative-gamma/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">⚡</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Gamma Positif vs Négatif</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">15 min</p></a>
+                <a href="/education/0dte-options-impact/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">💥</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Impact des Options 0DTE</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">12 min</p></a>
+                <a href="/education/expected-move-range/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">📐</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Expected Move & Range</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">10 min</p></a>
+                <a href="/education/gamma-exposure/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">📈</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Gamma Exposure (GEX)</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">15 min</p></a>
+                <a href="/education/high-volume-levels/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">📊</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">High Volume Levels</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">12 min</p></a>
+                <a href="/education/options-impact/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">🎰</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Impact des Options</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">12 min</p></a>
+                <a href="/education/market-makers/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">🏦</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Market Makers</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">15 min</p></a>
+                <a href="/education/vwap-intraday/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">📉</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">VWAP & Niveaux Intraday</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">12 min</p></a>
+            </div>
+        </section>
+
+        <!-- Avancé -->
+        <section style="margin-bottom: 48px;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                <span style="font-size: 32px;">🚀</span>
+                <h2 style="font-size: 24px; font-weight: 700; margin: 0;">Niveau Avancé</h2>
+                <span style="padding: 4px 12px; background: rgba(248,113,113,0.2); color: #f87171; border-radius: 20px; font-size: 13px;">14 leçons</span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
+                <a href="/education/orderflow/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">🌊</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">OrderFlow Basics</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">20 min</p></a>
+                <a href="/education/money-management/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">💰</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Money Management Avancé</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">15 min</p></a>
+                <a href="/education/correlation-intermarches/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">🔗</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Corrélations Inter-Marchés</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">15 min</p></a>
+                <a href="/education/liquidity-sweeps/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">🧹</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Liquidity Sweeps</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">12 min</p></a>
+                <a href="/education/market-profile/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">📊</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Market Profile</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">15 min</p></a>
+                <a href="/education/fibonacci-extensions/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">🌀</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Fibonacci Extensions</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">12 min</p></a>
+                <a href="/education/gex-levels-1-10/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">🎯</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">GEX Levels 1-10</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">20 min</p></a>
+                <a href="/education/blind-spots-trading/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">👁️</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Blind Spots Trading</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">15 min</p></a>
+                <a href="/education/delta-exposure-dex/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">📊</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Delta Exposure (DEX)</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">15 min</p></a>
+                <a href="/education/dealer-hedging-mechanics/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">⚙️</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Dealer Hedging</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">20 min</p></a>
+                <a href="/education/gamma-walls-magnets/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">🧲</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Gamma Walls & Magnets</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">15 min</p></a>
+                <a href="/education/vix-vvix-volatility/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">🌪️</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">VIX & VVIX</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">15 min</p></a>
+                <a href="/education/option-greeks-traders/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">🇬🇷</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Option Greeks</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">18 min</p></a>
+                <a href="/education/regime-based-trading/" class="lesson-card"><span style="font-size: 32px; display: block; margin-bottom: 12px;">🔄</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Regime-Based Trading</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">20 min</p></a>
+            </div>
+        </section>
+
+        <!-- Bonus -->
+        <section style="margin-bottom: 48px;">
+            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 20px;">
+                <span style="font-size: 32px;">⭐</span>
+                <h2 style="font-size: 24px; font-weight: 700; margin: 0;">Leçons Bonus</h2>
+                <span style="padding: 4px 12px; background: rgba(192,132,252,0.2); color: #c084fc; border-radius: 20px; font-size: 13px;">5 leçons</span>
+                <span style="padding: 4px 10px; background: rgba(212,175,55,0.2); color: #d4af37; border-radius: 20px; font-size: 12px;">NOUVEAU</span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px;">
+                <a href="/education/battle-navale/" class="lesson-card" style="border: 2px solid rgba(192,132,252,0.3);"><span style="font-size: 32px; display: block; margin-bottom: 12px;">⚔️</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Battle Navale - La Métaphore</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">15 min • SIGNATURE</p></a>
+                <a href="/education/une-journee-avec-mia/" class="lesson-card" style="border: 2px solid rgba(192,132,252,0.3);"><span style="font-size: 32px; display: block; margin-bottom: 12px;">☀️</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Une Journée avec MIA</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">12 min • NEW</p></a>
+                <a href="/education/pourquoi-bots-meurent/" class="lesson-card" style="border: 2px solid rgba(192,132,252,0.3);"><span style="font-size: 32px; display: block; margin-bottom: 12px;">💀</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Pourquoi les Bots Meurent</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">15 min • NEW</p></a>
+                <a href="/education/quand-couper-mia/" class="lesson-card" style="border: 2px solid rgba(192,132,252,0.3);"><span style="font-size: 32px; display: block; margin-bottom: 12px;">🔌</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Quand Couper MIA</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">10 min • NEW</p></a>
+                <a href="/education/mental-discipline-ia/" class="lesson-card" style="border: 2px solid rgba(192,132,252,0.3);"><span style="font-size: 32px; display: block; margin-bottom: 12px;">🧘</span><h3 style="font-size: 16px; font-weight: 600; margin: 0 0 8px 0; color: #fff;">Mental & Discipline</h3><p style="font-size: 13px; color: #94a3b8; margin: 0;">12 min • NEW</p></a>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section style="text-align: center; padding: 48px 24px; background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(34,211,238,0.2)); border-radius: 16px; border: 1px solid rgba(139,92,246,0.3);">
+            <span style="font-size: 48px; display: block; margin-bottom: 16px;">💬</span>
+            <h2 style="font-size: 24px; font-weight: 700; margin: 0 0 12px 0;">Rejoignez la communauté MIA</h2>
+            <p style="color: #94a3b8; margin: 0 0 20px 0;">Posez vos questions et apprenez avec d'autres traders.</p>
+            <a href="https://discord.gg/mia-ia-system" target="_blank" style="display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: #8b5cf6; color: #fff; border-radius: 12px; font-weight: 600; text-decoration: none;">
+                <svg style="width: 20px; height: 20px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+                Rejoindre le Discord
+            </a>
+        </section>
+    </main>
+
+    <script>
+    function toggleNav(id) {
+        var content = document.querySelector('.nav-content-' + id);
+        var chevron = document.querySelector('.chevron-' + id);
+        if (content.style.display === 'none') {
+            content.style.display = 'block';
+            chevron.style.transform = 'rotate(180deg)';
+        } else {
+            content.style.display = 'none';
+            chevron.style.transform = 'rotate(0deg)';
+        }
     }
-});
-</script>
-<script src="/ticker.js" defer></script>
+    </script>
+    <script src="/ticker.js" defer></script>
 </body>
 </html>

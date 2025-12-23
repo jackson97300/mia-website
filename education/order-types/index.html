@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -7,293 +7,287 @@
     <link rel="icon" href="/images/logo-dark.jpg"/>
     <title>Types d&#x27;Ordres - MIA Academy</title>
     <style>
-        .sidebar-section { margin-bottom: 0.5rem; }
-        .sidebar-header { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem; cursor: pointer; border-radius: 0.5rem; }
-        .sidebar-header:hover { background: rgba(255,255,255,0.05); }
-        .sidebar-content { display: none; padding-left: 0.25rem; }
-        .sidebar-section.open .sidebar-content { display: block; }
-        .sidebar-section.open .chevron { transform: rotate(180deg); }
-        .nav-link { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.6rem; border-radius: 0.375rem; font-size: 0.8rem; text-decoration: none; transition: all 0.2s; }
+        @media (min-width: 1024px) {
+            .sidebar-desktop { display: block !important; }
+            .main-content { margin-left: 220px !important; }
+        }
     </style>
 </head>
-<body class="bg-dark text-white overflow-x-hidden">
-<div class="min-h-screen bg-dark flex flex-col">
-    <header class="fixed top-0 left-0 right-0 z-50 bg-dark-100/95 backdrop-blur-xl border-b border-white/10">
-        <div class="flex items-center justify-between h-14 px-4">
-            <div class="flex items-center gap-3">
-                <a class="flex items-center gap-2 text-light-400 hover:text-white" href="/">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                    <span class="text-sm hidden sm:inline">Accueil</span>
-                </a>
-                <div class="h-5 w-px bg-white/20"></div>
-                <a class="flex items-center gap-2" href="/">
-                    <img alt="MIA" class="w-7 h-7 rounded-full border border-mia-gold/50" src="/images/logo-dark.jpg"/>
-                    <span class="font-bold text-sm hidden sm:inline">MIA IA SYSTEM</span>
-                </a>
-            </div>
-            <a href="https://discord.gg/mia-ia-system" target="_blank" class="flex items-center gap-1 px-3 py-1.5 bg-accent-purple/20 text-accent-purple rounded-lg text-sm">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                Discord
+<body style="background: #0a0e14; color: #fff; margin: 0; font-family: system-ui, -apple-system, sans-serif;">
+    <!-- Header -->
+    <header style="position: fixed; top: 0; left: 0; right: 0; height: 56px; background: rgba(15,20,25,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 0 16px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <a href="/" style="display: flex; align-items: center; gap: 6px; color: #94a3b8; text-decoration: none;">
+                <svg style="width: 16px; height: 16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                <span style="font-size: 13px;">Accueil</span>
+            </a>
+            <div style="width: 1px; height: 20px; background: rgba(255,255,255,0.2);"></div>
+            <a href="/" style="display: flex; align-items: center; gap: 8px; text-decoration: none;">
+                <img src="/images/logo-dark.jpg" alt="MIA" style="width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(212,175,55,0.5);"/>
+                <span style="font-weight: 700; font-size: 14px; color: #fff;">MIA IA SYSTEM</span>
             </a>
         </div>
+        <a href="https://discord.gg/mia-ia-system" target="_blank" style="display: flex; align-items: center; gap: 6px; padding: 6px 12px; background: rgba(139,92,246,0.2); color: #a78bfa; border-radius: 8px; font-size: 13px; text-decoration: none;">
+            <svg style="width: 16px; height: 16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            Discord
+        </a>
     </header>
 
-    <div class="flex flex-1 pt-14">
-        
-        <aside class="hidden lg:block w-64 flex-shrink-0 border-r border-white/10 bg-dark-100 fixed top-14 bottom-0 overflow-y-auto z-40">
-            <div class="p-3">
     
-                <div class="sidebar-section open" id="nav-débutant">
-                    <div class="sidebar-header" onclick="toggleNav('débutant')">
-                        <div class="flex items-center gap-2">
+        <aside style="display: none; position: fixed; top: 56px; left: 0; bottom: 0; width: 220px; background: #0f1419; border-right: 1px solid rgba(255,255,255,0.1); overflow-y: auto; z-index: 40;" class="sidebar-desktop">
+            <div style="padding: 12px;">
+    
+                <div class="nav-section" id="nav-debutant">
+                    <div onclick="toggleNav('debutant')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                        <div style="display: flex; align-items: center; gap: 6px;">
                             <span>🌱</span>
-                            <span class="text-xs font-bold text-mia-cyan uppercase">Débutant</span>
-                            <span class="text-xs text-light-500">(10)</span>
+                            <span style="font-size: 11px; font-weight: 700; color: #22d3ee; text-transform: uppercase;">Débutant</span>
+                            <span style="font-size: 11px; color: #64748b;">(10)</span>
                         </div>
-                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                        <svg class="chevron-debutant" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s; transform: rotate(180deg);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
-                    <div class="sidebar-content">
+                    <div class="nav-content-debutant" style="padding-left: 8px;">
         
-                        <a href="/education/futures-101/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/futures-101/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
-                            <span class="truncate">Les Futures US: ES, NQ, RTY</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Les Futures US: ES, NQ</span>
                         </a>
             
-                        <a href="/education/trading-sessions/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/trading-sessions/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🕐</span>
-                            <span class="truncate">Les Sessions de Trading</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Les Sessions de Tradin</span>
                         </a>
             
-                        <a href="/education/candlestick-basics/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/candlestick-basics/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🕯️</span>
-                            <span class="truncate">Lecture des Chandeliers</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Lecture des Chandelier</span>
                         </a>
             
-                        <a href="/education/support-resistance/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/support-resistance/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📏</span>
-                            <span class="truncate">Support & Résistance</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Support & Résistance</span>
                         </a>
             
-                        <a href="/education/volume-importance/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/volume-importance/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
-                            <span class="truncate">L'Importance du Volume</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">L'Importance du Volume</span>
                         </a>
             
-                        <a href="/education/risk-management/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/risk-management/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🛡️</span>
-                            <span class="truncate">Gestion du Risque</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gestion du Risque</span>
                         </a>
             
-                        <a href="/education/trading-psychology/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/trading-psychology/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧠</span>
-                            <span class="truncate">Psychologie du Trading</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Psychologie du Trading</span>
                         </a>
             
-                        <a href="/education/order-types/" class="nav-link bg-mia-cyan/20 text-white">
+                        <a href="/education/order-types/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #fff; text-decoration: none; background: #22d3ee22;" onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='#22d3ee22'; this.style.color='#fff'">
                             <span>📝</span>
-                            <span class="truncate">Types d'Ordres</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Types d'Ordres</span>
                         </a>
             
-                        <a href="/education/journaling-backtesting/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/journaling-backtesting/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📓</span>
-                            <span class="truncate">Journaling & Backtesting</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Journaling & Backtesti</span>
                         </a>
             
-                        <a href="/education/economic-calendar/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/economic-calendar/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📅</span>
-                            <span class="truncate">Calendrier Économique</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Calendrier Économique</span>
                         </a>
             
                     </div>
                 </div>
         
-                <div class="sidebar-section " id="nav-intermédiaire">
-                    <div class="sidebar-header" onclick="toggleNav('intermédiaire')">
-                        <div class="flex items-center gap-2">
+                <div class="nav-section" id="nav-intermediaire">
+                    <div onclick="toggleNav('intermediaire')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                        <div style="display: flex; align-items: center; gap: 6px;">
                             <span>📈</span>
-                            <span class="text-xs font-bold text-yellow-400 uppercase">Intermédiaire</span>
-                            <span class="text-xs text-light-500">(11)</span>
+                            <span style="font-size: 11px; font-weight: 700; color: #facc15; text-transform: uppercase;">Intermédiaire</span>
+                            <span style="font-size: 11px; color: #64748b;">(11)</span>
                         </div>
-                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                        <svg class="chevron-intermediaire" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
-                    <div class="sidebar-content">
+                    <div class="nav-content-intermediaire" style="padding-left: 8px; display: none;">
         
-                        <a href="/education/multi-timeframe-analysis/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/multi-timeframe-analysis/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔍</span>
-                            <span class="truncate">Analyse Multi-Timeframe</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Analyse Multi-Timefram</span>
                         </a>
             
-                        <a href="/education/call-resistance-put-support/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/call-resistance-put-support/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📞</span>
-                            <span class="truncate">Call Resistance & Put Support</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Call Resistance & Put </span>
                         </a>
             
-                        <a href="/education/hvl-gamma-flip/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/hvl-gamma-flip/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🎯</span>
-                            <span class="truncate">HVL & Gamma Flip</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">HVL & Gamma Flip</span>
                         </a>
             
-                        <a href="/education/positive-negative-gamma/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/positive-negative-gamma/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>⚡</span>
-                            <span class="truncate">Gamma Positif vs Négatif</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gamma Positif vs Négat</span>
                         </a>
             
-                        <a href="/education/0dte-options-impact/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/0dte-options-impact/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>💥</span>
-                            <span class="truncate">Impact des Options 0DTE</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Impact des Options 0DT</span>
                         </a>
             
-                        <a href="/education/expected-move-range/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/expected-move-range/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📐</span>
-                            <span class="truncate">Expected Move & Range</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Expected Move & Range</span>
                         </a>
             
-                        <a href="/education/gamma-exposure/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/gamma-exposure/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📈</span>
-                            <span class="truncate">Gamma Exposure (GEX)</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gamma Exposure (GEX)</span>
                         </a>
             
-                        <a href="/education/high-volume-levels/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/high-volume-levels/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
-                            <span class="truncate">High Volume Levels</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">High Volume Levels</span>
                         </a>
             
-                        <a href="/education/options-impact/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/options-impact/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🎰</span>
-                            <span class="truncate">Impact des Options</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Impact des Options</span>
                         </a>
             
-                        <a href="/education/market-makers/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/market-makers/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🏦</span>
-                            <span class="truncate">Market Makers</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Market Makers</span>
                         </a>
             
-                        <a href="/education/vwap-intraday/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/vwap-intraday/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📉</span>
-                            <span class="truncate">VWAP & Niveaux Intraday</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">VWAP & Niveaux Intrada</span>
                         </a>
             
                     </div>
                 </div>
         
-                <div class="sidebar-section " id="nav-avancé">
-                    <div class="sidebar-header" onclick="toggleNav('avancé')">
-                        <div class="flex items-center gap-2">
+                <div class="nav-section" id="nav-avance">
+                    <div onclick="toggleNav('avance')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                        <div style="display: flex; align-items: center; gap: 6px;">
                             <span>🚀</span>
-                            <span class="text-xs font-bold text-red-400 uppercase">Avancé</span>
-                            <span class="text-xs text-light-500">(14)</span>
+                            <span style="font-size: 11px; font-weight: 700; color: #f87171; text-transform: uppercase;">Avancé</span>
+                            <span style="font-size: 11px; color: #64748b;">(14)</span>
                         </div>
-                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                        <svg class="chevron-avance" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
-                    <div class="sidebar-content">
+                    <div class="nav-content-avance" style="padding-left: 8px; display: none;">
         
-                        <a href="/education/orderflow/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/orderflow/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🌊</span>
-                            <span class="truncate">OrderFlow Basics</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">OrderFlow Basics</span>
                         </a>
             
-                        <a href="/education/money-management/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/money-management/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>💰</span>
-                            <span class="truncate">Money Management Avancé</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Money Management Avanc</span>
                         </a>
             
-                        <a href="/education/correlation-intermarches/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/correlation-intermarches/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔗</span>
-                            <span class="truncate">Corrélations Inter-Marchés</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Corrélations Inter-Mar</span>
                         </a>
             
-                        <a href="/education/liquidity-sweeps/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/liquidity-sweeps/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧹</span>
-                            <span class="truncate">Liquidity Sweeps</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Liquidity Sweeps</span>
                         </a>
             
-                        <a href="/education/market-profile/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/market-profile/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
-                            <span class="truncate">Market Profile</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Market Profile</span>
                         </a>
             
-                        <a href="/education/fibonacci-extensions/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/fibonacci-extensions/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🌀</span>
-                            <span class="truncate">Fibonacci Extensions</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Fibonacci Extensions</span>
                         </a>
             
-                        <a href="/education/gex-levels-1-10/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/gex-levels-1-10/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🎯</span>
-                            <span class="truncate">GEX Levels 1-10</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">GEX Levels 1-10</span>
                         </a>
             
-                        <a href="/education/blind-spots-trading/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/blind-spots-trading/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>👁️</span>
-                            <span class="truncate">Blind Spots Trading</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Blind Spots Trading</span>
                         </a>
             
-                        <a href="/education/delta-exposure-dex/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/delta-exposure-dex/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
-                            <span class="truncate">Delta Exposure (DEX)</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Delta Exposure (DEX)</span>
                         </a>
             
-                        <a href="/education/dealer-hedging-mechanics/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/dealer-hedging-mechanics/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>⚙️</span>
-                            <span class="truncate">Dealer Hedging</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Dealer Hedging</span>
                         </a>
             
-                        <a href="/education/gamma-walls-magnets/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/gamma-walls-magnets/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧲</span>
-                            <span class="truncate">Gamma Walls & Magnets</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gamma Walls & Magnets</span>
                         </a>
             
-                        <a href="/education/vix-vvix-volatility/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/vix-vvix-volatility/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🌪️</span>
-                            <span class="truncate">VIX & VVIX</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">VIX & VVIX</span>
                         </a>
             
-                        <a href="/education/option-greeks-traders/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/option-greeks-traders/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🇬🇷</span>
-                            <span class="truncate">Option Greeks</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Option Greeks</span>
                         </a>
             
-                        <a href="/education/regime-based-trading/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/regime-based-trading/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔄</span>
-                            <span class="truncate">Regime-Based Trading</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Regime-Based Trading</span>
                         </a>
             
                     </div>
                 </div>
         
-                <div class="sidebar-section " id="nav-bonus">
-                    <div class="sidebar-header" onclick="toggleNav('bonus')">
-                        <div class="flex items-center gap-2">
+                <div class="nav-section" id="nav-bonus">
+                    <div onclick="toggleNav('bonus')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                        <div style="display: flex; align-items: center; gap: 6px;">
                             <span>⭐</span>
-                            <span class="text-xs font-bold text-purple-400 uppercase">Bonus</span>
-                            <span class="text-xs text-light-500">(5)</span>
+                            <span style="font-size: 11px; font-weight: 700; color: #c084fc; text-transform: uppercase;">Bonus</span>
+                            <span style="font-size: 11px; color: #64748b;">(5)</span>
                         </div>
-                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                        <svg class="chevron-bonus" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
-                    <div class="sidebar-content">
+                    <div class="nav-content-bonus" style="padding-left: 8px; display: none;">
         
-                        <a href="/education/battle-navale/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/battle-navale/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>⚔️</span>
-                            <span class="truncate">Battle Navale</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Battle Navale</span>
                         </a>
             
-                        <a href="/education/une-journee-avec-mia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/une-journee-avec-mia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>☀️</span>
-                            <span class="truncate">Une Journée avec MIA</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Une Journée avec MIA</span>
                         </a>
             
-                        <a href="/education/pourquoi-bots-meurent/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/pourquoi-bots-meurent/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>💀</span>
-                            <span class="truncate">Pourquoi les Bots Meurent</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Pourquoi les Bots Meur</span>
                         </a>
             
-                        <a href="/education/quand-couper-mia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/quand-couper-mia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔌</span>
-                            <span class="truncate">Quand Couper MIA</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Quand Couper MIA</span>
                         </a>
             
-                        <a href="/education/mental-discipline-ia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/mental-discipline-ia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧘</span>
-                            <span class="truncate">Mental & Discipline</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Mental & Discipline</span>
                         </a>
             
                     </div>
@@ -302,298 +296,306 @@
             </div>
         </aside>
     
+
+    <!-- Main Content -->
+    <main class="main-content" style="padding-top: 72px; padding-bottom: 40px; padding-left: 16px; padding-right: 16px; max-width: 900px;">
+        <nav style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #64748b; margin-bottom: 16px;">
+            <a href="/education/" style="color: #64748b; text-decoration: none;">Education</a>
+            <span>›</span>
+            <span style="padding: 2px 8px; border-radius: 4px; background: #22d3ee22; color: #22d3ee; font-size: 11px;">Débutant</span>
+            <span>›</span>
+            <span style="color: #fff;">Types d&#x27;Ordres</span>
+        </nav>
         
-        <main class="flex-1 lg:ml-64 p-4 lg:p-6">
-            <nav class="flex items-center gap-2 text-xs text-light-500 mb-4">
-                <a href="/education/" class="hover:text-white">Education</a>
-                <span>›</span>
-                <span class="px-2 py-0.5 rounded bg-green-500/20 text-green-400">Débutant</span>
-                <span>›</span>
-                <span class="text-white">Types d&#x27;Ordres</span>
-            </nav>
+        <header style="margin-bottom: 24px;">
+            <span style="font-size: 48px; display: block; margin-bottom: 8px;">📝</span>
+            <h1 style="font-size: 28px; font-weight: 700; color: #fff; margin: 0 0 8px 0;">Types d&#x27;Ordres</h1>
+            <p style="color: #94a3b8; margin: 0 0 12px 0;">Les différents types d&#x27;ordres.</p>
+            <div style="display: flex; align-items: center; gap: 12px; font-size: 13px;">
+                <span style="display: flex; align-items: center; gap: 4px; color: #64748b;">
+                    <svg style="width: 14px; height: 14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    10 min
+                </span>
+                <span style="padding: 4px 10px; border-radius: 20px; background: #22d3ee22; color: #22d3ee;">Débutant</span>
+            </div>
+        </header>
+        
+        <article>
             
-            <header class="mb-6">
-                <span class="text-4xl mb-2 block">📝</span>
-                <h1 class="text-2xl lg:text-3xl font-bold text-white mb-2">Types d&#x27;Ordres</h1>
-                <p class="text-light-400 mb-3">Les différents types d&#x27;ordres.</p>
-                <div class="flex items-center gap-3 text-sm">
-                    <span class="flex items-center gap-1 text-light-400">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                        10 min
-                    </span>
-                    <span class="px-2 py-1 rounded bg-green-500/20 text-green-400">Débutant</span>
-                </div>
-            </header>
-            
-            <article class="space-y-4">
-                
-        <section class="card-glass p-5 rounded-xl">
-            <h2 class="text-lg font-bold text-white mb-3">🎯 Introduction: L\</h2>
-            <div class="text-light-300 text-sm space-y-3"><p>Vous avez la bonne analyse, le bon timing, le bon niveau - mais si vous ne savez pas COMMENT entrer et sortir correctement, vous laissez de l&#x27;argent sur la table.</p>
-<p>Les ordres sont vos OUTILS d&#x27;exécution. Chaque type a son utilité. Utiliser le mauvais ordre au mauvais moment peut transformer un trade gagnant en perdant.</p>
-<p>Sur les Futures, avec leur haute volatilité et liquidité, le choix de l&#x27;ordre est particulièrement crucial.</p>
+        <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">🎯 Introduction: L\</h2>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><p style="margin-bottom: 12px;">Vous avez la bonne analyse, le bon timing, le bon niveau - mais si vous ne savez pas COMMENT entrer et sortir correctement, vous laissez de l&#x27;argent sur la table.</p>
+<p style="margin-bottom: 12px;">Les ordres sont vos OUTILS d&#x27;exécution. Chaque type a son utilité. Utiliser le mauvais ordre au mauvais moment peut transformer un trade gagnant en perdant.</p>
+<p style="margin-bottom: 12px;">Sur les Futures, avec leur haute volatilité et liquidité, le choix de l&#x27;ordre est particulièrement crucial.</p>
 </div>
             
         </section>
         
-        <section class="card-glass p-5 rounded-xl">
-            <h2 class="text-lg font-bold text-white mb-3">📊 SCHÉMA: Les 3 ordres fondamentaux</h2>
-            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              LES 3 TYPES D&#x27;ORDRES FONDAMENTAUX                           │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  1. MARKET ORDER (Ordre au marché)                                       │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ════════════════════════════════                                        │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Exécution: IMMÉDIATE au meilleur prix disponible                     │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Garantie: Exécution garantie, prix NON garanti                       │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Slippage: Possible, surtout en haute volatilité                      │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Usage: Quand l&#x27;exécution est PLUS importante que le prix            │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│       Prix                                                               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        5002 ─── Ask (vendeurs)                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        5001 ─── Spread                                                  │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        5000 ─── Bid (acheteurs)                                         │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Market BUY → Vous achetez à 5002 (le Ask)                              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Market SELL → Vous vendez à 5000 (le Bid)                              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  2. LIMIT ORDER (Ordre limite)                                           │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ════════════════════════════════                                        │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Exécution: UNIQUEMENT au prix spécifié ou meilleur                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Garantie: Prix garanti, exécution NON garantie                       │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Slippage: Aucun (vous avez le prix demandé ou rien)                  │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Usage: Entrées patientes, niveaux précis                             │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Limit BUY à 4995 → Vous n&#x27;achetez QUE si le prix descend à 4995       │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Limit SELL à 5010 → Vous ne vendez QUE si le prix monte à 5010        │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  3. STOP ORDER (Ordre stop)                                              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ════════════════════════════════                                        │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Exécution: Devient MARKET quand le prix touche le niveau stop        │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Usage principal: Stop-loss pour limiter les pertes                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Slippage: Possible car devient market                                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Stop SELL à 4990 → Si le prix touche 4990, vente market immédiate     │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Stop BUY à 5010 → Si le prix touche 5010, achat market immédiat       │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+        <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">📊 SCHÉMA: Les 3 ordres fondamentaux</h2>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              LES 3 TYPES D&#x27;ORDRES FONDAMENTAUX                           │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  1. MARKET ORDER (Ordre au marché)                                       │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ════════════════════════════════                                        │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Exécution: IMMÉDIATE au meilleur prix disponible                     │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Garantie: Exécution garantie, prix NON garanti                       │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Slippage: Possible, surtout en haute volatilité                      │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Usage: Quand l&#x27;exécution est PLUS importante que le prix            │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│       Prix                                                               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        5002 ─── Ask (vendeurs)                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        5001 ─── Spread                                                  │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        5000 ─── Bid (acheteurs)                                         │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  Market BUY → Vous achetez à 5002 (le Ask)                              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  Market SELL → Vous vendez à 5000 (le Bid)                              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  2. LIMIT ORDER (Ordre limite)                                           │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ════════════════════════════════                                        │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Exécution: UNIQUEMENT au prix spécifié ou meilleur                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Garantie: Prix garanti, exécution NON garantie                       │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Slippage: Aucun (vous avez le prix demandé ou rien)                  │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Usage: Entrées patientes, niveaux précis                             │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  Limit BUY à 4995 → Vous n&#x27;achetez QUE si le prix descend à 4995       │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  Limit SELL à 5010 → Vous ne vendez QUE si le prix monte à 5010        │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  3. STOP ORDER (Ordre stop)                                              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ════════════════════════════════                                        │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Exécution: Devient MARKET quand le prix touche le niveau stop        │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Usage principal: Stop-loss pour limiter les pertes                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Slippage: Possible car devient market                                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  Stop SELL à 4990 → Si le prix touche 4990, vente market immédiate     │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  Stop BUY à 5010 → Si le prix touche 5010, achat market immédiat       │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
 </div>
             
         </section>
         
-        <section class="card-glass p-5 rounded-xl">
-            <h2 class="text-lg font-bold text-white mb-3">🔧 Ordres avancés pour les Futures</h2>
-            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              ORDRES AVANCÉS                                              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  4. STOP-LIMIT ORDER                                                     │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ════════════════════════════════                                        │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Combinaison: Stop + Limit                                            │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Devient LIMIT (pas market) quand le stop est touché                  │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Avantage: Évite le slippage du stop market                           │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Risque: Peut ne pas s&#x27;exécuter si le prix &quot;gap&quot; au-delà             │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Ex: Stop-Limit SELL, Stop=4990, Limit=4988                             │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  → Si prix touche 4990, ordre limit à 4988 est placé                    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  → Si le marché gap à 4980, l&#x27;ordre n&#x27;est PAS exécuté!                 │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  5. OCO (One Cancels Other)                                              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ════════════════════════════════                                        │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • 2 ordres liés: si l&#x27;un s&#x27;exécute, l&#x27;autre est annulé               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Usage: Stop-loss + Take-profit en même temps                         │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Ex: Position LONG à 5000                                               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Stop SELL à 4990 (protection)                                       │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └─ Limit SELL à 5020 (take profit)                                     │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  → Si TP touché, stop annulé. Si stop touché, TP annulé.               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  6. BRACKET ORDER                                                        │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ════════════════════════════════                                        │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Entrée + Stop + Target en un seul ordre                              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Automatise la gestion complète du trade                              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Recommandé pour tous les traders                                     │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Ex: Bracket LONG                                                        │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Entrée: BUY LIMIT 5000                                              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Stop: SELL STOP 4990                                                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └─ Target: SELL LIMIT 5020                                             │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+        <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">🔧 Ordres avancés pour les Futures</h2>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              ORDRES AVANCÉS                                              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  4. STOP-LIMIT ORDER                                                     │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ════════════════════════════════                                        │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Combinaison: Stop + Limit                                            │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Devient LIMIT (pas market) quand le stop est touché                  │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Avantage: Évite le slippage du stop market                           │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Risque: Peut ne pas s&#x27;exécuter si le prix &quot;gap&quot; au-delà             │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  Ex: Stop-Limit SELL, Stop=4990, Limit=4988                             │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  → Si prix touche 4990, ordre limit à 4988 est placé                    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  → Si le marché gap à 4980, l&#x27;ordre n&#x27;est PAS exécuté!                 │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  5. OCO (One Cancels Other)                                              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ════════════════════════════════                                        │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • 2 ordres liés: si l&#x27;un s&#x27;exécute, l&#x27;autre est annulé               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Usage: Stop-loss + Take-profit en même temps                         │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  Ex: Position LONG à 5000                                               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ├─ Stop SELL à 4990 (protection)                                       │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  └─ Limit SELL à 5020 (take profit)                                     │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  → Si TP touché, stop annulé. Si stop touché, TP annulé.               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  6. BRACKET ORDER                                                        │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ════════════════════════════════                                        │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Entrée + Stop + Target en un seul ordre                              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Automatise la gestion complète du trade                              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Recommandé pour tous les traders                                     │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  Ex: Bracket LONG                                                        │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ├─ Entrée: BUY LIMIT 5000                                              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ├─ Stop: SELL STOP 4990                                                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  └─ Target: SELL LIMIT 5020                                             │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
 </div>
             
         </section>
         
-        <section class="card-glass p-5 rounded-xl">
-            <h2 class="text-lg font-bold text-white mb-3">📋 GUIDE: Quand utiliser quel ordre?</h2>
-            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              QUAND UTILISER QUEL ORDRE?                                  │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ┌─────────────────────┬───────────────────────────────────────────┐    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │     SITUATION       │           ORDRE RECOMMANDÉ               │    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─────────────────────┼───────────────────────────────────────────┤    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Entrée sur niveau   │ LIMIT - Prix précis, pas de slippage     │    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Sortie urgente      │ MARKET - Exécution immédiate             │    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Stop-loss           │ STOP ou STOP-LIMIT                       │    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Take-profit         │ LIMIT - Prix garanti                     │    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Breakout trading    │ STOP BUY/SELL - Entrée sur cassure       │    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Trade complet       │ BRACKET - Tout automatisé               │    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Scalping rapide     │ MARKET - Vitesse critique                │    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  │ Swing patient       │ LIMIT - Patience pour meilleur prix      │    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └─────────────────────┴───────────────────────────────────────────┘    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ⚠️ CAS PARTICULIERS:                                                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Pendant les NEWS (FOMC, NFP): ÉVITEZ les market orders               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│    → Slippage de 5-20 ticks possible!                                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Marchés ILLIQUIDES (overnight, pre-market):                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│    → Utilisez des limit orders ou attendez plus de liquidité            │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Haute VOLATILITÉ:                                                     │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│    → Stop-limit plutôt que stop market pour éviter le slippage         │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+        <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">📋 GUIDE: Quand utiliser quel ordre?</h2>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              QUAND UTILISER QUEL ORDRE?                                  │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ┌─────────────────────┬───────────────────────────────────────────┐    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │     SITUATION       │           ORDRE RECOMMANDÉ               │    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ├─────────────────────┼───────────────────────────────────────────┤    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ Entrée sur niveau   │ LIMIT - Prix précis, pas de slippage     │    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ Sortie urgente      │ MARKET - Exécution immédiate             │    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ Stop-loss           │ STOP ou STOP-LIMIT                       │    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ Take-profit         │ LIMIT - Prix garanti                     │    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ Breakout trading    │ STOP BUY/SELL - Entrée sur cassure       │    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ Trade complet       │ BRACKET - Tout automatisé               │    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ Scalping rapide     │ MARKET - Vitesse critique                │    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ Swing patient       │ LIMIT - Patience pour meilleur prix      │    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  └─────────────────────┴───────────────────────────────────────────┘    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ⚠️ CAS PARTICULIERS:                                                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Pendant les NEWS (FOMC, NFP): ÉVITEZ les market orders               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│    → Slippage de 5-20 ticks possible!                                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Marchés ILLIQUIDES (overnight, pre-market):                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│    → Utilisez des limit orders ou attendez plus de liquidité            │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Haute VOLATILITÉ:                                                     │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│    → Stop-limit plutôt que stop market pour éviter le slippage         │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
 </div>
             
         </section>
         
-        <section class="card-glass p-5 rounded-xl">
-            <h2 class="text-lg font-bold text-white mb-3">⚡ Slippage: Comprendre et minimiser</h2>
-            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              LE SLIPPAGE EXPLIQUÉ                                        │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  DÉFINITION: Différence entre le prix attendu et le prix d&#x27;exécution   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  EXEMPLE:                                                                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Vous placez un MARKET BUY quand le prix affiché est 5000             │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Votre ordre est exécuté à 5002                                       │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Slippage = 2 points = $100 sur ES                                    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  CAUSES DU SLIPPAGE:                                                     │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Haute volatilité (news, open, close)                                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Faible liquidité (overnight, lunch)                                 │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Taille de position trop grande                                      │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └─ Ordres market en conditions extrêmes                                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  COMMENT MINIMISER LE SLIPPAGE:                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ✅ Tradez pendant les heures de haute liquidité (US session)           │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ✅ Utilisez des limit orders quand possible                            │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ✅ Évitez les market orders pendant les news                           │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ✅ Gardez des positions proportionnelles à la liquidité                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ✅ Sur ES: max ~10 contrats par ordre pour éviter l&#x27;impact             │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ✅ Utilisez stop-limit au lieu de stop market si volatilité élevée    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  💡 SLIPPAGE ACCEPTABLE SUR ES:                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Normal: 0-1 tick ($0-12.50)                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • News: 2-5 ticks ($25-62.50)                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Crash/Spike: 10+ ticks ($125+) - ÉVITEZ!                             │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+        <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">⚡ Slippage: Comprendre et minimiser</h2>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              LE SLIPPAGE EXPLIQUÉ                                        │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  DÉFINITION: Différence entre le prix attendu et le prix d&#x27;exécution   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  EXEMPLE:                                                                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Vous placez un MARKET BUY quand le prix affiché est 5000             │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Votre ordre est exécuté à 5002                                       │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Slippage = 2 points = $100 sur ES                                    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  CAUSES DU SLIPPAGE:                                                     │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ├─ Haute volatilité (news, open, close)                                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ├─ Faible liquidité (overnight, lunch)                                 │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ├─ Taille de position trop grande                                      │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  └─ Ordres market en conditions extrêmes                                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  COMMENT MINIMISER LE SLIPPAGE:                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ✅ Tradez pendant les heures de haute liquidité (US session)           │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ✅ Utilisez des limit orders quand possible                            │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ✅ Évitez les market orders pendant les news                           │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ✅ Gardez des positions proportionnelles à la liquidité                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ✅ Sur ES: max ~10 contrats par ordre pour éviter l&#x27;impact             │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ✅ Utilisez stop-limit au lieu de stop market si volatilité élevée    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  💡 SLIPPAGE ACCEPTABLE SUR ES:                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Normal: 0-1 tick ($0-12.50)                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • News: 2-5 ticks ($25-62.50)                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Crash/Spike: 10+ ticks ($125+) - ÉVITEZ!                             │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
 </div>
             
         </section>
         
-        <section class="card-glass p-5 rounded-xl">
-            <h2 class="text-lg font-bold text-white mb-3">📝 CAS PRATIQUE: Exécution complète d\</h2>
-            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              EXÉCUTION D&#x27;UN TRADE - STEP BY STEP                         │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  CONTEXTE:                                                               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Signal MIA: LONG ES sur niveau GEX à 5000                            │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Stop recommandé: 4992 (-8 points)                                    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Target recommandé: 5020 (+20 points)                                 │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Prix actuel: 5003                                                     │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ÉTAPE 1: PRÉPARER LE BRACKET ORDER                                      │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Entrée: BUY LIMIT à 5000 (au niveau GEX)                            │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ├─ Stop: SELL STOP à 4992                                              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  └─ Target: SELL LIMIT à 5020                                           │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ÉTAPE 2: PLACER L&#x27;ORDRE                                                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • L&#x27;ordre est en attente, le prix est à 5003                           │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Patience: on attend que le prix descende à 5000                      │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ÉTAPE 3: EXÉCUTION                                                      │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • 16h15: Le prix touche 5000                                           │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • BUY LIMIT exécuté à 5000 ✅                                           │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Stop et Target sont maintenant ACTIFS automatiquement               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ÉTAPE 4: GESTION                                                        │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Prix monte à 5010: On ne touche à RIEN                               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Prix atteint 5020: SELL LIMIT exécuté automatiquement               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Stop à 4992 est ANNULÉ automatiquement (OCO)                         │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  RÉSULTAT:                                                               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Profit: +20 points × $50 = +$1,000                                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Slippage: ZÉRO (limit orders)                                        │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Intervention manuelle: AUCUNE après le setup initial                 │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+        <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">📝 CAS PRATIQUE: Exécution complète d\</h2>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              EXÉCUTION D&#x27;UN TRADE - STEP BY STEP                         │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  CONTEXTE:                                                               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Signal MIA: LONG ES sur niveau GEX à 5000                            │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Stop recommandé: 4992 (-8 points)                                    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Target recommandé: 5020 (+20 points)                                 │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Prix actuel: 5003                                                     │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ÉTAPE 1: PRÉPARER LE BRACKET ORDER                                      │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ├─ Entrée: BUY LIMIT à 5000 (au niveau GEX)                            │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ├─ Stop: SELL STOP à 4992                                              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  └─ Target: SELL LIMIT à 5020                                           │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ÉTAPE 2: PLACER L&#x27;ORDRE                                                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • L&#x27;ordre est en attente, le prix est à 5003                           │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Patience: on attend que le prix descende à 5000                      │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ÉTAPE 3: EXÉCUTION                                                      │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • 16h15: Le prix touche 5000                                           │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • BUY LIMIT exécuté à 5000 ✅                                           │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Stop et Target sont maintenant ACTIFS automatiquement               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ÉTAPE 4: GESTION                                                        │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Prix monte à 5010: On ne touche à RIEN                               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Prix atteint 5020: SELL LIMIT exécuté automatiquement               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Stop à 4992 est ANNULÉ automatiquement (OCO)                         │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  RÉSULTAT:                                                               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Profit: +20 points × $50 = +$1,000                                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Slippage: ZÉRO (limit orders)                                        │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Intervention manuelle: AUCUNE après le setup initial                 │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
 </div>
             
         </section>
         
-        <section class="card-glass p-5 rounded-xl">
-            <h2 class="text-lg font-bold text-white mb-3">❌ ERREURS COMMUNES avec les ordres</h2>
-            <div class="text-light-300 text-sm space-y-3"></div>
-            <ul class="mt-3 space-y-1">
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #1: Market orders pendant les news → Slippage de 10+ ticks possible</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #2: Oublier de placer le stop → Un &quot;je le ferai après&quot; = position sans protection</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #3: Limit order trop ambitieux → &quot;Je veux 5000 pile&quot; quand le low est 5002</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #4: Stop trop serré → 2 ticks de stop = touché par le bruit normal du marché</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #5: Ne pas utiliser de bracket orders → Gérer manuellement = erreurs garanties</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #6: Taille d&#x27;ordre trop grande → Impact sur le prix et slippage accru</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #7: Modifier les ordres en panique → Le plan est fait AVANT, pas pendant</li>
+        <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">❌ ERREURS COMMUNES avec les ordres</h2>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"></div>
+            <ul style="margin-top: 12px;">
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>❌ ERREUR #1: Market orders pendant les news → Slippage de 10+ ticks possible</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>❌ ERREUR #2: Oublier de placer le stop → Un &quot;je le ferai après&quot; = position sans protection</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>❌ ERREUR #3: Limit order trop ambitieux → &quot;Je veux 5000 pile&quot; quand le low est 5002</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>❌ ERREUR #4: Stop trop serré → 2 ticks de stop = touché par le bruit normal du marché</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>❌ ERREUR #5: Ne pas utiliser de bracket orders → Gérer manuellement = erreurs garanties</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>❌ ERREUR #6: Taille d&#x27;ordre trop grande → Impact sur le prix et slippage accru</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>❌ ERREUR #7: Modifier les ordres en panique → Le plan est fait AVANT, pas pendant</li>
 </ul>
 
         </section>
         
-        <section class="card-glass p-5 rounded-xl">
-            <h2 class="text-lg font-bold text-white mb-3">✅ POINTS CLÉS à retenir</h2>
-            <div class="text-light-300 text-sm space-y-3"></div>
-            <ul class="mt-3 space-y-1">
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ MARKET = Exécution garantie, prix non garanti</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ LIMIT = Prix garanti, exécution non garantie</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ STOP = Protection, devient market quand touché</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ STOP-LIMIT = Stop sans slippage, mais peut ne pas s&#x27;exécuter</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ BRACKET = Entrée + Stop + Target en un ordre - RECOMMANDÉ</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Le slippage est réel - utilisez des limit orders quand possible</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Pendant les news: ÉVITEZ les market orders</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Automatisez votre exécution pour éliminer les erreurs humaines</li>
+        <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">✅ POINTS CLÉS à retenir</h2>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"></div>
+            <ul style="margin-top: 12px;">
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>✅ MARKET = Exécution garantie, prix non garanti</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>✅ LIMIT = Prix garanti, exécution non garantie</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>✅ STOP = Protection, devient market quand touché</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>✅ STOP-LIMIT = Stop sans slippage, mais peut ne pas s&#x27;exécuter</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>✅ BRACKET = Entrée + Stop + Target en un ordre - RECOMMANDÉ</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>✅ Le slippage est réel - utilisez des limit orders quand possible</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>✅ Pendant les news: ÉVITEZ les market orders</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>✅ Automatisez votre exécution pour éliminer les erreurs humaines</li>
 </ul>
 
         </section>
         
-            </article>
-            
-            <nav class="flex justify-between mt-8 pt-6 border-t border-white/10">
-                <a class="flex items-center gap-2 p-3 bg-dark-200 hover:bg-dark-300 rounded-lg transition-all group" href="/education/trading-psychology/">
-            <svg class="w-4 h-4 text-light-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
-            <div class="text-left"><div class="text-xs text-light-500">Précédent</div><div class="text-sm text-white truncate">Psychologie du Trading</div></div>
+        </article>
+        
+        <nav style="display: flex; justify-content: space-between; margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);">
+            <a href="/education/trading-psychology/" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: #1e293b; border-radius: 8px; text-decoration: none;" onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'">
+            <svg style="width: 16px; height: 16px; color: #94a3b8;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
+            <div><div style="font-size: 11px; color: #64748b;">Précédent</div><div style="font-size: 13px; color: #fff;">Psychologie du Tradi</div></div>
         </a>
-                <a class="flex items-center gap-2 p-3 bg-dark-200 hover:bg-dark-300 rounded-lg transition-all group" href="/education/journaling-backtesting/">
-            <div class="text-right"><div class="text-xs text-light-500">Suivant</div><div class="text-sm text-white truncate">Journaling &amp; Backtesting</div></div>
-            <svg class="w-4 h-4 text-light-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+            <a href="/education/journaling-backtesting/" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: #1e293b; border-radius: 8px; text-decoration: none;" onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'">
+            <div style="text-align: right;"><div style="font-size: 11px; color: #64748b;">Suivant</div><div style="font-size: 13px; color: #fff;">Journaling &amp; Backtes</div></div>
+            <svg style="width: 16px; height: 16px; color: #94a3b8;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
         </a>
-            </nav>
-        </main>
-    </div>
-</div>
-<script>
-function toggleNav(id) {
-    document.getElementById('nav-' + id).classList.toggle('open');
-}
-</script>
-<script src="/ticker.js" defer></script>
+        </nav>
+    </main>
+
+    <script>
+    function toggleNav(id) {
+        var content = document.querySelector('.nav-content-' + id);
+        var chevron = document.querySelector('.chevron-' + id);
+        if (content.style.display === 'none') {
+            content.style.display = 'block';
+            chevron.style.transform = 'rotate(180deg)';
+        } else {
+            content.style.display = 'none';
+            chevron.style.transform = 'rotate(0deg)';
+        }
+    }
+    </script>
+    <script src="/ticker.js" defer></script>
 </body>
 </html>

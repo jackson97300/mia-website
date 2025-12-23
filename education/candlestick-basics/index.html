@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -7,293 +7,287 @@
     <link rel="icon" href="/images/logo-dark.jpg"/>
     <title>Lecture des Chandeliers - MIA Academy</title>
     <style>
-        .sidebar-section { margin-bottom: 0.5rem; }
-        .sidebar-header { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem; cursor: pointer; border-radius: 0.5rem; }
-        .sidebar-header:hover { background: rgba(255,255,255,0.05); }
-        .sidebar-content { display: none; padding-left: 0.25rem; }
-        .sidebar-section.open .sidebar-content { display: block; }
-        .sidebar-section.open .chevron { transform: rotate(180deg); }
-        .nav-link { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.6rem; border-radius: 0.375rem; font-size: 0.8rem; text-decoration: none; transition: all 0.2s; }
+        @media (min-width: 1024px) {
+            .sidebar-desktop { display: block !important; }
+            .main-content { margin-left: 220px !important; }
+        }
     </style>
 </head>
-<body class="bg-dark text-white overflow-x-hidden">
-<div class="min-h-screen bg-dark flex flex-col">
-    <header class="fixed top-0 left-0 right-0 z-50 bg-dark-100/95 backdrop-blur-xl border-b border-white/10">
-        <div class="flex items-center justify-between h-14 px-4">
-            <div class="flex items-center gap-3">
-                <a class="flex items-center gap-2 text-light-400 hover:text-white" href="/">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                    <span class="text-sm hidden sm:inline">Accueil</span>
-                </a>
-                <div class="h-5 w-px bg-white/20"></div>
-                <a class="flex items-center gap-2" href="/">
-                    <img alt="MIA" class="w-7 h-7 rounded-full border border-mia-gold/50" src="/images/logo-dark.jpg"/>
-                    <span class="font-bold text-sm hidden sm:inline">MIA IA SYSTEM</span>
-                </a>
-            </div>
-            <a href="https://discord.gg/mia-ia-system" target="_blank" class="flex items-center gap-1 px-3 py-1.5 bg-accent-purple/20 text-accent-purple rounded-lg text-sm">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                Discord
+<body style="background: #0a0e14; color: #fff; margin: 0; font-family: system-ui, -apple-system, sans-serif;">
+    <!-- Header -->
+    <header style="position: fixed; top: 0; left: 0; right: 0; height: 56px; background: rgba(15,20,25,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 0 16px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <a href="/" style="display: flex; align-items: center; gap: 6px; color: #94a3b8; text-decoration: none;">
+                <svg style="width: 16px; height: 16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                <span style="font-size: 13px;">Accueil</span>
+            </a>
+            <div style="width: 1px; height: 20px; background: rgba(255,255,255,0.2);"></div>
+            <a href="/" style="display: flex; align-items: center; gap: 8px; text-decoration: none;">
+                <img src="/images/logo-dark.jpg" alt="MIA" style="width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(212,175,55,0.5);"/>
+                <span style="font-weight: 700; font-size: 14px; color: #fff;">MIA IA SYSTEM</span>
             </a>
         </div>
+        <a href="https://discord.gg/mia-ia-system" target="_blank" style="display: flex; align-items: center; gap: 6px; padding: 6px 12px; background: rgba(139,92,246,0.2); color: #a78bfa; border-radius: 8px; font-size: 13px; text-decoration: none;">
+            <svg style="width: 16px; height: 16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            Discord
+        </a>
     </header>
 
-    <div class="flex flex-1 pt-14">
-        
-        <aside class="hidden lg:block w-64 flex-shrink-0 border-r border-white/10 bg-dark-100 fixed top-14 bottom-0 overflow-y-auto z-40">
-            <div class="p-3">
     
-                <div class="sidebar-section open" id="nav-débutant">
-                    <div class="sidebar-header" onclick="toggleNav('débutant')">
-                        <div class="flex items-center gap-2">
+        <aside style="display: none; position: fixed; top: 56px; left: 0; bottom: 0; width: 220px; background: #0f1419; border-right: 1px solid rgba(255,255,255,0.1); overflow-y: auto; z-index: 40;" class="sidebar-desktop">
+            <div style="padding: 12px;">
+    
+                <div class="nav-section" id="nav-debutant">
+                    <div onclick="toggleNav('debutant')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                        <div style="display: flex; align-items: center; gap: 6px;">
                             <span>🌱</span>
-                            <span class="text-xs font-bold text-mia-cyan uppercase">Débutant</span>
-                            <span class="text-xs text-light-500">(10)</span>
+                            <span style="font-size: 11px; font-weight: 700; color: #22d3ee; text-transform: uppercase;">Débutant</span>
+                            <span style="font-size: 11px; color: #64748b;">(10)</span>
                         </div>
-                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                        <svg class="chevron-debutant" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s; transform: rotate(180deg);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
-                    <div class="sidebar-content">
+                    <div class="nav-content-debutant" style="padding-left: 8px;">
         
-                        <a href="/education/futures-101/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/futures-101/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
-                            <span class="truncate">Les Futures US: ES, NQ, RTY</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Les Futures US: ES, NQ</span>
                         </a>
             
-                        <a href="/education/trading-sessions/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/trading-sessions/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🕐</span>
-                            <span class="truncate">Les Sessions de Trading</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Les Sessions de Tradin</span>
                         </a>
             
-                        <a href="/education/candlestick-basics/" class="nav-link bg-mia-cyan/20 text-white">
+                        <a href="/education/candlestick-basics/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #fff; text-decoration: none; background: #22d3ee22;" onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='#22d3ee22'; this.style.color='#fff'">
                             <span>🕯️</span>
-                            <span class="truncate">Lecture des Chandeliers</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Lecture des Chandelier</span>
                         </a>
             
-                        <a href="/education/support-resistance/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/support-resistance/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📏</span>
-                            <span class="truncate">Support & Résistance</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Support & Résistance</span>
                         </a>
             
-                        <a href="/education/volume-importance/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/volume-importance/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
-                            <span class="truncate">L'Importance du Volume</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">L'Importance du Volume</span>
                         </a>
             
-                        <a href="/education/risk-management/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/risk-management/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🛡️</span>
-                            <span class="truncate">Gestion du Risque</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gestion du Risque</span>
                         </a>
             
-                        <a href="/education/trading-psychology/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/trading-psychology/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧠</span>
-                            <span class="truncate">Psychologie du Trading</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Psychologie du Trading</span>
                         </a>
             
-                        <a href="/education/order-types/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/order-types/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📝</span>
-                            <span class="truncate">Types d'Ordres</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Types d'Ordres</span>
                         </a>
             
-                        <a href="/education/journaling-backtesting/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/journaling-backtesting/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📓</span>
-                            <span class="truncate">Journaling & Backtesting</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Journaling & Backtesti</span>
                         </a>
             
-                        <a href="/education/economic-calendar/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/economic-calendar/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📅</span>
-                            <span class="truncate">Calendrier Économique</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Calendrier Économique</span>
                         </a>
             
                     </div>
                 </div>
         
-                <div class="sidebar-section " id="nav-intermédiaire">
-                    <div class="sidebar-header" onclick="toggleNav('intermédiaire')">
-                        <div class="flex items-center gap-2">
+                <div class="nav-section" id="nav-intermediaire">
+                    <div onclick="toggleNav('intermediaire')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                        <div style="display: flex; align-items: center; gap: 6px;">
                             <span>📈</span>
-                            <span class="text-xs font-bold text-yellow-400 uppercase">Intermédiaire</span>
-                            <span class="text-xs text-light-500">(11)</span>
+                            <span style="font-size: 11px; font-weight: 700; color: #facc15; text-transform: uppercase;">Intermédiaire</span>
+                            <span style="font-size: 11px; color: #64748b;">(11)</span>
                         </div>
-                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                        <svg class="chevron-intermediaire" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
-                    <div class="sidebar-content">
+                    <div class="nav-content-intermediaire" style="padding-left: 8px; display: none;">
         
-                        <a href="/education/multi-timeframe-analysis/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/multi-timeframe-analysis/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔍</span>
-                            <span class="truncate">Analyse Multi-Timeframe</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Analyse Multi-Timefram</span>
                         </a>
             
-                        <a href="/education/call-resistance-put-support/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/call-resistance-put-support/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📞</span>
-                            <span class="truncate">Call Resistance & Put Support</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Call Resistance & Put </span>
                         </a>
             
-                        <a href="/education/hvl-gamma-flip/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/hvl-gamma-flip/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🎯</span>
-                            <span class="truncate">HVL & Gamma Flip</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">HVL & Gamma Flip</span>
                         </a>
             
-                        <a href="/education/positive-negative-gamma/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/positive-negative-gamma/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>⚡</span>
-                            <span class="truncate">Gamma Positif vs Négatif</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gamma Positif vs Négat</span>
                         </a>
             
-                        <a href="/education/0dte-options-impact/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/0dte-options-impact/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>💥</span>
-                            <span class="truncate">Impact des Options 0DTE</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Impact des Options 0DT</span>
                         </a>
             
-                        <a href="/education/expected-move-range/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/expected-move-range/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📐</span>
-                            <span class="truncate">Expected Move & Range</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Expected Move & Range</span>
                         </a>
             
-                        <a href="/education/gamma-exposure/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/gamma-exposure/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📈</span>
-                            <span class="truncate">Gamma Exposure (GEX)</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gamma Exposure (GEX)</span>
                         </a>
             
-                        <a href="/education/high-volume-levels/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/high-volume-levels/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
-                            <span class="truncate">High Volume Levels</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">High Volume Levels</span>
                         </a>
             
-                        <a href="/education/options-impact/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/options-impact/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🎰</span>
-                            <span class="truncate">Impact des Options</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Impact des Options</span>
                         </a>
             
-                        <a href="/education/market-makers/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/market-makers/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🏦</span>
-                            <span class="truncate">Market Makers</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Market Makers</span>
                         </a>
             
-                        <a href="/education/vwap-intraday/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/vwap-intraday/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📉</span>
-                            <span class="truncate">VWAP & Niveaux Intraday</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">VWAP & Niveaux Intrada</span>
                         </a>
             
                     </div>
                 </div>
         
-                <div class="sidebar-section " id="nav-avancé">
-                    <div class="sidebar-header" onclick="toggleNav('avancé')">
-                        <div class="flex items-center gap-2">
+                <div class="nav-section" id="nav-avance">
+                    <div onclick="toggleNav('avance')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                        <div style="display: flex; align-items: center; gap: 6px;">
                             <span>🚀</span>
-                            <span class="text-xs font-bold text-red-400 uppercase">Avancé</span>
-                            <span class="text-xs text-light-500">(14)</span>
+                            <span style="font-size: 11px; font-weight: 700; color: #f87171; text-transform: uppercase;">Avancé</span>
+                            <span style="font-size: 11px; color: #64748b;">(14)</span>
                         </div>
-                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                        <svg class="chevron-avance" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
-                    <div class="sidebar-content">
+                    <div class="nav-content-avance" style="padding-left: 8px; display: none;">
         
-                        <a href="/education/orderflow/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/orderflow/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🌊</span>
-                            <span class="truncate">OrderFlow Basics</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">OrderFlow Basics</span>
                         </a>
             
-                        <a href="/education/money-management/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/money-management/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>💰</span>
-                            <span class="truncate">Money Management Avancé</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Money Management Avanc</span>
                         </a>
             
-                        <a href="/education/correlation-intermarches/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/correlation-intermarches/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔗</span>
-                            <span class="truncate">Corrélations Inter-Marchés</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Corrélations Inter-Mar</span>
                         </a>
             
-                        <a href="/education/liquidity-sweeps/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/liquidity-sweeps/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧹</span>
-                            <span class="truncate">Liquidity Sweeps</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Liquidity Sweeps</span>
                         </a>
             
-                        <a href="/education/market-profile/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/market-profile/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
-                            <span class="truncate">Market Profile</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Market Profile</span>
                         </a>
             
-                        <a href="/education/fibonacci-extensions/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/fibonacci-extensions/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🌀</span>
-                            <span class="truncate">Fibonacci Extensions</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Fibonacci Extensions</span>
                         </a>
             
-                        <a href="/education/gex-levels-1-10/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/gex-levels-1-10/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🎯</span>
-                            <span class="truncate">GEX Levels 1-10</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">GEX Levels 1-10</span>
                         </a>
             
-                        <a href="/education/blind-spots-trading/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/blind-spots-trading/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>👁️</span>
-                            <span class="truncate">Blind Spots Trading</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Blind Spots Trading</span>
                         </a>
             
-                        <a href="/education/delta-exposure-dex/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/delta-exposure-dex/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
-                            <span class="truncate">Delta Exposure (DEX)</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Delta Exposure (DEX)</span>
                         </a>
             
-                        <a href="/education/dealer-hedging-mechanics/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/dealer-hedging-mechanics/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>⚙️</span>
-                            <span class="truncate">Dealer Hedging</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Dealer Hedging</span>
                         </a>
             
-                        <a href="/education/gamma-walls-magnets/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/gamma-walls-magnets/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧲</span>
-                            <span class="truncate">Gamma Walls & Magnets</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gamma Walls & Magnets</span>
                         </a>
             
-                        <a href="/education/vix-vvix-volatility/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/vix-vvix-volatility/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🌪️</span>
-                            <span class="truncate">VIX & VVIX</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">VIX & VVIX</span>
                         </a>
             
-                        <a href="/education/option-greeks-traders/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/option-greeks-traders/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🇬🇷</span>
-                            <span class="truncate">Option Greeks</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Option Greeks</span>
                         </a>
             
-                        <a href="/education/regime-based-trading/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/regime-based-trading/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔄</span>
-                            <span class="truncate">Regime-Based Trading</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Regime-Based Trading</span>
                         </a>
             
                     </div>
                 </div>
         
-                <div class="sidebar-section " id="nav-bonus">
-                    <div class="sidebar-header" onclick="toggleNav('bonus')">
-                        <div class="flex items-center gap-2">
+                <div class="nav-section" id="nav-bonus">
+                    <div onclick="toggleNav('bonus')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                        <div style="display: flex; align-items: center; gap: 6px;">
                             <span>⭐</span>
-                            <span class="text-xs font-bold text-purple-400 uppercase">Bonus</span>
-                            <span class="text-xs text-light-500">(5)</span>
+                            <span style="font-size: 11px; font-weight: 700; color: #c084fc; text-transform: uppercase;">Bonus</span>
+                            <span style="font-size: 11px; color: #64748b;">(5)</span>
                         </div>
-                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                        <svg class="chevron-bonus" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
-                    <div class="sidebar-content">
+                    <div class="nav-content-bonus" style="padding-left: 8px; display: none;">
         
-                        <a href="/education/battle-navale/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/battle-navale/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>⚔️</span>
-                            <span class="truncate">Battle Navale</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Battle Navale</span>
                         </a>
             
-                        <a href="/education/une-journee-avec-mia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/une-journee-avec-mia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>☀️</span>
-                            <span class="truncate">Une Journée avec MIA</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Une Journée avec MIA</span>
                         </a>
             
-                        <a href="/education/pourquoi-bots-meurent/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/pourquoi-bots-meurent/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>💀</span>
-                            <span class="truncate">Pourquoi les Bots Meurent</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Pourquoi les Bots Meur</span>
                         </a>
             
-                        <a href="/education/quand-couper-mia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/quand-couper-mia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔌</span>
-                            <span class="truncate">Quand Couper MIA</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Quand Couper MIA</span>
                         </a>
             
-                        <a href="/education/mental-discipline-ia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/mental-discipline-ia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧘</span>
-                            <span class="truncate">Mental & Discipline</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Mental & Discipline</span>
                         </a>
             
                     </div>
@@ -302,277 +296,285 @@
             </div>
         </aside>
     
+
+    <!-- Main Content -->
+    <main class="main-content" style="padding-top: 72px; padding-bottom: 40px; padding-left: 16px; padding-right: 16px; max-width: 900px;">
+        <nav style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #64748b; margin-bottom: 16px;">
+            <a href="/education/" style="color: #64748b; text-decoration: none;">Education</a>
+            <span>›</span>
+            <span style="padding: 2px 8px; border-radius: 4px; background: #22d3ee22; color: #22d3ee; font-size: 11px;">Débutant</span>
+            <span>›</span>
+            <span style="color: #fff;">Lecture des Chandeliers</span>
+        </nav>
         
-        <main class="flex-1 lg:ml-64 p-4 lg:p-6">
-            <nav class="flex items-center gap-2 text-xs text-light-500 mb-4">
-                <a href="/education/" class="hover:text-white">Education</a>
-                <span>›</span>
-                <span class="px-2 py-0.5 rounded bg-green-500/20 text-green-400">Débutant</span>
-                <span>›</span>
-                <span class="text-white">Lecture des Chandeliers</span>
-            </nav>
+        <header style="margin-bottom: 24px;">
+            <span style="font-size: 48px; display: block; margin-bottom: 8px;">🕯️</span>
+            <h1 style="font-size: 28px; font-weight: 700; color: #fff; margin: 0 0 8px 0;">Lecture des Chandeliers</h1>
+            <p style="color: #94a3b8; margin: 0 0 12px 0;">Apprenez à lire les chandeliers japonais.</p>
+            <div style="display: flex; align-items: center; gap: 12px; font-size: 13px;">
+                <span style="display: flex; align-items: center; gap: 4px; color: #64748b;">
+                    <svg style="width: 14px; height: 14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    15 min
+                </span>
+                <span style="padding: 4px 10px; border-radius: 20px; background: #22d3ee22; color: #22d3ee;">Débutant</span>
+            </div>
+        </header>
+        
+        <article>
             
-            <header class="mb-6">
-                <span class="text-4xl mb-2 block">🕯️</span>
-                <h1 class="text-2xl lg:text-3xl font-bold text-white mb-2">Lecture des Chandeliers</h1>
-                <p class="text-light-400 mb-3">Apprenez à lire les chandeliers japonais.</p>
-                <div class="flex items-center gap-3 text-sm">
-                    <span class="flex items-center gap-1 text-light-400">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                        15 min
-                    </span>
-                    <span class="px-2 py-1 rounded bg-green-500/20 text-green-400">Débutant</span>
-                </div>
-            </header>
-            
-            <article class="space-y-4">
-                
-        <section class="card-glass p-5 rounded-xl">
-            <h2 class="text-lg font-bold text-white mb-3">📜 Histoire: Des marchands de riz japonais aux traders modernes</h2>
-            <div class="text-light-300 text-sm space-y-3"><p>Les chandeliers japonais ont été inventés il y a plus de 300 ans par Munehisa Homma, un légendaire marchand de riz japonais. À une époque sans ordinateurs ni internet, il a développé un système visuel pour analyser les prix qui reste le standard mondial aujourd&#x27;hui.</p>
-<p>Homma a fait fortune en comprenant que le prix reflète les ÉMOTIONS des participants: peur, avidité, espoir, panique. Chaque chandelier raconte une histoire de la bataille entre acheteurs et vendeurs.</p>
-<p>Aujourd&#x27;hui, 95% des traders professionnels utilisent les chandeliers comme base de leur analyse technique. Maîtriser leur lecture est FONDAMENTAL.</p>
+        <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">📜 Histoire: Des marchands de riz japonais aux traders modernes</h2>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><p style="margin-bottom: 12px;">Les chandeliers japonais ont été inventés il y a plus de 300 ans par Munehisa Homma, un légendaire marchand de riz japonais. À une époque sans ordinateurs ni internet, il a développé un système visuel pour analyser les prix qui reste le standard mondial aujourd&#x27;hui.</p>
+<p style="margin-bottom: 12px;">Homma a fait fortune en comprenant que le prix reflète les ÉMOTIONS des participants: peur, avidité, espoir, panique. Chaque chandelier raconte une histoire de la bataille entre acheteurs et vendeurs.</p>
+<p style="margin-bottom: 12px;">Aujourd&#x27;hui, 95% des traders professionnels utilisent les chandeliers comme base de leur analyse technique. Maîtriser leur lecture est FONDAMENTAL.</p>
 </div>
             
         </section>
         
-        <section class="card-glass p-5 rounded-xl">
-            <h2 class="text-lg font-bold text-white mb-3">🔬 Anatomie d\</h2>
-            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                    ANATOMIE D&#x27;UN CHANDELIER                              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│         CHANDELIER HAUSSIER          CHANDELIER BAISSIER                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│         (Vert/Blanc)                 (Rouge/Noir)                        │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              │                            │                              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              │ ← Mèche haute              │ ← Mèche haute                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              │   (High - Close)           │   (High - Open)              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│         ┌────┴────┐                  ┌────┴────┐                         │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│         │ CLÔTURE │                  │  OPEN   │                         │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│         │         │ ← Corps          │         │ ← Corps                 │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│         │  OPEN   │                  │ CLÔTURE │                         │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│         └────┬────┘                  └────┬────┘                         │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              │ ← Mèche basse              │ ← Mèche basse                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              │   (Open - Low)             │   (Close - Low)              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              │                            │                              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│ LES 4 PRIX:                                                              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│ • OPEN (Ouverture): Premier prix de la période                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│ • HIGH (Plus haut): Prix maximum atteint                                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│ • LOW (Plus bas): Prix minimum atteint                                  │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│ • CLOSE (Clôture): Dernier prix de la période                           │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│ INTERPRÉTATION DES MÈCHES:                                               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│ • Longue mèche haute = Vendeurs ont repoussé le prix (rejet)            │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│ • Longue mèche basse = Acheteurs ont défendu le prix (support)          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│ • Pas de mèche = Conviction forte dans la direction                      │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+        <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">🔬 Anatomie d\</h2>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                    ANATOMIE D&#x27;UN CHANDELIER                              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         CHANDELIER HAUSSIER          CHANDELIER BAISSIER                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         (Vert/Blanc)                 (Rouge/Noir)                        │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              │                            │                              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              │ ← Mèche haute              │ ← Mèche haute                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              │   (High - Close)           │   (High - Open)              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         ┌────┴────┐                  ┌────┴────┐                         │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         │ CLÔTURE │                  │  OPEN   │                         │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         │         │ ← Corps          │         │ ← Corps                 │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         │  OPEN   │                  │ CLÔTURE │                         │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         └────┬────┘                  └────┬────┘                         │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              │ ← Mèche basse              │ ← Mèche basse                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              │   (Open - Low)             │   (Close - Low)              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              │                            │                              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ LES 4 PRIX:                                                              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • OPEN (Ouverture): Premier prix de la période                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • HIGH (Plus haut): Prix maximum atteint                                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • LOW (Plus bas): Prix minimum atteint                                  │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • CLOSE (Clôture): Dernier prix de la période                           │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ INTERPRÉTATION DES MÈCHES:                                               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Longue mèche haute = Vendeurs ont repoussé le prix (rejet)            │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Longue mèche basse = Acheteurs ont défendu le prix (support)          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Pas de mèche = Conviction forte dans la direction                      │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
 </div>
             
         </section>
         
-        <section class="card-glass p-5 rounded-xl">
-            <h2 class="text-lg font-bold text-white mb-3">🔄 Patterns de Retournement - Anticiper les changements de direction</h2>
-            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                    PATTERNS DE RETOURNEMENT                              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  1. HAMMER (Marteau) - Retournement HAUSSIER                            │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     ─────────────────                                                    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│         ┌─┐                                                              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│         │ │   • Apparaît après une baisse                               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│         └┬┘   • Petit corps en haut                                     │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│          │    • Longue mèche basse (2-3x le corps)                      │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│          │    • Signifie: Acheteurs ont repris le contrôle              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│          │    • Fiabilité: ⭐⭐⭐⭐ (80% avec confirmation)              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  2. SHOOTING STAR (Étoile filante) - Retournement BAISSIER              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     ─────────────────                                                    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│          │    • Apparaît après une hausse                               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│          │    • Petit corps en bas                                      │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│         ┌┴┐   • Longue mèche haute (2-3x le corps)                      │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│         │ │   • Signifie: Vendeurs ont pris le contrôle                 │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│         └─┘   • Fiabilité: ⭐⭐⭐⭐ (80% avec confirmation)              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  3. DOJI - Indécision                                                    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     ─────────────────                                                    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│          │    • Open = Close (ou très proche)                           │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│         ─┼─   • Signifie: Bataille équilibrée                           │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│          │    • Contexte important: après tendance = potentiel reverse   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│               • Fiabilité: ⭐⭐⭐ (nécessite confirmation)                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  4. ENGULFING (Englobante) - Fort retournement                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     ─────────────────                                                    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│      Baissier          Haussier                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│       ┌─┐  ┌───┐      ┌───┐  ┌─┐                                        │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│       │▓│  │   │      │   │  │ │                                        │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│       │▓│  │   │      │   │  │ │                                        │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│       └─┘  └───┘      └───┘  └─┘                                        │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│      Petit + Grand    Grand + Petit                                      │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│      Fiabilité: ⭐⭐⭐⭐⭐ (très forte)                                  │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+        <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">🔄 Patterns de Retournement - Anticiper les changements de direction</h2>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                    PATTERNS DE RETOURNEMENT                              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  1. HAMMER (Marteau) - Retournement HAUSSIER                            │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     ─────────────────                                                    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         ┌─┐                                                              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         │ │   • Apparaît après une baisse                               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         └┬┘   • Petit corps en haut                                     │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│          │    • Longue mèche basse (2-3x le corps)                      │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│          │    • Signifie: Acheteurs ont repris le contrôle              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│          │    • Fiabilité: ⭐⭐⭐⭐ (80% avec confirmation)              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  2. SHOOTING STAR (Étoile filante) - Retournement BAISSIER              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     ─────────────────                                                    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│          │    • Apparaît après une hausse                               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│          │    • Petit corps en bas                                      │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         ┌┴┐   • Longue mèche haute (2-3x le corps)                      │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         │ │   • Signifie: Vendeurs ont pris le contrôle                 │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         └─┘   • Fiabilité: ⭐⭐⭐⭐ (80% avec confirmation)              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  3. DOJI - Indécision                                                    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     ─────────────────                                                    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│          │    • Open = Close (ou très proche)                           │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         ─┼─   • Signifie: Bataille équilibrée                           │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│          │    • Contexte important: après tendance = potentiel reverse   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│               • Fiabilité: ⭐⭐⭐ (nécessite confirmation)                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  4. ENGULFING (Englobante) - Fort retournement                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     ─────────────────                                                    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│      Baissier          Haussier                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│       ┌─┐  ┌───┐      ┌───┐  ┌─┐                                        │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│       │▓│  │   │      │   │  │ │                                        │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│       │▓│  │   │      │   │  │ │                                        │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│       └─┘  └───┘      └───┘  └─┘                                        │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│      Petit + Grand    Grand + Petit                                      │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│      Fiabilité: ⭐⭐⭐⭐⭐ (très forte)                                  │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
 </div>
             
         </section>
         
-        <section class="card-glass p-5 rounded-xl">
-            <h2 class="text-lg font-bold text-white mb-3">➡️ Patterns de Continuation - Confirmer la tendance</h2>
-            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                    PATTERNS DE CONTINUATION                              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  1. THREE WHITE SOLDIERS (3 soldats blancs) - Continuation HAUSSIÈRE    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     ─────────────────                                                    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              ┌─┐                                                         │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│           ┌─┐│ │   • 3 bougies vertes consécutives                       │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        ┌─┐│ │└─┘   • Chaque close &gt; close précédent                      │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        │ │└─┘      • Corps similaires, pas de longues mèches            │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        └─┘         • Signifie: Forte pression acheteuse                 │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                    • Fiabilité: ⭐⭐⭐⭐⭐                                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  2. THREE BLACK CROWS (3 corbeaux noirs) - Continuation BAISSIÈRE       │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     ─────────────────                                                    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        ┌─┐         • 3 bougies rouges consécutives                       │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        │▓│┌─┐      • Chaque close &lt; close précédent                      │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        └─┘│▓│┌─┐   • Corps similaires, pas de longues mèches            │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│           └─┘│▓│   • Signifie: Forte pression vendeuse                  │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              └─┘   • Fiabilité: ⭐⭐⭐⭐⭐                                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  3. MARUBOZU - Conviction extrême                                        │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     ─────────────────                                                    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        ┌───┐        Haussier: Open = Low, Close = High                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        │   │        Baissier: Open = High, Close = Low                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        │   │        • PAS de mèche = domination totale                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        │   │        • Très rare et très significatif                     │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        └───┘        • Fiabilité: ⭐⭐⭐⭐⭐                                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+        <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">➡️ Patterns de Continuation - Confirmer la tendance</h2>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                    PATTERNS DE CONTINUATION                              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  1. THREE WHITE SOLDIERS (3 soldats blancs) - Continuation HAUSSIÈRE    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     ─────────────────                                                    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              ┌─┐                                                         │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│           ┌─┐│ │   • 3 bougies vertes consécutives                       │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        ┌─┐│ │└─┘   • Chaque close &gt; close précédent                      │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        │ │└─┘      • Corps similaires, pas de longues mèches            │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        └─┘         • Signifie: Forte pression acheteuse                 │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                    • Fiabilité: ⭐⭐⭐⭐⭐                                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  2. THREE BLACK CROWS (3 corbeaux noirs) - Continuation BAISSIÈRE       │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     ─────────────────                                                    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        ┌─┐         • 3 bougies rouges consécutives                       │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        │▓│┌─┐      • Chaque close &lt; close précédent                      │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        └─┘│▓│┌─┐   • Corps similaires, pas de longues mèches            │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│           └─┘│▓│   • Signifie: Forte pression vendeuse                  │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              └─┘   • Fiabilité: ⭐⭐⭐⭐⭐                                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  3. MARUBOZU - Conviction extrême                                        │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     ─────────────────                                                    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        ┌───┐        Haussier: Open = Low, Close = High                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        │   │        Baissier: Open = High, Close = Low                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        │   │        • PAS de mèche = domination totale                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        │   │        • Très rare et très significatif                     │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        └───┘        • Fiabilité: ⭐⭐⭐⭐⭐                                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
 </div>
             
         </section>
         
-        <section class="card-glass p-5 rounded-xl">
-            <h2 class="text-lg font-bold text-white mb-3">🎯 Le CONTEXTE est ROI - Même pattern, significations différentes</h2>
-            <div class="text-light-300 text-sm space-y-3"><p>Un pattern de chandelier SEUL ne signifie RIEN. C&#x27;est le CONTEXTE qui lui donne sa puissance. Voici les règles d&#x27;or:</p>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                    RÈGLES D&#x27;INTERPRÉTATION                               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  RÈGLE 1: POSITION DANS LA TENDANCE                                      │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Hammer en bas de range = FORT signal d&#x27;achat                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Hammer au milieu = Peu significatif                                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Hammer en haut = IGNOREZ-LE                                           │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  RÈGLE 2: NIVEAU TECHNIQUE                                               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Pattern sur support/résistance = Puissance x3                         │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Pattern sur niveau GEX = Puissance x5                                 │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Pattern &quot;dans le vide&quot; = Fiabilité réduite                            │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  RÈGLE 3: VOLUME                                                         │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Pattern + Volume élevé = Confirmation forte                           │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Pattern + Volume faible = Méfiez-vous                                 │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  RÈGLE 4: TIMEFRAME                                                      │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Pattern sur Daily = Plus fiable que sur 1min                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Toujours vérifier le timeframe supérieur                              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  RÈGLE 5: CONFIRMATION                                                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • N&#x27;entrez JAMAIS sur le pattern seul                                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Attendez la bougie suivante pour confirmer                            │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Ex: Hammer → Attendez bougie verte pour confirmer                     │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+        <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">🎯 Le CONTEXTE est ROI - Même pattern, significations différentes</h2>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><p style="margin-bottom: 12px;">Un pattern de chandelier SEUL ne signifie RIEN. C&#x27;est le CONTEXTE qui lui donne sa puissance. Voici les règles d&#x27;or:</p>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                    RÈGLES D&#x27;INTERPRÉTATION                               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  RÈGLE 1: POSITION DANS LA TENDANCE                                      │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Hammer en bas de range = FORT signal d&#x27;achat                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Hammer au milieu = Peu significatif                                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Hammer en haut = IGNOREZ-LE                                           │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  RÈGLE 2: NIVEAU TECHNIQUE                                               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Pattern sur support/résistance = Puissance x3                         │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Pattern sur niveau GEX = Puissance x5                                 │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Pattern &quot;dans le vide&quot; = Fiabilité réduite                            │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  RÈGLE 3: VOLUME                                                         │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Pattern + Volume élevé = Confirmation forte                           │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Pattern + Volume faible = Méfiez-vous                                 │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  RÈGLE 4: TIMEFRAME                                                      │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Pattern sur Daily = Plus fiable que sur 1min                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Toujours vérifier le timeframe supérieur                              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  RÈGLE 5: CONFIRMATION                                                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • N&#x27;entrez JAMAIS sur le pattern seul                                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Attendez la bougie suivante pour confirmer                            │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Ex: Hammer → Attendez bougie verte pour confirmer                     │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
 </div>
             
         </section>
         
-        <section class="card-glass p-5 rounded-xl">
-            <h2 class="text-lg font-bold text-white mb-3">📝 CAS PRATIQUE: Trade ES avec Hammer + Niveau GEX</h2>
-            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              CAS PRATIQUE - TRADE RÉEL ES                                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  CONTEXTE:                                                               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • ES en baisse depuis l&#x27;open, -25 points                                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Approche du niveau GEX #2 (support majeur)                            │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • 16h15 - Milieu de session US Open                                     │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  CE QUI SE PASSE:                                                        │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  1. ES touche GEX #2 à 4975                                              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  2. Bougie 5min forme un HAMMER parfait                                  │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     - Corps: 2 points                                                    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     - Mèche basse: 7 points                                              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     - Volume: +40% vs moyenne                                            │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  3. Bougie suivante: verte de confirmation                               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  EXÉCUTION DU TRADE:                                                     │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Entrée: 4977 (au-dessus du high du hammer)                            │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Stop-loss: 4972 (sous le low du hammer) = -5 points = -$250           │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Take-profit: 4992 (prochain niveau GEX) = +15 points = +$750          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Ratio R/R: 1:3 ✅                                                      │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  RÉSULTAT:                                                               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ES monte à 4995, TP atteint. Profit: +$750 sur 1 contrat.               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+        <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">📝 CAS PRATIQUE: Trade ES avec Hammer + Niveau GEX</h2>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              CAS PRATIQUE - TRADE RÉEL ES                                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  CONTEXTE:                                                               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • ES en baisse depuis l&#x27;open, -25 points                                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Approche du niveau GEX #2 (support majeur)                            │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • 16h15 - Milieu de session US Open                                     │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  CE QUI SE PASSE:                                                        │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  1. ES touche GEX #2 à 4975                                              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  2. Bougie 5min forme un HAMMER parfait                                  │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     - Corps: 2 points                                                    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     - Mèche basse: 7 points                                              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     - Volume: +40% vs moyenne                                            │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  3. Bougie suivante: verte de confirmation                               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  EXÉCUTION DU TRADE:                                                     │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Entrée: 4977 (au-dessus du high du hammer)                            │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Stop-loss: 4972 (sous le low du hammer) = -5 points = -$250           │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Take-profit: 4992 (prochain niveau GEX) = +15 points = +$750          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Ratio R/R: 1:3 ✅                                                      │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  RÉSULTAT:                                                               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ES monte à 4995, TP atteint. Profit: +$750 sur 1 contrat.               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
 </div>
             
         </section>
         
-        <section class="card-glass p-5 rounded-xl">
-            <h2 class="text-lg font-bold text-white mb-3">❌ ERREURS COMMUNES avec les chandeliers</h2>
-            <div class="text-light-300 text-sm space-y-3"></div>
-            <ul class="mt-3 space-y-1">
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #1: Trader un pattern sans contexte → Un hammer dans le vide ne vaut rien</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #2: Ignorer la confirmation → Entrer avant la bougie de confirmation = 50% de faux signaux</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #3: Utiliser des timeframes trop petits → Les patterns 1min sont du bruit</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #4: Oublier le volume → Un pattern sans volume n&#x27;a pas de conviction</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #5: Chercher des patterns partout → Le marché est souvent &quot;neutre&quot;, pas de pattern</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #6: Confondre les patterns → Hammer vs Hanging Man = même forme, contexte différent</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ ERREUR #7: Sur-compliquer → Maîtrisez 5 patterns à fond plutôt que 20 superficiellement</li>
+        <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">❌ ERREURS COMMUNES avec les chandeliers</h2>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"></div>
+            <ul style="margin-top: 12px;">
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>❌ ERREUR #1: Trader un pattern sans contexte → Un hammer dans le vide ne vaut rien</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>❌ ERREUR #2: Ignorer la confirmation → Entrer avant la bougie de confirmation = 50% de faux signaux</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>❌ ERREUR #3: Utiliser des timeframes trop petits → Les patterns 1min sont du bruit</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>❌ ERREUR #4: Oublier le volume → Un pattern sans volume n&#x27;a pas de conviction</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>❌ ERREUR #5: Chercher des patterns partout → Le marché est souvent &quot;neutre&quot;, pas de pattern</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>❌ ERREUR #6: Confondre les patterns → Hammer vs Hanging Man = même forme, contexte différent</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>❌ ERREUR #7: Sur-compliquer → Maîtrisez 5 patterns à fond plutôt que 20 superficiellement</li>
 </ul>
 
         </section>
         
-        <section class="card-glass p-5 rounded-xl">
-            <h2 class="text-lg font-bold text-white mb-3">✅ POINTS CLÉS à retenir</h2>
-            <div class="text-light-300 text-sm space-y-3"></div>
-            <ul class="mt-3 space-y-1">
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Les chandeliers racontent l&#x27;histoire de la bataille acheteurs vs vendeurs</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Les 4 prix (OHLC) sont la base: Open, High, Low, Close</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Les mèches indiquent les rejets de prix (offre/demande)</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Patterns de retournement: Hammer, Shooting Star, Doji, Engulfing</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Patterns de continuation: 3 White Soldiers, 3 Black Crows, Marubozu</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Le CONTEXTE est crucial: niveau, volume, timeframe, tendance</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Toujours attendre la CONFIRMATION avant d&#x27;entrer</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Sur Futures, le graphique 5min est optimal pour les patterns</li>
+        <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">✅ POINTS CLÉS à retenir</h2>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"></div>
+            <ul style="margin-top: 12px;">
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>✅ Les chandeliers racontent l&#x27;histoire de la bataille acheteurs vs vendeurs</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>✅ Les 4 prix (OHLC) sont la base: Open, High, Low, Close</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>✅ Les mèches indiquent les rejets de prix (offre/demande)</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>✅ Patterns de retournement: Hammer, Shooting Star, Doji, Engulfing</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>✅ Patterns de continuation: 3 White Soldiers, 3 Black Crows, Marubozu</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>✅ Le CONTEXTE est crucial: niveau, volume, timeframe, tendance</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>✅ Toujours attendre la CONFIRMATION avant d&#x27;entrer</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>✅ Sur Futures, le graphique 5min est optimal pour les patterns</li>
 </ul>
 
         </section>
         
-            </article>
-            
-            <nav class="flex justify-between mt-8 pt-6 border-t border-white/10">
-                <a class="flex items-center gap-2 p-3 bg-dark-200 hover:bg-dark-300 rounded-lg transition-all group" href="/education/trading-sessions/">
-            <svg class="w-4 h-4 text-light-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
-            <div class="text-left"><div class="text-xs text-light-500">Précédent</div><div class="text-sm text-white truncate">Les Sessions de Trading</div></div>
+        </article>
+        
+        <nav style="display: flex; justify-content: space-between; margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);">
+            <a href="/education/trading-sessions/" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: #1e293b; border-radius: 8px; text-decoration: none;" onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'">
+            <svg style="width: 16px; height: 16px; color: #94a3b8;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
+            <div><div style="font-size: 11px; color: #64748b;">Précédent</div><div style="font-size: 13px; color: #fff;">Les Sessions de Trad</div></div>
         </a>
-                <a class="flex items-center gap-2 p-3 bg-dark-200 hover:bg-dark-300 rounded-lg transition-all group" href="/education/support-resistance/">
-            <div class="text-right"><div class="text-xs text-light-500">Suivant</div><div class="text-sm text-white truncate">Support &amp; Résistance</div></div>
-            <svg class="w-4 h-4 text-light-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+            <a href="/education/support-resistance/" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: #1e293b; border-radius: 8px; text-decoration: none;" onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'">
+            <div style="text-align: right;"><div style="font-size: 11px; color: #64748b;">Suivant</div><div style="font-size: 13px; color: #fff;">Support &amp; Résistance</div></div>
+            <svg style="width: 16px; height: 16px; color: #94a3b8;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
         </a>
-            </nav>
-        </main>
-    </div>
-</div>
-<script>
-function toggleNav(id) {
-    document.getElementById('nav-' + id).classList.toggle('open');
-}
-</script>
-<script src="/ticker.js" defer></script>
+        </nav>
+    </main>
+
+    <script>
+    function toggleNav(id) {
+        var content = document.querySelector('.nav-content-' + id);
+        var chevron = document.querySelector('.chevron-' + id);
+        if (content.style.display === 'none') {
+            content.style.display = 'block';
+            chevron.style.transform = 'rotate(180deg)';
+        } else {
+            content.style.display = 'none';
+            chevron.style.transform = 'rotate(0deg)';
+        }
+    }
+    </script>
+    <script src="/ticker.js" defer></script>
 </body>
 </html>

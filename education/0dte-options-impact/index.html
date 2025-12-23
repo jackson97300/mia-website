@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" class="scroll-smooth">
+<html lang="fr">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -7,293 +7,287 @@
     <link rel="icon" href="/images/logo-dark.jpg"/>
     <title>Impact des Options 0DTE - MIA Academy</title>
     <style>
-        .sidebar-section { margin-bottom: 0.5rem; }
-        .sidebar-header { display: flex; align-items: center; justify-content: space-between; padding: 0.5rem; cursor: pointer; border-radius: 0.5rem; }
-        .sidebar-header:hover { background: rgba(255,255,255,0.05); }
-        .sidebar-content { display: none; padding-left: 0.25rem; }
-        .sidebar-section.open .sidebar-content { display: block; }
-        .sidebar-section.open .chevron { transform: rotate(180deg); }
-        .nav-link { display: flex; align-items: center; gap: 0.5rem; padding: 0.4rem 0.6rem; border-radius: 0.375rem; font-size: 0.8rem; text-decoration: none; transition: all 0.2s; }
+        @media (min-width: 1024px) {
+            .sidebar-desktop { display: block !important; }
+            .main-content { margin-left: 220px !important; }
+        }
     </style>
 </head>
-<body class="bg-dark text-white overflow-x-hidden">
-<div class="min-h-screen bg-dark flex flex-col">
-    <header class="fixed top-0 left-0 right-0 z-50 bg-dark-100/95 backdrop-blur-xl border-b border-white/10">
-        <div class="flex items-center justify-between h-14 px-4">
-            <div class="flex items-center gap-3">
-                <a class="flex items-center gap-2 text-light-400 hover:text-white" href="/">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                    <span class="text-sm hidden sm:inline">Accueil</span>
-                </a>
-                <div class="h-5 w-px bg-white/20"></div>
-                <a class="flex items-center gap-2" href="/">
-                    <img alt="MIA" class="w-7 h-7 rounded-full border border-mia-gold/50" src="/images/logo-dark.jpg"/>
-                    <span class="font-bold text-sm hidden sm:inline">MIA IA SYSTEM</span>
-                </a>
-            </div>
-            <a href="https://discord.gg/mia-ia-system" target="_blank" class="flex items-center gap-1 px-3 py-1.5 bg-accent-purple/20 text-accent-purple rounded-lg text-sm">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                Discord
+<body style="background: #0a0e14; color: #fff; margin: 0; font-family: system-ui, -apple-system, sans-serif;">
+    <!-- Header -->
+    <header style="position: fixed; top: 0; left: 0; right: 0; height: 56px; background: rgba(15,20,25,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); z-index: 50; display: flex; align-items: center; justify-content: space-between; padding: 0 16px;">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <a href="/" style="display: flex; align-items: center; gap: 6px; color: #94a3b8; text-decoration: none;">
+                <svg style="width: 16px; height: 16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                <span style="font-size: 13px;">Accueil</span>
+            </a>
+            <div style="width: 1px; height: 20px; background: rgba(255,255,255,0.2);"></div>
+            <a href="/" style="display: flex; align-items: center; gap: 8px; text-decoration: none;">
+                <img src="/images/logo-dark.jpg" alt="MIA" style="width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(212,175,55,0.5);"/>
+                <span style="font-weight: 700; font-size: 14px; color: #fff;">MIA IA SYSTEM</span>
             </a>
         </div>
+        <a href="https://discord.gg/mia-ia-system" target="_blank" style="display: flex; align-items: center; gap: 6px; padding: 6px 12px; background: rgba(139,92,246,0.2); color: #a78bfa; border-radius: 8px; font-size: 13px; text-decoration: none;">
+            <svg style="width: 16px; height: 16px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+            Discord
+        </a>
     </header>
 
-    <div class="flex flex-1 pt-14">
-        
-        <aside class="hidden lg:block w-64 flex-shrink-0 border-r border-white/10 bg-dark-100 fixed top-14 bottom-0 overflow-y-auto z-40">
-            <div class="p-3">
     
-                <div class="sidebar-section " id="nav-débutant">
-                    <div class="sidebar-header" onclick="toggleNav('débutant')">
-                        <div class="flex items-center gap-2">
+        <aside style="display: none; position: fixed; top: 56px; left: 0; bottom: 0; width: 220px; background: #0f1419; border-right: 1px solid rgba(255,255,255,0.1); overflow-y: auto; z-index: 40;" class="sidebar-desktop">
+            <div style="padding: 12px;">
+    
+                <div class="nav-section" id="nav-debutant">
+                    <div onclick="toggleNav('debutant')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                        <div style="display: flex; align-items: center; gap: 6px;">
                             <span>🌱</span>
-                            <span class="text-xs font-bold text-mia-cyan uppercase">Débutant</span>
-                            <span class="text-xs text-light-500">(10)</span>
+                            <span style="font-size: 11px; font-weight: 700; color: #22d3ee; text-transform: uppercase;">Débutant</span>
+                            <span style="font-size: 11px; color: #64748b;">(10)</span>
                         </div>
-                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                        <svg class="chevron-debutant" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
-                    <div class="sidebar-content">
+                    <div class="nav-content-debutant" style="padding-left: 8px; display: none;">
         
-                        <a href="/education/futures-101/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/futures-101/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
-                            <span class="truncate">Les Futures US: ES, NQ, RTY</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Les Futures US: ES, NQ</span>
                         </a>
             
-                        <a href="/education/trading-sessions/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/trading-sessions/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🕐</span>
-                            <span class="truncate">Les Sessions de Trading</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Les Sessions de Tradin</span>
                         </a>
             
-                        <a href="/education/candlestick-basics/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/candlestick-basics/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🕯️</span>
-                            <span class="truncate">Lecture des Chandeliers</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Lecture des Chandelier</span>
                         </a>
             
-                        <a href="/education/support-resistance/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/support-resistance/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📏</span>
-                            <span class="truncate">Support & Résistance</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Support & Résistance</span>
                         </a>
             
-                        <a href="/education/volume-importance/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/volume-importance/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
-                            <span class="truncate">L'Importance du Volume</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">L'Importance du Volume</span>
                         </a>
             
-                        <a href="/education/risk-management/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/risk-management/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🛡️</span>
-                            <span class="truncate">Gestion du Risque</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gestion du Risque</span>
                         </a>
             
-                        <a href="/education/trading-psychology/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/trading-psychology/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧠</span>
-                            <span class="truncate">Psychologie du Trading</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Psychologie du Trading</span>
                         </a>
             
-                        <a href="/education/order-types/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/order-types/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📝</span>
-                            <span class="truncate">Types d'Ordres</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Types d'Ordres</span>
                         </a>
             
-                        <a href="/education/journaling-backtesting/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/journaling-backtesting/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📓</span>
-                            <span class="truncate">Journaling & Backtesting</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Journaling & Backtesti</span>
                         </a>
             
-                        <a href="/education/economic-calendar/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/economic-calendar/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📅</span>
-                            <span class="truncate">Calendrier Économique</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Calendrier Économique</span>
                         </a>
             
                     </div>
                 </div>
         
-                <div class="sidebar-section open" id="nav-intermédiaire">
-                    <div class="sidebar-header" onclick="toggleNav('intermédiaire')">
-                        <div class="flex items-center gap-2">
+                <div class="nav-section" id="nav-intermediaire">
+                    <div onclick="toggleNav('intermediaire')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                        <div style="display: flex; align-items: center; gap: 6px;">
                             <span>📈</span>
-                            <span class="text-xs font-bold text-yellow-400 uppercase">Intermédiaire</span>
-                            <span class="text-xs text-light-500">(11)</span>
+                            <span style="font-size: 11px; font-weight: 700; color: #facc15; text-transform: uppercase;">Intermédiaire</span>
+                            <span style="font-size: 11px; color: #64748b;">(11)</span>
                         </div>
-                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                        <svg class="chevron-intermediaire" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s; transform: rotate(180deg);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
-                    <div class="sidebar-content">
+                    <div class="nav-content-intermediaire" style="padding-left: 8px;">
         
-                        <a href="/education/multi-timeframe-analysis/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/multi-timeframe-analysis/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔍</span>
-                            <span class="truncate">Analyse Multi-Timeframe</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Analyse Multi-Timefram</span>
                         </a>
             
-                        <a href="/education/call-resistance-put-support/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/call-resistance-put-support/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📞</span>
-                            <span class="truncate">Call Resistance & Put Support</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Call Resistance & Put </span>
                         </a>
             
-                        <a href="/education/hvl-gamma-flip/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/hvl-gamma-flip/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🎯</span>
-                            <span class="truncate">HVL & Gamma Flip</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">HVL & Gamma Flip</span>
                         </a>
             
-                        <a href="/education/positive-negative-gamma/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/positive-negative-gamma/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>⚡</span>
-                            <span class="truncate">Gamma Positif vs Négatif</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gamma Positif vs Négat</span>
                         </a>
             
-                        <a href="/education/0dte-options-impact/" class="nav-link bg-yellow-400/20 text-white">
+                        <a href="/education/0dte-options-impact/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #fff; text-decoration: none; background: #facc1522;" onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='#facc1522'; this.style.color='#fff'">
                             <span>💥</span>
-                            <span class="truncate">Impact des Options 0DTE</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Impact des Options 0DT</span>
                         </a>
             
-                        <a href="/education/expected-move-range/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/expected-move-range/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📐</span>
-                            <span class="truncate">Expected Move & Range</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Expected Move & Range</span>
                         </a>
             
-                        <a href="/education/gamma-exposure/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/gamma-exposure/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📈</span>
-                            <span class="truncate">Gamma Exposure (GEX)</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gamma Exposure (GEX)</span>
                         </a>
             
-                        <a href="/education/high-volume-levels/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/high-volume-levels/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
-                            <span class="truncate">High Volume Levels</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">High Volume Levels</span>
                         </a>
             
-                        <a href="/education/options-impact/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/options-impact/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🎰</span>
-                            <span class="truncate">Impact des Options</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Impact des Options</span>
                         </a>
             
-                        <a href="/education/market-makers/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/market-makers/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🏦</span>
-                            <span class="truncate">Market Makers</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Market Makers</span>
                         </a>
             
-                        <a href="/education/vwap-intraday/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/vwap-intraday/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📉</span>
-                            <span class="truncate">VWAP & Niveaux Intraday</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">VWAP & Niveaux Intrada</span>
                         </a>
             
                     </div>
                 </div>
         
-                <div class="sidebar-section " id="nav-avancé">
-                    <div class="sidebar-header" onclick="toggleNav('avancé')">
-                        <div class="flex items-center gap-2">
+                <div class="nav-section" id="nav-avance">
+                    <div onclick="toggleNav('avance')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                        <div style="display: flex; align-items: center; gap: 6px;">
                             <span>🚀</span>
-                            <span class="text-xs font-bold text-red-400 uppercase">Avancé</span>
-                            <span class="text-xs text-light-500">(14)</span>
+                            <span style="font-size: 11px; font-weight: 700; color: #f87171; text-transform: uppercase;">Avancé</span>
+                            <span style="font-size: 11px; color: #64748b;">(14)</span>
                         </div>
-                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                        <svg class="chevron-avance" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
-                    <div class="sidebar-content">
+                    <div class="nav-content-avance" style="padding-left: 8px; display: none;">
         
-                        <a href="/education/orderflow/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/orderflow/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🌊</span>
-                            <span class="truncate">OrderFlow Basics</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">OrderFlow Basics</span>
                         </a>
             
-                        <a href="/education/money-management/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/money-management/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>💰</span>
-                            <span class="truncate">Money Management Avancé</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Money Management Avanc</span>
                         </a>
             
-                        <a href="/education/correlation-intermarches/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/correlation-intermarches/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔗</span>
-                            <span class="truncate">Corrélations Inter-Marchés</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Corrélations Inter-Mar</span>
                         </a>
             
-                        <a href="/education/liquidity-sweeps/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/liquidity-sweeps/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧹</span>
-                            <span class="truncate">Liquidity Sweeps</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Liquidity Sweeps</span>
                         </a>
             
-                        <a href="/education/market-profile/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/market-profile/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
-                            <span class="truncate">Market Profile</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Market Profile</span>
                         </a>
             
-                        <a href="/education/fibonacci-extensions/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/fibonacci-extensions/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🌀</span>
-                            <span class="truncate">Fibonacci Extensions</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Fibonacci Extensions</span>
                         </a>
             
-                        <a href="/education/gex-levels-1-10/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/gex-levels-1-10/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🎯</span>
-                            <span class="truncate">GEX Levels 1-10</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">GEX Levels 1-10</span>
                         </a>
             
-                        <a href="/education/blind-spots-trading/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/blind-spots-trading/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>👁️</span>
-                            <span class="truncate">Blind Spots Trading</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Blind Spots Trading</span>
                         </a>
             
-                        <a href="/education/delta-exposure-dex/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/delta-exposure-dex/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
-                            <span class="truncate">Delta Exposure (DEX)</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Delta Exposure (DEX)</span>
                         </a>
             
-                        <a href="/education/dealer-hedging-mechanics/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/dealer-hedging-mechanics/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>⚙️</span>
-                            <span class="truncate">Dealer Hedging</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Dealer Hedging</span>
                         </a>
             
-                        <a href="/education/gamma-walls-magnets/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/gamma-walls-magnets/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧲</span>
-                            <span class="truncate">Gamma Walls & Magnets</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gamma Walls & Magnets</span>
                         </a>
             
-                        <a href="/education/vix-vvix-volatility/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/vix-vvix-volatility/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🌪️</span>
-                            <span class="truncate">VIX & VVIX</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">VIX & VVIX</span>
                         </a>
             
-                        <a href="/education/option-greeks-traders/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/option-greeks-traders/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🇬🇷</span>
-                            <span class="truncate">Option Greeks</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Option Greeks</span>
                         </a>
             
-                        <a href="/education/regime-based-trading/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/regime-based-trading/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔄</span>
-                            <span class="truncate">Regime-Based Trading</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Regime-Based Trading</span>
                         </a>
             
                     </div>
                 </div>
         
-                <div class="sidebar-section " id="nav-bonus">
-                    <div class="sidebar-header" onclick="toggleNav('bonus')">
-                        <div class="flex items-center gap-2">
+                <div class="nav-section" id="nav-bonus">
+                    <div onclick="toggleNav('bonus')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
+                        <div style="display: flex; align-items: center; gap: 6px;">
                             <span>⭐</span>
-                            <span class="text-xs font-bold text-purple-400 uppercase">Bonus</span>
-                            <span class="text-xs text-light-500">(5)</span>
+                            <span style="font-size: 11px; font-weight: 700; color: #c084fc; text-transform: uppercase;">Bonus</span>
+                            <span style="font-size: 11px; color: #64748b;">(5)</span>
                         </div>
-                        <svg class="w-4 h-4 text-light-500 chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
+                        <svg class="chevron-bonus" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
-                    <div class="sidebar-content">
+                    <div class="nav-content-bonus" style="padding-left: 8px; display: none;">
         
-                        <a href="/education/battle-navale/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/battle-navale/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>⚔️</span>
-                            <span class="truncate">Battle Navale</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Battle Navale</span>
                         </a>
             
-                        <a href="/education/une-journee-avec-mia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/une-journee-avec-mia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>☀️</span>
-                            <span class="truncate">Une Journée avec MIA</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Une Journée avec MIA</span>
                         </a>
             
-                        <a href="/education/pourquoi-bots-meurent/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/pourquoi-bots-meurent/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>💀</span>
-                            <span class="truncate">Pourquoi les Bots Meurent</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Pourquoi les Bots Meur</span>
                         </a>
             
-                        <a href="/education/quand-couper-mia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/quand-couper-mia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔌</span>
-                            <span class="truncate">Quand Couper MIA</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Quand Couper MIA</span>
                         </a>
             
-                        <a href="/education/mental-discipline-ia/" class="nav-link text-light-400 hover:bg-dark-300 hover:text-white">
+                        <a href="/education/mental-discipline-ia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧘</span>
-                            <span class="truncate">Mental & Discipline</span>
+                            <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Mental & Discipline</span>
                         </a>
             
                     </div>
@@ -302,238 +296,246 @@
             </div>
         </aside>
     
+
+    <!-- Main Content -->
+    <main class="main-content" style="padding-top: 72px; padding-bottom: 40px; padding-left: 16px; padding-right: 16px; max-width: 900px;">
+        <nav style="display: flex; align-items: center; gap: 8px; font-size: 12px; color: #64748b; margin-bottom: 16px;">
+            <a href="/education/" style="color: #64748b; text-decoration: none;">Education</a>
+            <span>›</span>
+            <span style="padding: 2px 8px; border-radius: 4px; background: #facc1522; color: #facc15; font-size: 11px;">Intermédiaire</span>
+            <span>›</span>
+            <span style="color: #fff;">Impact des Options 0DTE</span>
+        </nav>
         
-        <main class="flex-1 lg:ml-64 p-4 lg:p-6">
-            <nav class="flex items-center gap-2 text-xs text-light-500 mb-4">
-                <a href="/education/" class="hover:text-white">Education</a>
-                <span>›</span>
-                <span class="px-2 py-0.5 rounded bg-yellow-500/20 text-yellow-400">Intermédiaire</span>
-                <span>›</span>
-                <span class="text-white">Impact des Options 0DTE</span>
-            </nav>
+        <header style="margin-bottom: 24px;">
+            <span style="font-size: 48px; display: block; margin-bottom: 8px;">💥</span>
+            <h1 style="font-size: 28px; font-weight: 700; color: #fff; margin: 0 0 8px 0;">Impact des Options 0DTE</h1>
+            <p style="color: #94a3b8; margin: 0 0 12px 0;">L&#x27;influence des options 0DTE.</p>
+            <div style="display: flex; align-items: center; gap: 12px; font-size: 13px;">
+                <span style="display: flex; align-items: center; gap: 4px; color: #64748b;">
+                    <svg style="width: 14px; height: 14px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    12 min
+                </span>
+                <span style="padding: 4px 10px; border-radius: 20px; background: #facc1522; color: #facc15;">Intermédiaire</span>
+            </div>
+        </header>
+        
+        <article>
             
-            <header class="mb-6">
-                <span class="text-4xl mb-2 block">💥</span>
-                <h1 class="text-2xl lg:text-3xl font-bold text-white mb-2">Impact des Options 0DTE</h1>
-                <p class="text-light-400 mb-3">L&#x27;influence des options 0DTE.</p>
-                <div class="flex items-center gap-3 text-sm">
-                    <span class="flex items-center gap-1 text-light-400">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                        12 min
-                    </span>
-                    <span class="px-2 py-1 rounded bg-yellow-500/20 text-yellow-400">Intermédiaire</span>
-                </div>
-            </header>
-            
-            <article class="space-y-4">
-                
-        <section class="card-glass p-5 rounded-xl">
-            <h2 class="text-lg font-bold text-white mb-3">🎯 0DTE: La révolution qui a changé les marchés</h2>
-            <div class="text-light-300 text-sm space-y-3"><p>Les options 0DTE (Zero Days To Expiration) ont TRANSFORMÉ le comportement des marchés depuis 2022. Ces options expirent le JOUR MÊME.</p>
-<p>Aujourd&#x27;hui, 40%+ du volume d&#x27;options SPX est en 0DTE. Ce volume crée des forces NOUVELLES que les traders traditionnels ne comprennent pas.</p>
-<p>Comprendre l&#x27;impact des 0DTE vous donne un avantage énorme sur la majorité.</p>
+        <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">🎯 0DTE: La révolution qui a changé les marchés</h2>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><p style="margin-bottom: 12px;">Les options 0DTE (Zero Days To Expiration) ont TRANSFORMÉ le comportement des marchés depuis 2022. Ces options expirent le JOUR MÊME.</p>
+<p style="margin-bottom: 12px;">Aujourd&#x27;hui, 40%+ du volume d&#x27;options SPX est en 0DTE. Ce volume crée des forces NOUVELLES que les traders traditionnels ne comprennent pas.</p>
+<p style="margin-bottom: 12px;">Comprendre l&#x27;impact des 0DTE vous donne un avantage énorme sur la majorité.</p>
 </div>
             
         </section>
         
-        <section class="card-glass p-5 rounded-xl">
-            <h2 class="text-lg font-bold text-white mb-3">📊 SCHÉMA: Impact des 0DTE</h2>
-            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              EFFETS DES 0DTE SUR LE MARCHÉ                               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  1. EFFET &quot;PIN&quot; (Épinglage aux strikes)                                 │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ─────────────────────────────────────                                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Le prix est &quot;attiré&quot; vers les strikes à fort OI                      │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Surtout les dernières heures (20h-22h)                               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Les MM hedgent pour &quot;épingler&quot; le prix                               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  2. EFFET &quot;GAMMA RAMP&quot;                                                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ─────────────────────────────────────                                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Si le prix s&#x27;éloigne des strikes, les MM hedgent                    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Cela AMPLIFIE le mouvement initial                                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Flash moves de 20-30 points en minutes                               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  TIMELINE GAMMA 0DTE:                                                    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  Gamma │                                            ▲                    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        │                               ╱───────────╱│                    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        │                    ╱─────────╱             │                    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        │         ╱─────────╱                        │                    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        │────────╱                                   │                    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│        └────────────────────────────────────────────┴────                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│           8h    12h    15h30    18h    20h    22h                        │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│          Faible            Croissant           MAXIMAL                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+        <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">📊 SCHÉMA: Impact des 0DTE</h2>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              EFFETS DES 0DTE SUR LE MARCHÉ                               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  1. EFFET &quot;PIN&quot; (Épinglage aux strikes)                                 │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ─────────────────────────────────────                                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Le prix est &quot;attiré&quot; vers les strikes à fort OI                      │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Surtout les dernières heures (20h-22h)                               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Les MM hedgent pour &quot;épingler&quot; le prix                               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  2. EFFET &quot;GAMMA RAMP&quot;                                                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ─────────────────────────────────────                                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Si le prix s&#x27;éloigne des strikes, les MM hedgent                    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Cela AMPLIFIE le mouvement initial                                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Flash moves de 20-30 points en minutes                               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  TIMELINE GAMMA 0DTE:                                                    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  Gamma │                                            ▲                    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        │                               ╱───────────╱│                    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        │                    ╱─────────╱             │                    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        │         ╱─────────╱                        │                    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        │────────╱                                   │                    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        └────────────────────────────────────────────┴────                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│           8h    12h    15h30    18h    20h    22h                        │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│          Faible            Croissant           MAXIMAL                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
 </div>
             
         </section>
         
-        <section class="card-glass p-5 rounded-xl">
-            <h2 class="text-lg font-bold text-white mb-3">💰 Stratégies autour des 0DTE</h2>
-            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│              COMMENT PROFITER DES 0DTE (sans les trader)                 │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ⚠️ NOTE: On ne trade PAS les 0DTE directement (trop risqué)            │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  On utilise leur IMPACT sur les Futures.                                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  STRATÉGIE 1: Le &quot;Pin Trade&quot; (après 20h)                                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Identifier le strike 0DTE avec le plus d&#x27;OI                         │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Trader vers ce strike en fin de journée                              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Stop serré - si ça ne marche pas, ça peut exploser                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  STRATÉGIE 2: Éviter le &quot;Gamma Squeeze&quot;                                  │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Si le prix s&#x27;éloigne des strikes populaires                         │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • NE PAS fade le mouvement                                             │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Suivre ou rester à l&#x27;écart                                           │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  STRATÉGIE 3: Réduction Power Hour                                       │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Réduire taille après 20h                                             │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Stops plus larges (flash moves)                                      │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Ou éviter complètement cette période                                 │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+        <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">💰 Stratégies autour des 0DTE</h2>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              COMMENT PROFITER DES 0DTE (sans les trader)                 │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ⚠️ NOTE: On ne trade PAS les 0DTE directement (trop risqué)            │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  On utilise leur IMPACT sur les Futures.                                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  STRATÉGIE 1: Le &quot;Pin Trade&quot; (après 20h)                                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Identifier le strike 0DTE avec le plus d&#x27;OI                         │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Trader vers ce strike en fin de journée                              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Stop serré - si ça ne marche pas, ça peut exploser                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  STRATÉGIE 2: Éviter le &quot;Gamma Squeeze&quot;                                  │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Si le prix s&#x27;éloigne des strikes populaires                         │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • NE PAS fade le mouvement                                             │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Suivre ou rester à l&#x27;écart                                           │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  STRATÉGIE 3: Réduction Power Hour                                       │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Réduire taille après 20h                                             │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Stops plus larges (flash moves)                                      │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Ou éviter complètement cette période                                 │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
 </div>
             
         </section>
         
-        <section class="card-glass p-5 rounded-xl">
-            <h2 class="text-lg font-bold text-white mb-3">❌ ERREURS et ✅ POINTS CLÉS</h2>
-            <div class="text-light-300 text-sm space-y-3"></div>
-            <ul class="mt-3 space-y-1">
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ Ignorer les 0DTE → Vous tradez à l&#x27;aveugle sur leurs effets</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ Trader les 0DTE directement → Risque de 100% de perte</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>❌ Fader les moves Power Hour → Le gamma peut vous écraser</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ 0DTE = Options expirant aujourd&#x27;hui, gamma extrême</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ 40%+ du volume SPX = Impact massif sur les Futures</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Effet Pin: Prix attiré vers strikes à fort OI</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>✅ Power Hour (20h-22h): Gamma maximal, prudence maximale</li>
+        <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">❌ ERREURS et ✅ POINTS CLÉS</h2>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"></div>
+            <ul style="margin-top: 12px;">
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>❌ Ignorer les 0DTE → Vous tradez à l&#x27;aveugle sur leurs effets</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>❌ Trader les 0DTE directement → Risque de 100% de perte</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>❌ Fader les moves Power Hour → Le gamma peut vous écraser</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>✅ 0DTE = Options expirant aujourd&#x27;hui, gamma extrême</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>✅ 40%+ du volume SPX = Impact massif sur les Futures</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>✅ Effet Pin: Prix attiré vers strikes à fort OI</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>✅ Power Hour (20h-22h): Gamma maximal, prudence maximale</li>
 </ul>
 
         </section>
         
-        <section class="card-glass p-5 rounded-xl">
-            <h2 class="text-lg font-bold text-white mb-3">🎬 SCÉNARIOS TEMPS RÉEL: Ce que MIA voit</h2>
-            <div class="text-light-300 text-sm space-y-3"><pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  🎬 SCÉNARIO 1: Effet &quot;Pin&quot; - Le prix aimanté                            │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  📅 Mercredi 20h15 - ES à 6047, Strike Pin à 6050                        │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  👤 CE QUE VOUS VOYEZ:                                                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Prix qui oscille autour de 6047-6052                                 │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • &quot;Le marché ne va nulle part&quot;                                         │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Frustration, envie de forcer un trade                                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  🤖 CE QUE MIA VOIT:                                                     │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Strike 6050 = Plus gros OI 0DTE du jour                              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • On est en Power Hour (20h-22h)                                       │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Effet PIN actif: Le prix est &quot;aimanté&quot; vers 6050                     │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Les MM défendent ce niveau des deux côtés                            │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Probabilité de rester dans ±5 pts de 6050: 78%                       │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  📊 DÉCISION MIA: Trade le PIN vers 6050                                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • À 6047: LONG avec target 6050 (+3 pts)                            │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • À 6053: SHORT avec target 6050 (-3 pts)                           │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • Stops serrés: Si ça casse, gamma ramp possible                    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ✅ RÉSULTAT: ES finit à 6049.75 - Effet pin parfait                    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     2 trades gagnants de +3 pts chacun                                  │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  🎬 SCÉNARIO 2: Gamma Ramp - Le flash move                               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  📅 Vendredi 20h45 - NQ à 21380, Strike Pin à 21400                      │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  👤 CE QUE VOUS VOYEZ:                                                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Prix vient de casser 21400 vers le haut                              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • &quot;Breakout! Je vais acheter!&quot;                                         │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • FOMO en Power Hour                                                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  🤖 CE QUE MIA VOIT:                                                     │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • ⚠️ ALERTE: Prix s&#x27;éloigne du strike pin (21400)                     │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • En Power Hour, l&#x27;éloignement du pin déclenche le GAMMA RAMP         │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Les MM doivent hedger → Ils achètent → Prix accélère                 │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Prochain strike significatif: 21450                                  │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Ce n&#x27;est PAS un breakout normal, c&#x27;est un gamma squeeze             │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  📊 DÉCISION MIA: ⚠️ MODE PRUDENT                                       │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • NE PAS shorter contre le gamma ramp                               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • Si déjà long: Laisser courir avec trailing stop                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • Si flat: Trop tard pour entrer (risque de reversal violent)       │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ✅ RÉSULTAT: NQ spike à 21465 (+85 pts en 15 min!)                     │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     Puis reversal brutal à 21390 (-75 pts)                              │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     Les retardataires qui ont acheté le top ont perdu                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  🎬 SCÉNARIO 3: Protection Power Hour - Quand réduire                    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  📅 Jeudi 19h55 - ES à 6028, Position LONG ouverte                       │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  👤 CE QUE VOUS VOYEZ:                                                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Position en profit de +12 pts depuis 17h                             │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • &quot;Je vais garder pour le target à +20 pts&quot;                            │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Tout va bien, pas de raison de sortir                                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  🤖 CE QUE MIA VOIT:                                                     │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • ⏰ 19h55 = 5 minutes avant Power Hour                                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Gamma 0DTE va EXPLOSER dans 5 minutes                                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Flash moves de 20-30 pts possibles dans les deux sens                │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Strike pin à 6025 (3 pts plus bas)                                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  • Risque/Reward devient défavorable                                    │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  📊 DÉCISION MIA: PRENDRE PROFIT MAINTENANT                             │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • Fermer 50-75% de la position                                      │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • Garder 25% avec stop breakeven si vous voulez                     │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • Ne pas risquer les gains dans la zone chaotique                   │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│  ✅ RÉSULTAT: ES spike à 6042 puis crash à 6015 en 20 min               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • Si gardé: +12 → -13 = Perte                                       │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│     • Avec MIA: Profit sécurisé à +12 pts                               │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">│                                                                          │</pre>
-<pre class="bg-dark-300 p-3 rounded-lg overflow-x-auto text-xs text-light-300 font-mono whitespace-pre">└─────────────────────────────────────────────────────────────────────────┘</pre>
+        <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">🎬 SCÉNARIOS TEMPS RÉEL: Ce que MIA voit</h2>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  🎬 SCÉNARIO 1: Effet &quot;Pin&quot; - Le prix aimanté                            │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  📅 Mercredi 20h15 - ES à 6047, Strike Pin à 6050                        │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  👤 CE QUE VOUS VOYEZ:                                                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Prix qui oscille autour de 6047-6052                                 │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • &quot;Le marché ne va nulle part&quot;                                         │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Frustration, envie de forcer un trade                                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  🤖 CE QUE MIA VOIT:                                                     │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Strike 6050 = Plus gros OI 0DTE du jour                              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • On est en Power Hour (20h-22h)                                       │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Effet PIN actif: Le prix est &quot;aimanté&quot; vers 6050                     │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Les MM défendent ce niveau des deux côtés                            │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Probabilité de rester dans ±5 pts de 6050: 78%                       │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  📊 DÉCISION MIA: Trade le PIN vers 6050                                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     • À 6047: LONG avec target 6050 (+3 pts)                            │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     • À 6053: SHORT avec target 6050 (-3 pts)                           │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     • Stops serrés: Si ça casse, gamma ramp possible                    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ✅ RÉSULTAT: ES finit à 6049.75 - Effet pin parfait                    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     2 trades gagnants de +3 pts chacun                                  │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  🎬 SCÉNARIO 2: Gamma Ramp - Le flash move                               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  📅 Vendredi 20h45 - NQ à 21380, Strike Pin à 21400                      │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  👤 CE QUE VOUS VOYEZ:                                                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Prix vient de casser 21400 vers le haut                              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • &quot;Breakout! Je vais acheter!&quot;                                         │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • FOMO en Power Hour                                                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  🤖 CE QUE MIA VOIT:                                                     │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • ⚠️ ALERTE: Prix s&#x27;éloigne du strike pin (21400)                     │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • En Power Hour, l&#x27;éloignement du pin déclenche le GAMMA RAMP         │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Les MM doivent hedger → Ils achètent → Prix accélère                 │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Prochain strike significatif: 21450                                  │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Ce n&#x27;est PAS un breakout normal, c&#x27;est un gamma squeeze             │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  📊 DÉCISION MIA: ⚠️ MODE PRUDENT                                       │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     • NE PAS shorter contre le gamma ramp                               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     • Si déjà long: Laisser courir avec trailing stop                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     • Si flat: Trop tard pour entrer (risque de reversal violent)       │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ✅ RÉSULTAT: NQ spike à 21465 (+85 pts en 15 min!)                     │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     Puis reversal brutal à 21390 (-75 pts)                              │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     Les retardataires qui ont acheté le top ont perdu                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  🎬 SCÉNARIO 3: Protection Power Hour - Quand réduire                    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  📅 Jeudi 19h55 - ES à 6028, Position LONG ouverte                       │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  👤 CE QUE VOUS VOYEZ:                                                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Position en profit de +12 pts depuis 17h                             │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • &quot;Je vais garder pour le target à +20 pts&quot;                            │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Tout va bien, pas de raison de sortir                                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  🤖 CE QUE MIA VOIT:                                                     │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • ⏰ 19h55 = 5 minutes avant Power Hour                                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Gamma 0DTE va EXPLOSER dans 5 minutes                                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Flash moves de 20-30 pts possibles dans les deux sens                │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Strike pin à 6025 (3 pts plus bas)                                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Risque/Reward devient défavorable                                    │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  📊 DÉCISION MIA: PRENDRE PROFIT MAINTENANT                             │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     • Fermer 50-75% de la position                                      │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     • Garder 25% avec stop breakeven si vous voulez                     │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     • Ne pas risquer les gains dans la zone chaotique                   │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ✅ RÉSULTAT: ES spike à 6042 puis crash à 6015 en 20 min               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     • Si gardé: +12 → -13 = Perte                                       │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     • Avec MIA: Profit sécurisé à +12 pts                               │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
+<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
 </div>
             
         </section>
         
-        <section class="card-glass p-5 rounded-xl">
-            <h2 class="text-lg font-bold text-white mb-3">📝 À RETENIR</h2>
-            <div class="text-light-300 text-sm space-y-3"></div>
-            <ul class="mt-3 space-y-1">
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>🎯 0DTE = Options qui expirent AUJOURD&#x27;HUI = Gamma EXTRÊME</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>📊 40%+ du volume SPX = Force majeure sur les Futures</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>📍 Effet PIN (20h-22h): Prix attiré vers le strike à fort OI</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>🚀 Gamma Ramp: Si le prix s&#x27;éloigne du pin = Flash move violent</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>⏰ Power Hour = Zone de DANGER maximal (réduire exposition)</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>💰 Stratégie: Trade le pin OU restez à l&#x27;écart</li>
-<li class="flex items-start gap-2 text-light-300 text-sm"><span class="text-mia-cyan">•</span>⛔ JAMAIS fader un gamma ramp en Power Hour</li>
+        <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
+            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">📝 À RETENIR</h2>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"></div>
+            <ul style="margin-top: 12px;">
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>🎯 0DTE = Options qui expirent AUJOURD&#x27;HUI = Gamma EXTRÊME</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>📊 40%+ du volume SPX = Force majeure sur les Futures</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>📍 Effet PIN (20h-22h): Prix attiré vers le strike à fort OI</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>🚀 Gamma Ramp: Si le prix s&#x27;éloigne du pin = Flash move violent</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>⏰ Power Hour = Zone de DANGER maximal (réduire exposition)</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>💰 Stratégie: Trade le pin OU restez à l&#x27;écart</li>
+<li style="display: flex; align-items: flex-start; gap: 8px; margin-bottom: 6px; color: #cbd5e1;"><span style="color: #22d3ee;">•</span>⛔ JAMAIS fader un gamma ramp en Power Hour</li>
 </ul>
 
         </section>
         
-            </article>
-            
-            <nav class="flex justify-between mt-8 pt-6 border-t border-white/10">
-                <a class="flex items-center gap-2 p-3 bg-dark-200 hover:bg-dark-300 rounded-lg transition-all group" href="/education/positive-negative-gamma/">
-            <svg class="w-4 h-4 text-light-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
-            <div class="text-left"><div class="text-xs text-light-500">Précédent</div><div class="text-sm text-white truncate">Gamma Positif vs Négatif</div></div>
+        </article>
+        
+        <nav style="display: flex; justify-content: space-between; margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);">
+            <a href="/education/positive-negative-gamma/" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: #1e293b; border-radius: 8px; text-decoration: none;" onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'">
+            <svg style="width: 16px; height: 16px; color: #94a3b8;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
+            <div><div style="font-size: 11px; color: #64748b;">Précédent</div><div style="font-size: 13px; color: #fff;">Gamma Positif vs Nég</div></div>
         </a>
-                <a class="flex items-center gap-2 p-3 bg-dark-200 hover:bg-dark-300 rounded-lg transition-all group" href="/education/expected-move-range/">
-            <div class="text-right"><div class="text-xs text-light-500">Suivant</div><div class="text-sm text-white truncate">Expected Move &amp; Range</div></div>
-            <svg class="w-4 h-4 text-light-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+            <a href="/education/expected-move-range/" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: #1e293b; border-radius: 8px; text-decoration: none;" onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'">
+            <div style="text-align: right;"><div style="font-size: 11px; color: #64748b;">Suivant</div><div style="font-size: 13px; color: #fff;">Expected Move &amp; Rang</div></div>
+            <svg style="width: 16px; height: 16px; color: #94a3b8;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
         </a>
-            </nav>
-        </main>
-    </div>
-</div>
-<script>
-function toggleNav(id) {
-    document.getElementById('nav-' + id).classList.toggle('open');
-}
-</script>
-<script src="/ticker.js" defer></script>
+        </nav>
+    </main>
+
+    <script>
+    function toggleNav(id) {
+        var content = document.querySelector('.nav-content-' + id);
+        var chevron = document.querySelector('.chevron-' + id);
+        if (content.style.display === 'none') {
+            content.style.display = 'block';
+            chevron.style.transform = 'rotate(180deg)';
+        } else {
+            content.style.display = 'none';
+            chevron.style.transform = 'rotate(0deg)';
+        }
+    }
+    </script>
+    <script src="/ticker.js" defer></script>
 </body>
 </html>
