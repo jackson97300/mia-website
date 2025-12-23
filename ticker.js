@@ -1,27 +1,25 @@
-// TradingView Ticker Widget - MIA IA SYSTEM
+// TradingView Ticker Widget - MIA IA SYSTEM (Version PRO)
+// Position: AU-DESSUS du header, dans le flux normal (pas fixed)
 (function() {
   function initTicker() {
-    // Créer le container
+    if (document.getElementById('mia-ticker-wrapper')) return;
+    
+    // Créer le wrapper
+    var wrapper = document.createElement('div');
+    wrapper.id = 'mia-ticker-wrapper';
+    wrapper.style.cssText = 'width:100%;background:#0a0e17;border-bottom:1px solid rgba(0,212,255,0.2);';
+    
+    // Container TradingView standard
     var container = document.createElement('div');
-    container.id = 'mia-ticker';
-    container.style.cssText = 'position:fixed;top:72px;left:0;right:0;z-index:40;background:rgba(13,17,28,0.95);border-bottom:1px solid rgba(0,212,255,0.15);height:46px;';
+    container.className = 'tradingview-widget-container';
     
     var widget = document.createElement('div');
     widget.className = 'tradingview-widget-container__widget';
-    widget.style.cssText = 'height:46px;';
     container.appendChild(widget);
     
-    // Ajouter au DOM après le header
-    var header = document.querySelector('header');
-    if (header) {
-      header.style.zIndex = '50';
-      header.parentNode.insertBefore(container, header.nextSibling);
-    } else {
-      document.body.appendChild(container);
-    }
-    
-    // Charger TradingView
+    // Script TradingView
     var script = document.createElement('script');
+    script.type = 'text/javascript';
     script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
     script.async = true;
     script.textContent = JSON.stringify({
@@ -43,13 +41,16 @@
       "locale": "fr"
     });
     container.appendChild(script);
+    wrapper.appendChild(container);
+    
+    // Insérer tout en haut du body (AVANT le header)
+    document.body.insertBefore(wrapper, document.body.firstChild);
   }
   
-  if (document.readyState === 'complete') {
-    setTimeout(initTicker, 100);
+  // Exécuter dès que possible
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTicker);
   } else {
-    window.addEventListener('load', function() {
-      setTimeout(initTicker, 100);
-    });
+    initTicker();
   }
 })();
