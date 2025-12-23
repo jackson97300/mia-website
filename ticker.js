@@ -1,13 +1,34 @@
-// TradingView Ticker - MIA IA SYSTEM v8 FINAL
+// TradingView Ticker - MIA IA SYSTEM v9 FORCE
 (function() {
   if (window.MIA_TICKER_DONE) return;
   window.MIA_TICKER_DONE = true;
   
   function createTicker() {
-    // Créer la barre ticker
+    // 1. INJECTER LE CSS EN FORCE
+    var style = document.createElement('style');
+    style.textContent = `
+      #mia-tv-ticker {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        height: 46px !important;
+        background: #0a0e17 !important;
+        border-bottom: 1px solid rgba(0,212,255,0.15) !important;
+        z-index: 99999 !important;
+      }
+      body {
+        padding-top: 46px !important;
+      }
+      header, nav, [class*="header"], [class*="Header"], [class*="navbar"], [class*="Navbar"] {
+        top: 46px !important;
+      }
+    `;
+    document.head.appendChild(style);
+    
+    // 2. Créer la barre ticker
     var bar = document.createElement('div');
     bar.id = 'mia-tv-ticker';
-    bar.style.cssText = 'position:fixed;top:0;left:0;right:0;height:46px;background:#0a0e17;border-bottom:1px solid rgba(0,212,255,0.15);z-index:9999;';
     
     // Container TradingView
     var container = document.createElement('div');
@@ -42,23 +63,10 @@
     container.appendChild(script);
     bar.appendChild(container);
     
-    // Insérer le ticker
+    // Insérer le ticker tout en haut
     document.body.insertBefore(bar, document.body.firstChild);
-    
-    // IMPORTANT: Décaler le header et le body vers le bas
-    document.body.style.paddingTop = '46px';
-    
-    // Trouver et ajuster le header fixed
-    var header = document.querySelector('header');
-    if (header) {
-      var headerStyle = window.getComputedStyle(header);
-      if (headerStyle.position === 'fixed' || headerStyle.position === 'sticky') {
-        header.style.top = '46px';
-      }
-    }
   }
   
-  // Exécuter
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', createTicker);
   } else {
