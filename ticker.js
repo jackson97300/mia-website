@@ -4,14 +4,21 @@
     // Créer le container
     var container = document.createElement('div');
     container.id = 'mia-ticker';
-    container.style.cssText = 'position:fixed;top:64px;left:0;right:0;z-index:9999;background:linear-gradient(180deg,rgba(13,17,28,0.98) 0%,rgba(13,17,28,0.95) 100%);border-bottom:1px solid rgba(0,212,255,0.2);';
+    container.style.cssText = 'position:fixed;top:72px;left:0;right:0;z-index:40;background:rgba(13,17,28,0.95);border-bottom:1px solid rgba(0,212,255,0.15);height:46px;';
     
     var widget = document.createElement('div');
     widget.className = 'tradingview-widget-container__widget';
+    widget.style.cssText = 'height:46px;';
     container.appendChild(widget);
     
-    // Ajouter au DOM
-    document.body.insertBefore(container, document.body.firstChild);
+    // Ajouter au DOM après le header
+    var header = document.querySelector('header');
+    if (header) {
+      header.style.zIndex = '50';
+      header.parentNode.insertBefore(container, header.nextSibling);
+    } else {
+      document.body.appendChild(container);
+    }
     
     // Charger TradingView
     var script = document.createElement('script');
@@ -31,7 +38,7 @@
       ],
       "showSymbolLogo": true,
       "isTransparent": true,
-      "displayMode": "adaptive",
+      "displayMode": "compact",
       "colorTheme": "dark",
       "locale": "fr"
     });
