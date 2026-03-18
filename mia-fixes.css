@@ -1,38 +1,21 @@
 /* ═══════════════════════════════════════════════════════════════
-   MIA IA SYSTEM — Patch CSS v1.0 (18/03/2026)
-   Fixes: opacity:0, background animation, navbar auto-hide,
-          scroll-reveal, 404 FR
+   MIA IA SYSTEM — Patch CSS v3.0 (18/03/2026)
    ═══════════════════════════════════════════════════════════════ */
 
-/* ─────────────────────────────────────────────
-   #1 FIX CRITIQUE: Rendre visible les éléments opacity:0
-   Next.js SSG exporte les éléments avec opacity:0 car les
-   animations React (Framer Motion) ne tournent pas en statique.
-   On utilise une approche scroll-reveal : les éléments démarrent
-   visibles, puis le JS ajoute .mia-reveal pour animer.
-   ───────────────────────────────────────────── */
-
-/* Forcer la visibilité de TOUS les éléments inline-style opacity:0 */
+/* #1 FIX: Rendre visible les éléments opacity:0 */
 [style*="opacity:0"],
 [style*="opacity: 0"] {
   opacity: 1 !important;
   transform: none !important;
 }
 
-/* Classe pour scroll-reveal (ajoutée par mia-fixes.js) */
 .mia-reveal {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-.mia-reveal.mia-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Stagger delay pour les cards en grid */
+.mia-reveal.mia-visible { opacity: 1; transform: translateY(0); }
 .mia-reveal[data-delay="1"] { transition-delay: 0.08s; }
 .mia-reveal[data-delay="2"] { transition-delay: 0.16s; }
 .mia-reveal[data-delay="3"] { transition-delay: 0.24s; }
@@ -43,126 +26,81 @@
 .mia-reveal[data-delay="8"] { transition-delay: 0.64s; }
 
 
-/* ─────────────────────────────────────────────
-   #5 ANIMATION DE FOND — Style MenthorQ
-   Orbes gradient subtils qui dérivent lentement.
-   On anime les blobs existants + on en ajoute via pseudo-éléments.
-   ───────────────────────────────────────────── */
+/* ─── #5 ANIMATION DE FOND ─── */
 
-/* Animer les blobs existants dans le hero */
-#hero .blur-3xl {
-  animation: mia-float 20s ease-in-out infinite;
-}
-
-#hero .blur-3xl:nth-child(2) {
-  animation-delay: -5s;
-  animation-duration: 25s;
-}
-
-#hero .blur-3xl:nth-child(3) {
-  animation-delay: -10s;
-  animation-duration: 18s;
-}
-
-@keyframes mia-float {
-  0%, 100% {
-    transform: translate(0, 0) scale(1);
-    opacity: 0.6;
-  }
-  25% {
-    transform: translate(30px, -40px) scale(1.05);
-    opacity: 0.8;
-  }
-  50% {
-    transform: translate(-20px, 20px) scale(0.95);
-    opacity: 0.5;
-  }
-  75% {
-    transform: translate(40px, 30px) scale(1.08);
-    opacity: 0.7;
-  }
-}
-
-/* Fond animé global — orbes gradient qui dérivent (style MenthorQ) */
-.mia-bg-particles {
+/* Canvas pour les micro-particules flottantes */
+#mia-particles-canvas {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 2;
+  z-index: 1;
+}
+
+/* Orbes gradient animés */
+.mia-bg-orbs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
   overflow: hidden;
 }
 
-.mia-bg-particles::before,
-.mia-bg-particles::after {
-  content: '';
+.mia-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(100px);
-  animation: mia-orb-drift 30s ease-in-out infinite;
 }
 
-.mia-bg-particles::before {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(0, 180, 220, 0.18) 0%, transparent 70%);
-  top: 5%;
-  left: -10%;
-  animation-duration: 22s;
-}
-
-.mia-bg-particles::after {
-  width: 550px;
-  height: 550px;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.14) 0%, transparent 70%);
-  bottom: 10%;
-  right: -10%;
-  animation-delay: -10s;
-  animation-duration: 28s;
-}
-
-@keyframes mia-orb-drift {
-  0%, 100% {
-    transform: translate(0, 0);
-  }
-  20% {
-    transform: translate(100px, -120px);
-  }
-  40% {
-    transform: translate(-80px, 60px);
-  }
-  60% {
-    transform: translate(120px, 80px);
-  }
-  80% {
-    transform: translate(-100px, -50px);
-  }
-}
-
-/* Troisième orbe (ajoutée par JS) */
-.mia-orb-3 {
-  position: absolute;
+.mia-orb-cyan {
   width: 500px;
   height: 500px;
-  border-radius: 50%;
-  filter: blur(110px);
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 180, 220, 0.20) 0%, rgba(0, 180, 220, 0) 70%);
+  top: 5%;
+  left: -8%;
+  animation: mia-drift-1 22s ease-in-out infinite;
+}
+
+.mia-orb-gold {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0) 70%);
+  bottom: 5%;
+  right: -8%;
+  animation: mia-drift-2 28s ease-in-out infinite;
+}
+
+.mia-orb-purple {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, rgba(99, 102, 241, 0) 70%);
   top: 40%;
   left: 30%;
-  animation: mia-orb-drift 26s ease-in-out infinite;
-  animation-delay: -6s;
+  animation: mia-drift-3 25s ease-in-out infinite;
+}
+
+@keyframes mia-drift-1 {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(150px, 100px); }
+  66% { transform: translate(-80px, 150px); }
+}
+@keyframes mia-drift-2 {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(-130px, -90px); }
+  66% { transform: translate(100px, -140px); }
+}
+@keyframes mia-drift-3 {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(110px, -70px); }
+  66% { transform: translate(-90px, 110px); }
 }
 
 
-/* ─────────────────────────────────────────────
-   #6 NAVBAR AUTO-HIDE ON SCROLL
-   Le header se cache au scroll down, réapparaît au scroll up.
-   Transition fluide. Glass effect renforcé au scroll.
-   ───────────────────────────────────────────── */
-
-/* État par défaut — le header principal (page d'accueil) */
+/* ─── #6 NAVBAR AUTO-HIDE ─── */
 header.fixed,
 header[style*="position: fixed"] {
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
@@ -170,13 +108,7 @@ header[style*="position: fixed"] {
               backdrop-filter 0.3s ease,
               box-shadow 0.3s ease !important;
 }
-
-/* Header caché (scroll down) */
-header.mia-nav-hidden {
-  transform: translateY(-100%) !important;
-}
-
-/* Header visible avec fond (scroll up après avoir scrollé) */
+header.mia-nav-hidden { transform: translateY(-100%) !important; }
 header.mia-nav-scrolled {
   background-color: rgba(10, 14, 23, 0.85) !important;
   backdrop-filter: blur(20px) !important;
@@ -186,37 +118,12 @@ header.mia-nav-scrolled {
 }
 
 
-/* ─────────────────────────────────────────────
-   MISC FIXES
-   ───────────────────────────────────────────── */
+/* ─── MISC FIXES ─── */
+.faq-item:first-child .overflow-hidden { height: auto !important; opacity: 1 !important; }
+html { scroll-behavior: smooth; }
 
-/* FAQ — forcer la première réponse visible */
-.faq-item:first-child .overflow-hidden {
-  height: auto !important;
-  opacity: 1 !important;
-}
-
-/* Fix le z-index du contenu par rapport au fond animé */
-/* Les particules sont en z-index:2 avec pointer-events:none
-   pour flotter au-dessus du contenu comme un léger overlay */
-
-/* Smooth scroll global */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Performance: réduire les animations si préférence utilisateur */
 @media (prefers-reduced-motion: reduce) {
-  .mia-reveal {
-    transition: none;
-    opacity: 1;
-    transform: none;
-  }
-  
-  .mia-bg-particles::before,
-  .mia-bg-particles::after,
-  .mia-orb-3,
-  #hero .blur-3xl {
-    animation: none !important;
-  }
+  .mia-reveal { transition: none; opacity: 1; transform: none; }
+  .mia-orb { animation: none !important; }
+  #mia-particles-canvas { display: none; }
 }
