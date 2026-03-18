@@ -83,7 +83,7 @@
   }
 }
 
-/* Fond animé global — particules subtiles sur les sections */
+/* Fond animé global — orbes gradient qui dérivent (style MenthorQ) */
 .mia-bg-particles {
   position: fixed;
   top: 0;
@@ -91,7 +91,7 @@
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 0;
+  z-index: 2;
   overflow: hidden;
 }
 
@@ -100,61 +100,59 @@
   content: '';
   position: absolute;
   border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.12;
+  filter: blur(100px);
   animation: mia-orb-drift 30s ease-in-out infinite;
 }
 
 .mia-bg-particles::before {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(0, 180, 220, 0.4) 0%, transparent 70%);
-  top: 10%;
-  left: -5%;
-  animation-duration: 25s;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0, 180, 220, 0.18) 0%, transparent 70%);
+  top: 5%;
+  left: -10%;
+  animation-duration: 22s;
 }
 
 .mia-bg-particles::after {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
-  bottom: 15%;
-  right: -5%;
-  animation-delay: -12s;
-  animation-duration: 32s;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.14) 0%, transparent 70%);
+  bottom: 10%;
+  right: -10%;
+  animation-delay: -10s;
+  animation-duration: 28s;
 }
 
 @keyframes mia-orb-drift {
   0%, 100% {
-    transform: translate(0, 0) rotate(0deg);
+    transform: translate(0, 0);
   }
   20% {
-    transform: translate(60px, -80px) rotate(30deg);
+    transform: translate(100px, -120px);
   }
   40% {
-    transform: translate(-40px, 40px) rotate(-20deg);
+    transform: translate(-80px, 60px);
   }
   60% {
-    transform: translate(80px, 60px) rotate(45deg);
+    transform: translate(120px, 80px);
   }
   80% {
-    transform: translate(-60px, -30px) rotate(-15deg);
+    transform: translate(-100px, -50px);
   }
 }
 
 /* Troisième orbe (ajoutée par JS) */
 .mia-orb-3 {
   position: absolute;
-  width: 350px;
-  height: 350px;
+  width: 500px;
+  height: 500px;
   border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.08;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, transparent 70%);
-  top: 50%;
-  left: 40%;
-  animation: mia-orb-drift 28s ease-in-out infinite;
-  animation-delay: -8s;
+  filter: blur(110px);
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, transparent 70%);
+  top: 40%;
+  left: 30%;
+  animation: mia-orb-drift 26s ease-in-out infinite;
+  animation-delay: -6s;
 }
 
 
@@ -199,10 +197,8 @@ header.mia-nav-scrolled {
 }
 
 /* Fix le z-index du contenu par rapport au fond animé */
-main {
-  position: relative;
-  z-index: 1;
-}
+/* Les particules sont en z-index:2 avec pointer-events:none
+   pour flotter au-dessus du contenu comme un léger overlay */
 
 /* Smooth scroll global */
 html {
