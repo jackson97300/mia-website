@@ -1,0 +1,226 @@
+/* ═══════════════════════════════════════════════════════════════
+   MIA IA SYSTEM — Patch CSS v1.0 (18/03/2026)
+   Fixes: opacity:0, background animation, navbar auto-hide,
+          scroll-reveal, 404 FR
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────
+   #1 FIX CRITIQUE: Rendre visible les éléments opacity:0
+   Next.js SSG exporte les éléments avec opacity:0 car les
+   animations React (Framer Motion) ne tournent pas en statique.
+   On utilise une approche scroll-reveal : les éléments démarrent
+   visibles, puis le JS ajoute .mia-reveal pour animer.
+   ───────────────────────────────────────────── */
+
+/* Forcer la visibilité de TOUS les éléments inline-style opacity:0 */
+[style*="opacity:0"],
+[style*="opacity: 0"] {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Classe pour scroll-reveal (ajoutée par mia-fixes.js) */
+.mia-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mia-reveal.mia-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delay pour les cards en grid */
+.mia-reveal[data-delay="1"] { transition-delay: 0.08s; }
+.mia-reveal[data-delay="2"] { transition-delay: 0.16s; }
+.mia-reveal[data-delay="3"] { transition-delay: 0.24s; }
+.mia-reveal[data-delay="4"] { transition-delay: 0.32s; }
+.mia-reveal[data-delay="5"] { transition-delay: 0.40s; }
+.mia-reveal[data-delay="6"] { transition-delay: 0.48s; }
+.mia-reveal[data-delay="7"] { transition-delay: 0.56s; }
+.mia-reveal[data-delay="8"] { transition-delay: 0.64s; }
+
+
+/* ─────────────────────────────────────────────
+   #5 ANIMATION DE FOND — Style MenthorQ
+   Orbes gradient subtils qui dérivent lentement.
+   On anime les blobs existants + on en ajoute via pseudo-éléments.
+   ───────────────────────────────────────────── */
+
+/* Animer les blobs existants dans le hero */
+#hero .blur-3xl {
+  animation: mia-float 20s ease-in-out infinite;
+}
+
+#hero .blur-3xl:nth-child(2) {
+  animation-delay: -5s;
+  animation-duration: 25s;
+}
+
+#hero .blur-3xl:nth-child(3) {
+  animation-delay: -10s;
+  animation-duration: 18s;
+}
+
+@keyframes mia-float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translate(30px, -40px) scale(1.05);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-20px, 20px) scale(0.95);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translate(40px, 30px) scale(1.08);
+    opacity: 0.7;
+  }
+}
+
+/* Fond animé global — particules subtiles sur les sections */
+.mia-bg-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.mia-bg-particles::before,
+.mia-bg-particles::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.12;
+  animation: mia-orb-drift 30s ease-in-out infinite;
+}
+
+.mia-bg-particles::before {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 180, 220, 0.4) 0%, transparent 70%);
+  top: 10%;
+  left: -5%;
+  animation-duration: 25s;
+}
+
+.mia-bg-particles::after {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.3) 0%, transparent 70%);
+  bottom: 15%;
+  right: -5%;
+  animation-delay: -12s;
+  animation-duration: 32s;
+}
+
+@keyframes mia-orb-drift {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  20% {
+    transform: translate(60px, -80px) rotate(30deg);
+  }
+  40% {
+    transform: translate(-40px, 40px) rotate(-20deg);
+  }
+  60% {
+    transform: translate(80px, 60px) rotate(45deg);
+  }
+  80% {
+    transform: translate(-60px, -30px) rotate(-15deg);
+  }
+}
+
+/* Troisième orbe (ajoutée par JS) */
+.mia-orb-3 {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.08;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.4) 0%, transparent 70%);
+  top: 50%;
+  left: 40%;
+  animation: mia-orb-drift 28s ease-in-out infinite;
+  animation-delay: -8s;
+}
+
+
+/* ─────────────────────────────────────────────
+   #6 NAVBAR AUTO-HIDE ON SCROLL
+   Le header se cache au scroll down, réapparaît au scroll up.
+   Transition fluide. Glass effect renforcé au scroll.
+   ───────────────────────────────────────────── */
+
+/* État par défaut — le header principal (page d'accueil) */
+header.fixed,
+header[style*="position: fixed"] {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.3s ease,
+              backdrop-filter 0.3s ease,
+              box-shadow 0.3s ease !important;
+}
+
+/* Header caché (scroll down) */
+header.mia-nav-hidden {
+  transform: translateY(-100%) !important;
+}
+
+/* Header visible avec fond (scroll up après avoir scrollé) */
+header.mia-nav-scrolled {
+  background-color: rgba(10, 14, 23, 0.85) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05),
+              0 4px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+
+/* ─────────────────────────────────────────────
+   MISC FIXES
+   ───────────────────────────────────────────── */
+
+/* FAQ — forcer la première réponse visible */
+.faq-item:first-child .overflow-hidden {
+  height: auto !important;
+  opacity: 1 !important;
+}
+
+/* Fix le z-index du contenu par rapport au fond animé */
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Smooth scroll global */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Performance: réduire les animations si préférence utilisateur */
+@media (prefers-reduced-motion: reduce) {
+  .mia-reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+  
+  .mia-bg-particles::before,
+  .mia-bg-particles::after,
+  .mia-orb-3,
+  #hero .blur-3xl {
+    animation: none !important;
+  }
+}

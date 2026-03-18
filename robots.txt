@@ -1,0 +1,7 @@
+# MIA IA SYSTEM — robots.txt
+User-agent: *
+Allow: /
+Disallow: /_next/
+Disallow: /forgot-password/
+
+Sitemap: https://mia-ia-system.com/sitemap.xml
