@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="/_next/static/css/0f34aadfba7d8fab.css"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png"/>
+  <link rel="stylesheet" href="/mia-fixes.css"/>
+  <title>Dashboard Coming Soon - MIA IA SYSTEM</title>
+  <meta name="description" content="Le dashboard MIA IA SYSTEM arrive bientôt. Inscrivez-vous pour être notifié du lancement."/>
+  <style>
+    body { margin: 0; background: #0a0e17; color: #fff; font-family: Inter, system-ui, sans-serif; }
+    .cs-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cs-bg-1, .cs-bg-2 {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+    }
+    .cs-bg-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(0,180,220,0.4), transparent 70%);
+      top: -10%; left: -10%;
+      animation: cs-float 20s ease-in-out infinite;
+    }
+    .cs-bg-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(212,175,55,0.3), transparent 70%);
+      bottom: -10%; right: -10%;
+      animation: cs-float 25s ease-in-out infinite reverse;
+    }
+    @keyframes cs-float {
+      0%,100% { transform: translate(0,0); }
+      50% { transform: translate(60px, 40px); }
+    }
+    .cs-content { position: relative; z-index: 1; max-width: 600px; }
+    .cs-logo {
+      width: 100px; height: 100px;
+      border-radius: 50%;
+      border: 3px solid rgba(212,175,55,0.6);
+      box-shadow: 0 0 40px rgba(212,175,55,0.3);
+      margin: 0 auto 30px;
+    }
+    .cs-badge {
+      display: inline-block;
+      background: rgba(0,180,220,0.15);
+      border: 1px solid rgba(0,180,220,0.3);
+      border-radius: 20px;
+      padding: 6px 16px;
+      font-size: 13px;
+      color: #00b4dc;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .cs-title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      margin: 0 0 16px;
+      background: linear-gradient(to right, #fff, #00b4dc, #d4af37);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .cs-subtitle {
+      font-size: 1.1rem;
+      color: #94a3b8;
+      line-height: 1.6;
+      margin: 0 0 40px;
+    }
+    .cs-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+    .cs-feature {
+      background: rgba(19,23,34,0.8);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 16px 20px;
+      font-size: 14px;
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .cs-feature span { font-size: 20px; }
+    .cs-notify {
+      display: flex;
+      gap: 8px;
+      max-width: 400px;
+      margin: 0 auto 30px;
+    }
+    .cs-notify input {
+      flex: 1;
+      padding: 14px 18px;
+      background: rgba(19,23,34,0.8);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      color: #fff;
+      font-size: 15px;
+      outline: none;
+      transition: border 0.2s;
+    }
+    .cs-notify input:focus { border-color: #00b4dc; }
+    .cs-notify input::placeholder { color: #64748b; }
+    .cs-notify button {
+      padding: 14px 24px;
+      background: linear-gradient(135deg, #00b4dc, #0090b0);
+      color: #0a0e17;
+      border: none;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+    .cs-notify button:hover {
+      box-shadow: 0 0 30px rgba(0,180,220,0.4);
+      transform: translateY(-1px);
+    }
+    .cs-links {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .cs-links a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+    .cs-links a:hover { color: #00b4dc; }
+    .cs-success {
+      color: #00c853;
+      font-weight: 500;
+      padding: 12px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="cs-container">
+    <div class="cs-bg-1"></div>
+    <div class="cs-bg-2"></div>
+    <div class="cs-content">
+      <img src="/images/logo-dark.jpg" alt="MIA IA SYSTEM" class="cs-logo"/>
+      <div class="cs-badge">🚀 En développement</div>
+      <h1 class="cs-title">Dashboard MIA</h1>
+      <p class="cs-subtitle">
+        Le dashboard de trading intelligent arrive bientôt.<br/>
+        Signaux en temps réel, statistiques, alertes Discord — tout en un seul endroit.
+      </p>
+      <div class="cs-features">
+        <div class="cs-feature"><span>📊</span> Signaux Live ES/NQ/RTY</div>
+        <div class="cs-feature"><span>📈</span> Statistiques & P&L</div>
+        <div class="cs-feature"><span>🔔</span> Alertes Discord</div>
+        <div class="cs-feature"><span>🤖</span> IA Propriétaire</div>
+      </div>
+      <div class="cs-notify" id="notifyForm">
+        <input type="email" id="notifyEmail" placeholder="Votre email pour être notifié"/>
+        <button onclick="notifyMe()">Me notifier</button>
+      </div>
+      <div class="cs-success" id="notifySuccess">✅ Vous serez notifié au lancement !</div>
+      <div class="cs-links">
+        <a href="/">← Retour au site</a>
+        <a href="/education/">📚 Éducation Trading</a>
+        <a href="https://discord.gg/mia-ia-system" target="_blank">💬 Discord</a>
+      </div>
+    </div>
+  </div>
+  <script>
+    function notifyMe() {
+      var email = document.getElementById('notifyEmail').value.trim();
+      if (!email || !email.includes('@')) return;
+      fetch('https://discord.com/api/webhooks/1483825074128556062/oQ02-a3xTDn3lT59B2Uqij5Sq19wjThHomd03xZMkVKiCcz1sxSTzA9k9hlFU-ccLHM2', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          embeds: [{
+            title: '🔔 Notify Me — Dashboard Coming Soon',
+            color: 13808692,
+            fields: [{ name: '📧 Email', value: email }],
+            timestamp: new Date().toISOString(),
+            footer: { text: 'MIA Coming Soon Page' }
+          }]
+        })
+      });
+      document.getElementById('notifyForm').style.display = 'none';
+      document.getElementById('notifySuccess').style.display = 'block';
+    }
+  </script>
+  <script src="/ticker.js" defer></script>
+</body>
+</html>

@@ -1,110 +1,209 @@
 // ═══════════════════════════════════════════════════════════════
-// MIA IA SYSTEM — Patch JS v3.0 (18/03/2026)
-// Canvas particles + orbes + navbar + menu + FAQ
+// MIA IA SYSTEM — Patch JS v4.0 (18/03/2026)
+// Contact form + Language selector + Navbar + Menu + FAQ
 // ═══════════════════════════════════════════════════════════════
 (function () {
   'use strict';
   if (window.MIA_FIXES_DONE) return;
   window.MIA_FIXES_DONE = true;
 
+  var DISCORD_WEBHOOK = 'https://discord.com/api/webhooks/1483825074128556062/oQ02-a3xTDn3lT59B2Uqij5Sq19wjThHomd03xZMkVKiCcz1sxSTzA9k9hlFU-ccLHM2';
+
   function init() {
-    setupParticlesCanvas();
-    setupGradientOrbs();
+    setupContactForm();
+    setupNewsletterForm();
+    setupLanguageSelector();
+    setupDashboardRedirect();
     setupNavbarAutoHide();
     setupMenuAnchors();
     setupScrollReveal();
     setupFAQAccordion();
+    fixFooterButtons();
   }
 
-  // ─── CANVAS PARTICLES — petits points flottants ───
-  function setupParticlesCanvas() {
-    var canvas = document.createElement('canvas');
-    canvas.id = 'mia-particles-canvas';
-    document.body.insertBefore(canvas, document.body.firstChild);
+  // ─── #B CONTACT FORM → Discord webhook + email ───
+  function setupContactForm() {
+    var forms = document.querySelectorAll('form');
+    forms.forEach(function (form) {
+      // Identifier le formulaire de contact (a un champ "message")
+      var msgField = form.querySelector('textarea, #message');
+      var nameField = form.querySelector('#name, input[placeholder*="Doe"]');
+      var emailField = form.querySelector('#email, input[type="email"]');
+      if (!msgField || !nameField) return;
 
-    var ctx = canvas.getContext('2d');
-    var particles = [];
-    var PARTICLE_COUNT = 50;
-    var colors = [
-      'rgba(0, 180, 220, ',    // cyan
-      'rgba(212, 175, 55, ',    // gold
-      'rgba(99, 102, 241, ',    // purple
-      'rgba(255, 255, 255, '    // white
-    ];
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var name = nameField.value.trim();
+        var email = emailField ? emailField.value.trim() : '';
+        var message = msgField.value.trim();
 
-    function resize() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    resize();
-    window.addEventListener('resize', resize);
-
-    // Créer les particules
-    for (var i = 0; i < PARTICLE_COUNT; i++) {
-      particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        size: Math.random() * 2 + 0.5,
-        speedX: (Math.random() - 0.5) * 0.3,
-        speedY: (Math.random() - 0.5) * 0.3,
-        opacity: Math.random() * 0.5 + 0.1,
-        opacitySpeed: (Math.random() - 0.5) * 0.005,
-        color: colors[Math.floor(Math.random() * colors.length)]
-      });
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      for (var i = 0; i < particles.length; i++) {
-        var p = particles[i];
-
-        // Mouvement
-        p.x += p.speedX;
-        p.y += p.speedY;
-
-        // Pulsation opacité
-        p.opacity += p.opacitySpeed;
-        if (p.opacity > 0.6 || p.opacity < 0.05) {
-          p.opacitySpeed *= -1;
+        if (!name || !email || !message) {
+          showFormFeedback(form, 'error', 'Veuillez remplir tous les champs.');
+          return;
         }
 
-        // Reboucler
-        if (p.x < -10) p.x = canvas.width + 10;
-        if (p.x > canvas.width + 10) p.x = -10;
-        if (p.y < -10) p.y = canvas.height + 10;
-        if (p.y > canvas.height + 10) p.y = -10;
+        // Disable form
+        form.classList.add('mia-form-sending');
+        var submitBtn = form.querySelector('button[type="submit"]');
+        var origHTML = submitBtn ? submitBtn.innerHTML : '';
+        if (submitBtn) submitBtn.innerHTML = '<span class="mia-spinner"></span> Envoi...';
 
-        // Dessiner
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = p.color + p.opacity.toFixed(2) + ')';
-        ctx.fill();
-      }
+        // Send to Discord webhook
+        var payload = {
+          embeds: [{
+            title: '📩 Nouveau message — mia-ia-system.com',
+            color: 47324, // cyan
+            fields: [
+              { name: '👤 Nom', value: name, inline: true },
+              { name: '📧 Email', value: email, inline: true },
+              { name: '💬 Message', value: message.substring(0, 1000) }
+            ],
+            timestamp: new Date().toISOString(),
+            footer: { text: 'MIA Website Contact Form' }
+          }]
+        };
 
-      requestAnimationFrame(animate);
-    }
-
-    animate();
+        fetch(DISCORD_WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        })
+        .then(function (res) {
+          if (res.ok || res.status === 204) {
+            // Also send email via mailto (backup)
+            showFormFeedback(form, 'success', '✅ Message envoyé ! Nous vous répondrons rapidement.');
+            form.reset();
+          } else {
+            throw new Error('Discord error: ' + res.status);
+          }
+        })
+        .catch(function (err) {
+          console.error('Contact form error:', err);
+          // Fallback: open mailto
+          var subject = encodeURIComponent('Contact MIA - ' + name);
+          var body = encodeURIComponent('De: ' + name + '\nEmail: ' + email + '\n\n' + message);
+          window.open('mailto:contact@mia-ia-system.com?subject=' + subject + '&body=' + body);
+          showFormFeedback(form, 'success', '✅ Redirection vers votre client email...');
+        })
+        .finally(function () {
+          form.classList.remove('mia-form-sending');
+          if (submitBtn) submitBtn.innerHTML = origHTML;
+        });
+      });
+    });
   }
 
-  // ─── GRADIENT ORBS — divs animés ───
-  function setupGradientOrbs() {
-    var container = document.createElement('div');
-    container.className = 'mia-bg-orbs';
-    container.setAttribute('aria-hidden', 'true');
+  function showFormFeedback(form, type, message) {
+    // Remove previous feedback
+    var prev = form.parentElement.querySelector('.mia-form-success, .mia-form-error');
+    if (prev) prev.remove();
 
-    var orbs = ['mia-orb-cyan', 'mia-orb-gold', 'mia-orb-purple'];
-    for (var i = 0; i < orbs.length; i++) {
-      var orb = document.createElement('div');
-      orb.className = 'mia-orb ' + orbs[i];
-      container.appendChild(orb);
+    var div = document.createElement('div');
+    div.className = type === 'success' ? 'mia-form-success' : 'mia-form-error';
+    div.textContent = message;
+
+    if (type === 'success') {
+      form.style.display = 'none';
+      form.parentElement.appendChild(div);
+    } else {
+      form.insertBefore(div, form.firstChild);
+      setTimeout(function () { div.remove(); }, 5000);
     }
-
-    document.body.insertBefore(container, document.body.firstChild);
   }
 
-  // ─── NAVBAR AUTO-HIDE ───
+  // ─── NEWSLETTER → Discord notification ───
+  function setupNewsletterForm() {
+    // Find newsletter input (in the glass card with "Newsletter" text)
+    var newsletters = document.querySelectorAll('input[type="email"][placeholder*="email"]');
+    newsletters.forEach(function (input) {
+      var btn = input.parentElement ? input.parentElement.querySelector('button') : null;
+      if (!btn || input.closest('form')) return; // skip if inside contact form
+
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var email = input.value.trim();
+        if (!email || !email.includes('@')) {
+          input.style.borderColor = '#ff5252';
+          setTimeout(function () { input.style.borderColor = ''; }, 2000);
+          return;
+        }
+
+        var payload = {
+          embeds: [{
+            title: '📬 Nouvel abonné Newsletter',
+            color: 13808692, // gold
+            fields: [{ name: '📧 Email', value: email }],
+            timestamp: new Date().toISOString(),
+            footer: { text: 'MIA Website Newsletter' }
+          }]
+        };
+
+        fetch(DISCORD_WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).then(function () {
+          input.value = '';
+          input.placeholder = '✅ Inscrit !';
+          input.style.borderColor = '#00c853';
+          setTimeout(function () {
+            input.placeholder = 'Votre email';
+            input.style.borderColor = '';
+          }, 3000);
+        });
+      });
+    });
+  }
+
+  // ─── #D LANGUAGE SELECTOR — Griser EN/ES/DE ───
+  function setupLanguageSelector() {
+    // Find all language selector buttons
+    var langBtns = document.querySelectorAll('button[aria-label="Select language"]');
+    langBtns.forEach(function (btn) {
+      // Get the dropdown (if it exists from Next.js)
+      var parent = btn.closest('.relative');
+      if (!parent) return;
+
+      // Remove old click behavior, add our own dropdown
+      var newBtn = btn.cloneNode(true);
+      btn.parentNode.replaceChild(newBtn, btn);
+
+      var dropdown = document.createElement('div');
+      dropdown.className = 'mia-lang-dropdown';
+      dropdown.innerHTML = [
+        '<div class="mia-lang-option mia-lang-active" data-lang="fr"><img src="/flags/fr.svg" width="20" height="14" style="border-radius:2px"> Français</div>',
+        '<div class="mia-lang-option mia-lang-disabled" data-lang="en"><img src="/flags/us.svg" width="20" height="14" style="border-radius:2px"> English</div>',
+        '<div class="mia-lang-option mia-lang-disabled" data-lang="es"><img src="/flags/es.svg" width="20" height="14" style="border-radius:2px"> Español</div>',
+        '<div class="mia-lang-option mia-lang-disabled" data-lang="de"><img src="/flags/de.svg" width="20" height="14" style="border-radius:2px"> Deutsch</div>'
+      ].join('');
+      parent.appendChild(dropdown);
+
+      newBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        dropdown.classList.toggle('mia-open');
+      });
+
+      document.addEventListener('click', function () {
+        dropdown.classList.remove('mia-open');
+      });
+    });
+  }
+
+  // ─── #A DASHBOARD REDIRECT → Coming Soon ───
+  function setupDashboardRedirect() {
+    var links = document.querySelectorAll('a[href*="dashboard.mia-ia-system.com"]');
+    links.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.location.href = '/coming-soon/';
+      });
+      // Remove target="_blank" since we redirect locally
+      link.removeAttribute('target');
+      link.removeAttribute('rel');
+    });
+  }
+
+  // ─── #6 NAVBAR AUTO-HIDE ───
   function setupNavbarAutoHide() {
     var header = document.querySelector('header.fixed') ||
                  document.querySelector('header[style*="position: fixed"]') ||
@@ -117,21 +216,14 @@
     window.addEventListener('scroll', function () {
       if (!ticking) {
         window.requestAnimationFrame(function () {
-          var currentScrollY = window.scrollY;
-          if (currentScrollY > 50) {
-            header.classList.add('mia-nav-scrolled');
-          } else {
-            header.classList.remove('mia-nav-scrolled');
-            header.classList.remove('mia-nav-hidden');
+          var y = window.scrollY;
+          if (y > 50) header.classList.add('mia-nav-scrolled');
+          else { header.classList.remove('mia-nav-scrolled'); header.classList.remove('mia-nav-hidden'); }
+          if (y > 80) {
+            if (y > lastScrollY + 5) header.classList.add('mia-nav-hidden');
+            else if (y < lastScrollY - 5) header.classList.remove('mia-nav-hidden');
           }
-          if (currentScrollY > 80) {
-            if (currentScrollY > lastScrollY + 5) {
-              header.classList.add('mia-nav-hidden');
-            } else if (currentScrollY < lastScrollY - 5) {
-              header.classList.remove('mia-nav-hidden');
-            }
-          }
-          lastScrollY = currentScrollY;
+          lastScrollY = y;
           ticking = false;
         });
         ticking = true;
@@ -139,31 +231,50 @@
     }, { passive: true });
   }
 
-  // ─── MENU ANCHORS ───
+  // ─── #2 MENU ANCHORS ───
   function setupMenuAnchors() {
-    var menuMap = {
-      'Accueil': '#hero', 'Services': '#features',
-      'Tarifs': '#pricing', 'FAQ': '#faq', 'Contact': '#contact'
-    };
-    var buttons = document.querySelectorAll('header button, footer button');
-    buttons.forEach(function (btn) {
+    var map = { 'Accueil':'#hero', 'Services':'#features', 'Tarifs':'#pricing', 'FAQ':'#faq', 'Contact':'#contact' };
+    document.querySelectorAll('header button, footer button').forEach(function (btn) {
       var label = btn.textContent.trim().split('\n')[0].trim();
-      Object.keys(menuMap).forEach(function (key) {
+      Object.keys(map).forEach(function (key) {
         if (label === key || label.startsWith(key)) {
-          var target = document.querySelector(menuMap[key]);
+          var target = document.querySelector(map[key]);
           if (target) {
             btn.style.cursor = 'pointer';
             btn.addEventListener('click', function (e) {
               e.preventDefault();
               var hh = document.querySelector('header');
-              var offset = hh ? hh.offsetHeight : 70;
-              var top = target.getBoundingClientRect().top + window.scrollY - offset - 10;
+              var top = target.getBoundingClientRect().top + window.scrollY - (hh ? hh.offsetHeight : 70) - 10;
               window.scrollTo({ top: top, behavior: 'smooth' });
               if (hh) hh.classList.remove('mia-nav-hidden');
             });
           }
         }
       });
+    });
+  }
+
+  // ─── FIX FOOTER BUTTONS → scroll to sections ───
+  function fixFooterButtons() {
+    var footer = document.querySelector('footer');
+    if (!footer) return;
+    var map = { 'Services':'#features', 'Tarifs':'#pricing', 'FAQ':'#faq' };
+    footer.querySelectorAll('button').forEach(function (btn) {
+      var label = btn.textContent.trim();
+      if (map[label]) {
+        var a = document.createElement('a');
+        a.href = map[label];
+        a.className = btn.className;
+        a.textContent = label;
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          var target = document.querySelector(map[label]);
+          if (target) {
+            window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+          }
+        });
+        btn.parentElement.replaceChild(a, btn);
+      }
     });
   }
 
@@ -184,48 +295,39 @@
       var parent = el.parentElement;
       if (parent && (parent.classList.contains('grid') || parent.style.display === 'grid')) {
         if (!gridParents.has(parent)) gridParents.set(parent, 0);
-        var idx = gridParents.get(parent);
-        el.setAttribute('data-delay', idx);
-        gridParents.set(parent, idx + 1);
+        el.setAttribute('data-delay', gridParents.get(parent));
+        gridParents.set(parent, gridParents.get(parent) + 1);
       }
     });
 
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('mia-visible');
-          observer.unobserve(entry.target);
-        }
+        if (entry.isIntersecting) { entry.target.classList.add('mia-visible'); observer.unobserve(entry.target); }
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    document.querySelectorAll('.mia-reveal').forEach(function (el) {
-      observer.observe(el);
-    });
+    document.querySelectorAll('.mia-reveal').forEach(function (el) { observer.observe(el); });
   }
 
   // ─── FAQ ACCORDION ───
   function setupFAQAccordion() {
-    var faqButtons = document.querySelectorAll('.faq-question');
-    if (!faqButtons.length) return;
-
-    faqButtons.forEach(function (btn) {
+    var btns = document.querySelectorAll('.faq-question');
+    if (!btns.length) return;
+    btns.forEach(function (btn) {
       btn.addEventListener('click', function () {
         var item = btn.closest('.faq-item');
         var content = item ? item.querySelector('.overflow-hidden') : null;
         var answer = item ? item.querySelector('.faq-answer') : null;
         var chevron = btn.querySelector('svg:last-child');
         if (!content || !answer) return;
-
         var isOpen = content.style.height !== '0px' && content.style.height !== '';
 
-        document.querySelectorAll('.faq-item').forEach(function (other) {
-          if (other === item) return;
-          var c = other.querySelector('.overflow-hidden');
-          var ch = other.querySelector('.faq-question svg:last-child');
-          if (c) { c.style.height = '0px'; c.style.opacity = '0'; c.style.transition = 'height 0.3s ease, opacity 0.3s ease'; }
+        document.querySelectorAll('.faq-item').forEach(function (o) {
+          if (o === item) return;
+          var c = o.querySelector('.overflow-hidden');
+          var ch = o.querySelector('.faq-question svg:last-child');
+          if (c) { c.style.height = '0px'; c.style.opacity = '0'; c.style.transition = 'height 0.3s, opacity 0.3s'; }
           if (ch) ch.style.transform = 'rotate(0deg)';
-          other.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          o.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
         });
 
         if (isOpen) {
@@ -233,20 +335,17 @@
           if (chevron) chevron.style.transform = 'rotate(0deg)';
           btn.setAttribute('aria-expanded', 'false');
         } else {
-          content.style.transition = 'height 0.3s ease, opacity 0.3s ease';
-          content.style.height = answer.scrollHeight + 20 + 'px';
-          content.style.opacity = '1';
+          content.style.transition = 'height 0.3s, opacity 0.3s';
+          content.style.height = answer.scrollHeight + 20 + 'px'; content.style.opacity = '1';
           if (chevron) chevron.style.transform = 'rotate(180deg)';
           btn.setAttribute('aria-expanded', 'true');
         }
       });
     });
-
-    setTimeout(function () { faqButtons[0].click(); }, 100);
+    setTimeout(function () { btns[0].click(); }, 100);
   }
 
   // ─── INIT ───
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else { init(); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
 })();

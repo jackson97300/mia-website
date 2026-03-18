@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   MIA IA SYSTEM — Patch CSS v3.0 (18/03/2026)
+   MIA IA SYSTEM — Patch CSS v4.0 (18/03/2026)
    ═══════════════════════════════════════════════════════════════ */
 
 /* #1 FIX: Rendre visible les éléments opacity:0 */
@@ -26,80 +26,6 @@
 .mia-reveal[data-delay="8"] { transition-delay: 0.64s; }
 
 
-/* ─── #5 ANIMATION DE FOND ─── */
-
-/* Canvas pour les micro-particules flottantes */
-#mia-particles-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* Orbes gradient animés */
-.mia-bg-orbs {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
-}
-
-.mia-orb {
-  position: absolute;
-  border-radius: 50%;
-}
-
-.mia-orb-cyan {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(0, 180, 220, 0.20) 0%, rgba(0, 180, 220, 0) 70%);
-  top: 5%;
-  left: -8%;
-  animation: mia-drift-1 22s ease-in-out infinite;
-}
-
-.mia-orb-gold {
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0) 70%);
-  bottom: 5%;
-  right: -8%;
-  animation: mia-drift-2 28s ease-in-out infinite;
-}
-
-.mia-orb-purple {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.12) 0%, rgba(99, 102, 241, 0) 70%);
-  top: 40%;
-  left: 30%;
-  animation: mia-drift-3 25s ease-in-out infinite;
-}
-
-@keyframes mia-drift-1 {
-  0%, 100% { transform: translate(0, 0); }
-  33% { transform: translate(150px, 100px); }
-  66% { transform: translate(-80px, 150px); }
-}
-@keyframes mia-drift-2 {
-  0%, 100% { transform: translate(0, 0); }
-  33% { transform: translate(-130px, -90px); }
-  66% { transform: translate(100px, -140px); }
-}
-@keyframes mia-drift-3 {
-  0%, 100% { transform: translate(0, 0); }
-  33% { transform: translate(110px, -70px); }
-  66% { transform: translate(-90px, 110px); }
-}
-
-
 /* ─── #6 NAVBAR AUTO-HIDE ─── */
 header.fixed,
 header[style*="position: fixed"] {
@@ -118,12 +44,97 @@ header.mia-nav-scrolled {
 }
 
 
+/* ─── #D SÉLECTEUR DE LANGUE — Griser EN/ES/DE ─── */
+.mia-lang-disabled {
+  opacity: 0.35 !important;
+  cursor: not-allowed !important;
+  pointer-events: none;
+  position: relative;
+}
+.mia-lang-disabled::after {
+  content: 'Bientôt';
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  color: #64748b;
+  white-space: nowrap;
+}
+.mia-lang-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background: rgba(19, 23, 34, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 8px;
+  min-width: 160px;
+  z-index: 100;
+  display: none;
+}
+.mia-lang-dropdown.mia-open { display: block; }
+.mia-lang-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.mia-lang-option:hover:not(.mia-lang-disabled) { background: rgba(255,255,255,0.05); }
+.mia-lang-option.mia-lang-active {
+  color: #00b4dc;
+  background: rgba(0,180,220,0.1);
+}
+
+
+/* ─── #B FORMULAIRE CONTACT — Feedback ─── */
+.mia-form-success {
+  background: rgba(0, 200, 83, 0.1);
+  border: 1px solid rgba(0, 200, 83, 0.3);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  color: #00c853;
+  font-weight: 500;
+}
+.mia-form-error {
+  background: rgba(255, 82, 82, 0.1);
+  border: 1px solid rgba(255, 82, 82, 0.3);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  color: #ff5252;
+  font-size: 14px;
+}
+.mia-form-sending {
+  opacity: 0.6;
+  pointer-events: none;
+}
+.mia-spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255,255,255,0.3);
+  border-top-color: #00b4dc;
+  border-radius: 50%;
+  animation: mia-spin 0.6s linear infinite;
+}
+@keyframes mia-spin {
+  to { transform: rotate(360deg); }
+}
+
+
 /* ─── MISC FIXES ─── */
 .faq-item:first-child .overflow-hidden { height: auto !important; opacity: 1 !important; }
 html { scroll-behavior: smooth; }
 
 @media (prefers-reduced-motion: reduce) {
   .mia-reveal { transition: none; opacity: 1; transform: none; }
-  .mia-orb { animation: none !important; }
-  #mia-particles-canvas { display: none; }
 }
