@@ -355,10 +355,23 @@
 
   // ─── #C PRICING : Remplacer 2 tiers par 3 tiers avec degressivite ───
   function fixPricingSection() {
-    // Retarder pour attendre l'hydratation Next.js
-    setTimeout(_doPricingFix, 500);
+    // Attendre l'hydratation Next.js puis surveiller les re-renders
+    setTimeout(doPricingFix, 1000);
+    setTimeout(doPricingFix, 2500);
+    setTimeout(doPricingFix, 5000);
+    // Observer les mutations sur la section pricing
+    var target = document.getElementById('pricing');
+    if (target && typeof MutationObserver !== 'undefined') {
+      var obs = new MutationObserver(function () {
+        obs.disconnect(); // stop apres 1 correction
+        setTimeout(doPricingFix, 100);
+      });
+      obs.observe(target, { childList: true, subtree: true });
+    }
   }
-  function _doPricingFix() {
+  // Expose globalement pour debug
+  window.doPricingFix = doPricingFix;
+  function doPricingFix() {
     var pricingSection = document.getElementById('pricing');
     if (!pricingSection) return;
 
