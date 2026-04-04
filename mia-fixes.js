@@ -161,35 +161,12 @@
 
   // ─── #D LANGUAGE SELECTOR — Griser EN/ES/DE ───
   function setupLanguageSelector() {
-    // Find all language selector buttons
+    // Cacher le selecteur de langue — site FR uniquement
     var langBtns = document.querySelectorAll('button[aria-label="Select language"]');
     langBtns.forEach(function (btn) {
-      // Get the dropdown (if it exists from Next.js)
       var parent = btn.closest('.relative');
-      if (!parent) return;
-
-      // Remove old click behavior, add our own dropdown
-      var newBtn = btn.cloneNode(true);
-      btn.parentNode.replaceChild(newBtn, btn);
-
-      var dropdown = document.createElement('div');
-      dropdown.className = 'mia-lang-dropdown';
-      dropdown.innerHTML = [
-        '<div class="mia-lang-option mia-lang-active" data-lang="fr"><img src="/flags/fr.svg" width="20" height="14" style="border-radius:2px"> Français</div>',
-        '<div class="mia-lang-option mia-lang-disabled" data-lang="en"><img src="/flags/us.svg" width="20" height="14" style="border-radius:2px"> English</div>',
-        '<div class="mia-lang-option mia-lang-disabled" data-lang="es"><img src="/flags/es.svg" width="20" height="14" style="border-radius:2px"> Español</div>',
-        '<div class="mia-lang-option mia-lang-disabled" data-lang="de"><img src="/flags/de.svg" width="20" height="14" style="border-radius:2px"> Deutsch</div>'
-      ].join('');
-      parent.appendChild(dropdown);
-
-      newBtn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        dropdown.classList.toggle('mia-open');
-      });
-
-      document.addEventListener('click', function () {
-        dropdown.classList.remove('mia-open');
-      });
+      if (parent) parent.style.display = 'none';
+      else btn.style.display = 'none';
     });
   }
 
