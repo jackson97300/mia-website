@@ -45,14 +45,20 @@
     script.async = true;
     script.text = JSON.stringify({
       "symbols": [
-        {"proName": "CME_MINI:ES1!", "title": "ES"},
-        {"proName": "CME_MINI:NQ1!", "title": "NQ"},
-        {"proName": "CME_MINI:RTY1!", "title": "RTY"},
-        {"proName": "SP:SPX", "title": "SPX"},
-        {"proName": "CBOE:VIX", "title": "VIX"},
-        {"proName": "NYMEX:CL1!", "title": "Pétrole"},
-        {"proName": "COMEX:GC1!", "title": "Or"},
-        {"proName": "BITSTAMP:BTCUSD", "title": "BTC"}
+        {"proName": "AMEX:SPY", "title": "SPY (ES)"},
+        {"proName": "NASDAQ:QQQ", "title": "QQQ (NQ)"},
+        {"proName": "AMEX:IWM", "title": "IWM (RTY)"},
+        {"proName": "AMEX:USO", "title": "Petrole"},
+        {"proName": "AMEX:GLD", "title": "Or"},
+        {"proName": "BITSTAMP:BTCUSD", "title": "BTC"},
+        {"proName": "FX_IDC:EURUSD", "title": "EUR/USD"},
+        {"proName": "NASDAQ:AAPL", "title": "AAPL"},
+        {"proName": "NASDAQ:MSFT", "title": "MSFT"},
+        {"proName": "NASDAQ:NVDA", "title": "NVDA"},
+        {"proName": "NASDAQ:AMZN", "title": "AMZN"},
+        {"proName": "NASDAQ:GOOGL", "title": "GOOGL"},
+        {"proName": "NASDAQ:META", "title": "META"},
+        {"proName": "NASDAQ:TSLA", "title": "TSLA"}
       ],
       "showSymbolLogo": true,
       "isTransparent": true,
