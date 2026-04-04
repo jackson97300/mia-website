@@ -355,11 +355,15 @@
 
   // ─── #C PRICING : Remplacer 2 tiers par 3 tiers avec degressivite ───
   function fixPricingSection() {
+    // Retarder pour attendre l'hydratation Next.js
+    setTimeout(_doPricingFix, 500);
+  }
+  function _doPricingFix() {
     var pricingSection = document.getElementById('pricing');
     if (!pricingSection) return;
 
-    // Trouver la grille de pricing
-    var grid = pricingSection.querySelector('.grid');
+    // Trouver la grille de pricing (class contient "grid")
+    var grid = pricingSection.querySelector('[class*="grid-cols"]') || pricingSection.querySelector('.grid');
     if (!grid) return;
 
     // Remplacer le contenu par 3 tiers
