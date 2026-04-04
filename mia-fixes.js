@@ -161,34 +161,24 @@
 
   // ─── #D LANGUAGE SELECTOR — Griser EN/ES/DE ───
   function setupLanguageSelector() {
-    // Selecteur de langue avec FR actif, EN/ES/DE "Bientot"
+    // Cacher l'ancien selecteur Next.js — Weglot gere la traduction
     var langBtns = document.querySelectorAll('button[aria-label="Select language"]');
     langBtns.forEach(function (btn) {
       var parent = btn.closest('.relative');
-      if (!parent) return;
-
-      var newBtn = btn.cloneNode(true);
-      btn.parentNode.replaceChild(newBtn, btn);
-
-      var dropdown = document.createElement('div');
-      dropdown.className = 'mia-lang-dropdown';
-      dropdown.innerHTML = [
-        '<div class="mia-lang-option mia-lang-active" data-lang="fr"><img src="/flags/fr.svg" width="20" height="14" style="border-radius:2px"> Français</div>',
-        '<div class="mia-lang-option mia-lang-disabled" data-lang="en"><img src="/flags/us.svg" width="20" height="14" style="border-radius:2px"> English <span style="font-size:0.6rem;color:#D4AF37;margin-left:4px;">Bientôt</span></div>',
-        '<div class="mia-lang-option mia-lang-disabled" data-lang="es"><img src="/flags/es.svg" width="20" height="14" style="border-radius:2px"> Español <span style="font-size:0.6rem;color:#D4AF37;margin-left:4px;">Bientôt</span></div>',
-        '<div class="mia-lang-option mia-lang-disabled" data-lang="de"><img src="/flags/de.svg" width="20" height="14" style="border-radius:2px"> Deutsch <span style="font-size:0.6rem;color:#D4AF37;margin-left:4px;">Bientôt</span></div>'
-      ].join('');
-      parent.appendChild(dropdown);
-
-      newBtn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        dropdown.classList.toggle('mia-open');
-      });
-
-      document.addEventListener('click', function () {
-        dropdown.classList.remove('mia-open');
-      });
+      if (parent) parent.style.display = 'none';
+      else btn.style.display = 'none';
     });
+
+    // Charger Weglot (traduction automatique FR → EN)
+    if (!document.getElementById('weglot-script')) {
+      var s = document.createElement('script');
+      s.id = 'weglot-script';
+      s.src = 'https://cdn.weglot.com/weglot.min.js';
+      s.onload = function () {
+        Weglot.initialize({ api_key: 'wg_1d4338cef853fc09577672dc955cedb43' });
+      };
+      document.head.appendChild(s);
+    }
   }
 
   // ─── #A DASHBOARD REDIRECT → Dashboard VPS live ───
