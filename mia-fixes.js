@@ -353,35 +353,32 @@
     setTimeout(function () { btns[0].click(); }, 100);
   }
 
-  // ─── #C PRICING : Remplacer 2 tiers par 3 tiers avec degressivite ───
+  // ─── #C PRICING : Cacher ancien + inserer nouveau (anti-React) ───
   function fixPricingSection() {
-    // Attendre l'hydratation Next.js puis surveiller les re-renders
-    setTimeout(doPricingFix, 1000);
-    setTimeout(doPricingFix, 2500);
-    setTimeout(doPricingFix, 5000);
-    // Observer les mutations sur la section pricing
-    var target = document.getElementById('pricing');
-    if (target && typeof MutationObserver !== 'undefined') {
-      var obs = new MutationObserver(function () {
-        obs.disconnect(); // stop apres 1 correction
-        setTimeout(doPricingFix, 100);
-      });
-      obs.observe(target, { childList: true, subtree: true });
-    }
+    setTimeout(doPricingFix, 800);
+    setTimeout(doPricingFix, 2000);
+    setTimeout(doPricingFix, 4000);
   }
-  // Expose globalement pour debug
   window.doPricingFix = doPricingFix;
   function doPricingFix() {
+    // Si deja fixe, ne pas re-executer
+    if (document.getElementById('mia-pricing-new')) return;
+
     var pricingSection = document.getElementById('pricing');
     if (!pricingSection) return;
 
-    // Trouver la grille de pricing (class contient "grid")
-    var grid = pricingSection.querySelector('[class*="grid-cols"]') || pricingSection.querySelector('.grid');
-    if (!grid) return;
+    // Cacher l'ancien grid (React ne peut pas le re-montrer car on cache via CSS)
+    var oldGrid = pricingSection.querySelector('[class*="grid-cols"]') || pricingSection.querySelector('.grid');
+    if (!oldGrid) return;
+    oldGrid.style.display = 'none';
 
-    // Remplacer le contenu par 3 tiers
-    grid.className = grid.className.replace('md:grid-cols-2', 'md:grid-cols-3');
-    grid.innerHTML = '' +
+    // Creer le nouveau grid 3 colonnes
+    var newGrid = document.createElement('div');
+    newGrid.id = 'mia-pricing-new';
+    newGrid.className = 'grid md:grid-cols-3 gap-8 max-w-5xl mx-auto';
+    newGrid.style.opacity = '1';
+    newGrid.style.transform = 'none';
+    newGrid.innerHTML = '' +
       // GRATUIT
       '<div class="glass p-6 text-center flex flex-col">' +
         '<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-[#00B4DC]/10 text-[#00B4DC] mb-4 mx-auto">GRATUIT</span>' +
@@ -441,7 +438,9 @@
       '<button class="mia-period-btn" data-period="semi">6 mois <span style="color:#00C853;font-size:0.6rem;font-weight:700;">-15%</span></button>' +
       '<button class="mia-period-btn" data-period="annual">Annuel <span style="color:#00C853;font-size:0.6rem;font-weight:700;">-30%</span></button>' +
       '</div>';
-    grid.parentNode.insertBefore(toggle, grid);
+    // Inserer newGrid + toggle apres l'ancien grid cache
+    oldGrid.parentNode.insertBefore(toggle, oldGrid.nextSibling);
+    oldGrid.parentNode.insertBefore(newGrid, toggle.nextSibling);
 
     // CSS inline pour les boutons de periode
     var style = document.createElement('style');
