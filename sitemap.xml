@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Pages principales -->
-  <url><loc>https://mia-ia-system.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://mia-ia-system.com/login/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://mia-ia-system.com/register/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/</loc><lastmod>2026-04-04</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://mia-ia-system.com/calendar/</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
   
   <!-- Éducation -->
@@ -62,5 +60,5 @@
   <url><loc>https://mia-ia-system.com/privacy/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://mia-ia-system.com/legal/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://mia-ia-system.com/risk/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://mia-ia-system.com/coming-soon/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <!-- coming-soon retire — dashboard live sur VPS -->
 </urlset>

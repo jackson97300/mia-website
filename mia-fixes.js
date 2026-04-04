@@ -19,6 +19,10 @@
     setupScrollReveal();
     setupFAQAccordion();
     fixFooterButtons();
+    fixPricingSection();
+    fixLoginRegister();
+    fixFooterDashboard();
+    hideGoogleOAuth();
   }
 
   // ─── #B CONTACT FORM → Discord webhook + email ───
@@ -189,17 +193,21 @@
     });
   }
 
-  // ─── #A DASHBOARD REDIRECT → Coming Soon ───
+  // ─── #A DASHBOARD REDIRECT → Dashboard VPS live ───
+  var DASHBOARD_URL = 'http://212.28.179.199:8000';
   function setupDashboardRedirect() {
     var links = document.querySelectorAll('a[href*="dashboard.mia-ia-system.com"]');
     links.forEach(function (link) {
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
-        window.location.href = '/coming-soon/';
-      });
-      // Remove target="_blank" since we redirect locally
-      link.removeAttribute('target');
-      link.removeAttribute('rel');
+      link.href = DASHBOARD_URL;
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
+    });
+    // Aussi intercepter les liens /coming-soon/
+    var comingSoonLinks = document.querySelectorAll('a[href*="/coming-soon"]');
+    comingSoonLinks.forEach(function (link) {
+      link.href = DASHBOARD_URL;
+      link.setAttribute('target', '_blank');
+      link.setAttribute('rel', 'noopener noreferrer');
     });
   }
 
@@ -343,6 +351,164 @@
       });
     });
     setTimeout(function () { btns[0].click(); }, 100);
+  }
+
+  // ─── #C PRICING : Remplacer 2 tiers par 3 tiers avec degressivite ───
+  function fixPricingSection() {
+    var pricingSection = document.getElementById('pricing');
+    if (!pricingSection) return;
+
+    // Trouver la grille de pricing
+    var grid = pricingSection.querySelector('.grid');
+    if (!grid) return;
+
+    // Remplacer le contenu par 3 tiers
+    grid.className = grid.className.replace('md:grid-cols-2', 'md:grid-cols-3');
+    grid.innerHTML = '' +
+      // GRATUIT
+      '<div class="glass p-6 text-center flex flex-col">' +
+        '<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-[#00B4DC]/10 text-[#00B4DC] mb-4 mx-auto">GRATUIT</span>' +
+        '<div class="text-4xl font-bold text-white mb-1 font-mono">0&euro;</div>' +
+        '<div class="text-light-500 text-sm mb-4">/mois</div>' +
+        '<hr class="border-white/10 mb-4">' +
+        '<ul class="text-left space-y-3 mb-6 flex-1">' +
+          '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Status bot (running/stopped)</li>' +
+          '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>VIX, ATR, VWAP slope</li>' +
+          '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Correlation ES/NQ basique</li>' +
+          '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Apercu briefing (3 lignes)</li>' +
+          '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Education (40 lecons)</li>' +
+          '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Calendrier economique</li>' +
+        '</ul>' +
+        '<a href="' + DASHBOARD_URL + '" target="_blank" class="w-full py-2.5 rounded-lg bg-white/10 text-light-400 font-semibold text-sm text-center block">Acceder gratuitement</a>' +
+      '</div>' +
+      // STARTER
+      '<div class="glass p-6 text-center flex flex-col border-[#00B4DC] scale-105 shadow-lg shadow-[#00B4DC]/10" style="border-color:#00B4DC;">' +
+        '<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-[#00B4DC]/15 text-[#00B4DC] mb-4 mx-auto">POPULAIRE</span>' +
+        '<div class="text-4xl font-bold text-white mb-1 font-mono" id="mia-starter-price">19&euro;</div>' +
+        '<div class="text-light-500 text-sm mb-1" id="mia-starter-period">/mois</div>' +
+        '<div class="text-green-500 text-xs font-semibold mb-4" id="mia-starter-save" style="display:none;"></div>' +
+        '<hr class="border-white/10 mb-4">' +
+        '<ul class="text-left space-y-3 mb-6 flex-1">' +
+          '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Tout du plan Gratuit</li>' +
+          '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Contexte marche complet</li>' +
+          '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Intermarket ES/NQ + AMD</li>' +
+          '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Briefing MIA quotidien</li>' +
+          '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Regime Tracker live</li>' +
+          '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Alertes Discord (15min)</li>' +
+        '</ul>' +
+        '<a href="' + DASHBOARD_URL + '/pricing" target="_blank" class="w-full py-2.5 rounded-lg font-semibold text-sm text-center block text-[#0A0E17]" style="background:linear-gradient(135deg,#00B4DC,#0090B0);">Commencer — 7j gratuit</a>' +
+      '</div>' +
+      // PREMIUM
+      '<div class="glass p-6 text-center flex flex-col">' +
+        '<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold mb-4 mx-auto" style="background:rgba(212,175,55,0.15);color:#D4AF37;">COMPLET</span>' +
+        '<div class="text-4xl font-bold text-white mb-1 font-mono" id="mia-premium-price">49&euro;</div>' +
+        '<div class="text-light-500 text-sm mb-1" id="mia-premium-period">/mois</div>' +
+        '<div class="text-green-500 text-xs font-semibold mb-4" id="mia-premium-save" style="display:none;"></div>' +
+        '<hr class="border-white/10 mb-4">' +
+        '<ul class="text-left space-y-3 mb-6 flex-1">' +
+          '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Tout du plan Starter</li>' +
+          '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Order Flow (delta, CVD, RVOL)</li>' +
+          '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Options & Gamma (murs, GEX)</li>' +
+          '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Signaux & Journal complet</li>' +
+          '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Battle Navale scoring</li>' +
+          '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Alertes Discord temps reel</li>' +
+        '</ul>' +
+        '<a href="' + DASHBOARD_URL + '/pricing" target="_blank" class="w-full py-2.5 rounded-lg font-semibold text-sm text-center block text-[#0A0E17]" style="background:linear-gradient(135deg,#00B4DC,#0090B0);">Debloquer tout — 7j gratuit</a>' +
+      '</div>';
+
+    // Ajouter toggle periode au-dessus de la grille
+    var toggle = document.createElement('div');
+    toggle.className = 'flex justify-center mb-6';
+    toggle.innerHTML = '<div class="inline-flex bg-[#131722] rounded-full p-1 border border-white/10">' +
+      '<button class="mia-period-btn mia-period-active" data-period="monthly">Mensuel</button>' +
+      '<button class="mia-period-btn" data-period="semi">6 mois <span style="color:#00C853;font-size:0.6rem;font-weight:700;">-15%</span></button>' +
+      '<button class="mia-period-btn" data-period="annual">Annuel <span style="color:#00C853;font-size:0.6rem;font-weight:700;">-30%</span></button>' +
+      '</div>';
+    grid.parentNode.insertBefore(toggle, grid);
+
+    // CSS inline pour les boutons de periode
+    var style = document.createElement('style');
+    style.textContent = '.mia-period-btn{padding:0.4rem 1rem;border:none;border-radius:9999px;background:transparent;color:#94A3B8;font-family:Inter,sans-serif;font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.2s;}.mia-period-btn:hover{color:#fff;}.mia-period-active{background:linear-gradient(135deg,#00B4DC,#0090B0);color:#fff;}';
+    document.head.appendChild(style);
+
+    // Toggle logique
+    var prices = {
+      starter: { monthly: ['19&euro;', '/mois', ''], semi: ['97&euro;', '/6 mois', 'Economisez 17&euro; (16,17&euro;/mois)'], annual: ['160&euro;', '/an', 'Economisez 68&euro; (13,33&euro;/mois)'] },
+      premium: { monthly: ['49&euro;', '/mois', ''], semi: ['250&euro;', '/6 mois', 'Economisez 44&euro; (41,67&euro;/mois)'], annual: ['412&euro;', '/an', 'Economisez 176&euro; (34,33&euro;/mois)'] }
+    };
+    toggle.querySelectorAll('.mia-period-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        toggle.querySelectorAll('.mia-period-btn').forEach(function (b) { b.classList.remove('mia-period-active'); });
+        btn.classList.add('mia-period-active');
+        var p = btn.getAttribute('data-period');
+        ['starter', 'premium'].forEach(function (plan) {
+          var d = prices[plan][p];
+          document.getElementById('mia-' + plan + '-price').innerHTML = d[0];
+          document.getElementById('mia-' + plan + '-period').textContent = d[1];
+          var saveEl = document.getElementById('mia-' + plan + '-save');
+          if (d[2]) { saveEl.innerHTML = d[2]; saveEl.style.display = 'block'; }
+          else { saveEl.style.display = 'none'; }
+        });
+      });
+    });
+  }
+
+  // ─── #D LOGIN/REGISTER : Intercepter et pointer vers dashboard VPS ───
+  function fixLoginRegister() {
+    // Intercepter le formulaire login
+    var loginForm = document.querySelector('form');
+    var path = window.location.pathname;
+    if (path.indexOf('/login') !== -1 && loginForm) {
+      loginForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        window.location.href = DASHBOARD_URL + '/login';
+      });
+    }
+    if (path.indexOf('/register') !== -1 && loginForm) {
+      loginForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        window.location.href = DASHBOARD_URL + '/register';
+      });
+    }
+  }
+
+  // ─── #E FOOTER : Ajouter lien Dashboard + Discord ───
+  function fixFooterDashboard() {
+    var footerLinks = document.querySelectorAll('footer a');
+    if (!footerLinks.length) return;
+    var footer = document.querySelector('footer');
+    if (!footer) return;
+    // Chercher la premiere liste de liens dans le footer
+    var linkContainer = footer.querySelector('div.grid, div.flex, ul');
+    if (!linkContainer) return;
+    // Ajouter Dashboard
+    var dashLink = document.createElement('a');
+    dashLink.href = DASHBOARD_URL;
+    dashLink.target = '_blank';
+    dashLink.rel = 'noopener noreferrer';
+    dashLink.textContent = 'Dashboard';
+    dashLink.className = footerLinks[0] ? footerLinks[0].className : '';
+    var discordLink = document.createElement('a');
+    discordLink.href = 'https://discord.gg/mia-ia-system';
+    discordLink.target = '_blank';
+    discordLink.rel = 'noopener noreferrer';
+    discordLink.textContent = 'Discord';
+    discordLink.className = dashLink.className;
+    linkContainer.prepend(discordLink);
+    linkContainer.prepend(dashLink);
+  }
+
+  // ─── #F GOOGLE OAUTH : Cacher le bouton factice ───
+  function hideGoogleOAuth() {
+    // Chercher les boutons Google OAuth (contiennent "Google" dans le texte)
+    document.querySelectorAll('button').forEach(function (btn) {
+      if (btn.textContent.indexOf('Google') !== -1) {
+        btn.style.display = 'none';
+        // Cacher aussi le separateur "Ou continuer avec"
+        var prev = btn.previousElementSibling;
+        if (prev && prev.textContent.indexOf('Ou') !== -1) prev.style.display = 'none';
+      }
+    });
   }
 
   // ─── INIT ───

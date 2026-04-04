@@ -3,5 +3,8 @@ User-agent: *
 Allow: /
 Disallow: /_next/
 Disallow: /forgot-password/
+Disallow: /coming-soon/
+Disallow: /login/
+Disallow: /register/
 
 Sitemap: https://mia-ia-system.com/sitemap.xml
