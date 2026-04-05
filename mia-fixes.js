@@ -527,16 +527,22 @@
     });
   }
 
-  // ─── #G HEADER OPAQUE — fond solide au lieu de transparent ───
+  // ─── #G HEADER OPAQUE + POSITION SOUS LE TICKER ───
   function fixHeaderOpaque() {
-    var style = document.createElement('style');
-    style.textContent = [
-      'header.fixed, header[class*="fixed"] {',
-      '  background: #0A0E17 !important;',
-      '  backdrop-filter: none !important;',
-      '}',
-    ].join('');
-    document.head.appendChild(style);
+    var header = document.querySelector('header.fixed') || document.querySelector('header[class*="fixed"]');
+    if (header) {
+      header.style.setProperty('background', '#0A0E17', 'important');
+      header.style.setProperty('backdrop-filter', 'none', 'important');
+      header.style.setProperty('top', '46px', 'important');
+      header.style.setProperty('z-index', '100', 'important');
+    }
+    // Body padding : ticker 46px + header 64px = 110px
+    document.body.style.setProperty('padding-top', '110px', 'important');
+    // Le hero section (#hero ou premiere section) a souvent son propre pt-24
+    var hero = document.getElementById('hero') || document.querySelector('main > section:first-child') || document.querySelector('.min-h-screen > main');
+    if (hero) {
+      hero.style.setProperty('padding-top', '0', 'important');
+    }
   }
 
   // ─── #H TICKER — forcer le rechargement si le widget n'apparait pas ───
