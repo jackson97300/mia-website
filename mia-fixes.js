@@ -23,6 +23,8 @@
     fixLoginRegister();
     fixFooterDashboard();
     hideGoogleOAuth();
+    fixHeaderOpaque();
+    fixTicker();
   }
 
   // ─── #B CONTACT FORM → Discord webhook + email ───
@@ -523,6 +525,62 @@
         if (prev && prev.textContent.indexOf('Ou') !== -1) prev.style.display = 'none';
       }
     });
+  }
+
+  // ─── #G HEADER OPAQUE — fond solide au lieu de transparent ───
+  function fixHeaderOpaque() {
+    var style = document.createElement('style');
+    style.textContent = [
+      'header.fixed, header[class*="fixed"] {',
+      '  background: #0A0E17 !important;',
+      '  backdrop-filter: none !important;',
+      '}',
+    ].join('');
+    document.head.appendChild(style);
+  }
+
+  // ─── #H TICKER — forcer le rechargement si le widget n'apparait pas ───
+  function fixTicker() {
+    setTimeout(function () {
+      var ticker = document.getElementById('mia-tv-ticker');
+      if (!ticker) return;
+      // Si le widget est vide (pas de iframe TradingView), le recharger
+      var iframe = ticker.querySelector('iframe');
+      if (iframe) return; // deja charge
+      // Recracher le widget
+      ticker.innerHTML = '';
+      var container = document.createElement('div');
+      container.className = 'tradingview-widget-container';
+      container.innerHTML = '<div class="tradingview-widget-container__widget"></div>';
+      var script = document.createElement('script');
+      script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js';
+      script.async = true;
+      script.textContent = JSON.stringify({
+        symbols: [
+          {proName:"AMEX:SPY",title:"SPY (ES)"},
+          {proName:"NASDAQ:QQQ",title:"QQQ (NQ)"},
+          {proName:"AMEX:IWM",title:"IWM (RTY)"},
+          {proName:"AMEX:USO",title:"Petrole"},
+          {proName:"AMEX:GLD",title:"Or"},
+          {proName:"BITSTAMP:BTCUSD",title:"BTC"},
+          {proName:"FX_IDC:EURUSD",title:"EUR/USD"},
+          {proName:"NASDAQ:AAPL",title:"AAPL"},
+          {proName:"NASDAQ:MSFT",title:"MSFT"},
+          {proName:"NASDAQ:NVDA",title:"NVDA"},
+          {proName:"NASDAQ:AMZN",title:"AMZN"},
+          {proName:"NASDAQ:GOOGL",title:"GOOGL"},
+          {proName:"NASDAQ:META",title:"META"},
+          {proName:"NASDAQ:TSLA",title:"TSLA"}
+        ],
+        showSymbolLogo: false,
+        isTransparent: true,
+        displayMode: 'compact',
+        colorTheme: 'dark',
+        locale: 'fr'
+      });
+      container.appendChild(script);
+      ticker.appendChild(container);
+    }, 2000);
   }
 
   // ─── INIT ───
