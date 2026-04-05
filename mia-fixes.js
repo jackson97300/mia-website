@@ -23,6 +23,7 @@
     fixLoginRegister();
     fixFooterDashboard();
     hideGoogleOAuth();
+    injectResultsSection();
     fixHeaderOpaque();
     fixTicker();
   }
@@ -504,6 +505,102 @@
         if (prev && prev.textContent.indexOf('Ou') !== -1) prev.style.display = 'none';
       }
     });
+  }
+
+  // ─── #I SECTION RESULTATS VERIFIES ───
+  function injectResultsSection() {
+    if (document.getElementById('mia-results')) return;
+    var pricing = document.getElementById('pricing');
+    if (!pricing) return;
+
+    var section = document.createElement('section');
+    section.id = 'mia-results';
+    section.style.cssText = 'padding:4rem 1rem;max-width:1100px;margin:0 auto;';
+
+    section.innerHTML = '' +
+      '<div style="text-align:center;margin-bottom:2.5rem;">' +
+        '<h2 style="font-size:2rem;font-weight:800;margin-bottom:0.5rem;">' +
+          '<span style="background:linear-gradient(135deg,#fff 0%,#00B4DC 50%,#D4AF37 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Resultats Verifies</span>' +
+        '</h2>' +
+        '<p style="color:#94A3B8;font-size:1rem;">Payouts reels depuis des prop firms regulees. Aucun paper trading.</p>' +
+      '</div>' +
+
+      // KPI cards
+      '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem;">' +
+        // Total payouts
+        '<div style="background:rgba(30,41,59,0.5);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.25rem;text-align:center;">' +
+          '<div style="font-family:JetBrains Mono,monospace;font-size:1.75rem;font-weight:700;color:#22c55e;">$19,880</div>' +
+          '<div style="font-size:0.75rem;color:#94A3B8;margin-top:0.25rem;">Total payouts</div>' +
+        '</div>' +
+        // Prop firms
+        '<div style="background:rgba(30,41,59,0.5);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.25rem;text-align:center;">' +
+          '<div style="font-family:JetBrains Mono,monospace;font-size:1.75rem;font-weight:700;color:#00B4DC;">3</div>' +
+          '<div style="font-size:0.75rem;color:#94A3B8;margin-top:0.25rem;">Prop firms</div>' +
+        '</div>' +
+        // Mois actif
+        '<div style="background:rgba(30,41,59,0.5);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.25rem;text-align:center;">' +
+          '<div style="font-family:JetBrains Mono,monospace;font-size:1.75rem;font-weight:700;color:#D4AF37;">12+</div>' +
+          '<div style="font-size:0.75rem;color:#94A3B8;margin-top:0.25rem;">Mois de trading</div>' +
+        '</div>' +
+        // Comptes funded
+        '<div style="background:rgba(30,41,59,0.5);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.25rem;text-align:center;">' +
+          '<div style="font-family:JetBrains Mono,monospace;font-size:1.75rem;font-weight:700;color:#fff;">50K</div>' +
+          '<div style="font-size:0.75rem;color:#94A3B8;margin-top:0.25rem;">Compte funded</div>' +
+        '</div>' +
+      '</div>' +
+
+      // Timeline payouts
+      '<div style="background:rgba(30,41,59,0.5);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:1.5rem;">' +
+        '<div style="font-size:0.875rem;font-weight:700;color:#fff;margin-bottom:1rem;">Historique des payouts</div>' +
+        '<div style="display:flex;flex-direction:column;gap:0.5rem;">' +
+
+          // 2026
+          '<div style="font-size:0.7rem;font-weight:600;color:#D4AF37;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:0.25rem;">2026</div>' +
+          _payoutRow('20 Mars', 'Lucid Trading', '$4,000', 'LucidFlex 50K — Funded') +
+          _payoutRow('13 Mars', 'Lucid Trading', '$4,000', 'LucidFlex 50K — Funded') +
+          _payoutRow('06 Mars', 'Lucid Trading', '-', 'LucidPro Trader Certificate — Compte funded') +
+          _payoutRow('02 Mars', 'Phidias PropFirm', '$1,080', '') +
+
+          // 2025
+          '<div style="font-size:0.7rem;font-weight:600;color:#D4AF37;text-transform:uppercase;letter-spacing:0.05em;margin:0.75rem 0 0.25rem;">2025</div>' +
+          _payoutRow('29 Juil', 'MyFunded Futures', '$1,200', '') +
+          _payoutRow('29 Juil', 'MyFunded Futures', '$1,200', '') +
+          _payoutRow('15 Mai', 'Phidias PropFirm', '$800', '') +
+          _payoutRow('27 Avr', 'Phidias PropFirm', '$800', '') +
+          _payoutRow('23 Avr', 'Phidias PropFirm', '$3,200', '') +
+          _payoutRow('05 Avr', 'MyFunded Futures', '$1,200', '') +
+          _payoutRow('20 Mars', 'Phidias PropFirm', '$4,800', '') +
+
+          // 2024
+          '<div style="font-size:0.7rem;font-weight:600;color:#D4AF37;text-transform:uppercase;letter-spacing:0.05em;margin:0.75rem 0 0.25rem;">2024</div>' +
+          _payoutRow('23 Dec', 'Phidias PropFirm', '$1,600', '') +
+
+        '</div>' +
+      '</div>' +
+
+      // Disclaimer
+      '<div style="text-align:center;margin-top:1rem;">' +
+        '<p style="font-size:0.7rem;color:#64748B;">Resultats passes ne garantissent pas les resultats futurs. Payouts verifiables aupres des prop firms citees.</p>' +
+      '</div>';
+
+    // Inserer AVANT la section pricing
+    pricing.parentNode.insertBefore(section, pricing);
+  }
+
+  function _payoutRow(date, firm, amount, note) {
+    var amountColor = amount === '-' ? '#94A3B8' : '#22c55e';
+    var firmColors = { 'Lucid Trading': '#00B4DC', 'Phidias PropFirm': '#D4AF37', 'MyFunded Futures': '#a78bfa' };
+    var firmColor = firmColors[firm] || '#94A3B8';
+    return '' +
+      '<div style="display:flex;align-items:center;padding:0.5rem 0.75rem;border-radius:0.5rem;background:rgba(10,14,23,0.5);">' +
+        '<div style="width:70px;font-family:JetBrains Mono,monospace;font-size:0.75rem;color:#94A3B8;flex-shrink:0;">' + date + '</div>' +
+        '<div style="flex:1;display:flex;align-items:center;gap:0.5rem;">' +
+          '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:' + firmColor + ';flex-shrink:0;"></span>' +
+          '<span style="font-size:0.8125rem;color:#cbd5e1;">' + firm + '</span>' +
+          (note ? '<span style="font-size:0.65rem;color:#64748B;margin-left:0.25rem;">' + note + '</span>' : '') +
+        '</div>' +
+        '<div style="font-family:JetBrains Mono,monospace;font-size:0.875rem;font-weight:600;color:' + amountColor + ';">' + amount + '</div>' +
+      '</div>';
   }
 
   // ─── #G HEADER OPAQUE + POSITION SOUS LE TICKER ───

@@ -28,6 +28,18 @@ body {
   padding-top: 110px !important;
 }
 
+/* #0b FIX: Resultats section responsive */
+@media (max-width: 768px) {
+  #mia-results > div:nth-child(2) {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+@media (max-width: 480px) {
+  #mia-results > div:nth-child(2) {
+    grid-template-columns: 1fr !important;
+  }
+}
+
 /* #1 FIX: Rendre visible les éléments opacity:0 */
 [style*="opacity:0"],
 [style*="opacity: 0"] {
