@@ -198,7 +198,7 @@
   }
 
   // ─── #A DASHBOARD REDIRECT → Dashboard VPS live ───
-  var DASHBOARD_URL = 'http://212.28.179.199:8000';
+  var DASHBOARD_URL = 'https://dashboard.mia-ia-system.com';
   function setupDashboardRedirect() {
     var links = document.querySelectorAll('a[href*="dashboard.mia-ia-system.com"]');
     links.forEach(function (link) {
