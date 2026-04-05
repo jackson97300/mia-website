@@ -263,8 +263,9 @@
   }
 
   function forceHeaderOpaque(header) {
-    header.style.setProperty('background-color', '#0A0E17', 'important');
-    header.style.setProperty('background-image', 'none', 'important');
+    // On ne force plus background-color/background-image sur le header React.
+    // Le div#mia-header-bg (backdrop shield) s'en charge.
+    // On force seulement le positionnement et la suppression du blur.
     header.style.setProperty('backdrop-filter', 'none', 'important');
     header.style.setProperty('-webkit-backdrop-filter', 'none', 'important');
     header.style.setProperty('top', '46px', 'important');
@@ -607,12 +608,33 @@
   }
 
   // ─── #G HEADER OPAQUE + POSITION SOUS LE TICKER ───
+  // Strategie : on NE combat PAS React sur son propre header.
+  // On injecte un div#mia-header-bg DERRIERE le header, hors de l'arbre React.
+  // Ce div est opaque (#0A0E17) et masque tout contenu qui scrolle sous le header.
   function fixHeaderOpaque() {
     var header = document.querySelector('header.fixed') || document.querySelector('header[class*="fixed"]');
     if (header) {
       forceHeaderOpaque(header);
       header.style.setProperty('z-index', '100', 'important');
     }
+
+    // Creer le backdrop shield (une seule fois)
+    if (!document.getElementById('mia-header-bg')) {
+      var shield = document.createElement('div');
+      shield.id = 'mia-header-bg';
+      shield.style.cssText = [
+        'position:fixed',
+        'top:46px',
+        'left:0',
+        'right:0',
+        'height:64px',
+        'background:#0A0E17',
+        'z-index:99',
+        'pointer-events:none'
+      ].join(';');
+      document.body.appendChild(shield);
+    }
+
     // Body padding : ticker 46px + header 64px = 110px
     document.body.style.setProperty('padding-top', '110px', 'important');
     // Le hero section (#hero ou premiere section) a souvent son propre pt-24
