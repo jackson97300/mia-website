@@ -433,7 +433,7 @@
           '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Alertes Discord</li>' +
           '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Briefings archives</li>' +
         '</ul>' +
-        '<a href="https://buy.stripe.com/test_cNieV51Xf0WffqB7330RG00" target="_blank" class="w-full py-2.5 rounded-lg font-semibold text-sm text-center block text-[#0A0E17]" style="background:linear-gradient(135deg,#00B4DC,#0090B0);">Commencer — 7j gratuit</a>' +
+        '<a href="https://buy.stripe.com/14AdR16ky5jtc89a036AM00" target="_blank" class="w-full py-2.5 rounded-lg font-semibold text-sm text-center block text-[#0A0E17]" style="background:linear-gradient(135deg,#00B4DC,#0090B0);">Commencer — 7j gratuit</a>' +
       '</div>';
 
     // Teaser Premium
