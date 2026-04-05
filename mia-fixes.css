@@ -59,7 +59,7 @@ header[style*="position: fixed"] {
 }
 header.mia-nav-hidden { transform: translateY(-100%) !important; }
 header.mia-nav-scrolled {
-  background-color: rgba(10, 14, 23, 0.85) !important;
+  background-color: #0A0E17 !important;
   backdrop-filter: blur(20px) !important;
   -webkit-backdrop-filter: blur(20px) !important;
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05),
