@@ -2,6 +2,11 @@
    MIA IA SYSTEM — Patch CSS v4.0 (18/03/2026)
    ═══════════════════════════════════════════════════════════════ */
 
+/* #0 FIX: Body padding pour ticker (46px) + header (64px) */
+body {
+  padding-top: 110px !important;
+}
+
 /* #1 FIX: Rendre visible les éléments opacity:0 */
 [style*="opacity:0"],
 [style*="opacity: 0"] {
