@@ -221,15 +221,26 @@
     var lastScrollY = 0;
     var ticking = false;
 
+    // Forcer fond opaque en permanence
+    header.style.setProperty('background', '#0A0E17', 'important');
+    header.style.setProperty('backdrop-filter', 'none', 'important');
+    header.style.setProperty('-webkit-backdrop-filter', 'none', 'important');
+    header.style.setProperty('top', '46px', 'important');
+
     window.addEventListener('scroll', function () {
       if (!ticking) {
         window.requestAnimationFrame(function () {
           var y = window.scrollY;
-          if (y > 50) header.classList.add('mia-nav-scrolled');
-          else { header.classList.remove('mia-nav-scrolled'); header.classList.remove('mia-nav-hidden'); }
+          // Toujours forcer le fond opaque a chaque scroll
+          header.style.setProperty('background', '#0A0E17', 'important');
+          header.style.setProperty('backdrop-filter', 'none', 'important');
+          header.style.setProperty('top', '46px', 'important');
+
           if (y > 80) {
             if (y > lastScrollY + 5) header.classList.add('mia-nav-hidden');
             else if (y < lastScrollY - 5) header.classList.remove('mia-nav-hidden');
+          } else {
+            header.classList.remove('mia-nav-hidden');
           }
           lastScrollY = y;
           ticking = false;
