@@ -17,9 +17,12 @@ header.fixed,
 header[class*="fixed"],
 header[style*="position: fixed"] {
   top: 46px !important;
-  background: #0A0E17 !important;
+  background-color: #0A0E17 !important;
+  background-image: none !important;
   backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
   z-index: 100 !important;
+  transition-property: transform, box-shadow !important;
 }
 body {
   padding-top: 110px !important;
@@ -50,21 +53,7 @@ body {
 
 
 /* ─── #6 NAVBAR AUTO-HIDE ─── */
-header.fixed,
-header[style*="position: fixed"] {
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.3s ease,
-              backdrop-filter 0.3s ease,
-              box-shadow 0.3s ease !important;
-}
 header.mia-nav-hidden { transform: translateY(-100%) !important; }
-header.mia-nav-scrolled {
-  background-color: #0A0E17 !important;
-  backdrop-filter: blur(20px) !important;
-  -webkit-backdrop-filter: blur(20px) !important;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05),
-              0 4px 20px rgba(0, 0, 0, 0.3) !important;
-}
 
 
 /* ─── #D SÉLECTEUR DE LANGUE — Griser EN/ES/DE ─── */

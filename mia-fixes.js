@@ -221,20 +221,28 @@
     var lastScrollY = 0;
     var ticking = false;
 
-    // Forcer fond opaque en permanence
-    header.style.setProperty('background', '#0A0E17', 'important');
-    header.style.setProperty('backdrop-filter', 'none', 'important');
-    header.style.setProperty('-webkit-backdrop-filter', 'none', 'important');
-    header.style.setProperty('top', '46px', 'important');
+    // Forcer fond opaque (longhand pour matcher Tailwind)
+    forceHeaderOpaque(header);
+
+    // MutationObserver : React re-set le className au scroll,
+    // ce qui ajoute bg-dark/90 ou bg-transparent.
+    // On re-force le fond opaque apres chaque mutation React.
+    var applyingFix = false;
+    var observer = new MutationObserver(function (mutations) {
+      if (applyingFix) return;
+      // Ne reagir que si className a change (pas notre propre style)
+      var classChanged = mutations.some(function (m) { return m.attributeName === 'class'; });
+      if (!classChanged) return;
+      applyingFix = true;
+      forceHeaderOpaque(header);
+      applyingFix = false;
+    });
+    observer.observe(header, { attributes: true, attributeFilter: ['class'] });
 
     window.addEventListener('scroll', function () {
       if (!ticking) {
         window.requestAnimationFrame(function () {
           var y = window.scrollY;
-          // Toujours forcer le fond opaque a chaque scroll
-          header.style.setProperty('background', '#0A0E17', 'important');
-          header.style.setProperty('backdrop-filter', 'none', 'important');
-          header.style.setProperty('top', '46px', 'important');
 
           if (y > 80) {
             if (y > lastScrollY + 5) header.classList.add('mia-nav-hidden');
@@ -248,6 +256,15 @@
         ticking = true;
       }
     }, { passive: true });
+  }
+
+  function forceHeaderOpaque(header) {
+    header.style.setProperty('background-color', '#0A0E17', 'important');
+    header.style.setProperty('background-image', 'none', 'important');
+    header.style.setProperty('backdrop-filter', 'none', 'important');
+    header.style.setProperty('-webkit-backdrop-filter', 'none', 'important');
+    header.style.setProperty('top', '46px', 'important');
+    header.style.setProperty('transition-property', 'transform, box-shadow', 'important');
   }
 
   // ─── #2 MENU ANCHORS ───
@@ -542,9 +559,7 @@
   function fixHeaderOpaque() {
     var header = document.querySelector('header.fixed') || document.querySelector('header[class*="fixed"]');
     if (header) {
-      header.style.setProperty('background', '#0A0E17', 'important');
-      header.style.setProperty('backdrop-filter', 'none', 'important');
-      header.style.setProperty('top', '46px', 'important');
+      forceHeaderOpaque(header);
       header.style.setProperty('z-index', '100', 'important');
     }
     // Body padding : ticker 46px + header 64px = 110px
