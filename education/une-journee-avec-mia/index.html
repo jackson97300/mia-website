@@ -4,12 +4,91 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="/_next/static/css/0f34aadfba7d8fab.css"/>
-    
+
     <title>Une Journée avec MIA - MIA Academy</title>
     <style>
         @media (min-width: 1024px) {
             .sidebar-desktop { display: block !important; }
             .main-content { margin-left: 220px !important; }
+        }
+        .mia-timeline-track { transition: opacity 0.3s; }
+        .mia-timeline-track:hover { opacity: 0.85; }
+        .mia-info-card {
+            background: rgba(30,41,59,0.7);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 14px 18px;
+            margin-top: 16px;
+        }
+        .mia-info-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .mia-info-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 6px 0;
+            color: #cbd5e1;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .mia-info-card li .dot {
+            flex-shrink: 0;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            margin-top: 6px;
+        }
+        .mia-recap-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 10px;
+            overflow: hidden;
+            font-size: 13px;
+        }
+        .mia-recap-table thead th {
+            background: #0f1729;
+            color: #94a3b8;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            padding: 12px 14px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .mia-recap-table tbody td {
+            padding: 11px 14px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            color: #cbd5e1;
+        }
+        .mia-recap-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+        .mia-recap-table tbody tr:hover {
+            background: rgba(255,255,255,0.03);
+        }
+        .mia-badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+        .mia-badge-green { background: rgba(34,197,94,0.15); color: #22c55e; }
+        .mia-badge-gold { background: rgba(212,175,55,0.15); color: #D4AF37; }
+        .mia-badge-red { background: rgba(239,68,68,0.15); color: #ef4444; }
+        .mia-badge-cyan { background: rgba(0,180,220,0.15); color: #00B4DC; }
+        .mia-badge-gray { background: rgba(148,163,184,0.12); color: #94a3b8; }
+        .mia-status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 6px;
         }
     </style>
 <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"/>
@@ -37,10 +116,10 @@
         </a>
     </header>
 
-    
+
         <aside style="display: none; position: fixed; top: 56px; left: 0; bottom: 0; width: 220px; background: #0f1419; border-right: 1px solid rgba(255,255,255,0.1); overflow-y: auto; z-index: 40;" class="sidebar-desktop">
             <div style="padding: 12px;">
-    
+
                 <div class="nav-section" id="nav-debutant">
                     <div onclick="toggleNav('debutant')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
                         <div style="display: flex; align-items: center; gap: 6px;">
@@ -51,60 +130,60 @@
                         <svg class="chevron-debutant" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-content-debutant" style="padding-left: 8px; display: none;">
-        
+
                         <a href="/education/futures-101/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Les Futures US: ES, NQ</span>
                         </a>
-            
+
                         <a href="/education/trading-sessions/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🕐</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Les Sessions de Tradin</span>
                         </a>
-            
+
                         <a href="/education/candlestick-basics/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🕯️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Lecture des Chandelier</span>
                         </a>
-            
+
                         <a href="/education/support-resistance/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📏</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Support & Résistance</span>
                         </a>
-            
+
                         <a href="/education/volume-importance/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">L'Importance du Volume</span>
                         </a>
-            
+
                         <a href="/education/risk-management/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🛡️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gestion du Risque</span>
                         </a>
-            
+
                         <a href="/education/trading-psychology/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧠</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Psychologie du Trading</span>
                         </a>
-            
+
                         <a href="/education/order-types/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📝</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Types d'Ordres</span>
                         </a>
-            
+
                         <a href="/education/journaling-backtesting/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📓</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Journaling & Backtesti</span>
                         </a>
-            
+
                         <a href="/education/economic-calendar/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📅</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Calendrier Économique</span>
                         </a>
-            
+
                     </div>
                 </div>
-        
+
                 <div class="nav-section" id="nav-intermediaire">
                     <div onclick="toggleNav('intermediaire')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
                         <div style="display: flex; align-items: center; gap: 6px;">
@@ -115,65 +194,65 @@
                         <svg class="chevron-intermediaire" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-content-intermediaire" style="padding-left: 8px; display: none;">
-        
+
                         <a href="/education/multi-timeframe-analysis/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔍</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Analyse Multi-Timefram</span>
                         </a>
-            
+
                         <a href="/education/call-resistance-put-support/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📞</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Call Resistance & Put </span>
                         </a>
-            
+
                         <a href="/education/hvl-gamma-flip/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🎯</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">HVL & Gamma Flip</span>
                         </a>
-            
+
                         <a href="/education/positive-negative-gamma/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>⚡</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gamma Positif vs Négat</span>
                         </a>
-            
+
                         <a href="/education/0dte-options-impact/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>💥</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Impact des Options 0DT</span>
                         </a>
-            
+
                         <a href="/education/expected-move-range/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📐</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Expected Move & Range</span>
                         </a>
-            
+
                         <a href="/education/gamma-exposure/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📈</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gamma Exposure (GEX)</span>
                         </a>
-            
+
                         <a href="/education/high-volume-levels/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">High Volume Levels</span>
                         </a>
-            
+
                         <a href="/education/options-impact/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🎰</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Impact des Options</span>
                         </a>
-            
+
                         <a href="/education/market-makers/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🏦</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Market Makers</span>
                         </a>
-            
+
                         <a href="/education/vwap-intraday/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📉</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">VWAP & Niveaux Intrada</span>
                         </a>
-            
+
                     </div>
                 </div>
-        
+
                 <div class="nav-section" id="nav-avance">
                     <div onclick="toggleNav('avance')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
                         <div style="display: flex; align-items: center; gap: 6px;">
@@ -184,80 +263,80 @@
                         <svg class="chevron-avance" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-content-avance" style="padding-left: 8px; display: none;">
-        
+
                         <a href="/education/orderflow/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🌊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">OrderFlow Basics</span>
                         </a>
-            
+
                         <a href="/education/money-management/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>💰</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Money Management Avanc</span>
                         </a>
-            
+
                         <a href="/education/correlation-intermarches/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔗</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Corrélations Inter-Mar</span>
                         </a>
-            
+
                         <a href="/education/liquidity-sweeps/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧹</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Liquidity Sweeps</span>
                         </a>
-            
+
                         <a href="/education/market-profile/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Market Profile</span>
                         </a>
-            
+
                         <a href="/education/fibonacci-extensions/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🌀</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Fibonacci Extensions</span>
                         </a>
-            
+
                         <a href="/education/gex-levels-1-10/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🎯</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">GEX Levels 1-10</span>
                         </a>
-            
+
                         <a href="/education/blind-spots-trading/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>👁️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Blind Spots Trading</span>
                         </a>
-            
+
                         <a href="/education/delta-exposure-dex/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Delta Exposure (DEX)</span>
                         </a>
-            
+
                         <a href="/education/dealer-hedging-mechanics/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>⚙️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Dealer Hedging</span>
                         </a>
-            
+
                         <a href="/education/gamma-walls-magnets/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧲</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gamma Walls & Magnets</span>
                         </a>
-            
+
                         <a href="/education/vix-vvix-volatility/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🌪️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">VIX & VVIX</span>
                         </a>
-            
+
                         <a href="/education/option-greeks-traders/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🇬🇷</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Option Greeks</span>
                         </a>
-            
+
                         <a href="/education/regime-based-trading/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔄</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Regime-Based Trading</span>
                         </a>
-            
+
                     </div>
                 </div>
-        
+
                 <div class="nav-section" id="nav-bonus">
                     <div onclick="toggleNav('bonus')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
                         <div style="display: flex; align-items: center; gap: 6px;">
@@ -268,38 +347,38 @@
                         <svg class="chevron-bonus" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s; transform: rotate(180deg);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-content-bonus" style="padding-left: 8px;">
-        
+
                         <a href="/education/battle-navale/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>⚔️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Battle Navale</span>
                         </a>
-            
+
                         <a href="/education/une-journee-avec-mia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #fff; text-decoration: none; background: #c084fc22;" onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='#c084fc22'; this.style.color='#fff'">
                             <span>☀️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Une Journée avec MIA</span>
                         </a>
-            
+
                         <a href="/education/pourquoi-bots-meurent/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>💀</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Pourquoi les Bots Meur</span>
                         </a>
-            
+
                         <a href="/education/quand-couper-mia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔌</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Quand Couper MIA</span>
                         </a>
-            
+
                         <a href="/education/mental-discipline-ia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧘</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Mental & Discipline</span>
                         </a>
-            
+
                     </div>
                 </div>
-        
+
             </div>
         </aside>
-    
+
 
     <!-- Main Content -->
     <main class="main-content" style="padding-top: 72px; padding-bottom: 40px; padding-left: 16px; padding-right: 16px; max-width: 900px;">
@@ -310,7 +389,7 @@
             <span>›</span>
             <span style="color: #fff;">Une Journée avec MIA</span>
         </nav>
-        
+
         <header style="margin-bottom: 24px;">
             <span style="font-size: 48px; display: block; margin-bottom: 8px;">☀️</span>
             <h1 style="font-size: 28px; font-weight: 700; color: #fff; margin: 0 0 8px 0;">Une Journée avec MIA</h1>
@@ -323,129 +402,435 @@
                 <span style="padding: 4px 10px; border-radius: 20px; background: #c084fc22; color: #c084fc;">Bonus</span>
             </div>
         </header>
-        
+
         <article>
-            
+
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">🎯 Une journée type avec MIA: Du réveil au close</h2>
-            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><p style="margin-bottom: 12px;">Beaucoup de traders pensent qu&#x27;un bot de trading travaille 24/7. En réalité, MIA est SÉLECTIVE sur quand trader.</p>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><p style="margin-bottom: 12px;">Beaucoup de traders pensent qu'un bot de trading travaille 24/7. En réalité, MIA est SÉLECTIVE sur quand trader.</p>
 <p style="margin-bottom: 12px;">Cette leçon vous montre exactement ce qui se passe à chaque moment de la journée, et POURQUOI MIA choisit certaines heures.</p>
 <p style="margin-bottom: 12px;">Comprendre ce rythme vous aidera à faire confiance au système et à ne pas forcer des trades aux mauvais moments.</p>
 </div>
-            
+
+            <!-- SVG Timeline de la journée complète -->
+            <div style="margin-top: 20px; overflow-x: auto;">
+                <svg viewBox="0 0 820 170" xmlns="http://www.w3.org/2000/svg" style="width: 100%; min-width: 600px; height: auto;">
+                    <!-- Fond -->
+                    <rect x="0" y="0" width="820" height="170" rx="10" fill="#0A0E17"/>
+
+                    <!-- Ligne de temps principale -->
+                    <line x1="40" y1="80" x2="780" y2="80" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/>
+
+                    <!-- Segments colores sur la timeline -->
+                    <!-- Pre-market 6h-8h -->
+                    <rect x="40" y="74" width="100" height="12" rx="6" fill="#94a3b8" opacity="0.3"/>
+                    <!-- Londres 9h-11h -->
+                    <rect x="180" y="74" width="100" height="12" rx="6" fill="#00B4DC" opacity="0.5"/>
+                    <!-- Mid-day 11h-15h30 -->
+                    <rect x="280" y="74" width="225" height="12" rx="6" fill="#64748b" opacity="0.15"/>
+                    <!-- US Open 15h50-17h30 -->
+                    <rect x="520" y="74" width="90" height="12" rx="6" fill="#22c55e" opacity="0.6"/>
+                    <!-- Trading leger 17h30-20h -->
+                    <rect x="610" y="74" width="60" height="12" rx="6" fill="#D4AF37" opacity="0.35"/>
+                    <!-- Power Hour 20h-21h30 -->
+                    <rect x="670" y="74" width="80" height="12" rx="6" fill="#ef4444" opacity="0.45"/>
+
+                    <!-- Marqueurs d'heures et labels -->
+                    <!-- 6h -->
+                    <line x1="40" y1="70" x2="40" y2="92" stroke="#94a3b8" stroke-width="1.5"/>
+                    <text x="40" y="108" fill="#64748b" font-size="10" text-anchor="middle" font-family="system-ui">6h</text>
+
+                    <!-- 8h -->
+                    <line x1="140" y1="70" x2="140" y2="92" stroke="#94a3b8" stroke-width="1.5"/>
+                    <text x="140" y="108" fill="#64748b" font-size="10" text-anchor="middle" font-family="system-ui">8h</text>
+
+                    <!-- 9h -->
+                    <line x1="180" y1="70" x2="180" y2="92" stroke="#00B4DC" stroke-width="1.5"/>
+                    <text x="180" y="108" fill="#64748b" font-size="10" text-anchor="middle" font-family="system-ui">9h</text>
+
+                    <!-- 11h -->
+                    <line x1="280" y1="70" x2="280" y2="92" stroke="#64748b" stroke-width="1.5"/>
+                    <text x="280" y="108" fill="#64748b" font-size="10" text-anchor="middle" font-family="system-ui">11h</text>
+
+                    <!-- 15h30 -->
+                    <line x1="505" y1="70" x2="505" y2="92" stroke="#64748b" stroke-width="1.5"/>
+                    <text x="505" y="108" fill="#64748b" font-size="10" text-anchor="middle" font-family="system-ui">15h30</text>
+
+                    <!-- 15h50 -->
+                    <line x1="520" y1="70" x2="520" y2="92" stroke="#22c55e" stroke-width="1.5"/>
+
+                    <!-- 17h30 -->
+                    <line x1="610" y1="70" x2="610" y2="92" stroke="#D4AF37" stroke-width="1.5"/>
+                    <text x="610" y="108" fill="#64748b" font-size="10" text-anchor="middle" font-family="system-ui">17h30</text>
+
+                    <!-- 20h -->
+                    <line x1="670" y1="70" x2="670" y2="92" stroke="#ef4444" stroke-width="1.5"/>
+                    <text x="670" y="108" fill="#64748b" font-size="10" text-anchor="middle" font-family="system-ui">20h</text>
+
+                    <!-- 21h30 -->
+                    <line x1="750" y1="70" x2="750" y2="92" stroke="#ef4444" stroke-width="1.5"/>
+                    <text x="750" y="108" fill="#64748b" font-size="10" text-anchor="middle" font-family="system-ui">21h30</text>
+
+                    <!-- Labels au-dessus des segments -->
+                    <text x="90" y="58" fill="#94a3b8" font-size="11" text-anchor="middle" font-family="system-ui" font-weight="600">Preparation</text>
+                    <text x="90" y="44" fill="#94a3b8" font-size="9" text-anchor="middle" font-family="system-ui" opacity="0.7">DONNEES</text>
+
+                    <text x="230" y="58" fill="#00B4DC" font-size="11" text-anchor="middle" font-family="system-ui" font-weight="600">Londres</text>
+                    <text x="230" y="44" fill="#00B4DC" font-size="9" text-anchor="middle" font-family="system-ui" opacity="0.7">TRADING</text>
+
+                    <text x="392" y="58" fill="#64748b" font-size="11" text-anchor="middle" font-family="system-ui" font-weight="600">Zone morte</text>
+                    <text x="392" y="44" fill="#64748b" font-size="9" text-anchor="middle" font-family="system-ui" opacity="0.7">VEILLE</text>
+
+                    <text x="565" y="58" fill="#22c55e" font-size="11" text-anchor="middle" font-family="system-ui" font-weight="700">US Open</text>
+                    <text x="565" y="44" fill="#22c55e" font-size="9" text-anchor="middle" font-family="system-ui" opacity="0.8">MAX PROFIT</text>
+
+                    <text x="640" y="58" fill="#D4AF37" font-size="10" text-anchor="middle" font-family="system-ui" font-weight="600">Leger</text>
+
+                    <text x="710" y="58" fill="#ef4444" font-size="11" text-anchor="middle" font-family="system-ui" font-weight="600">Power Hour</text>
+                    <text x="710" y="44" fill="#ef4444" font-size="9" text-anchor="middle" font-family="system-ui" opacity="0.7">DANGER</text>
+
+                    <!-- Barre de volume stylisee en bas -->
+                    <text x="40" y="135" fill="#64748b" font-size="9" font-family="system-ui">VOLUME</text>
+                    <!-- Pre-market faible -->
+                    <rect x="40" y="140" width="100" height="4" rx="2" fill="#94a3b8" opacity="0.2"/>
+                    <!-- Londres moyen -->
+                    <rect x="180" y="138" width="100" height="8" rx="4" fill="#00B4DC" opacity="0.4"/>
+                    <!-- Mid-day tres faible -->
+                    <rect x="280" y="141" width="225" height="3" rx="1.5" fill="#64748b" opacity="0.1"/>
+                    <!-- US Open maximal -->
+                    <rect x="520" y="134" width="90" height="14" rx="7" fill="#22c55e" opacity="0.5"/>
+                    <!-- Trading leger moyen -->
+                    <rect x="610" y="139" width="60" height="6" rx="3" fill="#D4AF37" opacity="0.3"/>
+                    <!-- Power Hour eleve -->
+                    <rect x="670" y="136" width="80" height="10" rx="5" fill="#ef4444" opacity="0.4"/>
+
+                    <!-- Fleche "Heures Paris" -->
+                    <text x="420" y="162" fill="#475569" font-size="9" text-anchor="middle" font-family="system-ui" font-style="italic">Heures de Paris (CET)</text>
+                </svg>
+            </div>
+
         </section>
-        
+
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">🌅 PRÉ-MARKET (6h00 - 8h00 Paris)</h2>
-            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              🌅 PRÉ-MARKET: PRÉPARATION DU CHAMP DE BATAILLE            │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ⏰ 6h00-7h00: MIA SE PRÉPARE                                            │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Téléchargement des données MenthorQ fraîches                         │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Calcul des nouveaux niveaux GEX 1-10                                 │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Identification du HVL du jour                                        │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Détection du régime Gamma (positif/négatif)                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Vérification du calendrier économique                                │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  📊 CE QUE MIA ANALYSE:                                                  │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ┌─────────────────────────────────────────────────────────────────┐    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ ✅ GEX global: +3.2B → Journée calme attendue                   │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ ✅ HVL: 6045 (ES), 21380 (NQ)                                   │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ ✅ GEX #1: 6070 (résistance), 6020 (support)                    │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ ⚠️ News: FOMC Minutes à 20h → Prudence Power Hour               │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  └─────────────────────────────────────────────────────────────────┘    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  🚫 MIA NE TRADE PAS ENCORE                                             │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  → Marché trop fin, spreads larges, pas de volume                       │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
-</div>
-            
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">
+
+                <!-- SVG Phase Pre-Market -->
+                <svg viewBox="0 0 820 60" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; margin-bottom: 16px;">
+                    <rect x="0" y="0" width="820" height="60" rx="8" fill="#0A0E17"/>
+                    <rect x="0" y="0" width="820" height="60" rx="8" fill="url(#preGrad)" opacity="0.15"/>
+                    <defs><linearGradient id="preGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#94a3b8"/><stop offset="100%" stop-color="#0A0E17"/></linearGradient></defs>
+                    <circle cx="30" cy="30" r="14" fill="none" stroke="#94a3b8" stroke-width="1.5" opacity="0.5"/>
+                    <text x="30" y="35" fill="#94a3b8" font-size="14" text-anchor="middle" font-family="system-ui">⚙</text>
+                    <text x="58" y="26" fill="#fff" font-size="13" font-family="system-ui" font-weight="700">PREPARATION DU CHAMP DE BATAILLE</text>
+                    <text x="58" y="44" fill="#94a3b8" font-size="11" font-family="system-ui">MIA ne trade pas encore | Collecte + Analyse</text>
+                    <rect x="680" y="18" width="120" height="24" rx="12" fill="rgba(148,163,184,0.15)"/>
+                    <text x="740" y="35" fill="#94a3b8" font-size="11" text-anchor="middle" font-family="system-ui" font-weight="600">MODE VEILLE</text>
+                </svg>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                    <!-- Colonne gauche : Ce que fait MIA -->
+                    <div class="mia-info-card">
+                        <div style="font-size: 12px; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px;">6h00 - 7h00 : MIA se prepare</div>
+                        <ul>
+                            <li><span class="dot" style="background: #00B4DC;"></span>Telechargement des donnees MenthorQ fraiches</li>
+                            <li><span class="dot" style="background: #00B4DC;"></span>Calcul des nouveaux niveaux GEX 1-10</li>
+                            <li><span class="dot" style="background: #00B4DC;"></span>Identification du HVL du jour</li>
+                            <li><span class="dot" style="background: #00B4DC;"></span>Detection du regime Gamma (positif/negatif)</li>
+                            <li><span class="dot" style="background: #00B4DC;"></span>Verification du calendrier economique</li>
+                        </ul>
+                    </div>
+
+                    <!-- Colonne droite : Analyse du jour -->
+                    <div class="mia-info-card" style="border-color: rgba(0,180,220,0.2);">
+                        <div style="font-size: 12px; font-weight: 600; color: #00B4DC; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 10px;">Ce que MIA analyse</div>
+                        <ul>
+                            <li><span style="color: #22c55e; flex-shrink: 0;">&#10003;</span> GEX global: +3.2B &#8594; Journee calme attendue</li>
+                            <li><span style="color: #22c55e; flex-shrink: 0;">&#10003;</span> HVL: 6045 (ES), 21380 (NQ)</li>
+                            <li><span style="color: #22c55e; flex-shrink: 0;">&#10003;</span> GEX #1: 6070 (resistance), 6020 (support)</li>
+                            <li><span style="color: #D4AF37; flex-shrink: 0;">&#9888;</span> News: FOMC Minutes a 20h &#8594; Prudence Power Hour</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin-top: 12px; padding: 10px 14px; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); border-radius: 8px; display: flex; align-items: center; gap: 10px;">
+                    <span style="color: #ef4444; font-size: 16px; flex-shrink: 0;">&#9940;</span>
+                    <span style="color: #f87171; font-size: 13px;">MIA NE TRADE PAS ENCORE &#8212; Marche trop fin, spreads larges, pas de volume</span>
+                </div>
+
+            </div>
+
         </section>
-        
+
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">🇪🇺 SESSION LONDRES (9h00 - 11h00 Paris)</h2>
-            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              🇪🇺 SESSION LONDRES: CRÉNEAU OPTIMAL #1 ✅                  │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Volume institutionnel européen                                       │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Spreads normaux                                                      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Niveaux GEX respectés                                                │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • MIA ACTIVE - Signaux possibles                                       │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  📊 STATISTIQUES: Win rate 52-58% | ~25% des profits                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
-</div>
-            
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">
+
+                <!-- SVG Phase Londres -->
+                <svg viewBox="0 0 820 60" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; margin-bottom: 16px;">
+                    <rect x="0" y="0" width="820" height="60" rx="8" fill="#0A0E17"/>
+                    <rect x="0" y="0" width="820" height="60" rx="8" fill="url(#lonGrad)" opacity="0.15"/>
+                    <defs><linearGradient id="lonGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#00B4DC"/><stop offset="100%" stop-color="#0A0E17"/></linearGradient></defs>
+                    <circle cx="30" cy="30" r="14" fill="none" stroke="#00B4DC" stroke-width="1.5" opacity="0.6"/>
+                    <text x="30" y="35" fill="#00B4DC" font-size="14" text-anchor="middle" font-family="system-ui">&#9654;</text>
+                    <text x="58" y="26" fill="#fff" font-size="13" font-family="system-ui" font-weight="700">CRENEAU OPTIMAL #1</text>
+                    <text x="58" y="44" fill="#00B4DC" font-size="11" font-family="system-ui">Volume institutionnel europeen | Signaux actifs</text>
+                    <rect x="680" y="18" width="120" height="24" rx="12" fill="rgba(0,180,220,0.15)"/>
+                    <text x="740" y="35" fill="#00B4DC" font-size="11" text-anchor="middle" font-family="system-ui" font-weight="600">TRADING &#10003;</text>
+                </svg>
+
+                <div class="mia-info-card">
+                    <ul>
+                        <li><span class="dot" style="background: #00B4DC;"></span>Volume institutionnel europeen</li>
+                        <li><span class="dot" style="background: #00B4DC;"></span>Spreads normaux</li>
+                        <li><span class="dot" style="background: #00B4DC;"></span>Niveaux GEX respectes</li>
+                        <li><span class="dot" style="background: #22c55e;"></span>MIA ACTIVE - Signaux possibles</li>
+                    </ul>
+                </div>
+
+                <!-- Stats bar -->
+                <div style="margin-top: 14px; display: flex; gap: 16px; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 140px; background: rgba(0,180,220,0.08); border: 1px solid rgba(0,180,220,0.2); border-radius: 8px; padding: 12px; text-align: center;">
+                        <div style="font-size: 22px; font-weight: 700; color: #00B4DC;">52-58%</div>
+                        <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Win Rate</div>
+                    </div>
+                    <div style="flex: 1; min-width: 140px; background: rgba(212,175,55,0.08); border: 1px solid rgba(212,175,55,0.2); border-radius: 8px; padding: 12px; text-align: center;">
+                        <div style="font-size: 22px; font-weight: 700; color: #D4AF37;">~25%</div>
+                        <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">des profits journaliers</div>
+                    </div>
+                </div>
+
+            </div>
+
         </section>
-        
+
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">😴 PAUSE MID-DAY (11h00 - 15h30 Paris)</h2>
-            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              😴 MID-DAY: LA ZONE MORTE - MIA NE TRADE PAS               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ⚠️ Volume -60% | Spreads élargis | Faux signaux +40%                   │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  🤖 MIA: Mode veille, collecte de données uniquement                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
-</div>
-            
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">
+
+                <!-- SVG Phase Mid-Day -->
+                <svg viewBox="0 0 820 60" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; margin-bottom: 16px;">
+                    <rect x="0" y="0" width="820" height="60" rx="8" fill="#0A0E17"/>
+                    <rect x="0" y="0" width="820" height="60" rx="8" fill="rgba(100,116,139,0.06)"/>
+                    <circle cx="30" cy="30" r="14" fill="none" stroke="#64748b" stroke-width="1.5" opacity="0.3"/>
+                    <text x="30" y="35" fill="#64748b" font-size="14" text-anchor="middle" font-family="system-ui">&#9208;</text>
+                    <text x="58" y="26" fill="#94a3b8" font-size="13" font-family="system-ui" font-weight="700">LA ZONE MORTE</text>
+                    <text x="58" y="44" fill="#64748b" font-size="11" font-family="system-ui">MIA ne trade PAS | Collecte de donnees uniquement</text>
+                    <rect x="680" y="18" width="120" height="24" rx="12" fill="rgba(100,116,139,0.1)"/>
+                    <text x="740" y="35" fill="#64748b" font-size="11" text-anchor="middle" font-family="system-ui" font-weight="600">PAUSE</text>
+                </svg>
+
+                <!-- Indicateurs danger -->
+                <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 120px; background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.15); border-radius: 8px; padding: 12px; text-align: center;">
+                        <div style="font-size: 20px; font-weight: 700; color: #ef4444;">-60%</div>
+                        <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Volume</div>
+                    </div>
+                    <div style="flex: 1; min-width: 120px; background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.15); border-radius: 8px; padding: 12px; text-align: center;">
+                        <div style="font-size: 20px; font-weight: 700; color: #D4AF37;">Larges</div>
+                        <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Spreads</div>
+                    </div>
+                    <div style="flex: 1; min-width: 120px; background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.15); border-radius: 8px; padding: 12px; text-align: center;">
+                        <div style="font-size: 20px; font-weight: 700; color: #ef4444;">+40%</div>
+                        <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Faux signaux</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 12px; padding: 10px 14px; background: rgba(100,116,139,0.08); border: 1px solid rgba(100,116,139,0.2); border-radius: 8px; display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 16px; flex-shrink: 0;">🤖</span>
+                    <span style="color: #94a3b8; font-size: 13px;">MIA: Mode veille, collecte de donnees uniquement</span>
+                </div>
+
+            </div>
+
         </section>
-        
+
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">🇺🇸 US OPEN (15h50 - 17h30 Paris)</h2>
-            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              🇺🇸 US OPEN: CRÉNEAU OPTIMAL #2 ✅✅ (LE MEILLEUR)          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Volume MAXIMAL de la journée                                         │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Institutions US actives                                              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Niveaux GEX fortement respectés                                      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  📊 STATISTIQUES: Win rate 55-62% | ~45% des profits                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
-</div>
-            
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">
+
+                <!-- SVG Phase US Open -->
+                <svg viewBox="0 0 820 60" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; margin-bottom: 16px;">
+                    <rect x="0" y="0" width="820" height="60" rx="8" fill="#0A0E17"/>
+                    <rect x="0" y="0" width="820" height="60" rx="8" fill="url(#usGrad)" opacity="0.2"/>
+                    <defs><linearGradient id="usGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#22c55e"/><stop offset="100%" stop-color="#0A0E17"/></linearGradient></defs>
+                    <circle cx="30" cy="30" r="14" fill="none" stroke="#22c55e" stroke-width="2" opacity="0.7"/>
+                    <text x="30" y="36" fill="#22c55e" font-size="16" text-anchor="middle" font-family="system-ui" font-weight="700">$</text>
+                    <text x="58" y="26" fill="#fff" font-size="13" font-family="system-ui" font-weight="700">CRENEAU OPTIMAL #2 &#8212; LE MEILLEUR</text>
+                    <text x="58" y="44" fill="#22c55e" font-size="11" font-family="system-ui">Volume MAXIMAL | Institutions US actives | GEX respectes</text>
+                    <rect x="660" y="18" width="140" height="24" rx="12" fill="rgba(34,197,94,0.15)"/>
+                    <text x="730" y="35" fill="#22c55e" font-size="11" text-anchor="middle" font-family="system-ui" font-weight="600">TRADING MAX &#10003;&#10003;</text>
+                </svg>
+
+                <div class="mia-info-card" style="border-color: rgba(34,197,94,0.2);">
+                    <ul>
+                        <li><span class="dot" style="background: #22c55e;"></span>Volume MAXIMAL de la journee</li>
+                        <li><span class="dot" style="background: #22c55e;"></span>Institutions US actives</li>
+                        <li><span class="dot" style="background: #22c55e;"></span>Niveaux GEX fortement respectes</li>
+                    </ul>
+                </div>
+
+                <!-- Stats bar -->
+                <div style="margin-top: 14px; display: flex; gap: 16px; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 140px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.25); border-radius: 8px; padding: 14px; text-align: center;">
+                        <div style="font-size: 24px; font-weight: 700; color: #22c55e;">55-62%</div>
+                        <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Win Rate</div>
+                    </div>
+                    <div style="flex: 1; min-width: 140px; background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.25); border-radius: 8px; padding: 14px; text-align: center;">
+                        <div style="font-size: 24px; font-weight: 700; color: #22c55e;">~45%</div>
+                        <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">des profits journaliers</div>
+                    </div>
+                </div>
+
+            </div>
+
         </section>
-        
+
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">⚡ POWER HOUR (20h00 - 21h30 Paris)</h2>
-            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              ⚡ POWER HOUR: DANGER ET OPPORTUNITÉ ⚠️                     │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Gamma 0DTE MAXIMAL | Flash moves possibles                           │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • MIA réduit taille de 50% | Stops élargis de 20-30%                   │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  📊 STATISTIQUES: Win rate 48-52% | ~20% des profits                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
-</div>
-            
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">
+
+                <!-- SVG Phase Power Hour -->
+                <svg viewBox="0 0 820 60" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; margin-bottom: 16px;">
+                    <rect x="0" y="0" width="820" height="60" rx="8" fill="#0A0E17"/>
+                    <rect x="0" y="0" width="820" height="60" rx="8" fill="url(#phGrad)" opacity="0.15"/>
+                    <defs><linearGradient id="phGrad" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#ef4444"/><stop offset="100%" stop-color="#0A0E17"/></linearGradient></defs>
+                    <circle cx="30" cy="30" r="14" fill="none" stroke="#ef4444" stroke-width="1.5" opacity="0.6"/>
+                    <text x="30" y="36" fill="#ef4444" font-size="16" text-anchor="middle" font-family="system-ui">&#9889;</text>
+                    <text x="58" y="26" fill="#fff" font-size="13" font-family="system-ui" font-weight="700">DANGER ET OPPORTUNITE</text>
+                    <text x="58" y="44" fill="#ef4444" font-size="11" font-family="system-ui">Gamma 0DTE MAXIMAL | Flash moves possibles</text>
+                    <rect x="680" y="18" width="120" height="24" rx="12" fill="rgba(239,68,68,0.15)"/>
+                    <text x="740" y="35" fill="#ef4444" font-size="11" text-anchor="middle" font-family="system-ui" font-weight="600">PRUDENCE &#9888;</text>
+                </svg>
+
+                <div class="mia-info-card" style="border-color: rgba(239,68,68,0.2);">
+                    <ul>
+                        <li><span class="dot" style="background: #ef4444;"></span>Gamma 0DTE MAXIMAL | Flash moves possibles</li>
+                        <li><span class="dot" style="background: #D4AF37;"></span>MIA reduit taille de 50% | Stops elargis de 20-30%</li>
+                    </ul>
+                </div>
+
+                <!-- Stats bar -->
+                <div style="margin-top: 14px; display: flex; gap: 16px; flex-wrap: wrap;">
+                    <div style="flex: 1; min-width: 140px; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); border-radius: 8px; padding: 12px; text-align: center;">
+                        <div style="font-size: 22px; font-weight: 700; color: #D4AF37;">48-52%</div>
+                        <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">Win Rate</div>
+                    </div>
+                    <div style="flex: 1; min-width: 140px; background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.2); border-radius: 8px; padding: 12px; text-align: center;">
+                        <div style="font-size: 22px; font-weight: 700; color: #D4AF37;">~20%</div>
+                        <div style="font-size: 11px; color: #94a3b8; margin-top: 2px;">des profits journaliers</div>
+                    </div>
+                </div>
+
+            </div>
+
         </section>
-        
+
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">📊 RÉCAPITULATIF DES CRÉNEAUX</h2>
-            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  HEURE (Paris)    │ ACTIVITÉ MIA    │ WIN RATE │ % PROFITS              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ═════════════════╪═════════════════╪══════════╪═══════════              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  06h00 - 08h00    │ ⚙️ Préparation  │    -     │    -                   │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  09h00 - 11h00    │ ✅ TRADING      │  52-58%  │   ~25%                 │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  11h00 - 15h30    │ 😴 Pause        │    -     │    -                   │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  15h50 - 17h30    │ ✅✅ TRADING MAX │  55-62%  │   ~45%                 │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  17h30 - 20h00    │ ⚠️ Trading léger│  50-55%  │   ~10%                 │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  20h00 - 21h30    │ ⚡ Power Hour   │  48-52%  │   ~20%                 │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
-</div>
-            
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">
+
+                <!-- SVG Profit Distribution Donut -->
+                <div style="display: flex; gap: 24px; align-items: center; flex-wrap: wrap; margin-bottom: 20px;">
+                    <svg viewBox="0 0 180 180" xmlns="http://www.w3.org/2000/svg" style="width: 160px; height: 160px; flex-shrink: 0;">
+                        <!-- Background circle -->
+                        <circle cx="90" cy="90" r="70" fill="none" stroke="#1e293b" stroke-width="18"/>
+                        <!-- Londres 25% -->
+                        <circle cx="90" cy="90" r="70" fill="none" stroke="#00B4DC" stroke-width="18"
+                                stroke-dasharray="110 330" stroke-dashoffset="110"
+                                transform="rotate(-90 90 90)" opacity="0.8"/>
+                        <!-- US Open 45% -->
+                        <circle cx="90" cy="90" r="70" fill="none" stroke="#22c55e" stroke-width="18"
+                                stroke-dasharray="198 242" stroke-dashoffset="0"
+                                transform="rotate(-90 90 90)" opacity="0.8"/>
+                        <!-- Trading leger 10% -->
+                        <circle cx="90" cy="90" r="70" fill="none" stroke="#D4AF37" stroke-width="18"
+                                stroke-dasharray="44 396" stroke-dashoffset="-198"
+                                transform="rotate(-90 90 90)" opacity="0.8"/>
+                        <!-- Power Hour 20% -->
+                        <circle cx="90" cy="90" r="70" fill="none" stroke="#ef4444" stroke-width="18"
+                                stroke-dasharray="88 352" stroke-dashoffset="-242"
+                                transform="rotate(-90 90 90)" opacity="0.8"/>
+                        <!-- Center text -->
+                        <text x="90" y="85" fill="#fff" font-size="16" text-anchor="middle" font-family="system-ui" font-weight="700">100%</text>
+                        <text x="90" y="102" fill="#64748b" font-size="10" text-anchor="middle" font-family="system-ui">Profits</text>
+                    </svg>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span style="width: 12px; height: 12px; border-radius: 3px; background: #22c55e; flex-shrink: 0;"></span>
+                            <span style="font-size: 13px; color: #cbd5e1;">US Open <span style="color: #22c55e; font-weight: 700;">45%</span></span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span style="width: 12px; height: 12px; border-radius: 3px; background: #00B4DC; flex-shrink: 0;"></span>
+                            <span style="font-size: 13px; color: #cbd5e1;">Londres <span style="color: #00B4DC; font-weight: 700;">25%</span></span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span style="width: 12px; height: 12px; border-radius: 3px; background: #ef4444; flex-shrink: 0;"></span>
+                            <span style="font-size: 13px; color: #cbd5e1;">Power Hour <span style="color: #ef4444; font-weight: 700;">20%</span></span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span style="width: 12px; height: 12px; border-radius: 3px; background: #D4AF37; flex-shrink: 0;"></span>
+                            <span style="font-size: 13px; color: #cbd5e1;">Trading leger <span style="color: #D4AF37; font-weight: 700;">10%</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tableau recapitulatif -->
+                <div style="overflow-x: auto; border-radius: 10px; border: 1px solid rgba(255,255,255,0.08);">
+                    <table class="mia-recap-table">
+                        <thead>
+                            <tr>
+                                <th>Heure (Paris)</th>
+                                <th>Activite MIA</th>
+                                <th>Win Rate</th>
+                                <th>% Profits</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight: 600; color: #94a3b8;">06h00 - 08h00</td>
+                                <td><span class="mia-status-dot" style="background: #94a3b8;"></span><span class="mia-badge mia-badge-gray">Preparation</span></td>
+                                <td style="color: #64748b;">&mdash;</td>
+                                <td style="color: #64748b;">&mdash;</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600; color: #00B4DC;">09h00 - 11h00</td>
+                                <td><span class="mia-status-dot" style="background: #00B4DC;"></span><span class="mia-badge mia-badge-cyan">TRADING</span></td>
+                                <td style="color: #00B4DC; font-weight: 600;">52-58%</td>
+                                <td style="color: #00B4DC; font-weight: 600;">~25%</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600; color: #64748b;">11h00 - 15h30</td>
+                                <td><span class="mia-status-dot" style="background: #64748b;"></span><span class="mia-badge mia-badge-gray">Pause</span></td>
+                                <td style="color: #64748b;">&mdash;</td>
+                                <td style="color: #64748b;">&mdash;</td>
+                            </tr>
+                            <tr style="background: rgba(34,197,94,0.04);">
+                                <td style="font-weight: 600; color: #22c55e;">15h50 - 17h30</td>
+                                <td><span class="mia-status-dot" style="background: #22c55e;"></span><span class="mia-badge mia-badge-green">TRADING MAX</span></td>
+                                <td style="color: #22c55e; font-weight: 700;">55-62%</td>
+                                <td style="color: #22c55e; font-weight: 700;">~45%</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600; color: #D4AF37;">17h30 - 20h00</td>
+                                <td><span class="mia-status-dot" style="background: #D4AF37;"></span><span class="mia-badge mia-badge-gold">Trading leger</span></td>
+                                <td style="color: #D4AF37; font-weight: 600;">50-55%</td>
+                                <td style="color: #D4AF37; font-weight: 600;">~10%</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 600; color: #ef4444;">20h00 - 21h30</td>
+                                <td><span class="mia-status-dot" style="background: #ef4444;"></span><span class="mia-badge mia-badge-red">Power Hour</span></td>
+                                <td style="color: #ef4444; font-weight: 600;">48-52%</td>
+                                <td style="color: #ef4444; font-weight: 600;">~20%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
         </section>
-        
+
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">📝 À RETENIR</h2>
             <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"></div>
@@ -459,9 +844,9 @@
 </ul>
 
         </section>
-        
+
         </article>
-        
+
         <nav style="display: flex; justify-content: space-between; margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);">
             <a href="/education/battle-navale/" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: #1e293b; border-radius: 8px; text-decoration: none;" onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'">
             <svg style="width: 16px; height: 16px; color: #94a3b8;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>

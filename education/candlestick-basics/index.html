@@ -4,12 +4,101 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="/_next/static/css/0f34aadfba7d8fab.css"/>
-    
+
     <title>Lecture des Chandeliers - MIA Academy</title>
     <style>
         @media (min-width: 1024px) {
             .sidebar-desktop { display: block !important; }
             .main-content { margin-left: 220px !important; }
+        }
+        .svg-diagram {
+            display: flex;
+            justify-content: center;
+            margin: 16px 0;
+            background: rgba(15, 20, 30, 0.6);
+            border-radius: 12px;
+            padding: 20px 12px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .svg-diagram svg {
+            width: 100%;
+            height: auto;
+        }
+        .info-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+        .info-table th {
+            text-align: left;
+            padding: 10px 14px;
+            background: rgba(15, 20, 30, 0.7);
+            color: #22d3ee;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .info-table td {
+            padding: 10px 14px;
+            color: #cbd5e1;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .info-table tr:hover td {
+            background: rgba(255,255,255,0.02);
+        }
+        .info-table .label-cell {
+            color: #94a3b8;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .trade-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px 14px;
+            background: rgba(15, 20, 30, 0.5);
+            border-radius: 8px;
+            margin-bottom: 8px;
+            border-left: 3px solid rgba(34, 211, 238, 0.4);
+        }
+        .trade-step .step-num {
+            background: rgba(34, 211, 238, 0.15);
+            color: #22d3ee;
+            font-weight: 700;
+            font-size: 12px;
+            min-width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .trade-step .step-content {
+            color: #cbd5e1;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .trade-result {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px;
+            background: rgba(34, 197, 94, 0.08);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 8px;
+            margin-top: 12px;
+        }
+        .trade-result-icon {
+            font-size: 24px;
+        }
+        .trade-result-text {
+            color: #22c55e;
+            font-weight: 600;
+            font-size: 15px;
         }
     </style>
 <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"/>
@@ -37,10 +126,10 @@
         </a>
     </header>
 
-    
+
         <aside style="display: none; position: fixed; top: 56px; left: 0; bottom: 0; width: 220px; background: #0f1419; border-right: 1px solid rgba(255,255,255,0.1); overflow-y: auto; z-index: 40;" class="sidebar-desktop">
             <div style="padding: 12px;">
-    
+
                 <div class="nav-section" id="nav-debutant">
                     <div onclick="toggleNav('debutant')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
                         <div style="display: flex; align-items: center; gap: 6px;">
@@ -51,60 +140,60 @@
                         <svg class="chevron-debutant" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s; transform: rotate(180deg);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-content-debutant" style="padding-left: 8px;">
-        
+
                         <a href="/education/futures-101/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Les Futures US: ES, NQ</span>
                         </a>
-            
+
                         <a href="/education/trading-sessions/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🕐</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Les Sessions de Tradin</span>
                         </a>
-            
+
                         <a href="/education/candlestick-basics/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #fff; text-decoration: none; background: #22d3ee22;" onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='#22d3ee22'; this.style.color='#fff'">
                             <span>🕯️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Lecture des Chandelier</span>
                         </a>
-            
+
                         <a href="/education/support-resistance/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📏</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Support & Résistance</span>
                         </a>
-            
+
                         <a href="/education/volume-importance/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">L'Importance du Volume</span>
                         </a>
-            
+
                         <a href="/education/risk-management/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🛡️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gestion du Risque</span>
                         </a>
-            
+
                         <a href="/education/trading-psychology/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧠</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Psychologie du Trading</span>
                         </a>
-            
+
                         <a href="/education/order-types/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📝</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Types d'Ordres</span>
                         </a>
-            
+
                         <a href="/education/journaling-backtesting/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📓</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Journaling & Backtesti</span>
                         </a>
-            
+
                         <a href="/education/economic-calendar/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📅</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Calendrier Économique</span>
                         </a>
-            
+
                     </div>
                 </div>
-        
+
                 <div class="nav-section" id="nav-intermediaire">
                     <div onclick="toggleNav('intermediaire')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
                         <div style="display: flex; align-items: center; gap: 6px;">
@@ -115,65 +204,65 @@
                         <svg class="chevron-intermediaire" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-content-intermediaire" style="padding-left: 8px; display: none;">
-        
+
                         <a href="/education/multi-timeframe-analysis/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔍</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Analyse Multi-Timefram</span>
                         </a>
-            
+
                         <a href="/education/call-resistance-put-support/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📞</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Call Resistance & Put </span>
                         </a>
-            
+
                         <a href="/education/hvl-gamma-flip/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🎯</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">HVL & Gamma Flip</span>
                         </a>
-            
+
                         <a href="/education/positive-negative-gamma/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>⚡</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gamma Positif vs Négat</span>
                         </a>
-            
+
                         <a href="/education/0dte-options-impact/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>💥</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Impact des Options 0DT</span>
                         </a>
-            
+
                         <a href="/education/expected-move-range/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📐</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Expected Move & Range</span>
                         </a>
-            
+
                         <a href="/education/gamma-exposure/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📈</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gamma Exposure (GEX)</span>
                         </a>
-            
+
                         <a href="/education/high-volume-levels/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">High Volume Levels</span>
                         </a>
-            
+
                         <a href="/education/options-impact/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🎰</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Impact des Options</span>
                         </a>
-            
+
                         <a href="/education/market-makers/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🏦</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Market Makers</span>
                         </a>
-            
+
                         <a href="/education/vwap-intraday/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📉</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">VWAP & Niveaux Intrada</span>
                         </a>
-            
+
                     </div>
                 </div>
-        
+
                 <div class="nav-section" id="nav-avance">
                     <div onclick="toggleNav('avance')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
                         <div style="display: flex; align-items: center; gap: 6px;">
@@ -184,80 +273,80 @@
                         <svg class="chevron-avance" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-content-avance" style="padding-left: 8px; display: none;">
-        
+
                         <a href="/education/orderflow/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🌊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">OrderFlow Basics</span>
                         </a>
-            
+
                         <a href="/education/money-management/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>💰</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Money Management Avanc</span>
                         </a>
-            
+
                         <a href="/education/correlation-intermarches/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔗</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Corrélations Inter-Mar</span>
                         </a>
-            
+
                         <a href="/education/liquidity-sweeps/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧹</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Liquidity Sweeps</span>
                         </a>
-            
+
                         <a href="/education/market-profile/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Market Profile</span>
                         </a>
-            
+
                         <a href="/education/fibonacci-extensions/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🌀</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Fibonacci Extensions</span>
                         </a>
-            
+
                         <a href="/education/gex-levels-1-10/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🎯</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">GEX Levels 1-10</span>
                         </a>
-            
+
                         <a href="/education/blind-spots-trading/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>👁️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Blind Spots Trading</span>
                         </a>
-            
+
                         <a href="/education/delta-exposure-dex/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Delta Exposure (DEX)</span>
                         </a>
-            
+
                         <a href="/education/dealer-hedging-mechanics/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>⚙️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Dealer Hedging</span>
                         </a>
-            
+
                         <a href="/education/gamma-walls-magnets/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧲</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gamma Walls & Magnets</span>
                         </a>
-            
+
                         <a href="/education/vix-vvix-volatility/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🌪️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">VIX & VVIX</span>
                         </a>
-            
+
                         <a href="/education/option-greeks-traders/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🇬🇷</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Option Greeks</span>
                         </a>
-            
+
                         <a href="/education/regime-based-trading/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔄</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Regime-Based Trading</span>
                         </a>
-            
+
                     </div>
                 </div>
-        
+
                 <div class="nav-section" id="nav-bonus">
                     <div onclick="toggleNav('bonus')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
                         <div style="display: flex; align-items: center; gap: 6px;">
@@ -268,38 +357,38 @@
                         <svg class="chevron-bonus" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-content-bonus" style="padding-left: 8px; display: none;">
-        
+
                         <a href="/education/battle-navale/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>⚔️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Battle Navale</span>
                         </a>
-            
+
                         <a href="/education/une-journee-avec-mia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>☀️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Une Journée avec MIA</span>
                         </a>
-            
+
                         <a href="/education/pourquoi-bots-meurent/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>💀</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Pourquoi les Bots Meur</span>
                         </a>
-            
+
                         <a href="/education/quand-couper-mia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔌</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Quand Couper MIA</span>
                         </a>
-            
+
                         <a href="/education/mental-discipline-ia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧘</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Mental & Discipline</span>
                         </a>
-            
+
                     </div>
                 </div>
-        
+
             </div>
         </aside>
-    
+
 
     <!-- Main Content -->
     <main class="main-content" style="padding-top: 72px; padding-bottom: 40px; padding-left: 16px; padding-right: 16px; max-width: 900px;">
@@ -310,7 +399,7 @@
             <span>›</span>
             <span style="color: #fff;">Lecture des Chandeliers</span>
         </nav>
-        
+
         <header style="margin-bottom: 24px;">
             <span style="font-size: 48px; display: block; margin-bottom: 8px;">🕯️</span>
             <h1 style="font-size: 28px; font-weight: 700; color: #fff; margin: 0 0 8px 0;">Lecture des Chandeliers</h1>
@@ -323,204 +412,719 @@
                 <span style="padding: 4px 10px; border-radius: 20px; background: #22d3ee22; color: #22d3ee;">Débutant</span>
             </div>
         </header>
-        
+
         <article>
-            
+
+        <!-- ============================================================ -->
+        <!-- SECTION 1: HISTOIRE                                          -->
+        <!-- ============================================================ -->
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">📜 Histoire: Des marchands de riz japonais aux traders modernes</h2>
             <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><p style="margin-bottom: 12px;">Les chandeliers japonais ont été inventés il y a plus de 300 ans par Munehisa Homma, un légendaire marchand de riz japonais. À une époque sans ordinateurs ni internet, il a développé un système visuel pour analyser les prix qui reste le standard mondial aujourd&#x27;hui.</p>
 <p style="margin-bottom: 12px;">Homma a fait fortune en comprenant que le prix reflète les ÉMOTIONS des participants: peur, avidité, espoir, panique. Chaque chandelier raconte une histoire de la bataille entre acheteurs et vendeurs.</p>
 <p style="margin-bottom: 12px;">Aujourd&#x27;hui, 95% des traders professionnels utilisent les chandeliers comme base de leur analyse technique. Maîtriser leur lecture est FONDAMENTAL.</p>
 </div>
-            
+
         </section>
-        
+
+        <!-- ============================================================ -->
+        <!-- SECTION 2: ANATOMIE D'UN CHANDELIER (SVG)                    -->
+        <!-- ============================================================ -->
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
-            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">🔬 Anatomie d\</h2>
-            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                    ANATOMIE D&#x27;UN CHANDELIER                              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         CHANDELIER HAUSSIER          CHANDELIER BAISSIER                │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         (Vert/Blanc)                 (Rouge/Noir)                        │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              │                            │                              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              │ ← Mèche haute              │ ← Mèche haute                │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              │   (High - Close)           │   (High - Open)              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         ┌────┴────┐                  ┌────┴────┐                         │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         │ CLÔTURE │                  │  OPEN   │                         │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         │         │ ← Corps          │         │ ← Corps                 │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         │  OPEN   │                  │ CLÔTURE │                         │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         └────┬────┘                  └────┬────┘                         │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              │ ← Mèche basse              │ ← Mèche basse                │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              │   (Open - Low)             │   (Close - Low)              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              │                            │                              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ LES 4 PRIX:                                                              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • OPEN (Ouverture): Premier prix de la période                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • HIGH (Plus haut): Prix maximum atteint                                │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • LOW (Plus bas): Prix minimum atteint                                  │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • CLOSE (Clôture): Dernier prix de la période                           │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ INTERPRÉTATION DES MÈCHES:                                               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Longue mèche haute = Vendeurs ont repoussé le prix (rejet)            │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Longue mèche basse = Acheteurs ont défendu le prix (support)          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Pas de mèche = Conviction forte dans la direction                      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
+            <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">🔬 Anatomie d'un Chandelier</h2>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">
+
+<!-- SVG: Anatomie - Chandelier Haussier vs Baissier -->
+<div class="svg-diagram">
+<svg viewBox="0 0 700 420" style="max-width: 700px;" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fond -->
+  <rect x="0" y="0" width="700" height="420" rx="12" fill="#0f141e" opacity="0.5"/>
+
+  <!-- Titre -->
+  <text x="350" y="32" text-anchor="middle" fill="#fff" font-size="16" font-weight="700" font-family="system-ui, sans-serif">ANATOMIE D'UN CHANDELIER</text>
+  <line x1="120" y1="44" x2="580" y2="44" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+  <!-- ===== CHANDELIER HAUSSIER (gauche) ===== -->
+  <text x="175" y="72" text-anchor="middle" fill="#22c55e" font-size="14" font-weight="600" font-family="system-ui, sans-serif">CHANDELIER HAUSSIER</text>
+  <text x="175" y="90" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="system-ui, sans-serif">(Vert / Blanc)</text>
+
+  <!-- Meche haute haussier -->
+  <line x1="175" y1="110" x2="175" y2="175" stroke="#22c55e" stroke-width="2.5"/>
+  <!-- Corps haussier -->
+  <rect x="145" y="175" width="60" height="100" rx="3" fill="#22c55e" opacity="0.85"/>
+  <rect x="145" y="175" width="60" height="100" rx="3" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+  <!-- Meche basse haussier -->
+  <line x1="175" y1="275" x2="175" y2="340" stroke="#22c55e" stroke-width="2.5"/>
+
+  <!-- Labels haussier -->
+  <!-- High -->
+  <line x1="60" y1="110" x2="170" y2="110" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="4,3"/>
+  <text x="55" y="114" text-anchor="end" fill="#D4AF37" font-size="12" font-weight="600" font-family="system-ui, sans-serif">HIGH</text>
+
+  <!-- Close (haut du corps pour haussier) -->
+  <line x1="60" y1="175" x2="143" y2="175" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="4,3"/>
+  <text x="55" y="179" text-anchor="end" fill="#22c55e" font-size="12" font-weight="600" font-family="system-ui, sans-serif">CLOSE</text>
+
+  <!-- Open (bas du corps pour haussier) -->
+  <line x1="60" y1="275" x2="143" y2="275" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="4,3"/>
+  <text x="55" y="279" text-anchor="end" fill="#22c55e" font-size="12" font-weight="600" font-family="system-ui, sans-serif">OPEN</text>
+
+  <!-- Low -->
+  <line x1="60" y1="340" x2="170" y2="340" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="4,3"/>
+  <text x="55" y="344" text-anchor="end" fill="#D4AF37" font-size="12" font-weight="600" font-family="system-ui, sans-serif">LOW</text>
+
+  <!-- Annotations meches haussier -->
+  <!-- Accolade meche haute -->
+  <path d="M 210 112 Q 222 112 222 130 Q 222 140 230 142 Q 222 144 222 155 Q 222 173 210 173" fill="none" stroke="#94a3b8" stroke-width="0.8"/>
+  <text x="236" y="146" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">Meche haute</text>
+  <text x="236" y="158" fill="#64748b" font-size="9" font-family="system-ui, sans-serif">(High - Close)</text>
+
+  <!-- Accolade corps -->
+  <path d="M 210 178 Q 222 178 222 205 Q 222 224 230 226 Q 222 228 222 248 Q 222 273 210 273" fill="none" stroke="#94a3b8" stroke-width="0.8"/>
+  <text x="236" y="222" fill="#fff" font-size="10" font-weight="600" font-family="system-ui, sans-serif">Corps</text>
+  <text x="236" y="234" fill="#64748b" font-size="9" font-family="system-ui, sans-serif">(Close - Open)</text>
+
+  <!-- Accolade meche basse -->
+  <path d="M 210 278 Q 222 278 222 296 Q 222 306 230 308 Q 222 310 222 322 Q 222 338 210 338" fill="none" stroke="#94a3b8" stroke-width="0.8"/>
+  <text x="236" y="305" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">Meche basse</text>
+  <text x="236" y="317" fill="#64748b" font-size="9" font-family="system-ui, sans-serif">(Open - Low)</text>
+
+  <!-- ===== CHANDELIER BAISSIER (droite) ===== -->
+  <text x="525" y="72" text-anchor="middle" fill="#ef4444" font-size="14" font-weight="600" font-family="system-ui, sans-serif">CHANDELIER BAISSIER</text>
+  <text x="525" y="90" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="system-ui, sans-serif">(Rouge / Noir)</text>
+
+  <!-- Meche haute baissier -->
+  <line x1="525" y1="110" x2="525" y2="175" stroke="#ef4444" stroke-width="2.5"/>
+  <!-- Corps baissier -->
+  <rect x="495" y="175" width="60" height="100" rx="3" fill="#ef4444" opacity="0.85"/>
+  <rect x="495" y="175" width="60" height="100" rx="3" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+  <!-- Meche basse baissier -->
+  <line x1="525" y1="275" x2="525" y2="340" stroke="#ef4444" stroke-width="2.5"/>
+
+  <!-- Labels baissier -->
+  <!-- High -->
+  <line x1="530" y1="110" x2="640" y2="110" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="4,3"/>
+  <text x="645" y="114" fill="#D4AF37" font-size="12" font-weight="600" font-family="system-ui, sans-serif">HIGH</text>
+
+  <!-- Open (haut du corps pour baissier) -->
+  <line x1="557" y1="175" x2="640" y2="175" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="4,3"/>
+  <text x="645" y="179" fill="#ef4444" font-size="12" font-weight="600" font-family="system-ui, sans-serif">OPEN</text>
+
+  <!-- Close (bas du corps pour baissier) -->
+  <line x1="557" y1="275" x2="640" y2="275" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="4,3"/>
+  <text x="645" y="279" fill="#ef4444" font-size="12" font-weight="600" font-family="system-ui, sans-serif">CLOSE</text>
+
+  <!-- Low -->
+  <line x1="530" y1="340" x2="640" y2="340" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="4,3"/>
+  <text x="645" y="344" fill="#D4AF37" font-size="12" font-weight="600" font-family="system-ui, sans-serif">LOW</text>
+
+  <!-- Annotations meches baissier -->
+  <path d="M 490 112 Q 478 112 478 130 Q 478 140 470 142 Q 478 144 478 155 Q 478 173 490 173" fill="none" stroke="#94a3b8" stroke-width="0.8"/>
+  <text x="465" y="146" text-anchor="end" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">Meche haute</text>
+  <text x="465" y="158" text-anchor="end" fill="#64748b" font-size="9" font-family="system-ui, sans-serif">(High - Open)</text>
+
+  <path d="M 490 178 Q 478 178 478 205 Q 478 224 470 226 Q 478 228 478 248 Q 478 273 490 273" fill="none" stroke="#94a3b8" stroke-width="0.8"/>
+  <text x="465" y="222" text-anchor="end" fill="#fff" font-size="10" font-weight="600" font-family="system-ui, sans-serif">Corps</text>
+  <text x="465" y="234" text-anchor="end" fill="#64748b" font-size="9" font-family="system-ui, sans-serif">(Open - Close)</text>
+
+  <path d="M 490 278 Q 478 278 478 296 Q 478 306 470 308 Q 478 310 478 322 Q 478 338 490 338" fill="none" stroke="#94a3b8" stroke-width="0.8"/>
+  <text x="465" y="305" text-anchor="end" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">Meche basse</text>
+  <text x="465" y="317" text-anchor="end" fill="#64748b" font-size="9" font-family="system-ui, sans-serif">(Close - Low)</text>
+
+  <!-- Separateur -->
+  <line x1="350" y1="65" x2="350" y2="350" stroke="rgba(255,255,255,0.08)" stroke-width="1" stroke-dasharray="6,4"/>
+</svg>
 </div>
-            
+
+<!-- Tableau des 4 prix -->
+<table class="info-table" style="margin-top: 16px;">
+    <thead>
+        <tr><th style="width: 25%;">Prix</th><th style="width: 35%;">Signification</th><th>Interpretation des meches</th></tr>
+    </thead>
+    <tbody>
+        <tr><td class="label-cell">OPEN</td><td>Premier prix de la periode</td><td rowspan="4" style="line-height: 2.2;">
+            <span style="color: #D4AF37;">Longue meche haute</span> = Vendeurs ont repousse le prix (rejet)<br/>
+            <span style="color: #D4AF37;">Longue meche basse</span> = Acheteurs ont defendu le prix (support)<br/>
+            <span style="color: #D4AF37;">Pas de meche</span> = Conviction forte dans la direction
+        </td></tr>
+        <tr><td class="label-cell">HIGH</td><td>Prix maximum atteint</td></tr>
+        <tr><td class="label-cell">LOW</td><td>Prix minimum atteint</td></tr>
+        <tr><td class="label-cell">CLOSE</td><td>Dernier prix de la periode</td></tr>
+    </tbody>
+</table>
+
+</div>
+
         </section>
-        
+
+        <!-- ============================================================ -->
+        <!-- SECTION 3: PATTERNS DE RETOURNEMENT (SVG)                    -->
+        <!-- ============================================================ -->
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">🔄 Patterns de Retournement - Anticiper les changements de direction</h2>
-            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                    PATTERNS DE RETOURNEMENT                              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  1. HAMMER (Marteau) - Retournement HAUSSIER                            │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     ─────────────────                                                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         ┌─┐                                                              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         │ │   • Apparaît après une baisse                               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         └┬┘   • Petit corps en haut                                     │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│          │    • Longue mèche basse (2-3x le corps)                      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│          │    • Signifie: Acheteurs ont repris le contrôle              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│          │    • Fiabilité: ⭐⭐⭐⭐ (80% avec confirmation)              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  2. SHOOTING STAR (Étoile filante) - Retournement BAISSIER              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     ─────────────────                                                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│          │    • Apparaît après une hausse                               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│          │    • Petit corps en bas                                      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         ┌┴┐   • Longue mèche haute (2-3x le corps)                      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         │ │   • Signifie: Vendeurs ont pris le contrôle                 │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         └─┘   • Fiabilité: ⭐⭐⭐⭐ (80% avec confirmation)              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  3. DOJI - Indécision                                                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     ─────────────────                                                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│          │    • Open = Close (ou très proche)                           │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│         ─┼─   • Signifie: Bataille équilibrée                           │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│          │    • Contexte important: après tendance = potentiel reverse   │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│               • Fiabilité: ⭐⭐⭐ (nécessite confirmation)                │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  4. ENGULFING (Englobante) - Fort retournement                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     ─────────────────                                                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│      Baissier          Haussier                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│       ┌─┐  ┌───┐      ┌───┐  ┌─┐                                        │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│       │▓│  │   │      │   │  │ │                                        │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│       │▓│  │   │      │   │  │ │                                        │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│       └─┘  └───┘      └───┘  └─┘                                        │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│      Petit + Grand    Grand + Petit                                      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│      Fiabilité: ⭐⭐⭐⭐⭐ (très forte)                                  │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">
+
+<!-- SVG: HAMMER -->
+<div class="svg-diagram">
+<svg viewBox="0 0 700 280" style="max-width: 700px;" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="700" height="280" rx="12" fill="#0f141e" opacity="0.5"/>
+
+  <text x="24" y="32" fill="#22c55e" font-size="15" font-weight="700" font-family="system-ui, sans-serif">1. HAMMER (Marteau)</text>
+  <text x="255" y="32" fill="#94a3b8" font-size="13" font-family="system-ui, sans-serif">- Retournement HAUSSIER</text>
+
+  <!-- Fleche de tendance baissiere precedente -->
+  <line x1="60" y1="70" x2="120" y2="130" stroke="#ef4444" stroke-width="2" opacity="0.5"/>
+  <line x1="90" y1="90" x2="150" y2="150" stroke="#ef4444" stroke-width="2" opacity="0.4"/>
+  <polygon points="150,150 142,140 152,142" fill="#ef4444" opacity="0.4"/>
+  <text x="65" y="65" fill="#ef4444" font-size="10" opacity="0.6" font-family="system-ui, sans-serif">Baisse</text>
+
+  <!-- Chandelier Hammer -->
+  <!-- Petit corps en haut -->
+  <rect x="155" y="115" width="40" height="20" rx="2" fill="#22c55e" opacity="0.85"/>
+  <rect x="155" y="115" width="40" height="20" rx="2" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+  <!-- Longue meche basse -->
+  <line x1="175" y1="135" x2="175" y2="230" stroke="#22c55e" stroke-width="2.5"/>
+  <!-- Petite meche haute (optionnelle) -->
+  <line x1="175" y1="115" x2="175" y2="108" stroke="#22c55e" stroke-width="2.5"/>
+
+  <!-- Fleche de retournement -->
+  <path d="M 200 200 Q 240 200 240 160 Q 240 100 260 80" fill="none" stroke="#22c55e" stroke-width="2" stroke-dasharray="5,3"/>
+  <polygon points="260,80 252,90 262,88" fill="#22c55e"/>
+
+  <!-- Labels dimensionnels -->
+  <!-- Accolade corps -->
+  <line x1="200" y1="115" x2="215" y2="115" stroke="#94a3b8" stroke-width="0.5"/>
+  <line x1="200" y1="135" x2="215" y2="135" stroke="#94a3b8" stroke-width="0.5"/>
+  <line x1="215" y1="115" x2="215" y2="135" stroke="#94a3b8" stroke-width="0.8"/>
+  <text x="220" y="129" fill="#94a3b8" font-size="9" font-family="system-ui, sans-serif">1x</text>
+
+  <!-- Accolade meche -->
+  <line x1="200" y1="137" x2="215" y2="137" stroke="#D4AF37" stroke-width="0.5"/>
+  <line x1="200" y1="230" x2="215" y2="230" stroke="#D4AF37" stroke-width="0.5"/>
+  <line x1="215" y1="137" x2="215" y2="230" stroke="#D4AF37" stroke-width="0.8"/>
+  <text x="220" y="187" fill="#D4AF37" font-size="9" font-family="system-ui, sans-serif">2-3x</text>
+
+  <!-- Texte descriptif -->
+  <text x="340" y="85" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif">Apparait apres une baisse</text>
+  <text x="340" y="110" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif">Petit corps en haut</text>
+  <text x="340" y="135" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif">Longue meche basse (2-3x le corps)</text>
+  <text x="340" y="160" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif">Signifie: <tspan fill="#22c55e" font-weight="600">Acheteurs ont repris le controle</tspan></text>
+
+  <!-- Fiabilite -->
+  <rect x="340" y="185" width="200" height="28" rx="6" fill="rgba(34,197,94,0.1)" stroke="rgba(34,197,94,0.2)" stroke-width="1"/>
+  <text x="350" y="204" fill="#22c55e" font-size="12" font-weight="600" font-family="system-ui, sans-serif">Fiabilite: 80% avec confirmation</text>
+
+  <!-- Etoiles -->
+  <circle cx="560" cy="199" r="5" fill="#D4AF37"/><circle cx="575" cy="199" r="5" fill="#D4AF37"/><circle cx="590" cy="199" r="5" fill="#D4AF37"/><circle cx="605" cy="199" r="5" fill="#D4AF37"/>
+</svg>
 </div>
-            
+
+<!-- SVG: SHOOTING STAR -->
+<div class="svg-diagram">
+<svg viewBox="0 0 700 280" style="max-width: 700px;" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="700" height="280" rx="12" fill="#0f141e" opacity="0.5"/>
+
+  <text x="24" y="32" fill="#ef4444" font-size="15" font-weight="700" font-family="system-ui, sans-serif">2. SHOOTING STAR (Etoile filante)</text>
+  <text x="355" y="32" fill="#94a3b8" font-size="13" font-family="system-ui, sans-serif">- Retournement BAISSIER</text>
+
+  <!-- Fleche de tendance haussiere precedente -->
+  <line x1="60" y1="210" x2="120" y2="150" stroke="#22c55e" stroke-width="2" opacity="0.5"/>
+  <line x1="90" y1="190" x2="150" y2="130" stroke="#22c55e" stroke-width="2" opacity="0.4"/>
+  <polygon points="150,130 142,140 152,138" fill="#22c55e" opacity="0.4"/>
+  <text x="65" y="225" fill="#22c55e" font-size="10" opacity="0.6" font-family="system-ui, sans-serif">Hausse</text>
+
+  <!-- Chandelier Shooting Star -->
+  <!-- Longue meche haute -->
+  <line x1="175" y1="60" x2="175" y2="155" stroke="#ef4444" stroke-width="2.5"/>
+  <!-- Petit corps en bas -->
+  <rect x="155" y="155" width="40" height="20" rx="2" fill="#ef4444" opacity="0.85"/>
+  <rect x="155" y="155" width="40" height="20" rx="2" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+  <!-- Petite meche basse (optionnelle) -->
+  <line x1="175" y1="175" x2="175" y2="182" stroke="#ef4444" stroke-width="2.5"/>
+
+  <!-- Fleche de retournement vers le bas -->
+  <path d="M 200 90 Q 240 90 240 140 Q 240 200 260 220" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="5,3"/>
+  <polygon points="260,220 252,210 262,212" fill="#ef4444"/>
+
+  <!-- Labels dimensionnels -->
+  <line x1="200" y1="60" x2="215" y2="60" stroke="#D4AF37" stroke-width="0.5"/>
+  <line x1="200" y1="153" x2="215" y2="153" stroke="#D4AF37" stroke-width="0.5"/>
+  <line x1="215" y1="60" x2="215" y2="153" stroke="#D4AF37" stroke-width="0.8"/>
+  <text x="220" y="110" fill="#D4AF37" font-size="9" font-family="system-ui, sans-serif">2-3x</text>
+
+  <line x1="200" y1="155" x2="215" y2="155" stroke="#94a3b8" stroke-width="0.5"/>
+  <line x1="200" y1="175" x2="215" y2="175" stroke="#94a3b8" stroke-width="0.5"/>
+  <line x1="215" y1="155" x2="215" y2="175" stroke="#94a3b8" stroke-width="0.8"/>
+  <text x="220" y="169" fill="#94a3b8" font-size="9" font-family="system-ui, sans-serif">1x</text>
+
+  <!-- Texte descriptif -->
+  <text x="340" y="85" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif">Apparait apres une hausse</text>
+  <text x="340" y="110" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif">Petit corps en bas</text>
+  <text x="340" y="135" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif">Longue meche haute (2-3x le corps)</text>
+  <text x="340" y="160" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif">Signifie: <tspan fill="#ef4444" font-weight="600">Vendeurs ont pris le controle</tspan></text>
+
+  <rect x="340" y="185" width="200" height="28" rx="6" fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.2)" stroke-width="1"/>
+  <text x="350" y="204" fill="#ef4444" font-size="12" font-weight="600" font-family="system-ui, sans-serif">Fiabilite: 80% avec confirmation</text>
+
+  <circle cx="560" cy="199" r="5" fill="#D4AF37"/><circle cx="575" cy="199" r="5" fill="#D4AF37"/><circle cx="590" cy="199" r="5" fill="#D4AF37"/><circle cx="605" cy="199" r="5" fill="#D4AF37"/>
+</svg>
+</div>
+
+<!-- SVG: DOJI -->
+<div class="svg-diagram">
+<svg viewBox="0 0 700 250" style="max-width: 700px;" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="700" height="250" rx="12" fill="#0f141e" opacity="0.5"/>
+
+  <text x="24" y="32" fill="#D4AF37" font-size="15" font-weight="700" font-family="system-ui, sans-serif">3. DOJI</text>
+  <text x="90" y="32" fill="#94a3b8" font-size="13" font-family="system-ui, sans-serif">- Indecision</text>
+
+  <!-- Chandelier Doji -->
+  <!-- Meche haute -->
+  <line x1="175" y1="65" x2="175" y2="130" stroke="#D4AF37" stroke-width="2.5"/>
+  <!-- Corps = ligne (Open = Close) -->
+  <line x1="150" y1="130" x2="200" y2="130" stroke="#D4AF37" stroke-width="3"/>
+  <!-- Meche basse -->
+  <line x1="175" y1="130" x2="175" y2="200" stroke="#D4AF37" stroke-width="2.5"/>
+
+  <!-- Label Open = Close -->
+  <line x1="205" y1="130" x2="250" y2="130" stroke="#94a3b8" stroke-width="0.8" stroke-dasharray="4,3"/>
+  <text x="255" y="134" fill="#D4AF37" font-size="11" font-weight="600" font-family="system-ui, sans-serif">Open = Close</text>
+
+  <!-- Fleches bidirectionnelles -->
+  <text x="120" y="98" text-anchor="end" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">Vendeurs</text>
+  <polygon points="175,65 170,75 180,75" fill="#ef4444" opacity="0.5"/>
+
+  <text x="120" y="175" text-anchor="end" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">Acheteurs</text>
+  <polygon points="175,200 170,190 180,190" fill="#22c55e" opacity="0.5"/>
+
+  <!-- Point d'interrogation -->
+  <text x="175" y="230" text-anchor="middle" fill="#D4AF37" font-size="12" font-weight="600" font-family="system-ui, sans-serif">?  Qui va gagner ?</text>
+
+  <!-- Texte descriptif -->
+  <text x="400" y="85" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif">Open = Close (ou tres proche)</text>
+  <text x="400" y="110" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif">Signifie: <tspan fill="#D4AF37" font-weight="600">Bataille equilibree</tspan></text>
+  <text x="400" y="135" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif">Apres tendance = potentiel reverse</text>
+  <text x="400" y="160" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif">Necessite toujours une confirmation</text>
+
+  <rect x="400" y="180" width="195" height="28" rx="6" fill="rgba(212,175,55,0.1)" stroke="rgba(212,175,55,0.2)" stroke-width="1"/>
+  <text x="410" y="199" fill="#D4AF37" font-size="12" font-weight="600" font-family="system-ui, sans-serif">Fiabilite: necessite confirmation</text>
+
+  <circle cx="610" cy="194" r="5" fill="#D4AF37"/><circle cx="625" cy="194" r="5" fill="#D4AF37"/><circle cx="640" cy="194" r="5" fill="#D4AF37"/><circle cx="655" cy="194" r="5" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+</svg>
+</div>
+
+<!-- SVG: ENGULFING -->
+<div class="svg-diagram">
+<svg viewBox="0 0 700 300" style="max-width: 700px;" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="700" height="300" rx="12" fill="#0f141e" opacity="0.5"/>
+
+  <text x="24" y="32" fill="#fff" font-size="15" font-weight="700" font-family="system-ui, sans-serif">4. ENGULFING (Englobante)</text>
+  <text x="275" y="32" fill="#94a3b8" font-size="13" font-family="system-ui, sans-serif">- Fort retournement</text>
+
+  <!-- === Bearish Engulfing (gauche) === -->
+  <text x="130" y="62" text-anchor="middle" fill="#ef4444" font-size="12" font-weight="600" font-family="system-ui, sans-serif">BEARISH ENGULFING</text>
+
+  <!-- Petite bougie verte (1ere) -->
+  <rect x="80" y="120" width="28" height="50" rx="2" fill="#22c55e" opacity="0.85"/>
+  <rect x="80" y="120" width="28" height="50" rx="2" fill="none" stroke="#22c55e" stroke-width="1.2"/>
+  <line x1="94" y1="108" x2="94" y2="120" stroke="#22c55e" stroke-width="2"/>
+  <line x1="94" y1="170" x2="94" y2="182" stroke="#22c55e" stroke-width="2"/>
+
+  <!-- Grande bougie rouge (2eme, englobe) -->
+  <rect x="118" y="100" width="40" height="90" rx="2" fill="#ef4444" opacity="0.85"/>
+  <rect x="118" y="100" width="40" height="90" rx="2" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+  <line x1="138" y1="82" x2="138" y2="100" stroke="#ef4444" stroke-width="2.5"/>
+  <line x1="138" y1="190" x2="138" y2="210" stroke="#ef4444" stroke-width="2.5"/>
+
+  <!-- Fleche vers le bas -->
+  <path d="M 170 170 Q 200 170 200 210 L 200 240" fill="none" stroke="#ef4444" stroke-width="2"/>
+  <polygon points="200,248 194,238 206,238" fill="#ef4444"/>
+
+  <text x="130" y="275" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="system-ui, sans-serif">Petit + Grand = Baisse</text>
+
+  <!-- === Bullish Engulfing (centre-droit) === -->
+  <text x="370" y="62" text-anchor="middle" fill="#22c55e" font-size="12" font-weight="600" font-family="system-ui, sans-serif">BULLISH ENGULFING</text>
+
+  <!-- Petite bougie rouge (1ere) -->
+  <rect x="320" y="120" width="28" height="50" rx="2" fill="#ef4444" opacity="0.85"/>
+  <rect x="320" y="120" width="28" height="50" rx="2" fill="none" stroke="#ef4444" stroke-width="1.2"/>
+  <line x1="334" y1="108" x2="334" y2="120" stroke="#ef4444" stroke-width="2"/>
+  <line x1="334" y1="170" x2="334" y2="182" stroke="#ef4444" stroke-width="2"/>
+
+  <!-- Grande bougie verte (2eme, englobe) -->
+  <rect x="358" y="100" width="40" height="90" rx="2" fill="#22c55e" opacity="0.85"/>
+  <rect x="358" y="100" width="40" height="90" rx="2" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+  <line x1="378" y1="82" x2="378" y2="100" stroke="#22c55e" stroke-width="2.5"/>
+  <line x1="378" y1="190" x2="378" y2="210" stroke="#22c55e" stroke-width="2.5"/>
+
+  <!-- Fleche vers le haut -->
+  <path d="M 410 120 Q 440 120 440 80 L 440 60" fill="none" stroke="#22c55e" stroke-width="2"/>
+  <polygon points="440,52 434,62 446,62" fill="#22c55e"/>
+
+  <text x="370" y="275" text-anchor="middle" fill="#94a3b8" font-size="11" font-family="system-ui, sans-serif">Petit + Grand = Hausse</text>
+
+  <!-- Fiabilite -->
+  <rect x="500" y="110" width="180" height="80" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="590" y="138" text-anchor="middle" fill="#fff" font-size="13" font-weight="600" font-family="system-ui, sans-serif">Fiabilite</text>
+  <text x="590" y="160" text-anchor="middle" fill="#D4AF37" font-size="12" font-family="system-ui, sans-serif">Tres forte</text>
+  <circle cx="552" cy="178" r="5" fill="#D4AF37"/><circle cx="567" cy="178" r="5" fill="#D4AF37"/><circle cx="582" cy="178" r="5" fill="#D4AF37"/><circle cx="597" cy="178" r="5" fill="#D4AF37"/><circle cx="612" cy="178" r="5" fill="#D4AF37"/>
+</svg>
+</div>
+
+</div>
+
         </section>
-        
+
+        <!-- ============================================================ -->
+        <!-- SECTION 4: PATTERNS DE CONTINUATION (SVG)                    -->
+        <!-- ============================================================ -->
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">➡️ Patterns de Continuation - Confirmer la tendance</h2>
-            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                    PATTERNS DE CONTINUATION                              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  1. THREE WHITE SOLDIERS (3 soldats blancs) - Continuation HAUSSIÈRE    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     ─────────────────                                                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              ┌─┐                                                         │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│           ┌─┐│ │   • 3 bougies vertes consécutives                       │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        ┌─┐│ │└─┘   • Chaque close &gt; close précédent                      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        │ │└─┘      • Corps similaires, pas de longues mèches            │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        └─┘         • Signifie: Forte pression acheteuse                 │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                    • Fiabilité: ⭐⭐⭐⭐⭐                                │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  2. THREE BLACK CROWS (3 corbeaux noirs) - Continuation BAISSIÈRE       │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     ─────────────────                                                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        ┌─┐         • 3 bougies rouges consécutives                       │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        │▓│┌─┐      • Chaque close &lt; close précédent                      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        └─┘│▓│┌─┐   • Corps similaires, pas de longues mèches            │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│           └─┘│▓│   • Signifie: Forte pression vendeuse                  │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              └─┘   • Fiabilité: ⭐⭐⭐⭐⭐                                │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  3. MARUBOZU - Conviction extrême                                        │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     ─────────────────                                                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        ┌───┐        Haussier: Open = Low, Close = High                   │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        │   │        Baissier: Open = High, Close = Low                   │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        │   │        • PAS de mèche = domination totale                   │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        │   │        • Très rare et très significatif                     │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│        └───┘        • Fiabilité: ⭐⭐⭐⭐⭐                                │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">
+
+<!-- SVG: THREE WHITE SOLDIERS -->
+<div class="svg-diagram">
+<svg viewBox="0 0 700 280" style="max-width: 700px;" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="700" height="280" rx="12" fill="#0f141e" opacity="0.5"/>
+
+  <text x="24" y="32" fill="#22c55e" font-size="15" font-weight="700" font-family="system-ui, sans-serif">1. THREE WHITE SOLDIERS (3 soldats blancs)</text>
+  <text x="24" y="52" fill="#94a3b8" font-size="13" font-family="system-ui, sans-serif">Continuation HAUSSIERE</text>
+
+  <!-- Bougie 1 (la plus basse) -->
+  <rect x="80" y="170" width="38" height="65" rx="2" fill="#22c55e" opacity="0.85"/>
+  <rect x="80" y="170" width="38" height="65" rx="2" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+  <line x1="99" y1="160" x2="99" y2="170" stroke="#22c55e" stroke-width="2"/>
+  <line x1="99" y1="235" x2="99" y2="245" stroke="#22c55e" stroke-width="2"/>
+
+  <!-- Bougie 2 (milieu) -->
+  <rect x="130" y="125" width="38" height="65" rx="2" fill="#22c55e" opacity="0.85"/>
+  <rect x="130" y="125" width="38" height="65" rx="2" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+  <line x1="149" y1="115" x2="149" y2="125" stroke="#22c55e" stroke-width="2"/>
+  <line x1="149" y1="190" x2="149" y2="200" stroke="#22c55e" stroke-width="2"/>
+
+  <!-- Bougie 3 (la plus haute) -->
+  <rect x="180" y="80" width="38" height="65" rx="2" fill="#22c55e" opacity="0.85"/>
+  <rect x="180" y="80" width="38" height="65" rx="2" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+  <line x1="199" y1="70" x2="199" y2="80" stroke="#22c55e" stroke-width="2"/>
+  <line x1="199" y1="145" x2="199" y2="155" stroke="#22c55e" stroke-width="2"/>
+
+  <!-- Fleche de continuation -->
+  <line x1="230" y1="100" x2="280" y2="60" stroke="#22c55e" stroke-width="2.5"/>
+  <polygon points="280,60 270,63 275,72" fill="#22c55e"/>
+
+  <!-- Ligne de progression -->
+  <line x1="99" y1="170" x2="199" y2="80" stroke="rgba(34,197,94,0.3)" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Texte descriptif -->
+  <text x="340" y="95" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif">3 bougies vertes consecutives</text>
+  <text x="340" y="120" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif">Chaque close > close precedent</text>
+  <text x="340" y="145" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif">Corps similaires, pas de longues meches</text>
+  <text x="340" y="170" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif">Signifie: <tspan fill="#22c55e" font-weight="600">Forte pression acheteuse</tspan></text>
+
+  <rect x="340" y="195" width="130" height="28" rx="6" fill="rgba(34,197,94,0.1)" stroke="rgba(34,197,94,0.2)" stroke-width="1"/>
+  <text x="350" y="214" fill="#22c55e" font-size="12" font-weight="600" font-family="system-ui, sans-serif">Tres forte</text>
+  <circle cx="480" cy="209" r="5" fill="#D4AF37"/><circle cx="495" cy="209" r="5" fill="#D4AF37"/><circle cx="510" cy="209" r="5" fill="#D4AF37"/><circle cx="525" cy="209" r="5" fill="#D4AF37"/><circle cx="540" cy="209" r="5" fill="#D4AF37"/>
+</svg>
 </div>
-            
+
+<!-- SVG: THREE BLACK CROWS -->
+<div class="svg-diagram">
+<svg viewBox="0 0 700 280" style="max-width: 700px;" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="700" height="280" rx="12" fill="#0f141e" opacity="0.5"/>
+
+  <text x="24" y="32" fill="#ef4444" font-size="15" font-weight="700" font-family="system-ui, sans-serif">2. THREE BLACK CROWS (3 corbeaux noirs)</text>
+  <text x="24" y="52" fill="#94a3b8" font-size="13" font-family="system-ui, sans-serif">Continuation BAISSIERE</text>
+
+  <!-- Bougie 1 (la plus haute) -->
+  <rect x="80" y="80" width="38" height="65" rx="2" fill="#ef4444" opacity="0.85"/>
+  <rect x="80" y="80" width="38" height="65" rx="2" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+  <line x1="99" y1="70" x2="99" y2="80" stroke="#ef4444" stroke-width="2"/>
+  <line x1="99" y1="145" x2="99" y2="155" stroke="#ef4444" stroke-width="2"/>
+
+  <!-- Bougie 2 (milieu) -->
+  <rect x="130" y="125" width="38" height="65" rx="2" fill="#ef4444" opacity="0.85"/>
+  <rect x="130" y="125" width="38" height="65" rx="2" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+  <line x1="149" y1="115" x2="149" y2="125" stroke="#ef4444" stroke-width="2"/>
+  <line x1="149" y1="190" x2="149" y2="200" stroke="#ef4444" stroke-width="2"/>
+
+  <!-- Bougie 3 (la plus basse) -->
+  <rect x="180" y="170" width="38" height="65" rx="2" fill="#ef4444" opacity="0.85"/>
+  <rect x="180" y="170" width="38" height="65" rx="2" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+  <line x1="199" y1="160" x2="199" y2="170" stroke="#ef4444" stroke-width="2"/>
+  <line x1="199" y1="235" x2="199" y2="245" stroke="#ef4444" stroke-width="2"/>
+
+  <!-- Fleche de continuation -->
+  <line x1="230" y1="210" x2="280" y2="250" stroke="#ef4444" stroke-width="2.5"/>
+  <polygon points="280,250 270,247 275,238" fill="#ef4444"/>
+
+  <!-- Ligne de progression -->
+  <line x1="99" y1="145" x2="199" y2="235" stroke="rgba(239,68,68,0.3)" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- Texte descriptif -->
+  <text x="340" y="95" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif">3 bougies rouges consecutives</text>
+  <text x="340" y="120" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif">Chaque close &lt; close precedent</text>
+  <text x="340" y="145" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif">Corps similaires, pas de longues meches</text>
+  <text x="340" y="170" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif">Signifie: <tspan fill="#ef4444" font-weight="600">Forte pression vendeuse</tspan></text>
+
+  <rect x="340" y="195" width="130" height="28" rx="6" fill="rgba(239,68,68,0.1)" stroke="rgba(239,68,68,0.2)" stroke-width="1"/>
+  <text x="350" y="214" fill="#ef4444" font-size="12" font-weight="600" font-family="system-ui, sans-serif">Tres forte</text>
+  <circle cx="480" cy="209" r="5" fill="#D4AF37"/><circle cx="495" cy="209" r="5" fill="#D4AF37"/><circle cx="510" cy="209" r="5" fill="#D4AF37"/><circle cx="525" cy="209" r="5" fill="#D4AF37"/><circle cx="540" cy="209" r="5" fill="#D4AF37"/>
+</svg>
+</div>
+
+<!-- SVG: MARUBOZU -->
+<div class="svg-diagram">
+<svg viewBox="0 0 700 280" style="max-width: 700px;" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="700" height="280" rx="12" fill="#0f141e" opacity="0.5"/>
+
+  <text x="24" y="32" fill="#fff" font-size="15" font-weight="700" font-family="system-ui, sans-serif">3. MARUBOZU</text>
+  <text x="155" y="32" fill="#94a3b8" font-size="13" font-family="system-ui, sans-serif">- Conviction extreme</text>
+
+  <!-- Marubozu Haussier -->
+  <text x="110" y="62" text-anchor="middle" fill="#22c55e" font-size="12" font-weight="600" font-family="system-ui, sans-serif">Haussier</text>
+
+  <!-- PAS de meche, juste le corps -->
+  <rect x="80" y="80" width="60" height="150" rx="3" fill="#22c55e" opacity="0.85"/>
+  <rect x="80" y="80" width="60" height="150" rx="3" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+
+  <!-- Labels -->
+  <text x="155" y="87" fill="#22c55e" font-size="10" font-family="system-ui, sans-serif">Close = High</text>
+  <text x="155" y="237" fill="#22c55e" font-size="10" font-family="system-ui, sans-serif">Open = Low</text>
+
+  <!-- "Pas de meche" annotation -->
+  <line x1="68" y1="80" x2="68" y2="230" stroke="rgba(34,197,94,0.4)" stroke-width="1" stroke-dasharray="2,2"/>
+  <text x="60" y="155" text-anchor="end" fill="#22c55e" font-size="9" font-family="system-ui, sans-serif" transform="rotate(-90 60 155)">PAS DE MECHE</text>
+
+  <!-- Marubozu Baissier -->
+  <text x="290" y="62" text-anchor="middle" fill="#ef4444" font-size="12" font-weight="600" font-family="system-ui, sans-serif">Baissier</text>
+
+  <rect x="260" y="80" width="60" height="150" rx="3" fill="#ef4444" opacity="0.85"/>
+  <rect x="260" y="80" width="60" height="150" rx="3" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+
+  <text x="335" y="87" fill="#ef4444" font-size="10" font-family="system-ui, sans-serif">Open = High</text>
+  <text x="335" y="237" fill="#ef4444" font-size="10" font-family="system-ui, sans-serif">Close = Low</text>
+
+  <line x1="248" y1="80" x2="248" y2="230" stroke="rgba(239,68,68,0.4)" stroke-width="1" stroke-dasharray="2,2"/>
+  <text x="240" y="155" text-anchor="end" fill="#ef4444" font-size="9" font-family="system-ui, sans-serif" transform="rotate(-90 240 155)">PAS DE MECHE</text>
+
+  <!-- Texte descriptif -->
+  <text x="430" y="100" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif">Haussier: Open = Low, Close = High</text>
+  <text x="430" y="125" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif">Baissier: Open = High, Close = Low</text>
+  <text x="430" y="155" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif"><tspan fill="#D4AF37" font-weight="600">PAS de meche</tspan> = domination totale</text>
+  <text x="430" y="180" fill="#cbd5e1" font-size="13" font-family="system-ui, sans-serif">Tres rare et tres significatif</text>
+
+  <rect x="430" y="205" width="130" height="28" rx="6" fill="rgba(212,175,55,0.1)" stroke="rgba(212,175,55,0.2)" stroke-width="1"/>
+  <text x="440" y="224" fill="#D4AF37" font-size="12" font-weight="600" font-family="system-ui, sans-serif">Tres forte</text>
+  <circle cx="575" cy="219" r="5" fill="#D4AF37"/><circle cx="590" cy="219" r="5" fill="#D4AF37"/><circle cx="605" cy="219" r="5" fill="#D4AF37"/><circle cx="620" cy="219" r="5" fill="#D4AF37"/><circle cx="635" cy="219" r="5" fill="#D4AF37"/>
+</svg>
+</div>
+
+</div>
+
         </section>
-        
+
+        <!-- ============================================================ -->
+        <!-- SECTION 5: REGLES D'INTERPRETATION (TABLE)                   -->
+        <!-- ============================================================ -->
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">🎯 Le CONTEXTE est ROI - Même pattern, significations différentes</h2>
             <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><p style="margin-bottom: 12px;">Un pattern de chandelier SEUL ne signifie RIEN. C&#x27;est le CONTEXTE qui lui donne sa puissance. Voici les règles d&#x27;or:</p>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                    RÈGLES D&#x27;INTERPRÉTATION                               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  RÈGLE 1: POSITION DANS LA TENDANCE                                      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Hammer en bas de range = FORT signal d&#x27;achat                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Hammer au milieu = Peu significatif                                   │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Hammer en haut = IGNOREZ-LE                                           │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  RÈGLE 2: NIVEAU TECHNIQUE                                               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Pattern sur support/résistance = Puissance x3                         │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Pattern sur niveau GEX = Puissance x5                                 │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Pattern &quot;dans le vide&quot; = Fiabilité réduite                            │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  RÈGLE 3: VOLUME                                                         │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Pattern + Volume élevé = Confirmation forte                           │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Pattern + Volume faible = Méfiez-vous                                 │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  RÈGLE 4: TIMEFRAME                                                      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Pattern sur Daily = Plus fiable que sur 1min                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Toujours vérifier le timeframe supérieur                              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  RÈGLE 5: CONFIRMATION                                                   │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • N&#x27;entrez JAMAIS sur le pattern seul                                   │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Attendez la bougie suivante pour confirmer                            │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Ex: Hammer → Attendez bougie verte pour confirmer                     │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
+
+<table class="info-table">
+    <thead>
+        <tr><th style="width: 20%;">Regle</th><th style="width: 40%;">Principe</th><th>Exemples</th></tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="label-cell" style="color: #22d3ee;">1. Position dans la tendance</td>
+            <td>Le meme pattern change de sens selon sa position</td>
+            <td>
+                <span style="color: #22c55e;">Hammer en bas de range = FORT signal d'achat</span><br/>
+                <span style="color: #94a3b8;">Hammer au milieu = Peu significatif</span><br/>
+                <span style="color: #ef4444;">Hammer en haut = IGNOREZ-LE</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="label-cell" style="color: #22d3ee;">2. Niveau technique</td>
+            <td>Un pattern sur un niveau cle est beaucoup plus fiable</td>
+            <td>
+                Sur support/resistance = Puissance x3<br/>
+                <span style="color: #D4AF37;">Sur niveau GEX = Puissance x5</span><br/>
+                "Dans le vide" = Fiabilite reduite
+            </td>
+        </tr>
+        <tr>
+            <td class="label-cell" style="color: #22d3ee;">3. Volume</td>
+            <td>Le volume confirme ou invalide le pattern</td>
+            <td>
+                <span style="color: #22c55e;">Volume eleve = Confirmation forte</span><br/>
+                <span style="color: #ef4444;">Volume faible = Mefiez-vous</span>
+            </td>
+        </tr>
+        <tr>
+            <td class="label-cell" style="color: #22d3ee;">4. Timeframe</td>
+            <td>Plus le timeframe est grand, plus le pattern est fiable</td>
+            <td>
+                Daily > 5min > 1min<br/>
+                Toujours verifier le timeframe superieur
+            </td>
+        </tr>
+        <tr>
+            <td class="label-cell" style="color: #22d3ee;">5. Confirmation</td>
+            <td>N'entrez <span style="color: #ef4444; font-weight: 600;">JAMAIS</span> sur le pattern seul</td>
+            <td>
+                Attendez la bougie suivante<br/>
+                Ex: Hammer → Attendez bougie verte pour confirmer
+            </td>
+        </tr>
+    </tbody>
+</table>
+
 </div>
-            
+
         </section>
-        
+
+        <!-- ============================================================ -->
+        <!-- SECTION 6: CAS PRATIQUE (SVG + Steps)                        -->
+        <!-- ============================================================ -->
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">📝 CAS PRATIQUE: Trade ES avec Hammer + Niveau GEX</h2>
-            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              CAS PRATIQUE - TRADE RÉEL ES                                │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  CONTEXTE:                                                               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • ES en baisse depuis l&#x27;open, -25 points                                │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Approche du niveau GEX #2 (support majeur)                            │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • 16h15 - Milieu de session US Open                                     │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  CE QUI SE PASSE:                                                        │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  1. ES touche GEX #2 à 4975                                              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  2. Bougie 5min forme un HAMMER parfait                                  │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     - Corps: 2 points                                                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     - Mèche basse: 7 points                                              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     - Volume: +40% vs moyenne                                            │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  3. Bougie suivante: verte de confirmation                               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  EXÉCUTION DU TRADE:                                                     │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Entrée: 4977 (au-dessus du high du hammer)                            │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Stop-loss: 4972 (sous le low du hammer) = -5 points = -$250           │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Take-profit: 4992 (prochain niveau GEX) = +15 points = +$750          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Ratio R/R: 1:3 ✅                                                      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  RÉSULTAT:                                                               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ES monte à 4995, TP atteint. Profit: +$750 sur 1 contrat.               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">
+
+<!-- SVG: Cas pratique - chart mini avec hammer sur GEX -->
+<div class="svg-diagram">
+<svg viewBox="0 0 700 320" style="max-width: 700px;" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="700" height="320" rx="12" fill="#0f141e" opacity="0.5"/>
+
+  <text x="350" y="28" text-anchor="middle" fill="#fff" font-size="15" font-weight="700" font-family="system-ui, sans-serif">CAS PRATIQUE - TRADE REEL ES</text>
+
+  <!-- Axe Y prix -->
+  <line x1="70" y1="50" x2="70" y2="290" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <text x="60" y="72" text-anchor="end" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">5000</text>
+  <text x="60" y="122" text-anchor="end" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">4992</text>
+  <text x="60" y="182" text-anchor="end" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">4977</text>
+  <text x="60" y="222" text-anchor="end" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">4975</text>
+  <text x="60" y="257" text-anchor="end" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">4972</text>
+  <text x="60" y="282" text-anchor="end" fill="#94a3b8" font-size="10" font-family="system-ui, sans-serif">4968</text>
+
+  <!-- Niveau GEX #2 (ligne horizontale) -->
+  <line x1="70" y1="220" x2="480" y2="220" stroke="#D4AF37" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <rect x="485" y="212" width="95" height="18" rx="4" fill="rgba(212,175,55,0.15)" stroke="rgba(212,175,55,0.3)" stroke-width="1"/>
+  <text x="532" y="225" text-anchor="middle" fill="#D4AF37" font-size="10" font-weight="600" font-family="system-ui, sans-serif">GEX #2 - 4975</text>
+
+  <!-- Niveau TP -->
+  <line x1="330" y1="120" x2="480" y2="120" stroke="#22c55e" stroke-width="1" stroke-dasharray="4,3" opacity="0.6"/>
+  <text x="485" y="124" fill="#22c55e" font-size="10" font-family="system-ui, sans-serif">TP: 4992</text>
+
+  <!-- Niveau SL -->
+  <line x1="250" y1="255" x2="480" y2="255" stroke="#ef4444" stroke-width="1" stroke-dasharray="4,3" opacity="0.6"/>
+  <text x="485" y="259" fill="#ef4444" font-size="10" font-family="system-ui, sans-serif">SL: 4972</text>
+
+  <!-- Bougies baissières (tendance) -->
+  <!-- Bougie 1 -->
+  <rect x="95" y="80" width="22" height="40" rx="2" fill="#ef4444" opacity="0.7"/>
+  <line x1="106" y1="70" x2="106" y2="80" stroke="#ef4444" stroke-width="1.5"/>
+  <line x1="106" y1="120" x2="106" y2="130" stroke="#ef4444" stroke-width="1.5"/>
+
+  <!-- Bougie 2 -->
+  <rect x="130" y="110" width="22" height="35" rx="2" fill="#ef4444" opacity="0.7"/>
+  <line x1="141" y1="100" x2="141" y2="110" stroke="#ef4444" stroke-width="1.5"/>
+  <line x1="141" y1="145" x2="141" y2="158" stroke="#ef4444" stroke-width="1.5"/>
+
+  <!-- Bougie 3 -->
+  <rect x="165" y="140" width="22" height="40" rx="2" fill="#ef4444" opacity="0.7"/>
+  <line x1="176" y1="130" x2="176" y2="140" stroke="#ef4444" stroke-width="1.5"/>
+  <line x1="176" y1="180" x2="176" y2="195" stroke="#ef4444" stroke-width="1.5"/>
+
+  <!-- Bougie 4 -->
+  <rect x="200" y="165" width="22" height="30" rx="2" fill="#ef4444" opacity="0.7"/>
+  <line x1="211" y1="155" x2="211" y2="165" stroke="#ef4444" stroke-width="1.5"/>
+  <line x1="211" y1="195" x2="211" y2="210" stroke="#ef4444" stroke-width="1.5"/>
+
+  <!-- ★ HAMMER sur GEX ★ -->
+  <rect x="237" y="180" width="26" height="16" rx="2" fill="#22c55e" opacity="0.9"/>
+  <rect x="237" y="180" width="26" height="16" rx="2" fill="none" stroke="#22c55e" stroke-width="2"/>
+  <line x1="250" y1="175" x2="250" y2="180" stroke="#22c55e" stroke-width="2"/>
+  <line x1="250" y1="196" x2="250" y2="275" stroke="#22c55e" stroke-width="2"/>
+
+  <!-- Cercle highlight hammer -->
+  <circle cx="250" cy="220" r="50" fill="none" stroke="rgba(34,197,94,0.3)" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="250" y="300" text-anchor="middle" fill="#22c55e" font-size="11" font-weight="600" font-family="system-ui, sans-serif">HAMMER</text>
+
+  <!-- Bougie de confirmation -->
+  <rect x="275" y="155" width="24" height="30" rx="2" fill="#22c55e" opacity="0.85"/>
+  <rect x="275" y="155" width="24" height="30" rx="2" fill="none" stroke="#22c55e" stroke-width="1.5"/>
+  <line x1="287" y1="148" x2="287" y2="155" stroke="#22c55e" stroke-width="1.5"/>
+  <line x1="287" y1="185" x2="287" y2="192" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="287" y="145" text-anchor="middle" fill="#22c55e" font-size="8" font-family="system-ui, sans-serif">Confirm.</text>
+
+  <!-- Fleche entree -->
+  <line x1="310" y1="180" x2="340" y2="180" stroke="#22d3ee" stroke-width="2"/>
+  <polygon points="340,180 333,175 333,185" fill="#22d3ee"/>
+  <text x="345" y="184" fill="#22d3ee" font-size="10" font-weight="600" font-family="system-ui, sans-serif">Entree: 4977</text>
+
+  <!-- Bougies de hausse apres entree -->
+  <rect x="345" y="140" width="22" height="35" rx="2" fill="#22c55e" opacity="0.6"/>
+  <line x1="356" y1="133" x2="356" y2="140" stroke="#22c55e" stroke-width="1.5"/>
+  <line x1="356" y1="175" x2="356" y2="182" stroke="#22c55e" stroke-width="1.5"/>
+
+  <rect x="380" y="118" width="22" height="30" rx="2" fill="#22c55e" opacity="0.6"/>
+  <line x1="391" y1="112" x2="391" y2="118" stroke="#22c55e" stroke-width="1.5"/>
+  <line x1="391" y1="148" x2="391" y2="155" stroke="#22c55e" stroke-width="1.5"/>
+
+  <rect x="415" y="105" width="22" height="25" rx="2" fill="#22c55e" opacity="0.6"/>
+  <line x1="426" y1="98" x2="426" y2="105" stroke="#22c55e" stroke-width="1.5"/>
+  <line x1="426" y1="130" x2="426" y2="138" stroke="#22c55e" stroke-width="1.5"/>
+
+  <!-- Zone profit (rectangle vert transparent) -->
+  <rect x="305" y="120" x2="455" width="150" height="60" rx="4" fill="rgba(34,197,94,0.06)" stroke="rgba(34,197,94,0.15)" stroke-width="1"/>
+
+  <!-- R:R annotation -->
+  <rect x="590" y="115" width="95" height="150" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <text x="637" y="138" text-anchor="middle" fill="#fff" font-size="11" font-weight="600" font-family="system-ui, sans-serif">Ratio R/R</text>
+  <text x="637" y="165" text-anchor="middle" fill="#22c55e" font-size="22" font-weight="700" font-family="system-ui, sans-serif">1:3</text>
+  <line x1="605" y1="175" x2="669" y2="175" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+  <text x="637" y="195" text-anchor="middle" fill="#22c55e" font-size="10" font-family="system-ui, sans-serif">TP: +15 pts</text>
+  <text x="637" y="210" text-anchor="middle" fill="#22c55e" font-size="10" font-family="system-ui, sans-serif">= +$750</text>
+  <text x="637" y="235" text-anchor="middle" fill="#ef4444" font-size="10" font-family="system-ui, sans-serif">SL: -5 pts</text>
+  <text x="637" y="250" text-anchor="middle" fill="#ef4444" font-size="10" font-family="system-ui, sans-serif">= -$250</text>
+</svg>
 </div>
-            
+
+<!-- Etapes du trade -->
+<div style="margin-top: 16px;">
+    <p style="color: #fff; font-weight: 600; margin-bottom: 10px; font-size: 14px;">Deroulement du trade:</p>
+
+    <div class="trade-step">
+        <div class="step-num">1</div>
+        <div class="step-content"><strong style="color: #fff;">Contexte:</strong> ES en baisse depuis l'open, -25 points. Approche du niveau GEX #2 (support majeur). 16h15 - Milieu de session US.</div>
+    </div>
+    <div class="trade-step">
+        <div class="step-num">2</div>
+        <div class="step-content"><strong style="color: #fff;">Signal:</strong> ES touche GEX #2 a 4975. Bougie 5min forme un <span style="color: #22c55e; font-weight: 600;">HAMMER parfait</span> — Corps: 2 points, Meche basse: 7 points, Volume: +40% vs moyenne.</div>
+    </div>
+    <div class="trade-step">
+        <div class="step-num">3</div>
+        <div class="step-content"><strong style="color: #fff;">Confirmation:</strong> Bougie suivante verte qui cloture au-dessus du high du hammer.</div>
+    </div>
+    <div class="trade-step">
+        <div class="step-num">4</div>
+        <div class="step-content"><strong style="color: #fff;">Execution:</strong> Entree a <span style="color: #22d3ee;">4977</span> (au-dessus du high du hammer). SL a <span style="color: #ef4444;">4972</span> (sous le low). TP a <span style="color: #22c55e;">4992</span> (prochain niveau GEX).</div>
+    </div>
+</div>
+
+<div class="trade-result">
+    <div class="trade-result-icon">✅</div>
+    <div class="trade-result-text">ES monte a 4995, TP atteint. Profit: +$750 sur 1 contrat. Ratio R/R: 1:3</div>
+</div>
+
+</div>
+
         </section>
-        
+
+        <!-- ============================================================ -->
+        <!-- SECTION 7: ERREURS (inchangee)                               -->
+        <!-- ============================================================ -->
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">❌ ERREURS COMMUNES avec les chandeliers</h2>
             <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"></div>
@@ -535,7 +1139,10 @@
 </ul>
 
         </section>
-        
+
+        <!-- ============================================================ -->
+        <!-- SECTION 8: POINTS CLES (inchangee)                           -->
+        <!-- ============================================================ -->
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">✅ POINTS CLÉS à retenir</h2>
             <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"></div>
@@ -551,9 +1158,9 @@
 </ul>
 
         </section>
-        
+
         </article>
-        
+
         <nav style="display: flex; justify-content: space-between; margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);">
             <a href="/education/trading-sessions/" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: #1e293b; border-radius: 8px; text-decoration: none;" onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'">
             <svg style="width: 16px; height: 16px; color: #94a3b8;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>

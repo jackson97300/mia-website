@@ -4,12 +4,123 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="/_next/static/css/0f34aadfba7d8fab.css"/>
-    
+
     <title>Corrélations Inter-Marchés - MIA Academy</title>
     <style>
         @media (min-width: 1024px) {
             .sidebar-desktop { display: block !important; }
             .main-content { margin-left: 220px !important; }
+        }
+        .corr-matrix td, .corr-matrix th {
+            padding: 10px 14px;
+            text-align: center;
+            font-size: 13px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .corr-matrix th {
+            background: rgba(255,255,255,0.05);
+            color: #94a3b8;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .corr-matrix td.asset-label {
+            background: rgba(255,255,255,0.05);
+            color: #94a3b8;
+            font-weight: 600;
+            text-align: left;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .corr-matrix td.diag {
+            background: rgba(0,180,220,0.15);
+            color: #00B4DC;
+            font-weight: 700;
+        }
+        .corr-matrix td.high-pos {
+            background: rgba(34,197,94,0.18);
+            color: #22c55e;
+            font-weight: 600;
+        }
+        .corr-matrix td.med-pos {
+            background: rgba(34,197,94,0.10);
+            color: #4ade80;
+        }
+        .corr-matrix td.low-pos {
+            background: rgba(34,197,94,0.05);
+            color: #86efac;
+        }
+        .corr-matrix td.high-neg {
+            background: rgba(239,68,68,0.18);
+            color: #ef4444;
+            font-weight: 600;
+        }
+        .corr-matrix td.med-neg {
+            background: rgba(239,68,68,0.10);
+            color: #f87171;
+        }
+        .corr-matrix td.low-var {
+            background: rgba(212,175,55,0.10);
+            color: #D4AF37;
+        }
+        .app-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 16px 18px;
+            margin-bottom: 12px;
+        }
+        .app-card h3 {
+            font-size: 14px;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .app-card ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .app-card li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 6px;
+            color: #cbd5e1;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        .app-card li .bullet {
+            flex-shrink: 0;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            margin-top: 7px;
+        }
+        .svg-chart-container {
+            background: #0A0E17;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 16px;
+            overflow-x: auto;
+        }
+        .legend-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 12px;
+            color: #94a3b8;
+            margin-right: 16px;
+        }
+        .legend-dot {
+            width: 10px;
+            height: 3px;
+            border-radius: 2px;
         }
     </style>
 <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"/>
@@ -37,10 +148,10 @@
         </a>
     </header>
 
-    
+
         <aside style="display: none; position: fixed; top: 56px; left: 0; bottom: 0; width: 220px; background: #0f1419; border-right: 1px solid rgba(255,255,255,0.1); overflow-y: auto; z-index: 40;" class="sidebar-desktop">
             <div style="padding: 12px;">
-    
+
                 <div class="nav-section" id="nav-debutant">
                     <div onclick="toggleNav('debutant')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
                         <div style="display: flex; align-items: center; gap: 6px;">
@@ -51,60 +162,60 @@
                         <svg class="chevron-debutant" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-content-debutant" style="padding-left: 8px; display: none;">
-        
+
                         <a href="/education/futures-101/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Les Futures US: ES, NQ</span>
                         </a>
-            
+
                         <a href="/education/trading-sessions/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🕐</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Les Sessions de Tradin</span>
                         </a>
-            
+
                         <a href="/education/candlestick-basics/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🕯️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Lecture des Chandelier</span>
                         </a>
-            
+
                         <a href="/education/support-resistance/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📏</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Support & Résistance</span>
                         </a>
-            
+
                         <a href="/education/volume-importance/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">L'Importance du Volume</span>
                         </a>
-            
+
                         <a href="/education/risk-management/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🛡️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gestion du Risque</span>
                         </a>
-            
+
                         <a href="/education/trading-psychology/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧠</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Psychologie du Trading</span>
                         </a>
-            
+
                         <a href="/education/order-types/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📝</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Types d'Ordres</span>
                         </a>
-            
+
                         <a href="/education/journaling-backtesting/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📓</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Journaling & Backtesti</span>
                         </a>
-            
+
                         <a href="/education/economic-calendar/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📅</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Calendrier Économique</span>
                         </a>
-            
+
                     </div>
                 </div>
-        
+
                 <div class="nav-section" id="nav-intermediaire">
                     <div onclick="toggleNav('intermediaire')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
                         <div style="display: flex; align-items: center; gap: 6px;">
@@ -115,65 +226,65 @@
                         <svg class="chevron-intermediaire" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-content-intermediaire" style="padding-left: 8px; display: none;">
-        
+
                         <a href="/education/multi-timeframe-analysis/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔍</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Analyse Multi-Timefram</span>
                         </a>
-            
+
                         <a href="/education/call-resistance-put-support/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📞</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Call Resistance & Put </span>
                         </a>
-            
+
                         <a href="/education/hvl-gamma-flip/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🎯</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">HVL & Gamma Flip</span>
                         </a>
-            
+
                         <a href="/education/positive-negative-gamma/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>⚡</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gamma Positif vs Négat</span>
                         </a>
-            
+
                         <a href="/education/0dte-options-impact/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>💥</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Impact des Options 0DT</span>
                         </a>
-            
+
                         <a href="/education/expected-move-range/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📐</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Expected Move & Range</span>
                         </a>
-            
+
                         <a href="/education/gamma-exposure/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📈</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gamma Exposure (GEX)</span>
                         </a>
-            
+
                         <a href="/education/high-volume-levels/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">High Volume Levels</span>
                         </a>
-            
+
                         <a href="/education/options-impact/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🎰</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Impact des Options</span>
                         </a>
-            
+
                         <a href="/education/market-makers/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🏦</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Market Makers</span>
                         </a>
-            
+
                         <a href="/education/vwap-intraday/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📉</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">VWAP & Niveaux Intrada</span>
                         </a>
-            
+
                     </div>
                 </div>
-        
+
                 <div class="nav-section" id="nav-avance">
                     <div onclick="toggleNav('avance')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
                         <div style="display: flex; align-items: center; gap: 6px;">
@@ -184,80 +295,80 @@
                         <svg class="chevron-avance" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s; transform: rotate(180deg);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-content-avance" style="padding-left: 8px;">
-        
+
                         <a href="/education/orderflow/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🌊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">OrderFlow Basics</span>
                         </a>
-            
+
                         <a href="/education/money-management/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>💰</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Money Management Avanc</span>
                         </a>
-            
+
                         <a href="/education/correlation-intermarches/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #fff; text-decoration: none; background: #f8717122;" onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='#f8717122'; this.style.color='#fff'">
                             <span>🔗</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Corrélations Inter-Mar</span>
                         </a>
-            
+
                         <a href="/education/liquidity-sweeps/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧹</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Liquidity Sweeps</span>
                         </a>
-            
+
                         <a href="/education/market-profile/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Market Profile</span>
                         </a>
-            
+
                         <a href="/education/fibonacci-extensions/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🌀</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Fibonacci Extensions</span>
                         </a>
-            
+
                         <a href="/education/gex-levels-1-10/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🎯</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">GEX Levels 1-10</span>
                         </a>
-            
+
                         <a href="/education/blind-spots-trading/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>👁️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Blind Spots Trading</span>
                         </a>
-            
+
                         <a href="/education/delta-exposure-dex/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Delta Exposure (DEX)</span>
                         </a>
-            
+
                         <a href="/education/dealer-hedging-mechanics/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>⚙️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Dealer Hedging</span>
                         </a>
-            
+
                         <a href="/education/gamma-walls-magnets/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧲</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gamma Walls & Magnets</span>
                         </a>
-            
+
                         <a href="/education/vix-vvix-volatility/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🌪️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">VIX & VVIX</span>
                         </a>
-            
+
                         <a href="/education/option-greeks-traders/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🇬🇷</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Option Greeks</span>
                         </a>
-            
+
                         <a href="/education/regime-based-trading/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔄</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Regime-Based Trading</span>
                         </a>
-            
+
                     </div>
                 </div>
-        
+
                 <div class="nav-section" id="nav-bonus">
                     <div onclick="toggleNav('bonus')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
                         <div style="display: flex; align-items: center; gap: 6px;">
@@ -268,38 +379,38 @@
                         <svg class="chevron-bonus" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-content-bonus" style="padding-left: 8px; display: none;">
-        
+
                         <a href="/education/battle-navale/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>⚔️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Battle Navale</span>
                         </a>
-            
+
                         <a href="/education/une-journee-avec-mia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>☀️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Une Journée avec MIA</span>
                         </a>
-            
+
                         <a href="/education/pourquoi-bots-meurent/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>💀</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Pourquoi les Bots Meur</span>
                         </a>
-            
+
                         <a href="/education/quand-couper-mia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔌</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Quand Couper MIA</span>
                         </a>
-            
+
                         <a href="/education/mental-discipline-ia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧘</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Mental & Discipline</span>
                         </a>
-            
+
                     </div>
                 </div>
-        
+
             </div>
         </aside>
-    
+
 
     <!-- Main Content -->
     <main class="main-content" style="padding-top: 72px; padding-bottom: 40px; padding-left: 16px; padding-right: 16px; max-width: 900px;">
@@ -310,7 +421,7 @@
             <span>›</span>
             <span style="color: #fff;">Corrélations Inter-Marché</span>
         </nav>
-        
+
         <header style="margin-bottom: 24px;">
             <span style="font-size: 48px; display: block; margin-bottom: 8px;">🔗</span>
             <h1 style="font-size: 28px; font-weight: 700; color: #fff; margin: 0 0 8px 0;">Corrélations Inter-Marchés</h1>
@@ -323,88 +434,345 @@
                 <span style="padding: 4px 10px; border-radius: 20px; background: #f8717122; color: #f87171;">Avancé</span>
             </div>
         </header>
-        
+
         <article>
-            
+
+        <!-- Section 1: Intro -->
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">🎯 Corrélations: Le marché est un écosystème</h2>
             <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><p style="margin-bottom: 12px;">Les marchés ne bougent pas en isolation. ES, NQ, RTY, Bonds, VIX, Dollar - tous sont interconnectés.</p>
 <p style="margin-bottom: 12px;">Comprendre ces corrélations vous permet de: 1) Confirmer vos trades, 2) Anticiper les mouvements, 3) Éviter les pièges.</p>
 <p style="margin-bottom: 12px;">Quand les corrélations normales se &quot;cassent&quot;, c&#x27;est souvent le signe d&#x27;un changement majeur.</p>
 </div>
-            
+
         </section>
-        
+
+        <!-- Section 2: Correlations cles - SVG + Matrice -->
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">📊 SCHÉMA: Corrélations clés</h2>
-            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              CORRÉLATIONS INTER-MARCHÉS                                  │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  CORRÉLATIONS POSITIVES (bougent ensemble):                             │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ══════════════════════════════════════════                              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • ES ↔ NQ: ~0.85-0.95 (très forte)                                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • ES ↔ RTY: ~0.75-0.85 (forte)                                        │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • NQ ↔ AAPL/MSFT: Très forte (composants majeurs)                     │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  CORRÉLATIONS NÉGATIVES (bougent opposé):                               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ══════════════════════════════════════════                              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • ES ↔ VIX: ~-0.80 (forte inverse)                                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│    - ES monte → VIX baisse                                             │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│    - ES baisse → VIX monte                                             │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • ES ↔ Dollar (DXY): Variable mais souvent inverse                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│    - Dollar fort → Pression sur actions                                │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • ES ↔ Bonds (ZB): Souvent inverse                                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│    - &quot;Risk-on&quot; = Actions↑, Bonds↓                                      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│    - &quot;Risk-off&quot; = Actions↓, Bonds↑                                     │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  CORRÉLATIONS SECTORIELLES:                                              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ══════════════════════════════════════════                              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Tech (NQ) vs Small Caps (RTY): Rotation                              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Si NQ surperforme → &quot;Growth&quot; favori                                  │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Si RTY surperforme → &quot;Value&quot; favori, risk-on                         │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
-</div>
-            
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">
+
+                <!-- SVG: ES vs NQ lignes superposees -->
+                <div class="svg-chart-container">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                        <span style="font-size: 13px; font-weight: 600; color: #fff;">ES vs NQ — Corrélation positive (~0.90)</span>
+                        <div>
+                            <span class="legend-item"><span class="legend-dot" style="background: #00B4DC;"></span>ES (S&P 500)</span>
+                            <span class="legend-item"><span class="legend-dot" style="background: #D4AF37;"></span>NQ (Nasdaq)</span>
+                        </div>
+                    </div>
+                    <svg viewBox="0 0 700 220" style="width: 100%; height: auto;">
+                        <defs>
+                            <linearGradient id="esGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#00B4DC" stop-opacity="0.25"/>
+                                <stop offset="100%" stop-color="#00B4DC" stop-opacity="0"/>
+                            </linearGradient>
+                            <linearGradient id="nqGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.20"/>
+                                <stop offset="100%" stop-color="#D4AF37" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Grid lines -->
+                        <line x1="50" y1="20" x2="50" y2="190" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                        <line x1="50" y1="190" x2="680" y2="190" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                        <line x1="50" y1="60" x2="680" y2="60" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="4,4"/>
+                        <line x1="50" y1="105" x2="680" y2="105" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="4,4"/>
+                        <line x1="50" y1="150" x2="680" y2="150" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="4,4"/>
+                        <!-- Y axis labels -->
+                        <text x="44" y="24" fill="#64748b" font-size="10" text-anchor="end">+2%</text>
+                        <text x="44" y="64" fill="#64748b" font-size="10" text-anchor="end">+1%</text>
+                        <text x="44" y="109" fill="#64748b" font-size="10" text-anchor="end">0%</text>
+                        <text x="44" y="154" fill="#64748b" font-size="10" text-anchor="end">-1%</text>
+                        <text x="44" y="194" fill="#64748b" font-size="10" text-anchor="end">-2%</text>
+                        <!-- X axis labels -->
+                        <text x="50" y="208" fill="#64748b" font-size="10" text-anchor="middle">9:30</text>
+                        <text x="207" y="208" fill="#64748b" font-size="10" text-anchor="middle">11:00</text>
+                        <text x="365" y="208" fill="#64748b" font-size="10" text-anchor="middle">12:30</text>
+                        <text x="522" y="208" fill="#64748b" font-size="10" text-anchor="middle">14:00</text>
+                        <text x="680" y="208" fill="#64748b" font-size="10" text-anchor="middle">16:00</text>
+                        <!-- ES area fill -->
+                        <path d="M50,105 L90,98 130,85 170,78 210,72 250,80 290,68 330,60 370,55 410,62 450,50 490,42 530,38 570,45 610,40 650,35 680,30 L680,190 L50,190 Z" fill="url(#esGrad)"/>
+                        <!-- NQ area fill -->
+                        <path d="M50,105 L90,96 130,80 170,70 210,62 250,74 290,58 330,48 370,40 410,50 450,35 490,25 530,20 570,30 610,22 650,15 680,8 L680,190 L50,190 Z" fill="url(#nqGrad)"/>
+                        <!-- ES line -->
+                        <polyline points="50,105 90,98 130,85 170,78 210,72 250,80 290,68 330,60 370,55 410,62 450,50 490,42 530,38 570,45 610,40 650,35 680,30" fill="none" stroke="#00B4DC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <!-- NQ line -->
+                        <polyline points="50,105 90,96 130,80 170,70 210,62 250,74 290,58 330,48 370,40 410,50 450,35 490,25 530,20 570,30 610,22 650,15 680,8" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <!-- ES dots -->
+                        <circle cx="50" cy="105" r="3" fill="#00B4DC"/>
+                        <circle cx="370" cy="55" r="3" fill="#00B4DC"/>
+                        <circle cx="680" cy="30" r="3" fill="#00B4DC"/>
+                        <!-- NQ dots -->
+                        <circle cx="50" cy="105" r="3" fill="#D4AF37"/>
+                        <circle cx="370" cy="40" r="3" fill="#D4AF37"/>
+                        <circle cx="680" cy="8" r="3" fill="#D4AF37"/>
+                        <!-- Annotation -->
+                        <rect x="440" y="78" rx="4" ry="4" width="160" height="28" fill="rgba(10,14,23,0.85)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                        <text x="520" y="96" fill="#22c55e" font-size="11" text-anchor="middle" font-weight="600">NQ amplifie les moves ES</text>
+                    </svg>
+                </div>
+
+                <!-- SVG: ES vs VIX (inverse) -->
+                <div class="svg-chart-container">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                        <span style="font-size: 13px; font-weight: 600; color: #fff;">ES vs VIX — Corrélation inverse (~-0.80)</span>
+                        <div>
+                            <span class="legend-item"><span class="legend-dot" style="background: #00B4DC;"></span>ES</span>
+                            <span class="legend-item"><span class="legend-dot" style="background: #ef4444;"></span>VIX</span>
+                        </div>
+                    </div>
+                    <svg viewBox="0 0 700 220" style="width: 100%; height: auto;">
+                        <defs>
+                            <linearGradient id="vixGrad" x1="0" y1="1" x2="0" y2="0">
+                                <stop offset="0%" stop-color="#ef4444" stop-opacity="0.20"/>
+                                <stop offset="100%" stop-color="#ef4444" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Grid -->
+                        <line x1="50" y1="20" x2="50" y2="190" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                        <line x1="50" y1="190" x2="680" y2="190" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                        <line x1="50" y1="60" x2="680" y2="60" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="4,4"/>
+                        <line x1="50" y1="105" x2="680" y2="105" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="4,4"/>
+                        <line x1="50" y1="150" x2="680" y2="150" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="4,4"/>
+                        <!-- Y axis -->
+                        <text x="44" y="24" fill="#64748b" font-size="10" text-anchor="end">Haut</text>
+                        <text x="44" y="109" fill="#64748b" font-size="10" text-anchor="end">Base</text>
+                        <text x="44" y="194" fill="#64748b" font-size="10" text-anchor="end">Bas</text>
+                        <!-- X axis -->
+                        <text x="50" y="208" fill="#64748b" font-size="10" text-anchor="middle">9:30</text>
+                        <text x="207" y="208" fill="#64748b" font-size="10" text-anchor="middle">11:00</text>
+                        <text x="365" y="208" fill="#64748b" font-size="10" text-anchor="middle">12:30</text>
+                        <text x="522" y="208" fill="#64748b" font-size="10" text-anchor="middle">14:00</text>
+                        <text x="680" y="208" fill="#64748b" font-size="10" text-anchor="middle">16:00</text>
+                        <!-- VIX area -->
+                        <path d="M50,105 L90,112 130,120 170,128 210,135 250,125 290,140 330,148 370,155 410,145 450,160 490,168 530,172 570,165 610,170 650,175 680,180 L680,190 L50,190 Z" fill="url(#vixGrad)"/>
+                        <!-- ES line (goes up) -->
+                        <polyline points="50,105 90,98 130,85 170,78 210,72 250,80 290,68 330,60 370,55 410,62 450,50 490,42 530,38 570,45 610,40 650,35 680,30" fill="none" stroke="#00B4DC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <!-- VIX line (goes down, inverse) -->
+                        <polyline points="50,105 90,112 130,120 170,128 210,135 250,125 290,140 330,148 370,155 410,145 450,160 490,168 530,172 570,165 610,170 650,175 680,180" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6,3"/>
+                        <!-- Divergence zone highlight -->
+                        <rect x="220" y="15" rx="4" ry="4" width="80" height="185" fill="rgba(212,175,55,0.06)" stroke="rgba(212,175,55,0.15)" stroke-width="1" stroke-dasharray="3,3"/>
+                        <text x="260" y="32" fill="#D4AF37" font-size="9" text-anchor="middle" font-weight="600">pullback</text>
+                        <!-- Arrows showing inverse -->
+                        <text x="580" y="28" fill="#00B4DC" font-size="11" font-weight="600">ES ↑</text>
+                        <text x="580" y="182" fill="#ef4444" font-size="11" font-weight="600">VIX ↓</text>
+                    </svg>
+                </div>
+
+                <!-- Matrice de correlation coloree -->
+                <div style="margin-top: 20px; margin-bottom: 8px;">
+                    <div style="font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 12px;">Matrice de corrélation</div>
+                    <div style="overflow-x: auto;">
+                        <table class="corr-matrix" style="width: 100%; border-collapse: collapse; border-radius: 8px; overflow: hidden;">
+                            <thead>
+                                <tr>
+                                    <th style="text-align: left;"></th>
+                                    <th>ES</th>
+                                    <th>NQ</th>
+                                    <th>RTY</th>
+                                    <th>VIX</th>
+                                    <th>DXY</th>
+                                    <th>ZB</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="asset-label">ES</td>
+                                    <td class="diag">1.00</td>
+                                    <td class="high-pos">+0.92</td>
+                                    <td class="med-pos">+0.82</td>
+                                    <td class="high-neg">-0.80</td>
+                                    <td class="low-var">-0.45</td>
+                                    <td class="med-neg">-0.55</td>
+                                </tr>
+                                <tr>
+                                    <td class="asset-label">NQ</td>
+                                    <td class="high-pos">+0.92</td>
+                                    <td class="diag">1.00</td>
+                                    <td class="med-pos">+0.75</td>
+                                    <td class="high-neg">-0.78</td>
+                                    <td class="low-var">-0.50</td>
+                                    <td class="med-neg">-0.52</td>
+                                </tr>
+                                <tr>
+                                    <td class="asset-label">RTY</td>
+                                    <td class="med-pos">+0.82</td>
+                                    <td class="med-pos">+0.75</td>
+                                    <td class="diag">1.00</td>
+                                    <td class="med-neg">-0.72</td>
+                                    <td class="low-var">-0.40</td>
+                                    <td class="low-var">-0.48</td>
+                                </tr>
+                                <tr>
+                                    <td class="asset-label">VIX</td>
+                                    <td class="high-neg">-0.80</td>
+                                    <td class="high-neg">-0.78</td>
+                                    <td class="med-neg">-0.72</td>
+                                    <td class="diag">1.00</td>
+                                    <td class="low-pos">+0.35</td>
+                                    <td class="low-pos">+0.40</td>
+                                </tr>
+                                <tr>
+                                    <td class="asset-label">DXY</td>
+                                    <td class="low-var">-0.45</td>
+                                    <td class="low-var">-0.50</td>
+                                    <td class="low-var">-0.40</td>
+                                    <td class="low-pos">+0.35</td>
+                                    <td class="diag">1.00</td>
+                                    <td class="low-var">-0.30</td>
+                                </tr>
+                                <tr>
+                                    <td class="asset-label">ZB</td>
+                                    <td class="med-neg">-0.55</td>
+                                    <td class="med-neg">-0.52</td>
+                                    <td class="low-var">-0.48</td>
+                                    <td class="low-pos">+0.40</td>
+                                    <td class="low-var">-0.30</td>
+                                    <td class="diag">1.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; font-size: 11px; color: #64748b;">
+                        <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 12px; height: 12px; border-radius: 2px; background: rgba(34,197,94,0.18); display: inline-block;"></span> Positive forte (&gt;0.70)</span>
+                        <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 12px; height: 12px; border-radius: 2px; background: rgba(34,197,94,0.10); display: inline-block;"></span> Positive moyenne</span>
+                        <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 12px; height: 12px; border-radius: 2px; background: rgba(239,68,68,0.18); display: inline-block;"></span> Négative forte (&lt;-0.70)</span>
+                        <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 12px; height: 12px; border-radius: 2px; background: rgba(239,68,68,0.10); display: inline-block;"></span> Négative moyenne</span>
+                        <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 12px; height: 12px; border-radius: 2px; background: rgba(212,175,55,0.10); display: inline-block;"></span> Variable / faible</span>
+                    </div>
+                </div>
+
+                <!-- Tableau correlations sectorielles -->
+                <div style="margin-top: 20px;">
+                    <div style="font-size: 13px; font-weight: 600; color: #fff; margin-bottom: 12px;">Corrélations sectorielles</div>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; border-radius: 8px; overflow: hidden;">
+                            <thead>
+                                <tr>
+                                    <th style="padding: 10px 14px; text-align: left; font-size: 12px; color: #94a3b8; font-weight: 600; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.06);">Paire</th>
+                                    <th style="padding: 10px 14px; text-align: center; font-size: 12px; color: #94a3b8; font-weight: 600; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.06);">Corrélation</th>
+                                    <th style="padding: 10px 14px; text-align: left; font-size: 12px; color: #94a3b8; font-weight: 600; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.06);">Signal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 10px 14px; font-size: 13px; color: #cbd5e1; border: 1px solid rgba(255,255,255,0.06);">NQ vs RTY</td>
+                                    <td style="padding: 10px 14px; font-size: 13px; color: #D4AF37; text-align: center; border: 1px solid rgba(255,255,255,0.06); font-weight: 600;">Rotation</td>
+                                    <td style="padding: 10px 14px; font-size: 13px; color: #cbd5e1; border: 1px solid rgba(255,255,255,0.06);">NQ surperforme = "Growth" favori. RTY surperforme = "Value", risk-on</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px 14px; font-size: 13px; color: #cbd5e1; border: 1px solid rgba(255,255,255,0.06);">NQ vs AAPL/MSFT</td>
+                                    <td style="padding: 10px 14px; font-size: 13px; color: #22c55e; text-align: center; border: 1px solid rgba(255,255,255,0.06); font-weight: 600;">Très forte</td>
+                                    <td style="padding: 10px 14px; font-size: 13px; color: #cbd5e1; border: 1px solid rgba(255,255,255,0.06);">Composants majeurs du Nasdaq, mènent le mouvement</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px 14px; font-size: 13px; color: #cbd5e1; border: 1px solid rgba(255,255,255,0.06);">ES vs Bonds (ZB)</td>
+                                    <td style="padding: 10px 14px; font-size: 13px; color: #ef4444; text-align: center; border: 1px solid rgba(255,255,255,0.06); font-weight: 600;">Inverse</td>
+                                    <td style="padding: 10px 14px; font-size: 13px; color: #cbd5e1; border: 1px solid rgba(255,255,255,0.06);">"Risk-on" = Actions ↑ Bonds ↓ / "Risk-off" = Actions ↓ Bonds ↑</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px 14px; font-size: 13px; color: #cbd5e1; border: 1px solid rgba(255,255,255,0.06);">ES vs Dollar (DXY)</td>
+                                    <td style="padding: 10px 14px; font-size: 13px; color: #D4AF37; text-align: center; border: 1px solid rgba(255,255,255,0.06); font-weight: 600;">Variable</td>
+                                    <td style="padding: 10px 14px; font-size: 13px; color: #cbd5e1; border: 1px solid rgba(255,255,255,0.06);">Dollar fort = pression sur actions (souvent inverse)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
         </section>
-        
+
+        <!-- Section 3: Applications pratiques -->
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">⚡ Utiliser les corrélations en trading</h2>
-            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              APPLICATIONS PRATIQUES                                      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  1. CONFIRMATION DE TRADE:                                              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ═════════════════════════                                               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Long ES? Vérifiez que NQ et RTY sont aussi haussiers                 │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • VIX doit baisser ou être stable                                      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Si divergence → Méfiance sur le trade                                │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  2. SÉLECTION D&#x27;INSTRUMENT:                                              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ═════════════════════════                                               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Tous haussiers? Choisissez le plus fort (momentum)                   │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • NQ surperforme? Tradez NQ plutôt que ES                              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • RTY en retard? Potentiel de rattrapage                               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  3. DIVERGENCES = ALERTES:                                               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ═════════════════════════                                               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • ES monte mais VIX aussi? → Méfiance, reversal possible               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • ES monte mais NQ stagne? → Le move manque de conviction              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • Bonds et Actions montent ensemble? → Move de short squeeze           │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  4. ROTATION SECTORIELLE:                                                │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ═════════════════════════                                               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • NQ→RTY rotation = Risk-on, économie forte                            │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  • RTY→NQ rotation = Flight to quality, prudence                        │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
-</div>
-            
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">
+
+                <!-- Card 1: Confirmation -->
+                <div class="app-card">
+                    <h3 style="color: #00B4DC;"><svg style="width: 18px; height: 18px; flex-shrink: 0;" viewBox="0 0 24 24" fill="none" stroke="#00B4DC" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> 1. Confirmation de trade</h3>
+                    <ul>
+                        <li><span class="bullet" style="background: #00B4DC;"></span>Long ES? Vérifiez que NQ et RTY sont aussi haussiers</li>
+                        <li><span class="bullet" style="background: #00B4DC;"></span>VIX doit baisser ou être stable</li>
+                        <li><span class="bullet" style="background: #ef4444;"></span>Si divergence entre indices = méfiance sur le trade</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2: Selection instrument -->
+                <div class="app-card">
+                    <h3 style="color: #D4AF37;"><svg style="width: 18px; height: 18px; flex-shrink: 0;" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> 2. Sélection d'instrument</h3>
+                    <ul>
+                        <li><span class="bullet" style="background: #D4AF37;"></span>Tous haussiers? Choisissez le plus fort (momentum)</li>
+                        <li><span class="bullet" style="background: #D4AF37;"></span>NQ surperforme? Tradez NQ plutôt que ES</li>
+                        <li><span class="bullet" style="background: #D4AF37;"></span>RTY en retard? Potentiel de rattrapage</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3: Divergences -->
+                <div class="app-card">
+                    <h3 style="color: #ef4444;"><svg style="width: 18px; height: 18px; flex-shrink: 0;" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> 3. Divergences = Alertes</h3>
+                    <ul>
+                        <li><span class="bullet" style="background: #ef4444;"></span>ES monte mais VIX aussi? Reversal possible</li>
+                        <li><span class="bullet" style="background: #ef4444;"></span>ES monte mais NQ stagne? Le move manque de conviction</li>
+                        <li><span class="bullet" style="background: #ef4444;"></span>Bonds et Actions montent ensemble? Move de short squeeze</li>
+                    </ul>
+                </div>
+
+                <!-- Card 4: Rotation sectorielle -->
+                <div class="app-card">
+                    <h3 style="color: #22c55e;"><svg style="width: 18px; height: 18px; flex-shrink: 0;" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg> 4. Rotation sectorielle</h3>
+                    <ul>
+                        <li><span class="bullet" style="background: #22c55e;"></span>NQ → RTY rotation = Risk-on, économie forte</li>
+                        <li><span class="bullet" style="background: #22c55e;"></span>RTY → NQ rotation = Flight to quality, prudence</li>
+                    </ul>
+                </div>
+
+                <!-- SVG: Divergence visuelle ES vs NQ -->
+                <div class="svg-chart-container" style="margin-top: 16px;">
+                    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+                        <span style="font-size: 13px; font-weight: 600; color: #fff;">Divergence ES / NQ — Signal d'alerte</span>
+                        <div>
+                            <span class="legend-item"><span class="legend-dot" style="background: #00B4DC;"></span>ES</span>
+                            <span class="legend-item"><span class="legend-dot" style="background: #D4AF37;"></span>NQ</span>
+                        </div>
+                    </div>
+                    <svg viewBox="0 0 700 220" style="width: 100%; height: auto;">
+                        <!-- Grid -->
+                        <line x1="50" y1="20" x2="50" y2="190" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                        <line x1="50" y1="190" x2="680" y2="190" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+                        <line x1="50" y1="105" x2="680" y2="105" stroke="rgba(255,255,255,0.04)" stroke-width="1" stroke-dasharray="4,4"/>
+                        <!-- X axis labels -->
+                        <text x="50" y="208" fill="#64748b" font-size="10" text-anchor="middle">9:30</text>
+                        <text x="207" y="208" fill="#64748b" font-size="10" text-anchor="middle">11:00</text>
+                        <text x="365" y="208" fill="#64748b" font-size="10" text-anchor="middle">12:30</text>
+                        <text x="522" y="208" fill="#64748b" font-size="10" text-anchor="middle">14:00</text>
+                        <text x="680" y="208" fill="#64748b" font-size="10" text-anchor="middle">16:00</text>
+                        <!-- Phase 1: correlated (green zone) -->
+                        <rect x="50" y="15" rx="0" ry="0" width="250" height="180" fill="rgba(34,197,94,0.04)"/>
+                        <text x="175" y="32" fill="#22c55e" font-size="10" text-anchor="middle" font-weight="600">Corrélation normale</text>
+                        <!-- Phase 2: divergence (red zone) -->
+                        <rect x="300" y="15" rx="0" ry="0" width="380" height="180" fill="rgba(239,68,68,0.04)"/>
+                        <text x="490" y="32" fill="#ef4444" font-size="10" text-anchor="middle" font-weight="600">DIVERGENCE</text>
+                        <!-- Separator line -->
+                        <line x1="300" y1="15" x2="300" y2="195" stroke="rgba(239,68,68,0.3)" stroke-width="1" stroke-dasharray="4,4"/>
+                        <!-- ES line (continues up) -->
+                        <polyline points="50,130 90,120 130,108 170,95 210,85 250,78 300,72 340,65 380,58 420,52 460,48 500,42 540,38 580,35 620,30 660,28 680,25" fill="none" stroke="#00B4DC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <!-- NQ line (flattens then drops) -->
+                        <polyline points="50,135 90,125 130,113 170,100 210,90 250,82 300,80 340,82 380,88 420,95 460,100 500,108 540,115 580,120 620,130 660,138 680,142" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <!-- Alert icon at divergence point -->
+                        <circle cx="300" cy="76" r="12" fill="rgba(239,68,68,0.15)" stroke="#ef4444" stroke-width="1.5"/>
+                        <text x="300" y="81" fill="#ef4444" font-size="14" text-anchor="middle" font-weight="700">!</text>
+                        <!-- Annotation box -->
+                        <rect x="400" y="140" rx="4" ry="4" width="220" height="40" fill="rgba(10,14,23,0.9)" stroke="rgba(239,68,68,0.3)" stroke-width="1"/>
+                        <text x="510" y="155" fill="#ef4444" font-size="11" text-anchor="middle" font-weight="600">ES monte, NQ stagne/baisse</text>
+                        <text x="510" y="172" fill="#94a3b8" font-size="10" text-anchor="middle">Le move manque de conviction</text>
+                    </svg>
+                </div>
+
+            </div>
         </section>
-        
+
+        <!-- Section 4: Erreurs et Points cles -->
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">❌ ERREURS et ✅ POINTS CLÉS</h2>
             <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"></div>
@@ -419,9 +787,9 @@
 </ul>
 
         </section>
-        
+
         </article>
-        
+
         <nav style="display: flex; justify-content: space-between; margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);">
             <a href="/education/money-management/" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: #1e293b; border-radius: 8px; text-decoration: none;" onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'">
             <svg style="width: 16px; height: 16px; color: #94a3b8;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>

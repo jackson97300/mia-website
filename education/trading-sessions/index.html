@@ -337,25 +337,76 @@
         
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">📊 SCHÉMA: Les sessions de trading sur 24h (Heure Paris)</h2>
-            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              SESSIONS DE TRADING - VUE 24H (Heure Paris)                 │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  00h────────06h────────08h────────11h────────15h30───17h────20h────00h  │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│   │          │          │          │           │      │      │      │   │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│   │◀─────────┼──────────┼──────────┼───────────┼──────┼──────┼──────┼─▶│</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│   │  ASIE    │  TRANS.  │  LONDON  │   LUNCH   │ US   │LUNCH │POWER │   │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│   │  💤      │  ⚠️      │  🟢      │   ⚠️      │ 🟢🟢 │ ❌   │ 🟢   │   │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│   │  Calme   │  Réveil  │  Active  │   Piège   │ GOLD │PIÈGE │ FORT │   │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ LÉGENDE:                                                                 │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ 🟢🟢 = Session en OR (à trader absolument)                               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ 🟢   = Bonne session (conditions favorables)                             │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ ⚠️   = Attention (volatilité imprévisible)                               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ ❌   = ÉVITER (chop, faux signaux, pertes probables)                     │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ 💤   = Calme (peu d&#x27;opportunités)                                        │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">
+<!-- SVG Timeline 24h des sessions -->
+<div style="background: #1e293b; border-radius: 12px; padding: 24px 16px 20px; overflow-x: auto;">
+<svg viewBox="0 0 800 200" xmlns="http://www.w3.org/2000/svg" style="width: 100%; min-width: 700px; height: auto; font-family: 'JetBrains Mono', monospace;">
+  <!-- Titre -->
+  <text x="400" y="22" fill="#fff" font-size="13" font-weight="700" text-anchor="middle">SESSIONS DE TRADING - VUE 24H (Heure Paris)</text>
+  <!-- Ligne de base -->
+  <line x1="40" y1="80" x2="760" y2="80" stroke="#334155" stroke-width="2"/>
+  <!-- Barres de sessions -->
+  <!-- Asie 00h-06h = 25% de 24h => x=40 to x=220 -->
+  <rect x="40" y="55" width="180" height="50" rx="6" fill="#334155" opacity="0.7"/>
+  <text x="130" y="75" fill="#94a3b8" font-size="11" font-weight="600" text-anchor="middle">ASIE</text>
+  <text x="130" y="93" fill="#64748b" font-size="10" text-anchor="middle">Calme</text>
+  <!-- Transition 06h-08h -->
+  <rect x="220" y="55" width="60" height="50" rx="6" fill="#D4AF37" opacity="0.15"/>
+  <text x="250" y="75" fill="#D4AF37" font-size="10" font-weight="600" text-anchor="middle">TRANS.</text>
+  <text x="250" y="93" fill="#D4AF37" font-size="9" text-anchor="middle" opacity="0.7">Reveil</text>
+  <!-- London 08h-11h -->
+  <rect x="280" y="55" width="90" height="50" rx="6" fill="#22c55e" opacity="0.2"/>
+  <rect x="280" y="55" width="90" height="50" rx="6" fill="none" stroke="#22c55e" stroke-width="1.5" opacity="0.5"/>
+  <text x="325" y="75" fill="#22c55e" font-size="11" font-weight="600" text-anchor="middle">LONDON</text>
+  <text x="325" y="93" fill="#22c55e" font-size="10" text-anchor="middle" opacity="0.8">Active</text>
+  <!-- Lunch EU 11h-15h30 -->
+  <rect x="370" y="55" width="135" height="50" rx="6" fill="#D4AF37" opacity="0.1"/>
+  <text x="437" y="75" fill="#D4AF37" font-size="10" font-weight="600" text-anchor="middle">LUNCH EU</text>
+  <text x="437" y="93" fill="#D4AF37" font-size="9" text-anchor="middle" opacity="0.7">Piege</text>
+  <!-- US Open 15h30-17h -->
+  <rect x="505" y="55" width="65" height="50" rx="6" fill="#D4AF37" opacity="0.25"/>
+  <rect x="505" y="55" width="65" height="50" rx="6" fill="none" stroke="#D4AF37" stroke-width="2" opacity="0.8"/>
+  <text x="537" y="72" fill="#D4AF37" font-size="11" font-weight="700" text-anchor="middle">US OPEN</text>
+  <text x="537" y="88" fill="#D4AF37" font-size="9" text-anchor="middle">GOLD</text>
+  <!-- Petit star icon pour US Open -->
+  <text x="537" y="100" fill="#D4AF37" font-size="8" text-anchor="middle">&#9733;&#9733;&#9733;</text>
+  <!-- Lunch US 17h-20h -->
+  <rect x="570" y="55" width="90" height="50" rx="6" fill="#ef4444" opacity="0.15"/>
+  <rect x="570" y="55" width="90" height="50" rx="6" fill="none" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.5"/>
+  <text x="615" y="75" fill="#ef4444" font-size="10" font-weight="600" text-anchor="middle">LUNCH US</text>
+  <text x="615" y="93" fill="#ef4444" font-size="9" text-anchor="middle" opacity="0.8">PIEGE</text>
+  <!-- Power Hour 20h-00h -->
+  <rect x="660" y="55" width="100" height="50" rx="6" fill="#22c55e" opacity="0.2"/>
+  <rect x="660" y="55" width="100" height="50" rx="6" fill="none" stroke="#22c55e" stroke-width="1.5" opacity="0.5"/>
+  <text x="710" y="75" fill="#22c55e" font-size="11" font-weight="600" text-anchor="middle">POWER</text>
+  <text x="710" y="93" fill="#22c55e" font-size="10" text-anchor="middle" opacity="0.8">Fort</text>
+  <!-- Marqueurs horaires -->
+  <line x1="40" y1="108" x2="40" y2="118" stroke="#64748b" stroke-width="1"/>
+  <text x="40" y="130" fill="#64748b" font-size="9" text-anchor="middle">00h</text>
+  <line x1="220" y1="108" x2="220" y2="118" stroke="#64748b" stroke-width="1"/>
+  <text x="220" y="130" fill="#64748b" font-size="9" text-anchor="middle">06h</text>
+  <line x1="280" y1="108" x2="280" y2="118" stroke="#64748b" stroke-width="1"/>
+  <text x="280" y="130" fill="#64748b" font-size="9" text-anchor="middle">08h</text>
+  <line x1="370" y1="108" x2="370" y2="118" stroke="#64748b" stroke-width="1"/>
+  <text x="370" y="130" fill="#64748b" font-size="9" text-anchor="middle">11h</text>
+  <line x1="505" y1="108" x2="505" y2="118" stroke="#64748b" stroke-width="1"/>
+  <text x="505" y="130" fill="#64748b" font-size="9" text-anchor="middle">15h30</text>
+  <line x1="570" y1="108" x2="570" y2="118" stroke="#64748b" stroke-width="1"/>
+  <text x="570" y="130" fill="#64748b" font-size="9" text-anchor="middle">17h</text>
+  <line x1="660" y1="108" x2="660" y2="118" stroke="#64748b" stroke-width="1"/>
+  <text x="660" y="130" fill="#64748b" font-size="9" text-anchor="middle">20h</text>
+  <line x1="760" y1="108" x2="760" y2="118" stroke="#64748b" stroke-width="1"/>
+  <text x="760" y="130" fill="#64748b" font-size="9" text-anchor="middle">00h</text>
+</svg>
+</div>
+<!-- Legende -->
+<div style="display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 16px; padding: 12px 16px; background: rgba(30,41,59,0.6); border-radius: 8px; font-size: 12px; font-family: 'JetBrains Mono', monospace;">
+    <div style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; border-radius: 3px; background: #D4AF37; display: inline-block; border: 2px solid #D4AF37;"></span><span style="color: #D4AF37;">Session en OR</span></div>
+    <div style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; border-radius: 3px; background: rgba(34,197,94,0.3); display: inline-block; border: 1.5px solid #22c55e;"></span><span style="color: #22c55e;">Bonne session</span></div>
+    <div style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; border-radius: 3px; background: rgba(212,175,55,0.15); display: inline-block; border: 1.5px solid #D4AF37;"></span><span style="color: #D4AF37; opacity: 0.7;">Attention</span></div>
+    <div style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; border-radius: 3px; background: rgba(239,68,68,0.15); display: inline-block; border: 1.5px dashed #ef4444;"></span><span style="color: #ef4444;">EVITER</span></div>
+    <div style="display: flex; align-items: center; gap: 6px;"><span style="width: 12px; height: 12px; border-radius: 3px; background: #334155; display: inline-block;"></span><span style="color: #64748b;">Calme</span></div>
+</div>
 </div>
             
         </section>
@@ -380,25 +431,40 @@
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">🇬🇧 Session Londres (08h-11h Paris) - Score: 7/10</h2>
             <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><p style="margin-bottom: 12px;">L&#x27;ouverture européenne &quot;réveille&quot; le marché après la nuit calme. C&#x27;est une excellente session avec des mouvements propres et directionnels.</p>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                    SESSION LONDRES - DÉTAILS                             │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ Horaire:        08h00 - 11h00 Paris                                      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ Volume:         ~30-40% du volume US Open                                │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ Volatilité ES:  15-30 points typique                                     │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ Win Rate MIA:   ~52% (données 2 semaines)                                │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ ✅ AVANTAGES:                                                            │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Mouvements directionnels clairs                                        │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Moins de &quot;chop&quot; qu&#x27;en US lunch                                         │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Réactions aux overnight news déjà digérées                             │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Idéal pour traders européens                                           │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ ⚠️ POINTS D&#x27;ATTENTION:                                                   │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • 08h00-08h30: Ouverture parfois erratique                               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Éviter si news EUR importantes prévues                                 │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Volume reste inférieur à l&#x27;US Open                                     │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
+<!-- Card Session Londres -->
+<div style="background: #1e293b; border-radius: 12px; border: 1px solid rgba(34,197,94,0.3); overflow: hidden; margin-top: 12px;">
+    <!-- Header card -->
+    <div style="padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between;">
+        <span style="font-size: 14px; font-weight: 700; color: #22c55e;">SESSION LONDRES - DETAILS</span>
+        <span style="padding: 4px 10px; border-radius: 12px; background: rgba(34,197,94,0.15); color: #22c55e; font-size: 11px; font-weight: 600;">7/10</span>
+    </div>
+    <!-- Stats grid -->
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(255,255,255,0.05);">
+        <div style="padding: 12px 20px; background: #1e293b;"><span style="color: #64748b; font-size: 11px; display: block;">Horaire</span><span style="color: #fff; font-size: 13px; font-weight: 600;">08h00 - 11h00 Paris</span></div>
+        <div style="padding: 12px 20px; background: #1e293b;"><span style="color: #64748b; font-size: 11px; display: block;">Volume</span><span style="color: #fff; font-size: 13px; font-weight: 600;">~30-40% du volume US Open</span></div>
+        <div style="padding: 12px 20px; background: #1e293b;"><span style="color: #64748b; font-size: 11px; display: block;">Volatilite ES</span><span style="color: #fff; font-size: 13px; font-weight: 600;">15-30 points typique</span></div>
+        <div style="padding: 12px 20px; background: #1e293b;"><span style="color: #64748b; font-size: 11px; display: block;">Win Rate MIA</span><span style="color: #22c55e; font-size: 13px; font-weight: 600;">~52% (donnees 2 semaines)</span></div>
+    </div>
+    <!-- Avantages -->
+    <div style="padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.08);">
+        <div style="font-size: 12px; font-weight: 700; color: #22c55e; margin-bottom: 8px;">AVANTAGES</div>
+        <ul style="margin: 0; padding-left: 16px; color: #cbd5e1; font-size: 13px; line-height: 1.8;">
+            <li>Mouvements directionnels clairs</li>
+            <li>Moins de "chop" qu'en US lunch</li>
+            <li>Reactions aux overnight news deja digerees</li>
+            <li>Ideal pour traders europeens</li>
+        </ul>
+    </div>
+    <!-- Points d'attention -->
+    <div style="padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.08);">
+        <div style="font-size: 12px; font-weight: 700; color: #D4AF37; margin-bottom: 8px;">POINTS D'ATTENTION</div>
+        <ul style="margin: 0; padding-left: 16px; color: #cbd5e1; font-size: 13px; line-height: 1.8;">
+            <li>08h00-08h30 : Ouverture parfois erratique</li>
+            <li>Eviter si news EUR importantes prevues</li>
+            <li>Volume reste inferieur a l'US Open</li>
+        </ul>
+    </div>
+</div>
 </div>
             
         </section>
@@ -406,32 +472,61 @@
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">🇺🇸 US Open (15h30-17h Paris) - LA SESSION EN OR ⭐⭐⭐</h2>
             <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><p style="margin-bottom: 12px;">Si vous ne tradez qu&#x27;UNE session dans votre vie, c&#x27;est celle-ci. L&#x27;ouverture de Wall Street concentre le MAXIMUM de volume, volatilité et opportunités.</p>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                    US OPEN - LA SESSION REINE                            │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ Horaire:        15h30 - 17h00 Paris (9:30-11:00 NY)                      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ Volume:         MAXIMUM de la journée                                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ Volatilité ES:  30-80 points en 90 minutes                               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ Win Rate MIA:   ~54% (meilleur score)                                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ 🔥 POURQUOI C&#x27;EST LA MEILLEURE SESSION:                                  │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Institutions passent leurs gros ordres                                 │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Algos de market open s&#x27;activent                                        │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Retail US entre en masse                                               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Direction claire établie pour la journée                               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Réaction aux pre-market news                                           │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ ⚡ LES 15 PREMIÈRES MINUTES (15h30-15h45):                                │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Volatilité EXTRÊME: 15-30 points possibles                             │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Spreads temporairement élargis                                         │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • DANGER: Faux breakouts fréquents                                       │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ → Conseil: Attendez 15h45 pour entrer si débutant                        │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ 🎯 SWEET SPOT (15h45-16h30):                                             │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Direction établie, volume stable                                       │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Meilleur moment pour entries                                           │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • MIA génère le plus de signaux ici                                      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
+<!-- Card US Open -->
+<div style="background: #1e293b; border-radius: 12px; border: 1px solid rgba(212,175,55,0.4); overflow: hidden; margin-top: 12px;">
+    <!-- Header card avec accent gold -->
+    <div style="padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.08); background: linear-gradient(90deg, rgba(212,175,55,0.1), transparent); display: flex; align-items: center; justify-content: space-between;">
+        <span style="font-size: 14px; font-weight: 700; color: #D4AF37;">US OPEN - LA SESSION REINE</span>
+        <span style="padding: 4px 10px; border-radius: 12px; background: rgba(212,175,55,0.2); color: #D4AF37; font-size: 11px; font-weight: 600;">10/10</span>
+    </div>
+    <!-- Stats grid -->
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(255,255,255,0.05);">
+        <div style="padding: 12px 20px; background: #1e293b;"><span style="color: #64748b; font-size: 11px; display: block;">Horaire</span><span style="color: #fff; font-size: 13px; font-weight: 600;">15h30 - 17h00 Paris</span><span style="color: #64748b; font-size: 11px;">(9:30-11:00 NY)</span></div>
+        <div style="padding: 12px 20px; background: #1e293b;"><span style="color: #64748b; font-size: 11px; display: block;">Volume</span><span style="color: #D4AF37; font-size: 13px; font-weight: 700;">MAXIMUM de la journee</span></div>
+        <div style="padding: 12px 20px; background: #1e293b;"><span style="color: #64748b; font-size: 11px; display: block;">Volatilite ES</span><span style="color: #fff; font-size: 13px; font-weight: 600;">30-80 points en 90 min</span></div>
+        <div style="padding: 12px 20px; background: #1e293b;"><span style="color: #64748b; font-size: 11px; display: block;">Win Rate MIA</span><span style="color: #22c55e; font-size: 13px; font-weight: 600;">~54% (meilleur score)</span></div>
+    </div>
+    <!-- Pourquoi meilleure session -->
+    <div style="padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.08);">
+        <div style="font-size: 12px; font-weight: 700; color: #D4AF37; margin-bottom: 8px;">POURQUOI C'EST LA MEILLEURE SESSION</div>
+        <ul style="margin: 0; padding-left: 16px; color: #cbd5e1; font-size: 13px; line-height: 1.8;">
+            <li>Institutions passent leurs gros ordres</li>
+            <li>Algos de market open s'activent</li>
+            <li>Retail US entre en masse</li>
+            <li>Direction claire etablie pour la journee</li>
+            <li>Reaction aux pre-market news</li>
+        </ul>
+    </div>
+    <!-- SVG mini-timeline 15h30-17h -->
+    <div style="padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.08);">
+        <svg viewBox="0 0 500 80" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; font-family: 'JetBrains Mono', monospace;">
+            <!-- Barre complete -->
+            <rect x="20" y="20" width="460" height="32" rx="6" fill="#1a2332"/>
+            <!-- Zone danger 15h30-15h45 -->
+            <rect x="20" y="20" width="77" height="32" rx="6" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="1" stroke-dasharray="3,2"/>
+            <text x="58" y="33" fill="#ef4444" font-size="8" font-weight="600" text-anchor="middle">15h30-15h45</text>
+            <text x="58" y="45" fill="#ef4444" font-size="7" text-anchor="middle">DANGER</text>
+            <!-- Sweet spot 15h45-16h30 -->
+            <rect x="97" y="20" width="230" height="32" rx="6" fill="rgba(212,175,55,0.2)" stroke="#D4AF37" stroke-width="1.5"/>
+            <text x="212" y="33" fill="#D4AF37" font-size="9" font-weight="700" text-anchor="middle">SWEET SPOT</text>
+            <text x="212" y="45" fill="#D4AF37" font-size="7" text-anchor="middle">15h45 - 16h30</text>
+            <!-- Fin 16h30-17h -->
+            <rect x="327" y="20" width="153" height="32" rx="6" fill="rgba(34,197,94,0.15)" stroke="#22c55e" stroke-width="1" opacity="0.6"/>
+            <text x="403" y="33" fill="#22c55e" font-size="8" font-weight="600" text-anchor="middle">16h30-17h00</text>
+            <text x="403" y="45" fill="#22c55e" font-size="7" text-anchor="middle">Continuation</text>
+            <!-- Marqueurs temps -->
+            <text x="20" y="68" fill="#64748b" font-size="8" text-anchor="start">15h30</text>
+            <text x="97" y="68" fill="#64748b" font-size="8" text-anchor="middle">15h45</text>
+            <text x="327" y="68" fill="#64748b" font-size="8" text-anchor="middle">16h30</text>
+            <text x="480" y="68" fill="#64748b" font-size="8" text-anchor="end">17h00</text>
+        </svg>
+    </div>
+    <!-- Conseil debutant -->
+    <div style="padding: 12px 20px; border-top: 1px solid rgba(255,255,255,0.08); background: rgba(212,175,55,0.05); display: flex; align-items: center; gap: 8px;">
+        <span style="color: #D4AF37; font-size: 14px;">&#8594;</span>
+        <span style="color: #D4AF37; font-size: 12px; font-weight: 600;">Conseil : Attendez 15h45 pour entrer si debutant. MIA genere le plus de signaux sur le sweet spot.</span>
+    </div>
+</div>
 </div>
             
         </section>
@@ -439,30 +534,54 @@
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">⚠️ US Lunch Block (17h-20h Paris) - LE PIÈGE MORTEL ❌</h2>
             <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><p style="margin-bottom: 12px;">C&#x27;est ICI que 80% des débutants perdent leur argent. Le &quot;lunch block&quot; américain est un piège parfait.</p>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              ⚠️ LUNCH BLOCK - ZONE DANGEREUSE ⚠️                         │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ Horaire:        17h00 - 20h00 Paris (11:00-14:00 NY)                     │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ Volume:         -60% par rapport à l&#x27;open                                │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ Volatilité:     FAIBLE mais ERRATIQUE                                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ Win Rate MIA:   ~38% (PIRE score!) → Signaux DÉSACTIVÉS                  │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ ❌ POURQUOI C&#x27;EST DANGEREUX:                                             │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • &quot;Chop&quot;: Le prix oscille sans direction                                 │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Faux breakouts: Casse un niveau, puis reverse                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Stop hunting: MM chassent les stops des deux côtés                     │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Faible liquidité = slippage possible                                   │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Algos de &quot;lunch&quot; = comportement erratique                              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ 📊 PATTERN TYPIQUE DU LUNCH:                                             │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│    ╱╲    ╱╲    ╱╲                                                        │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│   ╱  ╲  ╱  ╲  ╱  ╲    ← Chop sans direction                              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ╱    ╲╱    ╲╱    ╲                                                      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ────────────────────  ← Même niveau après 3h                            │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ Résultat: -$500 en commissions + pertes sur faux signaux                 │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
+<!-- Card Lunch Block -->
+<div style="background: #1e293b; border-radius: 12px; border: 1px solid rgba(239,68,68,0.4); overflow: hidden; margin-top: 12px;">
+    <!-- Header card danger -->
+    <div style="padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.08); background: linear-gradient(90deg, rgba(239,68,68,0.1), transparent); display: flex; align-items: center; justify-content: space-between;">
+        <span style="font-size: 14px; font-weight: 700; color: #ef4444;">LUNCH BLOCK - ZONE DANGEREUSE</span>
+        <span style="padding: 4px 10px; border-radius: 12px; background: rgba(239,68,68,0.2); color: #ef4444; font-size: 11px; font-weight: 600;">SIGNAUX OFF</span>
+    </div>
+    <!-- Stats grid -->
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(255,255,255,0.05);">
+        <div style="padding: 12px 20px; background: #1e293b;"><span style="color: #64748b; font-size: 11px; display: block;">Horaire</span><span style="color: #fff; font-size: 13px; font-weight: 600;">17h00 - 20h00 Paris</span><span style="color: #64748b; font-size: 11px;">(11:00-14:00 NY)</span></div>
+        <div style="padding: 12px 20px; background: #1e293b;"><span style="color: #64748b; font-size: 11px; display: block;">Volume</span><span style="color: #ef4444; font-size: 13px; font-weight: 600;">-60% par rapport a l'open</span></div>
+        <div style="padding: 12px 20px; background: #1e293b;"><span style="color: #64748b; font-size: 11px; display: block;">Volatilite</span><span style="color: #ef4444; font-size: 13px; font-weight: 600;">FAIBLE mais ERRATIQUE</span></div>
+        <div style="padding: 12px 20px; background: #1e293b;"><span style="color: #64748b; font-size: 11px; display: block;">Win Rate MIA</span><span style="color: #ef4444; font-size: 13px; font-weight: 700;">~38% (PIRE score!)</span></div>
+    </div>
+    <!-- Pourquoi dangereux -->
+    <div style="padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.08);">
+        <div style="font-size: 12px; font-weight: 700; color: #ef4444; margin-bottom: 8px;">POURQUOI C'EST DANGEREUX</div>
+        <ul style="margin: 0; padding-left: 16px; color: #cbd5e1; font-size: 13px; line-height: 1.8;">
+            <li>"Chop" : Le prix oscille sans direction</li>
+            <li>Faux breakouts : Casse un niveau, puis reverse</li>
+            <li>Stop hunting : MM chassent les stops des deux cotes</li>
+            <li>Faible liquidite = slippage possible</li>
+            <li>Algos de "lunch" = comportement erratique</li>
+        </ul>
+    </div>
+    <!-- SVG Pattern Chop -->
+    <div style="padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.08);">
+        <div style="font-size: 12px; font-weight: 700; color: #94a3b8; margin-bottom: 12px;">PATTERN TYPIQUE DU LUNCH</div>
+        <svg viewBox="0 0 500 110" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; font-family: 'JetBrains Mono', monospace;">
+            <!-- Zone de fond -->
+            <rect x="20" y="10" width="460" height="70" rx="6" fill="rgba(239,68,68,0.05)" stroke="rgba(239,68,68,0.15)" stroke-width="1" stroke-dasharray="4,3"/>
+            <!-- Ligne de base (meme niveau) -->
+            <line x1="30" y1="50" x2="470" y2="50" stroke="#334155" stroke-width="1" stroke-dasharray="6,4"/>
+            <!-- Chop pattern - zigzag erratique -->
+            <polyline points="40,50 80,25 120,55 160,20 200,58 240,28 280,52 320,22 360,55 400,30 440,48 460,50" fill="none" stroke="#ef4444" stroke-width="2" stroke-linejoin="round" opacity="0.8"/>
+            <!-- Fleches faux breakouts -->
+            <circle cx="160" cy="20" r="3" fill="#ef4444" opacity="0.6"/>
+            <circle cx="320" cy="22" r="3" fill="#ef4444" opacity="0.6"/>
+            <!-- Labels -->
+            <text x="250" y="90" fill="#64748b" font-size="9" text-anchor="middle">Chop sans direction</text>
+            <text x="250" y="102" fill="#ef4444" font-size="8" text-anchor="middle">Meme niveau apres 3h</text>
+        </svg>
+    </div>
+    <!-- Resultat -->
+    <div style="padding: 12px 20px; border-top: 1px solid rgba(255,255,255,0.08); background: rgba(239,68,68,0.08); text-align: center;">
+        <span style="color: #ef4444; font-size: 13px; font-weight: 700;">Resultat : -$500 en commissions + pertes sur faux signaux</span>
+    </div>
+</div>
 </div>
             
         </section>
@@ -470,26 +589,55 @@
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">⚡ Power Hour (20h-21h30 Paris) - La session de clôture</h2>
             <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><p style="margin-bottom: 12px;">Dernière heure avant la clôture de Wall Street. Les institutions ajustent leurs positions, créant volatilité et direction.</p>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                    POWER HOUR - DÉTAILS                                  │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ Horaire:        20h00 - 21h30 Paris (14:00-15:30 NY)                     │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ Volume:         ~70% du volume US Open                                   │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ Volatilité ES:  20-40 points typique                                     │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ Win Rate MIA:   ~51%                                                     │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ 🎯 CARACTÉRISTIQUES:                                                     │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Institutions ajustent avant close                                      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Retour de la direction claire                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • MOC (Market On Close) orders = volume 21h-21h30                        │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Peut confirmer ou inverser la tendance du matin                        │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ ⚡ LES 30 DERNIÈRES MINUTES (21h-21h30):                                  │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Volume spike final                                                     │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • Mouvements directionnels forts                                         │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ • ATTENTION: Volatilité accrue près de la clôture                        │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ → Conseil: Fermez positions à 21h15 si débutant                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
+<!-- Card Power Hour -->
+<div style="background: #1e293b; border-radius: 12px; border: 1px solid rgba(0,180,220,0.3); overflow: hidden; margin-top: 12px;">
+    <!-- Header card -->
+    <div style="padding: 16px 20px; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: space-between;">
+        <span style="font-size: 14px; font-weight: 700; color: #00B4DC;">POWER HOUR - DETAILS</span>
+        <span style="padding: 4px 10px; border-radius: 12px; background: rgba(0,180,220,0.15); color: #00B4DC; font-size: 11px; font-weight: 600;">6/10</span>
+    </div>
+    <!-- Stats grid -->
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(255,255,255,0.05);">
+        <div style="padding: 12px 20px; background: #1e293b;"><span style="color: #64748b; font-size: 11px; display: block;">Horaire</span><span style="color: #fff; font-size: 13px; font-weight: 600;">20h00 - 21h30 Paris</span><span style="color: #64748b; font-size: 11px;">(14:00-15:30 NY)</span></div>
+        <div style="padding: 12px 20px; background: #1e293b;"><span style="color: #64748b; font-size: 11px; display: block;">Volume</span><span style="color: #fff; font-size: 13px; font-weight: 600;">~70% du volume US Open</span></div>
+        <div style="padding: 12px 20px; background: #1e293b;"><span style="color: #64748b; font-size: 11px; display: block;">Volatilite ES</span><span style="color: #fff; font-size: 13px; font-weight: 600;">20-40 points typique</span></div>
+        <div style="padding: 12px 20px; background: #1e293b;"><span style="color: #64748b; font-size: 11px; display: block;">Win Rate MIA</span><span style="color: #00B4DC; font-size: 13px; font-weight: 600;">~51%</span></div>
+    </div>
+    <!-- Caracteristiques -->
+    <div style="padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.08);">
+        <div style="font-size: 12px; font-weight: 700; color: #00B4DC; margin-bottom: 8px;">CARACTERISTIQUES</div>
+        <ul style="margin: 0; padding-left: 16px; color: #cbd5e1; font-size: 13px; line-height: 1.8;">
+            <li>Institutions ajustent avant close</li>
+            <li>Retour de la direction claire</li>
+            <li>MOC (Market On Close) orders = volume 21h-21h30</li>
+            <li>Peut confirmer ou inverser la tendance du matin</li>
+        </ul>
+    </div>
+    <!-- SVG mini-timeline 20h-21h30 -->
+    <div style="padding: 16px 20px; border-top: 1px solid rgba(255,255,255,0.08);">
+        <div style="font-size: 12px; font-weight: 700; color: #94a3b8; margin-bottom: 12px;">LES 30 DERNIERES MINUTES (21h-21h30)</div>
+        <svg viewBox="0 0 500 70" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; font-family: 'JetBrains Mono', monospace;">
+            <!-- Barre complete -->
+            <rect x="20" y="15" width="460" height="28" rx="6" fill="#1a2332"/>
+            <!-- Zone 20h-21h -->
+            <rect x="20" y="15" width="307" height="28" rx="6" fill="rgba(0,180,220,0.15)" stroke="#00B4DC" stroke-width="1"/>
+            <text x="173" y="33" fill="#00B4DC" font-size="9" font-weight="600" text-anchor="middle">20h00 - 21h00</text>
+            <!-- Zone MOC 21h-21h30 - volume spike -->
+            <rect x="327" y="15" width="153" height="28" rx="6" fill="rgba(212,175,55,0.15)" stroke="#D4AF37" stroke-width="1.5"/>
+            <text x="403" y="28" fill="#D4AF37" font-size="9" font-weight="700" text-anchor="middle">MOC SPIKE</text>
+            <text x="403" y="39" fill="#D4AF37" font-size="7" text-anchor="middle">21h00 - 21h30</text>
+            <!-- Marqueurs -->
+            <text x="20" y="58" fill="#64748b" font-size="8" text-anchor="start">20h00</text>
+            <text x="327" y="58" fill="#64748b" font-size="8" text-anchor="middle">21h00</text>
+            <text x="480" y="58" fill="#64748b" font-size="8" text-anchor="end">21h30</text>
+        </svg>
+    </div>
+    <!-- Conseil -->
+    <div style="padding: 12px 20px; border-top: 1px solid rgba(255,255,255,0.08); background: rgba(212,175,55,0.05); display: flex; align-items: center; gap: 8px;">
+        <span style="color: #D4AF37; font-size: 14px;">&#8594;</span>
+        <span style="color: #D4AF37; font-size: 12px; font-weight: 600;">Conseil : Fermez positions a 21h15 si debutant. Volatilite accrue pres de la cloture.</span>
+    </div>
+</div>
 </div>
             
         </section>
@@ -497,18 +645,50 @@
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">☠️ HEURES TOXIQUES identifiées par MIA (données réelles)</h2>
             <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><p style="margin-bottom: 12px;">Notre analyse de 284 trades sur 2 semaines a identifié des heures spécifiques avec des win rates catastrophiques:</p>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              ☠️ HEURES À ÉVITER - DONNÉES RÉELLES MIA ☠️                 │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├──────────────┬────────────────┬────────────────┬────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│    HEURE     │    WIN RATE    │    P&amp;L MOYEN   │    RECOMMANDATION      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├──────────────┼────────────────┼────────────────┼────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  10h (Paris) │      23%       │    -$127       │  ❌ ÉVITER ABSOLUMENT  │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  13h (Paris) │      18%       │    -$203       │  ❌ ÉVITER ABSOLUMENT  │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  18h (Paris) │      21%       │    -$156       │  ❌ ÉVITER ABSOLUMENT  │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  19h (Paris) │      31%       │    -$89        │  ⚠️ Dangereux          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├──────────────┴────────────────┴────────────────┴────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│ 💡 MIA désactive automatiquement les signaux pendant ces heures         │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
+<!-- Tableau Heures Toxiques -->
+<div style="background: #1e293b; border-radius: 12px; border: 1px solid rgba(239,68,68,0.3); overflow: hidden; margin-top: 12px;">
+    <table style="width: 100%; border-collapse: collapse; font-size: 13px; font-family: 'JetBrains Mono', monospace;">
+        <thead>
+            <tr style="background: rgba(239,68,68,0.1);">
+                <th style="padding: 12px 16px; text-align: left; color: #ef4444; font-size: 12px; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.08);">HEURE</th>
+                <th style="padding: 12px 16px; text-align: center; color: #ef4444; font-size: 12px; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.08);">WIN RATE</th>
+                <th style="padding: 12px 16px; text-align: center; color: #ef4444; font-size: 12px; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.08);">P&amp;L MOYEN</th>
+                <th style="padding: 12px 16px; text-align: right; color: #ef4444; font-size: 12px; font-weight: 700; border-bottom: 1px solid rgba(255,255,255,0.08);">RECOMMANDATION</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <td style="padding: 10px 16px; color: #fff; font-weight: 600;">10h (Paris)</td>
+                <td style="padding: 10px 16px; text-align: center;"><span style="color: #ef4444; font-weight: 700;">23%</span></td>
+                <td style="padding: 10px 16px; text-align: center; color: #ef4444; font-weight: 600;">-$127</td>
+                <td style="padding: 10px 16px; text-align: right;"><span style="padding: 3px 8px; border-radius: 6px; background: rgba(239,68,68,0.15); color: #ef4444; font-size: 11px; font-weight: 600;">EVITER ABSOLUMENT</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(239,68,68,0.03);">
+                <td style="padding: 10px 16px; color: #fff; font-weight: 600;">13h (Paris)</td>
+                <td style="padding: 10px 16px; text-align: center;"><span style="color: #ef4444; font-weight: 700;">18%</span></td>
+                <td style="padding: 10px 16px; text-align: center; color: #ef4444; font-weight: 600;">-$203</td>
+                <td style="padding: 10px 16px; text-align: right;"><span style="padding: 3px 8px; border-radius: 6px; background: rgba(239,68,68,0.15); color: #ef4444; font-size: 11px; font-weight: 600;">EVITER ABSOLUMENT</span></td>
+            </tr>
+            <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <td style="padding: 10px 16px; color: #fff; font-weight: 600;">18h (Paris)</td>
+                <td style="padding: 10px 16px; text-align: center;"><span style="color: #ef4444; font-weight: 700;">21%</span></td>
+                <td style="padding: 10px 16px; text-align: center; color: #ef4444; font-weight: 600;">-$156</td>
+                <td style="padding: 10px 16px; text-align: right;"><span style="padding: 3px 8px; border-radius: 6px; background: rgba(239,68,68,0.15); color: #ef4444; font-size: 11px; font-weight: 600;">EVITER ABSOLUMENT</span></td>
+            </tr>
+            <tr>
+                <td style="padding: 10px 16px; color: #fff; font-weight: 600;">19h (Paris)</td>
+                <td style="padding: 10px 16px; text-align: center;"><span style="color: #D4AF37; font-weight: 700;">31%</span></td>
+                <td style="padding: 10px 16px; text-align: center; color: #D4AF37; font-weight: 600;">-$89</td>
+                <td style="padding: 10px 16px; text-align: right;"><span style="padding: 3px 8px; border-radius: 6px; background: rgba(212,175,55,0.15); color: #D4AF37; font-size: 11px; font-weight: 600;">Dangereux</span></td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Footer note -->
+    <div style="padding: 12px 16px; border-top: 1px solid rgba(255,255,255,0.08); background: rgba(0,180,220,0.05); display: flex; align-items: center; gap: 8px;">
+        <span style="color: #00B4DC; font-size: 13px;">&#9432;</span>
+        <span style="color: #00B4DC; font-size: 12px; font-weight: 600;">MIA desactive automatiquement les signaux pendant ces heures</span>
+    </div>
+</div>
 </div>
             
         </section>

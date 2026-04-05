@@ -4,12 +4,184 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="/_next/static/css/0f34aadfba7d8fab.css"/>
-    
+
     <title>Regime-Based Trading - MIA Academy</title>
     <style>
         @media (min-width: 1024px) {
             .sidebar-desktop { display: block !important; }
             .main-content { margin-left: 220px !important; }
+        }
+        .regime-card {
+            background: rgba(30,41,59,0.6);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 16px;
+            transition: border-color 0.3s;
+        }
+        .regime-card:hover {
+            border-color: rgba(255,255,255,0.2);
+        }
+        .regime-card h3 {
+            font-size: 15px;
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .regime-card .regime-tag {
+            font-size: 10px;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .regime-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .regime-card ul li {
+            font-size: 13px;
+            color: #94a3b8;
+            padding: 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .regime-card ul li::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .regime-bull ul li::before { background: #22c55e; }
+        .regime-bear ul li::before { background: #ef4444; }
+        .regime-range ul li::before { background: #00B4DC; }
+        .regime-volatile ul li::before { background: #D4AF37; }
+
+        .checklist-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 13px;
+        }
+        .checklist-table th {
+            background: rgba(0,180,220,0.1);
+            color: #00B4DC;
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 10px 14px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0,180,220,0.2);
+        }
+        .checklist-table th:first-child {
+            border-radius: 8px 0 0 0;
+        }
+        .checklist-table th:last-child {
+            border-radius: 0 8px 0 0;
+        }
+        .checklist-table td {
+            padding: 10px 14px;
+            color: #cbd5e1;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            vertical-align: top;
+        }
+        .checklist-table tr:last-child td {
+            border-bottom: none;
+        }
+        .checklist-table tr:hover td {
+            background: rgba(255,255,255,0.02);
+        }
+        .checklist-table .signal-val {
+            font-family: 'SF Mono', 'Fira Code', monospace;
+            font-size: 12px;
+        }
+
+        .synth-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+        }
+        .synth-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 12px;
+            background: rgba(30,41,59,0.5);
+            border-radius: 8px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .synth-item .synth-check {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(34,197,94,0.15);
+        }
+        .synth-item .synth-check svg {
+            width: 12px;
+            height: 12px;
+            color: #22c55e;
+        }
+        .synth-item span {
+            font-size: 13px;
+            color: #cbd5e1;
+            line-height: 1.4;
+        }
+
+        .quote-block {
+            border-left: 3px solid #D4AF37;
+            padding: 16px 20px;
+            margin: 20px 0;
+            background: rgba(212,175,55,0.05);
+            border-radius: 0 8px 8px 0;
+        }
+        .quote-block p {
+            color: #D4AF37;
+            font-style: italic;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .regime-svg-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 768px) {
+            .regime-svg-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        .regime-svg-box {
+            background: rgba(10,14,23,0.8);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+        }
+        .regime-svg-box h4 {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 10px 0 0 0;
+        }
+        .regime-svg-box p {
+            font-size: 11px;
+            color: #64748b;
+            margin: 4px 0 0 0;
         }
     </style>
 <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png"/>
@@ -37,10 +209,10 @@
         </a>
     </header>
 
-    
+
         <aside style="display: none; position: fixed; top: 56px; left: 0; bottom: 0; width: 220px; background: #0f1419; border-right: 1px solid rgba(255,255,255,0.1); overflow-y: auto; z-index: 40;" class="sidebar-desktop">
             <div style="padding: 12px;">
-    
+
                 <div class="nav-section" id="nav-debutant">
                     <div onclick="toggleNav('debutant')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
                         <div style="display: flex; align-items: center; gap: 6px;">
@@ -51,60 +223,60 @@
                         <svg class="chevron-debutant" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-content-debutant" style="padding-left: 8px; display: none;">
-        
+
                         <a href="/education/futures-101/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Les Futures US: ES, NQ</span>
                         </a>
-            
+
                         <a href="/education/trading-sessions/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🕐</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Les Sessions de Tradin</span>
                         </a>
-            
+
                         <a href="/education/candlestick-basics/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🕯️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Lecture des Chandelier</span>
                         </a>
-            
+
                         <a href="/education/support-resistance/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📏</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Support & Résistance</span>
                         </a>
-            
+
                         <a href="/education/volume-importance/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">L'Importance du Volume</span>
                         </a>
-            
+
                         <a href="/education/risk-management/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🛡️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gestion du Risque</span>
                         </a>
-            
+
                         <a href="/education/trading-psychology/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧠</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Psychologie du Trading</span>
                         </a>
-            
+
                         <a href="/education/order-types/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📝</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Types d'Ordres</span>
                         </a>
-            
+
                         <a href="/education/journaling-backtesting/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📓</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Journaling & Backtesti</span>
                         </a>
-            
+
                         <a href="/education/economic-calendar/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#22d3ee22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📅</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Calendrier Économique</span>
                         </a>
-            
+
                     </div>
                 </div>
-        
+
                 <div class="nav-section" id="nav-intermediaire">
                     <div onclick="toggleNav('intermediaire')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
                         <div style="display: flex; align-items: center; gap: 6px;">
@@ -115,65 +287,65 @@
                         <svg class="chevron-intermediaire" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-content-intermediaire" style="padding-left: 8px; display: none;">
-        
+
                         <a href="/education/multi-timeframe-analysis/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔍</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Analyse Multi-Timefram</span>
                         </a>
-            
+
                         <a href="/education/call-resistance-put-support/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📞</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Call Resistance & Put </span>
                         </a>
-            
+
                         <a href="/education/hvl-gamma-flip/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🎯</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">HVL & Gamma Flip</span>
                         </a>
-            
+
                         <a href="/education/positive-negative-gamma/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>⚡</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gamma Positif vs Négat</span>
                         </a>
-            
+
                         <a href="/education/0dte-options-impact/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>💥</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Impact des Options 0DT</span>
                         </a>
-            
+
                         <a href="/education/expected-move-range/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📐</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Expected Move & Range</span>
                         </a>
-            
+
                         <a href="/education/gamma-exposure/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📈</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gamma Exposure (GEX)</span>
                         </a>
-            
+
                         <a href="/education/high-volume-levels/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">High Volume Levels</span>
                         </a>
-            
+
                         <a href="/education/options-impact/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🎰</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Impact des Options</span>
                         </a>
-            
+
                         <a href="/education/market-makers/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🏦</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Market Makers</span>
                         </a>
-            
+
                         <a href="/education/vwap-intraday/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#facc1522'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📉</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">VWAP & Niveaux Intrada</span>
                         </a>
-            
+
                     </div>
                 </div>
-        
+
                 <div class="nav-section" id="nav-avance">
                     <div onclick="toggleNav('avance')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
                         <div style="display: flex; align-items: center; gap: 6px;">
@@ -184,80 +356,80 @@
                         <svg class="chevron-avance" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s; transform: rotate(180deg);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-content-avance" style="padding-left: 8px;">
-        
+
                         <a href="/education/orderflow/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🌊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">OrderFlow Basics</span>
                         </a>
-            
+
                         <a href="/education/money-management/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>💰</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Money Management Avanc</span>
                         </a>
-            
+
                         <a href="/education/correlation-intermarches/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔗</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Corrélations Inter-Mar</span>
                         </a>
-            
+
                         <a href="/education/liquidity-sweeps/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧹</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Liquidity Sweeps</span>
                         </a>
-            
+
                         <a href="/education/market-profile/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Market Profile</span>
                         </a>
-            
+
                         <a href="/education/fibonacci-extensions/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🌀</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Fibonacci Extensions</span>
                         </a>
-            
+
                         <a href="/education/gex-levels-1-10/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🎯</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">GEX Levels 1-10</span>
                         </a>
-            
+
                         <a href="/education/blind-spots-trading/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>👁️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Blind Spots Trading</span>
                         </a>
-            
+
                         <a href="/education/delta-exposure-dex/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>📊</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Delta Exposure (DEX)</span>
                         </a>
-            
+
                         <a href="/education/dealer-hedging-mechanics/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>⚙️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Dealer Hedging</span>
                         </a>
-            
+
                         <a href="/education/gamma-walls-magnets/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧲</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Gamma Walls & Magnets</span>
                         </a>
-            
+
                         <a href="/education/vix-vvix-volatility/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🌪️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">VIX & VVIX</span>
                         </a>
-            
+
                         <a href="/education/option-greeks-traders/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🇬🇷</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Option Greeks</span>
                         </a>
-            
+
                         <a href="/education/regime-based-trading/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #fff; text-decoration: none; background: #f8717122;" onmouseover="this.style.background='#f8717122'; this.style.color='#fff'" onmouseout="this.style.background='#f8717122'; this.style.color='#fff'">
                             <span>🔄</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Regime-Based Trading</span>
                         </a>
-            
+
                     </div>
                 </div>
-        
+
                 <div class="nav-section" id="nav-bonus">
                     <div onclick="toggleNav('bonus')" style="display: flex; align-items: center; justify-content: space-between; padding: 8px; cursor: pointer; border-radius: 6px;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">
                         <div style="display: flex; align-items: center; gap: 6px;">
@@ -268,38 +440,38 @@
                         <svg class="chevron-bonus" style="width: 14px; height: 14px; color: #64748b; transition: transform 0.2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
                     </div>
                     <div class="nav-content-bonus" style="padding-left: 8px; display: none;">
-        
+
                         <a href="/education/battle-navale/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>⚔️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Battle Navale</span>
                         </a>
-            
+
                         <a href="/education/une-journee-avec-mia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>☀️</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Une Journée avec MIA</span>
                         </a>
-            
+
                         <a href="/education/pourquoi-bots-meurent/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>💀</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Pourquoi les Bots Meur</span>
                         </a>
-            
+
                         <a href="/education/quand-couper-mia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🔌</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Quand Couper MIA</span>
                         </a>
-            
+
                         <a href="/education/mental-discipline-ia/" style="display: flex; align-items: center; gap: 6px; padding: 6px 8px; border-radius: 4px; font-size: 12px; color: #94a3b8; text-decoration: none; " onmouseover="this.style.background='#c084fc22'; this.style.color='#fff'" onmouseout="this.style.background='transparent'; this.style.color='#94a3b8'">
                             <span>🧘</span>
                             <span style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Mental & Discipline</span>
                         </a>
-            
+
                     </div>
                 </div>
-        
+
             </div>
         </aside>
-    
+
 
     <!-- Main Content -->
     <main class="main-content" style="padding-top: 72px; padding-bottom: 40px; padding-left: 16px; padding-right: 16px; max-width: 900px;">
@@ -310,7 +482,7 @@
             <span>›</span>
             <span style="color: #fff;">Regime-Based Trading</span>
         </nav>
-        
+
         <header style="margin-bottom: 24px;">
             <span style="font-size: 48px; display: block; margin-bottom: 8px;">🔄</span>
             <h1 style="font-size: 28px; font-weight: 700; color: #fff; margin: 0 0 8px 0;">Regime-Based Trading</h1>
@@ -323,133 +495,366 @@
                 <span style="padding: 4px 10px; border-radius: 20px; background: #f8717122; color: #f87171;">Avancé</span>
             </div>
         </header>
-        
+
         <article>
-            
+
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">🎯 Régimes de marché: Adapter sa stratégie au contexte</h2>
             <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><p style="margin-bottom: 12px;">Le marché n&#x27;est pas toujours le même. Il alterne entre différents &quot;régimes&quot;: trending, range, volatile, calme.</p>
 <p style="margin-bottom: 12px;">La MÊME stratégie ne marchera pas dans tous les régimes. Les traders qui réussissent ADAPTENT leur approche.</p>
 <p style="margin-bottom: 12px;">C&#x27;est la synthèse de tout ce que vous avez appris: identifier le régime et appliquer la bonne stratégie.</p>
 </div>
-            
+
         </section>
-        
+
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">📊 SCHÉMA: Les 4 régimes de marché</h2>
-            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              LES 4 RÉGIMES DE MARCHÉ                                     │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ┌─────────────────────────────────────────────────────────────────┐    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ RÉGIME 1: TRENDING HAUSSIER                                     │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ • GEX: Positif à neutre                                         │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ • VIX: &lt; 18, en baisse                                          │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ • Prix: &gt; HVL, &gt; VWAP                                           │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ • Stratégie: Buy dips, suivre le trend, targets ambitieux       │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  └─────────────────────────────────────────────────────────────────┘    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ┌─────────────────────────────────────────────────────────────────┐    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ RÉGIME 2: TRENDING BAISSIER                                     │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ • GEX: Négatif                                                  │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ • VIX: &gt; 20, en hausse                                          │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ • Prix: &lt; HVL, &lt; VWAP                                           │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ • Stratégie: Sell rallies, suivre le trend, stops serrés        │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  └─────────────────────────────────────────────────────────────────┘    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ┌─────────────────────────────────────────────────────────────────┐    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ RÉGIME 3: RANGE (Consolidation)                                 │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ • GEX: Très positif                                             │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ • VIX: 12-16, stable                                            │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ • Prix: Oscille autour du HVL/VWAP                              │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ • Stratégie: Mean reversion, fade les extrêmes, targets courts  │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  └─────────────────────────────────────────────────────────────────┘    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ┌─────────────────────────────────────────────────────────────────┐    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ RÉGIME 4: VOLATILE (Chaos)                                      │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ • GEX: Très négatif                                             │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ • VIX: &gt; 25, spiking                                            │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ • Prix: Mouvements erratiques, traversant tous les niveaux      │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  │ • Stratégie: RÉDUIRE la taille ou ATTENDRE, pas de scalping     │    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  └─────────────────────────────────────────────────────────────────┘    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">
+
+            <!-- SVG: 3 regimes visuels (Trend / Range / Volatile) -->
+            <div class="regime-svg-container">
+                <!-- TREND -->
+                <div class="regime-svg-box" style="border-color: rgba(34,197,94,0.3);">
+                    <svg viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:240px;">
+                        <defs>
+                            <linearGradient id="trendGrad" x1="0" y1="1" x2="0" y2="0">
+                                <stop offset="0%" stop-color="#22c55e" stop-opacity="0.15"/>
+                                <stop offset="100%" stop-color="#22c55e" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Grid -->
+                        <line x1="20" y1="10" x2="20" y2="105" stroke="#1e293b" stroke-width="1"/>
+                        <line x1="20" y1="105" x2="230" y2="105" stroke="#1e293b" stroke-width="1"/>
+                        <line x1="20" y1="35" x2="230" y2="35" stroke="#1e293b" stroke-width="0.5" stroke-dasharray="4,4"/>
+                        <line x1="20" y1="70" x2="230" y2="70" stroke="#1e293b" stroke-width="0.5" stroke-dasharray="4,4"/>
+                        <!-- Area fill -->
+                        <path d="M 25 95 L 55 85 L 80 78 L 100 68 L 125 55 L 150 48 L 170 38 L 195 30 L 220 18 L 220 105 L 25 105 Z" fill="url(#trendGrad)"/>
+                        <!-- Price line -->
+                        <polyline points="25,95 40,90 55,85 70,82 80,78 90,72 100,68 115,60 125,55 140,50 150,48 160,42 170,38 185,33 195,30 210,24 220,18" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <!-- Pullback annotations -->
+                        <circle cx="80" cy="78" r="3" fill="#22c55e" opacity="0.6"/>
+                        <circle cx="150" cy="48" r="3" fill="#22c55e" opacity="0.6"/>
+                        <text x="78" y="92" font-size="8" fill="#22c55e" opacity="0.7" font-family="system-ui">dip</text>
+                        <text x="148" y="62" font-size="8" fill="#22c55e" opacity="0.7" font-family="system-ui">dip</text>
+                        <!-- Trend arrow -->
+                        <line x1="30" y1="100" x2="215" y2="22" stroke="#22c55e" stroke-width="1" stroke-dasharray="6,3" opacity="0.4"/>
+                        <polygon points="218,20 210,18 213,25" fill="#22c55e" opacity="0.4"/>
+                    </svg>
+                    <h4 style="color: #22c55e;">Trending</h4>
+                    <p>Higher highs, higher lows<br/>Buy the dips</p>
+                </div>
+
+                <!-- RANGE -->
+                <div class="regime-svg-box" style="border-color: rgba(0,180,220,0.3);">
+                    <svg viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:240px;">
+                        <defs>
+                            <linearGradient id="rangeGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#00B4DC" stop-opacity="0.08"/>
+                                <stop offset="100%" stop-color="#00B4DC" stop-opacity="0.08"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Grid -->
+                        <line x1="20" y1="10" x2="20" y2="105" stroke="#1e293b" stroke-width="1"/>
+                        <line x1="20" y1="105" x2="230" y2="105" stroke="#1e293b" stroke-width="1"/>
+                        <!-- Range band -->
+                        <rect x="20" y="30" width="210" height="50" fill="url(#rangeGrad)" rx="2"/>
+                        <!-- Resistance -->
+                        <line x1="20" y1="30" x2="230" y2="30" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="6,3" opacity="0.7"/>
+                        <text x="232" y="34" font-size="8" fill="#ef4444" opacity="0.8" font-family="system-ui">R</text>
+                        <!-- Support -->
+                        <line x1="20" y1="80" x2="230" y2="80" stroke="#22c55e" stroke-width="1.5" stroke-dasharray="6,3" opacity="0.7"/>
+                        <text x="232" y="84" font-size="8" fill="#22c55e" opacity="0.8" font-family="system-ui">S</text>
+                        <!-- Price oscillation -->
+                        <polyline points="25,55 35,45 50,35 60,40 70,55 85,72 95,78 105,70 115,55 125,42 135,33 145,38 155,52 165,68 175,76 185,65 195,50 205,40 215,35 225,42" fill="none" stroke="#00B4DC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <!-- Bounce arrows -->
+                        <polygon points="95,82 92,88 98,88" fill="#22c55e" opacity="0.6"/>
+                        <polygon points="175,82 172,88 178,88" fill="#22c55e" opacity="0.6"/>
+                        <polygon points="50,28 47,22 53,22" fill="#ef4444" opacity="0.6"/>
+                        <polygon points="135,28 132,22 138,22" fill="#ef4444" opacity="0.6"/>
+                        <!-- HVL center line -->
+                        <line x1="20" y1="55" x2="230" y2="55" stroke="#D4AF37" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
+                        <text x="232" y="58" font-size="7" fill="#D4AF37" opacity="0.7" font-family="system-ui">HVL</text>
+                    </svg>
+                    <h4 style="color: #00B4DC;">Range</h4>
+                    <p>Oscillation S/R<br/>Mean reversion</p>
+                </div>
+
+                <!-- VOLATILE -->
+                <div class="regime-svg-box" style="border-color: rgba(212,175,55,0.3);">
+                    <svg viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg" style="width:100%; max-width:240px;">
+                        <defs>
+                            <linearGradient id="volGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.1"/>
+                                <stop offset="100%" stop-color="#ef4444" stop-opacity="0.05"/>
+                            </linearGradient>
+                        </defs>
+                        <!-- Grid -->
+                        <line x1="20" y1="10" x2="20" y2="105" stroke="#1e293b" stroke-width="1"/>
+                        <line x1="20" y1="105" x2="230" y2="105" stroke="#1e293b" stroke-width="1"/>
+                        <!-- Chaos zone -->
+                        <rect x="20" y="10" width="210" height="95" fill="url(#volGrad)" rx="2"/>
+                        <!-- Erratic price -->
+                        <polyline points="25,60 32,30 40,75 48,20 58,85 65,35 72,90 82,15 90,70 98,25 108,95 115,40 122,80 132,18 140,65 148,100 155,30 165,85 172,22 182,75 190,40 200,90 208,28 218,72 225,50" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <!-- Danger zones -->
+                        <circle cx="48" cy="20" r="4" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.6"/>
+                        <circle cx="82" cy="15" r="4" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.6"/>
+                        <circle cx="108" cy="95" r="4" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.6"/>
+                        <circle cx="148" cy="100" r="4" fill="none" stroke="#ef4444" stroke-width="1" opacity="0.6"/>
+                        <!-- Warning label -->
+                        <text x="120" y="112" font-size="8" fill="#ef4444" text-anchor="middle" font-family="system-ui" opacity="0.8">VIX > 25</text>
+                    </svg>
+                    <h4 style="color: #D4AF37;">Volatile</h4>
+                    <p>Mouvements erratiques<br/>Reduire ou attendre</p>
+                </div>
+            </div>
+
+            <!-- 4 regime cards -->
+            <div class="regime-card regime-bull" style="border-left: 3px solid #22c55e;">
+                <h3><span class="regime-tag" style="background: rgba(34,197,94,0.15); color: #22c55e;">Regime 1</span> <span style="color: #22c55e;">Trending Haussier</span></h3>
+                <ul>
+                    <li>GEX: Positif a neutre</li>
+                    <li>VIX: &lt; 18, en baisse</li>
+                    <li>Prix: &gt; HVL, &gt; VWAP</li>
+                    <li style="color: #cbd5e1; font-weight: 600;">Strategie: Buy dips, suivre le trend, targets ambitieux</li>
+                </ul>
+            </div>
+
+            <div class="regime-card regime-bear" style="border-left: 3px solid #ef4444;">
+                <h3><span class="regime-tag" style="background: rgba(239,68,68,0.15); color: #ef4444;">Regime 2</span> <span style="color: #ef4444;">Trending Baissier</span></h3>
+                <ul>
+                    <li>GEX: Negatif</li>
+                    <li>VIX: &gt; 20, en hausse</li>
+                    <li>Prix: &lt; HVL, &lt; VWAP</li>
+                    <li style="color: #cbd5e1; font-weight: 600;">Strategie: Sell rallies, suivre le trend, stops serres</li>
+                </ul>
+            </div>
+
+            <div class="regime-card regime-range" style="border-left: 3px solid #00B4DC;">
+                <h3><span class="regime-tag" style="background: rgba(0,180,220,0.15); color: #00B4DC;">Regime 3</span> <span style="color: #00B4DC;">Range (Consolidation)</span></h3>
+                <ul>
+                    <li>GEX: Tres positif</li>
+                    <li>VIX: 12-16, stable</li>
+                    <li>Prix: Oscille autour du HVL/VWAP</li>
+                    <li style="color: #cbd5e1; font-weight: 600;">Strategie: Mean reversion, fade les extremes, targets courts</li>
+                </ul>
+            </div>
+
+            <div class="regime-card regime-volatile" style="border-left: 3px solid #D4AF37;">
+                <h3><span class="regime-tag" style="background: rgba(212,175,55,0.15); color: #D4AF37;">Regime 4</span> <span style="color: #D4AF37;">Volatile (Chaos)</span></h3>
+                <ul>
+                    <li>GEX: Tres negatif</li>
+                    <li>VIX: &gt; 25, spiking</li>
+                    <li>Prix: Mouvements erratiques, traversant tous les niveaux</li>
+                    <li style="color: #cbd5e1; font-weight: 600;">Strategie: REDUIRE la taille ou ATTENDRE, pas de scalping</li>
+                </ul>
+            </div>
+
 </div>
-            
+
         </section>
-        
+
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">🔧 Comment identifier le régime actuel</h2>
-            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              CHECKLIST D&#x27;IDENTIFICATION DU RÉGIME                        │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  CHAQUE MATIN, VÉRIFIEZ:                                                 │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  1. GEX (MenthorQ)                                                       │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     □ Très positif → Range probable                                     │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     □ Neutre → Peut aller dans les deux sens                            │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     □ Négatif → Trending ou volatile                                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  2. POSITION VS HVL                                                      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     □ Au-dessus → Gamma positif, calme                                  │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     □ En-dessous → Gamma négatif, potentiellement explosif              │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  3. VIX                                                                  │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     □ &lt; 15 → Complaisance, peut reverser                                │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     □ 15-20 → Normal                                                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     □ &gt; 20 → Stress, prudence                                           │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     □ &gt; 30 → Panique, opportunités mais risque extrême                  │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  4. TENDANCE HTF (Daily)                                                 │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     □ Higher highs → Trending haussier                                  │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     □ Lower lows → Trending baissier                                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     □ Pas de direction claire → Range                                   │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  5. CALENDRIER                                                           │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     □ FOMC/NFP/CPI → Potentiel changement de régime                     │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     □ OPEX → Volatilité accrue                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│     □ Jour normal → Régime actuel continue probablement                 │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">
+
+            <p style="margin-bottom: 16px; font-size: 13px; color: #94a3b8;">Chaque matin, verifiez ces 5 indicateurs pour determiner le regime du jour.</p>
+
+            <div style="overflow-x: auto;">
+                <table class="checklist-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 28%;">Indicateur</th>
+                            <th style="width: 36%;">Valeur</th>
+                            <th style="width: 36%;">Interpretation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- GEX -->
+                        <tr>
+                            <td rowspan="3" style="font-weight: 600; color: #00B4DC; vertical-align: middle;">
+                                <div style="display:flex; align-items:center; gap:6px;">
+                                    <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="#00B4DC" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 10 L8 5 L11 10"/></svg>
+                                    GEX (MenthorQ)
+                                </div>
+                            </td>
+                            <td class="signal-val" style="color: #00B4DC;">Tres positif</td>
+                            <td>Range probable</td>
+                        </tr>
+                        <tr>
+                            <td class="signal-val" style="color: #94a3b8;">Neutre</td>
+                            <td>Peut aller dans les deux sens</td>
+                        </tr>
+                        <tr>
+                            <td class="signal-val" style="color: #ef4444;">Negatif</td>
+                            <td>Trending ou volatile</td>
+                        </tr>
+                        <!-- HVL -->
+                        <tr>
+                            <td rowspan="2" style="font-weight: 600; color: #D4AF37; vertical-align: middle; border-top: 1px solid rgba(255,255,255,0.08);">
+                                <div style="display:flex; align-items:center; gap:6px;">
+                                    <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="#D4AF37" stroke-width="1.5"><circle cx="8" cy="8" r="5"/><line x1="8" y1="3" x2="8" y2="13"/></svg>
+                                    Position vs HVL
+                                </div>
+                            </td>
+                            <td class="signal-val" style="color: #22c55e; border-top: 1px solid rgba(255,255,255,0.08);">Au-dessus</td>
+                            <td style="border-top: 1px solid rgba(255,255,255,0.08);">Gamma positif, calme</td>
+                        </tr>
+                        <tr>
+                            <td class="signal-val" style="color: #ef4444;">En-dessous</td>
+                            <td>Gamma negatif, potentiellement explosif</td>
+                        </tr>
+                        <!-- VIX -->
+                        <tr>
+                            <td rowspan="4" style="font-weight: 600; color: #D4AF37; vertical-align: middle; border-top: 1px solid rgba(255,255,255,0.08);">
+                                <div style="display:flex; align-items:center; gap:6px;">
+                                    <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="#D4AF37" stroke-width="1.5"><path d="M3 12 L6 4 L9 10 L12 2 L15 8"/></svg>
+                                    VIX
+                                </div>
+                            </td>
+                            <td class="signal-val" style="color: #22c55e; border-top: 1px solid rgba(255,255,255,0.08);">&lt; 15</td>
+                            <td style="border-top: 1px solid rgba(255,255,255,0.08);">Complaisance, peut reverser</td>
+                        </tr>
+                        <tr>
+                            <td class="signal-val" style="color: #94a3b8;">15 - 20</td>
+                            <td>Normal</td>
+                        </tr>
+                        <tr>
+                            <td class="signal-val" style="color: #D4AF37;">&gt; 20</td>
+                            <td>Stress, prudence</td>
+                        </tr>
+                        <tr>
+                            <td class="signal-val" style="color: #ef4444;">&gt; 30</td>
+                            <td>Panique, opportunites mais risque extreme</td>
+                        </tr>
+                        <!-- Tendance HTF -->
+                        <tr>
+                            <td rowspan="3" style="font-weight: 600; color: #00B4DC; vertical-align: middle; border-top: 1px solid rgba(255,255,255,0.08);">
+                                <div style="display:flex; align-items:center; gap:6px;">
+                                    <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="#00B4DC" stroke-width="1.5"><path d="M2 14 L8 4 L14 14"/></svg>
+                                    Tendance HTF (Daily)
+                                </div>
+                            </td>
+                            <td class="signal-val" style="color: #22c55e; border-top: 1px solid rgba(255,255,255,0.08);">Higher highs</td>
+                            <td style="border-top: 1px solid rgba(255,255,255,0.08);">Trending haussier</td>
+                        </tr>
+                        <tr>
+                            <td class="signal-val" style="color: #ef4444;">Lower lows</td>
+                            <td>Trending baissier</td>
+                        </tr>
+                        <tr>
+                            <td class="signal-val" style="color: #94a3b8;">Pas de direction</td>
+                            <td>Range</td>
+                        </tr>
+                        <!-- Calendrier -->
+                        <tr>
+                            <td rowspan="3" style="font-weight: 600; color: #D4AF37; vertical-align: middle; border-top: 1px solid rgba(255,255,255,0.08);">
+                                <div style="display:flex; align-items:center; gap:6px;">
+                                    <svg viewBox="0 0 16 16" width="14" height="14" fill="none" stroke="#D4AF37" stroke-width="1.5"><rect x="2" y="3" width="12" height="11" rx="2"/><line x1="2" y1="7" x2="14" y2="7"/><line x1="6" y1="1" x2="6" y2="5"/><line x1="10" y1="1" x2="10" y2="5"/></svg>
+                                    Calendrier
+                                </div>
+                            </td>
+                            <td class="signal-val" style="color: #ef4444; border-top: 1px solid rgba(255,255,255,0.08);">FOMC / NFP / CPI</td>
+                            <td style="border-top: 1px solid rgba(255,255,255,0.08);">Potentiel changement de regime</td>
+                        </tr>
+                        <tr>
+                            <td class="signal-val" style="color: #D4AF37;">OPEX</td>
+                            <td>Volatilite accrue</td>
+                        </tr>
+                        <tr>
+                            <td class="signal-val" style="color: #94a3b8;">Jour normal</td>
+                            <td>Regime actuel continue probablement</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
 </div>
-            
+
         </section>
-        
+
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">🎓 SYNTHÈSE FINALE: Le trader MIA complet</h2>
-            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"><pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">┌─────────────────────────────────────────────────────────────────────────┐</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│              🎓 FÉLICITATIONS - VOUS ÊTES PRÊT!                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">├─────────────────────────────────────────────────────────────────────────┤</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  Vous avez maintenant toutes les connaissances pour:                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ✅ Comprendre les FUTURES (ES, NQ, RTY)                                 │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ✅ Identifier les SESSIONS optimales                                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ✅ Lire les NIVEAUX GEX, HVL, Gamma Walls                               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ✅ Interpréter le GAMMA (positif/négatif)                               │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ✅ Utiliser le VIX et les GREEKS                                        │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ✅ Reconnaître les RÉGIMES de marché                                    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ✅ Appliquer un RISK MANAGEMENT solide                                  │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ✅ Maintenir la DISCIPLINE psychologique                                │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  LE SYSTÈME MIA AUTOMATISE tout cela pour vous.                         │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  Mais comprendre le &quot;POURQUOI&quot; vous rend meilleur.                      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ═══════════════════════════════════════════════════════════════════    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  &quot;Donnez un poisson à un homme, il mangera un jour.                     │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│   Apprenez-lui à pêcher, il mangera toute sa vie.&quot;                      │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  ═══════════════════════════════════════════════════════════════════    │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│  Vous avez appris à pêcher. Maintenant, tradez avec discipline.         │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                          🚀 GOOD LUCK TRADING! 🚀                        │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">│                                                                          │</pre>
-<pre style="background: #1e293b; padding: 12px; border-radius: 8px; overflow-x: auto; font-size: 11px; color: #cbd5e1; font-family: monospace; white-space: pre;">└─────────────────────────────────────────────────────────────────────────┘</pre>
+            <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;">
+
+            <p style="margin-bottom: 16px;">Vous avez maintenant toutes les connaissances pour:</p>
+
+            <div class="synth-grid">
+                <div class="synth-item">
+                    <div class="synth-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                    <span>Comprendre les <strong style="color:#fff;">FUTURES</strong> (ES, NQ, RTY)</span>
+                </div>
+                <div class="synth-item">
+                    <div class="synth-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                    <span>Identifier les <strong style="color:#fff;">SESSIONS</strong> optimales</span>
+                </div>
+                <div class="synth-item">
+                    <div class="synth-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                    <span>Lire les niveaux <strong style="color:#fff;">GEX, HVL, Gamma Walls</strong></span>
+                </div>
+                <div class="synth-item">
+                    <div class="synth-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                    <span>Interpreter le <strong style="color:#fff;">GAMMA</strong> (positif/negatif)</span>
+                </div>
+                <div class="synth-item">
+                    <div class="synth-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                    <span>Utiliser le <strong style="color:#fff;">VIX</strong> et les <strong style="color:#fff;">GREEKS</strong></span>
+                </div>
+                <div class="synth-item">
+                    <div class="synth-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                    <span>Reconnaitre les <strong style="color:#fff;">REGIMES</strong> de marche</span>
+                </div>
+                <div class="synth-item">
+                    <div class="synth-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                    <span>Appliquer un <strong style="color:#fff;">RISK MANAGEMENT</strong> solide</span>
+                </div>
+                <div class="synth-item">
+                    <div class="synth-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>
+                    <span>Maintenir la <strong style="color:#fff;">DISCIPLINE</strong> psychologique</span>
+                </div>
+            </div>
+
+            <div style="background: rgba(0,180,220,0.08); border: 1px solid rgba(0,180,220,0.2); border-radius: 10px; padding: 16px; margin-top: 20px;">
+                <p style="margin: 0 0 6px 0; font-size: 14px; color: #00B4DC; font-weight: 600;">LE SYSTEME MIA AUTOMATISE tout cela pour vous.</p>
+                <p style="margin: 0; font-size: 13px; color: #94a3b8;">Mais comprendre le "POURQUOI" vous rend meilleur.</p>
+            </div>
+
+            <div class="quote-block">
+                <p>"Donnez un poisson a un homme, il mangera un jour.<br/>Apprenez-lui a pecher, il mangera toute sa vie."</p>
+            </div>
+
+            <p style="text-align: center; margin-top: 16px; font-size: 14px; color: #94a3b8;">Vous avez appris a pecher. Maintenant, tradez avec discipline.</p>
+
+            <!-- SVG decoratif: progression -->
+            <div style="text-align: center; margin-top: 20px;">
+                <svg viewBox="0 0 400 50" xmlns="http://www.w3.org/2000/svg" style="width: 100%; max-width: 400px;">
+                    <!-- Barre de progression -->
+                    <rect x="30" y="20" width="340" height="8" rx="4" fill="#1e293b"/>
+                    <rect x="30" y="20" width="340" height="8" rx="4" fill="url(#progGrad)"/>
+                    <defs>
+                        <linearGradient id="progGrad" x1="0" y1="0" x2="1" y2="0">
+                            <stop offset="0%" stop-color="#22c55e"/>
+                            <stop offset="50%" stop-color="#00B4DC"/>
+                            <stop offset="100%" stop-color="#D4AF37"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- Milestones -->
+                    <circle cx="30" cy="24" r="6" fill="#0A0E17" stroke="#22c55e" stroke-width="2"/>
+                    <text x="30" y="44" font-size="8" fill="#22c55e" text-anchor="middle" font-family="system-ui">Debut</text>
+                    <circle cx="145" cy="24" r="6" fill="#0A0E17" stroke="#00B4DC" stroke-width="2"/>
+                    <text x="145" y="44" font-size="8" fill="#00B4DC" text-anchor="middle" font-family="system-ui">Interm.</text>
+                    <circle cx="260" cy="24" r="6" fill="#0A0E17" stroke="#ef4444" stroke-width="2"/>
+                    <text x="260" y="44" font-size="8" fill="#ef4444" text-anchor="middle" font-family="system-ui">Avance</text>
+                    <circle cx="370" cy="24" r="8" fill="#D4AF37" stroke="#D4AF37" stroke-width="2"/>
+                    <text x="370" y="44" font-size="8" fill="#D4AF37" text-anchor="middle" font-weight="700" font-family="system-ui">PRET</text>
+                    <!-- Star in final circle -->
+                    <polygon points="370,20 372,23 375,23 373,25 374,28 370,26 366,28 367,25 365,23 368,23" fill="#0A0E17"/>
+                </svg>
+            </div>
+
 </div>
-            
+
         </section>
-        
+
         <section style="background: rgba(30,41,59,0.5); border: 1px solid rgba(255,255,255,0.1); padding: 20px; border-radius: 12px; margin-bottom: 16px;">
             <h2 style="font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 12px;">❌ ERREURS et ✅ POINTS CLÉS FINAUX</h2>
             <div style="color: #cbd5e1; font-size: 14px; line-height: 1.6;"></div>
@@ -465,9 +870,9 @@
 </ul>
 
         </section>
-        
+
         </article>
-        
+
         <nav style="display: flex; justify-content: space-between; margin-top: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.1);">
             <a href="/education/option-greeks-traders/" style="display: flex; align-items: center; gap: 8px; padding: 12px; background: #1e293b; border-radius: 8px; text-decoration: none;" onmouseover="this.style.background='#334155'" onmouseout="this.style.background='#1e293b'">
             <svg style="width: 16px; height: 16px; color: #94a3b8;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
