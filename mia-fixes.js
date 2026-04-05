@@ -28,6 +28,7 @@
     setTimeout(injectResultsSection, 5000);
     fixHeaderOpaque();
     fixTicker();
+    injectSEO();
   }
 
   // ─── #B CONTACT FORM → Discord webhook + email ───
@@ -663,6 +664,110 @@
       container.appendChild(script);
       ticker.appendChild(container);
     }, 2000);
+  }
+
+  // ─── #J SEO — Canonical, OG, JSON-LD, Meta descriptions ───
+  function injectSEO() {
+    var path = window.location.pathname;
+    var url = window.location.href;
+
+    // (a) Canonical link
+    if (!document.querySelector('link[rel="canonical"]')) {
+      var canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      canonical.href = url;
+      document.head.appendChild(canonical);
+    }
+
+    // (b) Corriger og:url pour la page courante
+    var ogUrl = document.querySelector('meta[property="og:url"]');
+    if (ogUrl) {
+      ogUrl.setAttribute('content', url);
+    } else {
+      var newOgUrl = document.createElement('meta');
+      newOgUrl.setAttribute('property', 'og:url');
+      newOgUrl.setAttribute('content', url);
+      document.head.appendChild(newOgUrl);
+    }
+
+    // (c) twitter:image si absente
+    if (!document.querySelector('meta[name="twitter:image"]')) {
+      var twImg = document.createElement('meta');
+      twImg.setAttribute('name', 'twitter:image');
+      twImg.setAttribute('content', 'https://mia-ia-system.com/images/og-image.png');
+      document.head.appendChild(twImg);
+    }
+
+    // (d) JSON-LD Organization + WebSite sur homepage uniquement
+    if (path === '/' || path === '/index.html') {
+      if (!document.querySelector('script[type="application/ld+json"]')) {
+        var ld = document.createElement('script');
+        ld.type = 'application/ld+json';
+        ld.textContent = JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "MIA IA SYSTEM",
+          "url": "https://mia-ia-system.com",
+          "logo": "https://mia-ia-system.com/images/logo-dark.jpg",
+          "description": "Intelligence artificielle pour le trading de futures ES et NQ. Dashboard live, briefing quotidien, 40 lecons education gratuites.",
+          "sameAs": [
+            "https://discord.gg/mia-ia-system",
+            "https://youtube.com/@mia-ia-system"
+          ]
+        });
+        document.head.appendChild(ld);
+
+        var ldSite = document.createElement('script');
+        ldSite.type = 'application/ld+json';
+        ldSite.textContent = JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "MIA IA SYSTEM",
+          "url": "https://mia-ia-system.com",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://mia-ia-system.com/education/?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        });
+        document.head.appendChild(ldSite);
+      }
+    }
+
+    // (e) Meta descriptions longues par page
+    var descriptions = {
+      '/': 'MIA IA SYSTEM : robot de trading IA qui analyse les marches ES et NQ 24h/24. Dashboard live, briefing quotidien, 40 lecons gratuites. Prenez de meilleures decisions.',
+      '/login/': 'Connectez-vous a votre dashboard MIA IA SYSTEM. Analyses de marche temps reel, briefings quotidiens, contexte marche complet, alertes trading ES NQ futures.',
+      '/register/': 'Creez votre compte MIA IA SYSTEM gratuitement. Dashboard trading IA, 40 lecons education, calendrier economique, briefings quotidiens ES et NQ futures.',
+      '/terms/': "Conditions generales d'utilisation du service MIA IA SYSTEM. Abonnements, politique d'annulation, responsabilite, propriete intellectuelle. Service de trading IA.",
+      '/privacy/': 'Politique de confidentialite MIA IA SYSTEM. Protection des donnees personnelles, RGPD, cookies, droits des utilisateurs. Service de trading algorithmique.',
+      '/legal/': "Mentions legales de MIA IA SYSTEM. Editeur, hebergement Vercel, propriete intellectuelle, donnees personnelles. Service d'aide a la decision trading futures.",
+      '/risk/': "Avertissement sur les risques de trading. Le trading de futures comporte des risques de perte en capital. MIA est un outil d'aide, pas un conseil financier."
+    };
+
+    var normalizedPath = path.replace(/\/index\.html$/, '/');
+    if (normalizedPath === '') normalizedPath = '/';
+    var newDesc = descriptions[normalizedPath];
+    if (newDesc) {
+      var metaDesc = document.querySelector('meta[name="description"]');
+      if (metaDesc) {
+        if (metaDesc.getAttribute('content').length < 140) {
+          metaDesc.setAttribute('content', newDesc);
+        }
+      } else {
+        var md = document.createElement('meta');
+        md.setAttribute('name', 'description');
+        md.setAttribute('content', newDesc);
+        document.head.appendChild(md);
+      }
+    }
+
+    // (f) Corriger title homepage si > 60 chars
+    if (normalizedPath === '/') {
+      if (document.title.length > 60) {
+        document.title = 'MIA IA SYSTEM \u2014 Trading IA Futures ES NQ';
+      }
+    }
   }
 
   // ─── INIT ───

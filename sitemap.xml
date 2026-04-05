@@ -1,64 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Pages principales -->
-  <url><loc>https://mia-ia-system.com/</loc><lastmod>2026-04-04</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://mia-ia-system.com/calendar/</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
-  
+  <url><loc>https://mia-ia-system.com/</loc><lastmod>2026-04-05</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://mia-ia-system.com/calendar/</loc><lastmod>2026-04-05</lastmod><changefreq>daily</changefreq><priority>0.8</priority></url>
+
   <!-- Éducation -->
-  <url><loc>https://mia-ia-system.com/education/</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  
+  <url><loc>https://mia-ia-system.com/education/</loc><lastmod>2026-04-05</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+
   <!-- Débutant (10) -->
-  <url><loc>https://mia-ia-system.com/education/futures-101/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/trading-sessions/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/candlestick-basics/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/support-resistance/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/volume-importance/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/risk-management/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/trading-psychology/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/order-types/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/journaling-backtesting/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/economic-calendar/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  
+  <url><loc>https://mia-ia-system.com/education/futures-101/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/trading-sessions/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/candlestick-basics/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/support-resistance/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/volume-importance/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/risk-management/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/trading-psychology/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/order-types/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/journaling-backtesting/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/economic-calendar/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
   <!-- Intermédiaire (11) -->
-  <url><loc>https://mia-ia-system.com/education/multi-timeframe-analysis/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/call-resistance-put-support/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/hvl-gamma-flip/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/positive-negative-gamma/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/0dte-options-impact/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/expected-move-range/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/gamma-exposure/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/high-volume-levels/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/options-impact/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/market-makers/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/vwap-intraday/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  
+  <url><loc>https://mia-ia-system.com/education/multi-timeframe-analysis/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/call-resistance-put-support/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/hvl-gamma-flip/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/positive-negative-gamma/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/0dte-options-impact/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/expected-move-range/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/gamma-exposure/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/high-volume-levels/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/options-impact/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/market-makers/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/vwap-intraday/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
   <!-- Avancé (14) -->
-  <url><loc>https://mia-ia-system.com/education/orderflow/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/market-profile/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/delta-exposure-dex/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/gamma-walls-magnets/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/gex-levels-1-10/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/dealer-hedging-mechanics/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/correlation-intermarches/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/fibonacci-extensions/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/liquidity-sweeps/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/option-greeks-traders/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/vix-vvix-volatility/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/money-management/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/regime-based-trading/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/battle-navale/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  
+  <url><loc>https://mia-ia-system.com/education/orderflow/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/market-profile/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/delta-exposure-dex/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/gamma-walls-magnets/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/gex-levels-1-10/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/dealer-hedging-mechanics/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/correlation-intermarches/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/fibonacci-extensions/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/liquidity-sweeps/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/option-greeks-traders/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/vix-vvix-volatility/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/money-management/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/regime-based-trading/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/battle-navale/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
   <!-- MIA Spécifique (5) -->
-  <url><loc>https://mia-ia-system.com/education/pourquoi-bots-meurent/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/quand-couper-mia/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/une-journee-avec-mia/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/mental-discipline-ia/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://mia-ia-system.com/education/blind-spots-trading/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  
+  <url><loc>https://mia-ia-system.com/education/pourquoi-bots-meurent/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/quand-couper-mia/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/une-journee-avec-mia/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/mental-discipline-ia/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://mia-ia-system.com/education/blind-spots-trading/</loc><lastmod>2026-04-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
   <!-- Pages légales -->
-  <url><loc>https://mia-ia-system.com/terms/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://mia-ia-system.com/privacy/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://mia-ia-system.com/legal/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://mia-ia-system.com/risk/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://mia-ia-system.com/terms/</loc><lastmod>2026-04-05</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://mia-ia-system.com/privacy/</loc><lastmod>2026-04-05</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://mia-ia-system.com/legal/</loc><lastmod>2026-04-05</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://mia-ia-system.com/risk/</loc><lastmod>2026-04-05</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <!-- coming-soon retire — dashboard live sur VPS -->
 </urlset>
