@@ -23,7 +23,9 @@
     fixLoginRegister();
     fixFooterDashboard();
     hideGoogleOAuth();
-    injectResultsSection();
+    setTimeout(injectResultsSection, 1000);
+    setTimeout(injectResultsSection, 3000);
+    setTimeout(injectResultsSection, 5000);
     fixHeaderOpaque();
     fixTicker();
   }
