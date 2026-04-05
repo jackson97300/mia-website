@@ -2,7 +2,25 @@
    MIA IA SYSTEM — Patch CSS v4.0 (18/03/2026)
    ═══════════════════════════════════════════════════════════════ */
 
-/* #0 FIX: Body padding pour ticker (46px) + header (64px) */
+/* #0 FIX: Forcer le layout ticker + header + body */
+#mia-tv-ticker {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 46px !important;
+  z-index: 99999 !important;
+  background: #0A0E17 !important;
+  border-bottom: 1px solid rgba(0,212,255,0.15) !important;
+}
+header.fixed,
+header[class*="fixed"],
+header[style*="position: fixed"] {
+  top: 46px !important;
+  background: #0A0E17 !important;
+  backdrop-filter: none !important;
+  z-index: 100 !important;
+}
 body {
   padding-top: 110px !important;
 }
