@@ -438,7 +438,8 @@
           '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Alertes Discord (5/jour)</li>' +
           '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Briefings archives</li>' +
         '</ul>' +
-        '<a href="' + DASHBOARD_URL + '" class="w-full py-2.5 rounded-lg font-semibold text-sm text-center block text-[#0A0E17]" style="background:linear-gradient(135deg,#00B4DC,#0090B0);">Commencer — 7j gratuit</a>' +
+        '<a href="' + DASHBOARD_URL + '" class="w-full py-2.5 rounded-lg font-semibold text-sm text-center block text-[#0A0E17]" style="background:linear-gradient(135deg,#00B4DC,#0090B0);">Essayer 7j gratuit</a>' +
+        '<div style="text-align:center;margin-top:6px;font-size:0.6875rem;color:#9CA3AF;">puis 19$/mois · annulez a tout moment</div>' +
       '</div>' +
       '<div class="glass p-6 text-center flex flex-col">' +
         '<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-[#D4AF37]/10 text-[#D4AF37] mb-4 mx-auto">PRO</span>' +
@@ -455,19 +456,17 @@
           '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>CTA Positioning</li>' +
           '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Alertes Discord illimitees</li>' +
         '</ul>' +
-        '<a href="https://buy.stripe.com/5kQ00b9wK3bla01dcf6AM03" target="_blank" class="w-full py-2.5 rounded-lg font-semibold text-sm text-center block" style="background:linear-gradient(135deg,#D4AF37,#B8960C);color:#0A0E17;">Choisir Pro</a>' +
+        '<a href="' + DASHBOARD_URL + '" class="w-full py-2.5 rounded-lg font-semibold text-sm text-center block" style="background:linear-gradient(135deg,#D4AF37,#B8960C);color:#0A0E17;">Essayer 7j gratuit</a>' +
+        '<div style="text-align:center;margin-top:6px;font-size:0.6875rem;color:#9CA3AF;">puis 49$/mois · annulez a tout moment</div>' +
       '</div>';
 
-    // Teaser Premium
-    var teaser = document.createElement('div');
-    teaser.className = 'max-w-3xl mx-auto mt-6';
-    teaser.innerHTML = '<div style="background:rgba(212,175,55,0.05);border:1px solid rgba(212,175,55,0.2);border-radius:0.75rem;padding:1rem;text-align:center;">' +
-      '<span style="color:#D4AF37;font-weight:700;font-size:0.875rem;">Premium — Bientot disponible</span>' +
-      '<p style="color:#94A3B8;font-size:0.8rem;margin-top:0.375rem;">Order Flow, Options & Gamma, Signaux ML seront disponibles quand le bot aura un track record verifiable.</p>' +
-      '</div>';
+    // Footer pricing
+    var footer = document.createElement('div');
+    footer.className = 'max-w-5xl mx-auto mt-8';
+    footer.innerHTML = '<p style="text-align:center;color:#64748B;font-size:0.8125rem;">Pas de carte bancaire requise pour l\'essai · Annulez a tout moment · <a href="' + DASHBOARD_URL + '/billing" style="color:#00B4DC;text-decoration:underline;">Comparer en detail</a></p>';
 
     oldGrid.parentNode.insertBefore(newGrid, oldGrid.nextSibling);
-    oldGrid.parentNode.insertBefore(teaser, newGrid.nextSibling);
+    oldGrid.parentNode.insertBefore(footer, newGrid.nextSibling);
   }
 
   // ─── #D LOGIN/REGISTER : Redirect direct vers dashboard (auth unique) ───
