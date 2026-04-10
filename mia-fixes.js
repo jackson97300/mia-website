@@ -642,19 +642,23 @@
   // Ce div est opaque (#0A0E17) et masque tout contenu qui scrolle sous le header.
   function fixHeaderOpaque() {
     var header = document.querySelector('header.fixed') || document.querySelector('header[class*="fixed"]') || document.querySelector('header');
-    if (header) {
-      forceHeaderOpaque(header);
-      // Forcer position fixed si pas deja fixe
-      var cs = window.getComputedStyle(header);
-      if (cs.position !== 'fixed' && cs.position !== 'sticky') {
-        header.style.setProperty('position', 'fixed', 'important');
-        header.style.setProperty('top', '46px', 'important');
-        header.style.setProperty('left', '0', 'important');
-        header.style.setProperty('right', '0', 'important');
-        header.style.setProperty('width', '100%', 'important');
-      }
-      header.style.setProperty('z-index', '100', 'important');
+    function forceFixed(h) {
+      if (!h) return;
+      forceHeaderOpaque(h);
+      h.style.setProperty('position', 'fixed', 'important');
+      h.style.setProperty('top', '46px', 'important');
+      h.style.setProperty('left', '0', 'important');
+      h.style.setProperty('right', '0', 'important');
+      h.style.setProperty('width', '100%', 'important');
+      h.style.setProperty('z-index', '100', 'important');
+      h.style.setProperty('background', '#0A0E17', 'important');
     }
+    forceFixed(header);
+    // Re-forcer apres hydration React (React ecrase le style)
+    setTimeout(function () { forceFixed(document.querySelector('header')); }, 500);
+    setTimeout(function () { forceFixed(document.querySelector('header')); }, 1500);
+    setTimeout(function () { forceFixed(document.querySelector('header')); }, 3000);
+    setTimeout(function () { forceFixed(document.querySelector('header')); }, 5000);
 
     // Creer le backdrop shield (une seule fois)
     if (!document.getElementById('mia-header-bg')) {
