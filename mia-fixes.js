@@ -421,7 +421,7 @@
           '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Education (40 lecons)</li>' +
           '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Calendrier economique</li>' +
         '</ul>' +
-        '<a href="' + DASHBOARD_URL + '" class="w-full py-2.5 rounded-lg bg-white/10 text-light-400 font-semibold text-sm text-center block">Acceder gratuitement</a>' +
+        '<a href="' + DASHBOARD_URL + '/welcome" class="w-full py-2.5 rounded-lg bg-white/10 text-light-400 font-semibold text-sm text-center block">Acceder gratuitement</a>' +
       '</div>' +
       '<div class="glass p-6 text-center flex flex-col border-[#00B4DC] scale-105 shadow-lg shadow-[#00B4DC]/10" style="border-color:#00B4DC;">' +
         '<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-[#00B4DC]/15 text-[#00B4DC] mb-4 mx-auto">RECOMMANDE</span>' +
@@ -438,7 +438,7 @@
           '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Alertes Discord (5/jour)</li>' +
           '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Briefings archives</li>' +
         '</ul>' +
-        '<a href="' + DASHBOARD_URL + '" class="w-full py-2.5 rounded-lg font-semibold text-sm text-center block text-[#0A0E17]" style="background:linear-gradient(135deg,#00B4DC,#0090B0);">Essayer 7j gratuit</a>' +
+        '<a href="' + DASHBOARD_URL + '/welcome" class="w-full py-2.5 rounded-lg font-semibold text-sm text-center block text-[#0A0E17]" style="background:linear-gradient(135deg,#00B4DC,#0090B0);">Essayer 7j gratuit</a>' +
         '<div style="text-align:center;margin-top:6px;font-size:0.6875rem;color:#9CA3AF;">puis 19$/mois · annulez a tout moment</div>' +
       '</div>' +
       '<div class="glass p-6 text-center flex flex-col">' +
@@ -456,7 +456,7 @@
           '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>CTA Positioning</li>' +
           '<li class="flex items-start gap-2 text-sm text-light-300"><span class="text-green-500">&#10003;</span>Alertes Discord illimitees</li>' +
         '</ul>' +
-        '<a href="' + DASHBOARD_URL + '" class="w-full py-2.5 rounded-lg font-semibold text-sm text-center block" style="background:linear-gradient(135deg,#D4AF37,#B8960C);color:#0A0E17;">Essayer 7j gratuit</a>' +
+        '<a href="' + DASHBOARD_URL + '/welcome" class="w-full py-2.5 rounded-lg font-semibold text-sm text-center block" style="background:linear-gradient(135deg,#D4AF37,#B8960C);color:#0A0E17;">Essayer 7j gratuit</a>' +
         '<div style="text-align:center;margin-top:6px;font-size:0.6875rem;color:#9CA3AF;">puis 49$/mois · annulez a tout moment</div>' +
       '</div>';
 
@@ -475,14 +475,14 @@
     // Pages /login et /register : redirect immediat vers le dashboard
     // L'auth se fait uniquement sur le dashboard (1 seul formulaire)
     if (path.indexOf('/login') !== -1 || path.indexOf('/register') !== -1) {
-      window.location.href = DASHBOARD_URL;
+      window.location.href = DASHBOARD_URL + '/welcome';
       return;
     }
     // Intercepter les liens "Connexion" et "Inscription" dans la navbar
     document.querySelectorAll('a').forEach(function (a) {
       var href = a.getAttribute('href') || '';
       if (href.indexOf('/login') !== -1 || href.indexOf('/register') !== -1) {
-        a.href = DASHBOARD_URL;
+        a.href = DASHBOARD_URL + '/welcome';
         a.removeAttribute('target');
       }
     });
