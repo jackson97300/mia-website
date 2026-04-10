@@ -629,9 +629,18 @@
   // On injecte un div#mia-header-bg DERRIERE le header, hors de l'arbre React.
   // Ce div est opaque (#0A0E17) et masque tout contenu qui scrolle sous le header.
   function fixHeaderOpaque() {
-    var header = document.querySelector('header.fixed') || document.querySelector('header[class*="fixed"]');
+    var header = document.querySelector('header.fixed') || document.querySelector('header[class*="fixed"]') || document.querySelector('header');
     if (header) {
       forceHeaderOpaque(header);
+      // Forcer position fixed si pas deja fixe
+      var cs = window.getComputedStyle(header);
+      if (cs.position !== 'fixed' && cs.position !== 'sticky') {
+        header.style.setProperty('position', 'fixed', 'important');
+        header.style.setProperty('top', '46px', 'important');
+        header.style.setProperty('left', '0', 'important');
+        header.style.setProperty('right', '0', 'important');
+        header.style.setProperty('width', '100%', 'important');
+      }
       header.style.setProperty('z-index', '100', 'important');
     }
 
