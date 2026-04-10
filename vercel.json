@@ -4,6 +4,28 @@
   "framework": null,
   "cleanUrls": true,
   "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/login",
+      "destination": "https://dashboard.mia-ia-system.com/welcome",
+      "permanent": false
+    },
+    {
+      "source": "/login/",
+      "destination": "https://dashboard.mia-ia-system.com/welcome",
+      "permanent": false
+    },
+    {
+      "source": "/register",
+      "destination": "https://dashboard.mia-ia-system.com/welcome",
+      "permanent": false
+    },
+    {
+      "source": "/register/",
+      "destination": "https://dashboard.mia-ia-system.com/welcome",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
       "source": "/mia-fixes.js",
