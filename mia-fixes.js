@@ -200,12 +200,30 @@
   // ─── #A DASHBOARD REDIRECT → Dashboard VPS live ───
   var DASHBOARD_URL = 'https://dashboard.mia-ia-system.com';
   function setupDashboardRedirect() {
-    // Tous les liens dashboard et coming-soon → /welcome (auto-redirect si deja loggue)
-    var links = document.querySelectorAll('a[href*="dashboard.mia-ia-system.com"], a[href*="/coming-soon"]');
-    links.forEach(function (link) {
-      link.href = DASHBOARD_URL + '/welcome';
-      link.removeAttribute('target');
-    });
+    // Intercepter TOUS les clics sur les liens dashboard et coming-soon
+    // On utilise event delegation sur document pour survivre a l'hydration React
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a');
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+      if (href.indexOf('dashboard.mia-ia-system.com') !== -1 || href.indexOf('/coming-soon') !== -1) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.location.href = DASHBOARD_URL + '/welcome';
+      }
+    }, true);
+    // Aussi modifier les href directement (pour le SEO et hover preview)
+    function patchLinks() {
+      document.querySelectorAll('a[href*="dashboard.mia-ia-system.com"], a[href*="/coming-soon"]').forEach(function (link) {
+        link.href = DASHBOARD_URL + '/welcome';
+        link.removeAttribute('target');
+      });
+    }
+    patchLinks();
+    // Re-patch apres hydration React (1s, 3s, 5s)
+    setTimeout(patchLinks, 1000);
+    setTimeout(patchLinks, 3000);
+    setTimeout(patchLinks, 5000);
   }
 
   // ─── #6 NAVBAR AUTO-HIDE ───
@@ -465,20 +483,22 @@
   // ─── #D LOGIN/REGISTER : Redirect direct vers dashboard (auth unique) ───
   function fixLoginRegister() {
     var path = window.location.pathname;
-    // Pages /login et /register : redirect immediat vers le dashboard
-    // L'auth se fait uniquement sur le dashboard (1 seul formulaire)
+    // Pages /login et /register : redirect immediat (backup du script inline)
     if (path.indexOf('/login') !== -1 || path.indexOf('/register') !== -1) {
-      window.location.href = DASHBOARD_URL + '/welcome';
+      window.location.replace(DASHBOARD_URL + '/welcome');
       return;
     }
-    // Intercepter les liens "Connexion" et "Inscription" dans la navbar
-    document.querySelectorAll('a').forEach(function (a) {
-      var href = a.getAttribute('href') || '';
+    // Intercepter les clics sur liens login/register (event delegation, survit a React)
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a');
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
       if (href.indexOf('/login') !== -1 || href.indexOf('/register') !== -1) {
-        a.href = DASHBOARD_URL + '/welcome';
-        a.removeAttribute('target');
+        e.preventDefault();
+        e.stopPropagation();
+        window.location.href = DASHBOARD_URL + '/welcome';
       }
-    });
+    }, true);
   }
 
   // ─── #E FOOTER : Ajouter lien Dashboard + Discord ───
