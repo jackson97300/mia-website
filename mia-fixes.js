@@ -646,7 +646,7 @@
       if (!h) return;
       forceHeaderOpaque(h);
       h.style.setProperty('position', 'fixed', 'important');
-      h.style.setProperty('top', '46px', 'important');
+      h.style.setProperty('top', '0', 'important');
       h.style.setProperty('left', '0', 'important');
       h.style.setProperty('right', '0', 'important');
       h.style.setProperty('width', '100%', 'important');
@@ -660,25 +660,8 @@
     setTimeout(function () { forceFixed(document.querySelector('header')); }, 3000);
     setTimeout(function () { forceFixed(document.querySelector('header')); }, 5000);
 
-    // Creer le backdrop shield (une seule fois)
-    if (!document.getElementById('mia-header-bg')) {
-      var shield = document.createElement('div');
-      shield.id = 'mia-header-bg';
-      shield.style.cssText = [
-        'position:fixed',
-        'top:46px',
-        'left:0',
-        'right:0',
-        'height:64px',
-        'background:#0A0E17',
-        'z-index:99',
-        'pointer-events:none'
-      ].join(';');
-      document.body.appendChild(shield);
-    }
-
-    // Body padding : ticker 46px + header 64px = 110px
-    document.body.style.setProperty('padding-top', '110px', 'important');
+    // Body padding : header 64px
+    document.body.style.setProperty('padding-top', '64px', 'important');
     // Le hero section (#hero ou premiere section) a souvent son propre pt-24
     var hero = document.getElementById('hero') || document.querySelector('main > section:first-child') || document.querySelector('.min-h-screen > main');
     if (hero) {
