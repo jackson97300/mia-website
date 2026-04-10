@@ -200,18 +200,11 @@
   // ─── #A DASHBOARD REDIRECT → Dashboard VPS live ───
   var DASHBOARD_URL = 'https://dashboard.mia-ia-system.com';
   function setupDashboardRedirect() {
-    var links = document.querySelectorAll('a[href*="dashboard.mia-ia-system.com"]');
+    // Tous les liens dashboard et coming-soon → /welcome (auto-redirect si deja loggue)
+    var links = document.querySelectorAll('a[href*="dashboard.mia-ia-system.com"], a[href*="/coming-soon"]');
     links.forEach(function (link) {
-      link.href = DASHBOARD_URL;
-      link.setAttribute('target', '_blank');
-      link.setAttribute('rel', 'noopener noreferrer');
-    });
-    // Aussi intercepter les liens /coming-soon/
-    var comingSoonLinks = document.querySelectorAll('a[href*="/coming-soon"]');
-    comingSoonLinks.forEach(function (link) {
-      link.href = DASHBOARD_URL;
-      link.setAttribute('target', '_blank');
-      link.setAttribute('rel', 'noopener noreferrer');
+      link.href = DASHBOARD_URL + '/welcome';
+      link.removeAttribute('target');
     });
   }
 
@@ -499,7 +492,7 @@
     if (!linkContainer) return;
     // Ajouter Dashboard
     var dashLink = document.createElement('a');
-    dashLink.href = DASHBOARD_URL;
+    dashLink.href = DASHBOARD_URL + '/welcome';
     dashLink.target = '_blank';
     dashLink.rel = 'noopener noreferrer';
     dashLink.textContent = 'Dashboard';
