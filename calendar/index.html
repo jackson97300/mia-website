@@ -151,30 +151,187 @@
       </div>
     </div>
 
-    <!-- Widget TradingView -->
+    <!-- FIX 30/04 2026 (Jackson) : remplace widget TradingView decoratif par
+         render live des events depuis dashboard.mia-ia-system.com/api/calendar
+         (= meme source que le bot MIA, ForexFactory cache 6h). CORS OK via
+         app.py allow_origins. -->
     <div class="widget-wrap">
       <div class="widget-head">
-        <span class="widget-title">Calendrier Temps Reel</span>
+        <span class="widget-title">Calendrier Temps Reel - <span id="eco-source-label">Source MIA</span></span>
         <div class="widget-links">
           <a href="https://www.forexfactory.com/calendar" target="_blank" rel="noopener">ForexFactory &#8599;</a>
-          <a href="https://fr.investing.com/economic-calendar/" target="_blank" rel="noopener">Investing.com &#8599;</a>
+          <a href="https://dashboard.mia-ia-system.com/calendar" target="_blank">Dashboard MIA &#8599;</a>
         </div>
       </div>
-      <div class="tradingview-widget-container">
-        <div class="tradingview-widget-container__widget"></div>
-        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
-        {
-          "colorTheme": "dark",
-          "isTransparent": true,
-          "width": "100%",
-          "height": "550",
-          "locale": "fr",
-          "importanceFilter": "0,1",
-          "countryFilter": "us"
-        }
-        </script>
+      <div style="padding:1rem 1.25rem;">
+
+        <!-- Fenetres de session structurelles (toujours actives) -->
+        <div style="margin-bottom:1.25rem;padding:1rem;border-radius:0.5rem;background:rgba(33,150,243,0.04);border:1px solid rgba(33,150,243,0.15);">
+          <div style="font-size:0.875rem;font-weight:700;color:#42a5f5;margin-bottom:0.75rem;letter-spacing:0.5px;text-transform:uppercase;">Fenetres de session (toujours actives)</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0.625rem;">
+            <div style="padding:0.625rem 0.875rem;background:rgba(255,152,0,0.10);border-radius:0.375rem;border-left:3px solid #ff9800;">
+              <div style="font-size:0.75rem;font-weight:700;color:#ffa726;letter-spacing:0.3px;">OPEN US VOLATILITE</div>
+              <div style="font-size:0.875rem;color:#fff;margin-top:0.25rem;">15h15 - 15h45 Paris (ete)</div>
+              <div style="font-size:0.6875rem;color:#94A3B8;margin-top:0.125rem;">09:15-09:45 ET — Volatilite ouverture RTH</div>
+            </div>
+            <div style="padding:0.625rem 0.875rem;background:rgba(244,67,54,0.10);border-radius:0.375rem;border-left:3px solid #f44336;">
+              <div style="font-size:0.75rem;font-weight:700;color:#ef5350;letter-spacing:0.3px;">CLOSE US + OVERNIGHT</div>
+              <div style="font-size:0.875rem;color:#fff;margin-top:0.25rem;">21h30 &rarr; 03h30 Paris (lendemain)</div>
+              <div style="font-size:0.6875rem;color:#94A3B8;margin-top:0.125rem;">15:30-21:30 ET — MOC + pause overnight + buffer Tokyo</div>
+            </div>
+            <div style="padding:0.625rem 0.875rem;background:rgba(158,158,158,0.10);border-radius:0.375rem;border-left:3px solid #9e9e9e;">
+              <div style="font-size:0.75rem;font-weight:700;color:#bdbdbd;letter-spacing:0.3px;">WEEKEND</div>
+              <div style="font-size:0.875rem;color:#fff;margin-top:0.25rem;">Vendredi 21h30 &rarr; Lundi 03h30 Paris</div>
+              <div style="font-size:0.6875rem;color:#94A3B8;margin-top:0.125rem;">Vendredi 15:30 ET &rarr; Dimanche 21:30 ET</div>
+            </div>
+          </div>
+          <div style="margin-top:0.75rem;font-size:0.75rem;color:#CBD5E1;">
+            Pendant ces fenetres : <strong style="color:#ffa726;">pas de nouveau trade</strong>, mais TP/SL en cours restent actifs.
+          </div>
+        </div>
+
+        <!-- Status banner -->
+        <div id="eco-status-banner" style="margin-bottom:1rem;padding:1rem;border-radius:0.5rem;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);">
+          <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+            <div id="eco-block-badge" style="padding:0.5rem 1rem;border-radius:0.375rem;font-weight:700;font-size:0.875rem;letter-spacing:0.5px;">Chargement...</div>
+            <div id="eco-next-event" style="font-size:0.875rem;color:#CBD5E1;"></div>
+            <div style="flex:1"></div>
+            <div id="eco-cache-info" style="font-size:0.75rem;color:#64748B;"></div>
+          </div>
+        </div>
+
+        <!-- Events list -->
+        <div id="eco-events-list">
+          <div style="text-align:center;padding:2rem;color:#64748B;">Chargement events...</div>
+        </div>
       </div>
     </div>
+
+    <script>
+    (function() {
+      var DASHBOARD_API = "https://dashboard.mia-ia-system.com";
+      var $eco = function(id) { return document.getElementById(id); };
+
+      function _impactColor(impact, isBlocking, isCritical) {
+        if (isCritical) return { bg: "rgba(244,67,54,0.18)", fg: "#ef5350", label: "CRITIQUE" };
+        if (isBlocking) return { bg: "rgba(255,152,0,0.18)", fg: "#ffa726", label: "HIGH" };
+        if (impact === "Medium") return { bg: "rgba(255,193,7,0.15)", fg: "#ffc107", label: "MEDIUM" };
+        if (impact === "Low") return { bg: "rgba(255,255,255,0.06)", fg: "#94A3B8", label: "LOW" };
+        return { bg: "rgba(255,255,255,0.04)", fg: "#94A3B8", label: impact };
+      }
+
+      function _fmt(d) {
+        try { return new Date(d).toLocaleTimeString("fr-FR", { hour: "2-digit", minute: "2-digit" }); }
+        catch (e) { return "?"; }
+      }
+
+      function _formatCmeDay(yyyymmdd) {
+        if (!yyyymmdd || yyyymmdd.length !== 8) return "Aujourd'hui";
+        try {
+          var y = parseInt(yyyymmdd.slice(0, 4), 10);
+          var mo = parseInt(yyyymmdd.slice(4, 6), 10) - 1;
+          var d = parseInt(yyyymmdd.slice(6, 8), 10);
+          var dt = new Date(Date.UTC(y, mo, d, 12, 0, 0));
+          var fmt = dt.toLocaleDateString("fr-FR", {
+            weekday: "long", day: "numeric", month: "long", year: "numeric", timeZone: "UTC"
+          });
+          return fmt.charAt(0).toUpperCase() + fmt.slice(1);
+        } catch (e) { return yyyymmdd; }
+      }
+
+      function _sessionBadge(sessionLabel) {
+        var colors = {
+          "Asia":     { bg: "rgba(33,150,243,0.18)", fg: "#42a5f5" },
+          "London":   { bg: "rgba(156,39,176,0.18)", fg: "#ba68c8" },
+          "US RTH":   { bg: "rgba(76,175,80,0.18)",  fg: "#66bb6a" },
+          "Close US": { bg: "rgba(255,152,0,0.18)",  fg: "#ffa726" }
+        };
+        var c = colors[sessionLabel] || { bg: "rgba(255,255,255,0.08)", fg: "#94A3B8" };
+        return '<span style="font-size:0.6875rem;font-weight:700;letter-spacing:0.5px;padding:0.1875rem 0.5rem;border-radius:0.25rem;background:' + c.bg + ';color:' + c.fg + ';">SESSION ' + sessionLabel.toUpperCase() + '</span>';
+      }
+
+      function refresh() {
+        Promise.all([
+          fetch(DASHBOARD_API + "/api/calendar/status").then(function (r) { return r.json(); }).catch(function () { return null; }),
+          fetch(DASHBOARD_API + "/api/calendar/today").then(function (r) { return r.json(); }).catch(function () { return null; })
+        ]).then(function (arr) {
+          var status = arr[0], today = arr[1];
+          if (status && status.ok) renderStatus(status);
+          if (today && today.ok) renderEvents(today.events || [], today.cme_trading_day, today.current_session);
+        });
+      }
+
+      function renderStatus(s) {
+        var badge = $eco("eco-block-badge");
+        var next = $eco("eco-next-event");
+        var cache = $eco("eco-cache-info");
+        if (s.blocked) {
+          var until = s.blocked_until_utc ? _fmt(s.blocked_until_utc) : "?";
+          badge.style.background = "rgba(244,67,54,0.20)";
+          badge.style.color = "#ef5350";
+          badge.style.border = "1px solid #f44336";
+          badge.textContent = "TRADING BLOQUE jusqu'a " + until;
+        } else {
+          badge.style.background = "rgba(76,175,80,0.15)";
+          badge.style.color = "#66bb6a";
+          badge.style.border = "1px solid #4caf50";
+          badge.textContent = "TRADING AUTORISE";
+        }
+        if (s.next_event) {
+          var ne = s.next_event;
+          var min = Math.floor((ne.in_seconds || 0) / 60);
+          var h = Math.floor(min / 60), m = min % 60;
+          var eta = h > 0 ? (h + "h" + m + "min") : (m + "min");
+          next.innerHTML = 'Prochain event blocking : <strong style="color:#00B4DC;">' + ne.title + '</strong> dans ' + eta + ' (' + _fmt(ne.ts_utc) + ')';
+        } else {
+          next.textContent = "Aucun event blocking restant cette semaine";
+        }
+        if (s.cache_age_sec !== null && s.cache_age_sec !== undefined) {
+          cache.textContent = "Cache : " + Math.floor(s.cache_age_sec / 60) + "min - Source ForexFactory";
+        }
+      }
+
+      function renderEvents(events, cmeTradingDay, currentSession) {
+        var list = $eco("eco-events-list");
+        if (!events.length) {
+          list.innerHTML = '<div style="text-align:center;padding:2rem;color:#64748B;">Aucun event eco dans la session courante</div>';
+          return;
+        }
+        var dayLabel = _formatCmeDay(cmeTradingDay);
+        var sessionHtml = currentSession ? _sessionBadge(currentSession) : '';
+        var html = '<div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;padding-bottom:0.5rem;border-bottom:1px solid rgba(255,255,255,0.08);flex-wrap:wrap;">';
+        html += '<h2 style="font-size:1.125rem;font-weight:700;color:#fff;margin:0;letter-spacing:0.3px;">' + dayLabel + '</h2>';
+        html += '<span style="font-size:0.6875rem;color:#94A3B8;font-weight:600;letter-spacing:0.3px;">CME TRADING DAY</span>';
+        html += sessionHtml;
+        html += '<span style="font-size:0.75rem;color:#94A3B8;margin-left:auto;">' + events.length + ' events</span>';
+        html += '</div>';
+        html += '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:0.5rem;">';
+        for (var i = 0; i < events.length; i++) {
+          var e = events[i];
+          var impact = e.impact || "?";
+          var c = _impactColor(impact, e.is_blocking, e.is_critical);
+          var time = _fmt(e.ts_utc);
+          var fcst = e.forecast || "—";
+          var prev = e.previous || "—";
+          html += '<div style="padding:0.625rem 0.875rem;border-radius:0.375rem;background:' + c.bg + ';border-left:3px solid ' + c.fg + ';">';
+          html += '<div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem;">';
+          html += '<span style="font-family:JetBrains Mono,monospace;font-weight:700;color:#fff;">' + time + '</span>';
+          html += '<span style="font-size:0.6875rem;font-weight:700;letter-spacing:0.5px;color:' + c.fg + ';">' + c.label + '</span>';
+          html += '<span style="font-size:0.6875rem;color:#94A3B8;background:rgba(255,255,255,0.05);padding:0.0625rem 0.375rem;border-radius:0.25rem;">' + (e.country || "?") + '</span>';
+          if (e.is_blocking) html += '<span style="margin-left:auto;font-size:0.625rem;color:' + c.fg + ';font-weight:700;">[BLOCK -15/+30]</span>';
+          html += '</div>';
+          html += '<div style="font-size:0.8125rem;color:#fff;margin-bottom:0.25rem;">' + (e.title || "?") + '</div>';
+          html += '<div style="font-size:0.6875rem;color:#94A3B8;font-family:JetBrains Mono,monospace;">prev: ' + prev + '  ·  fcst: ' + fcst + '</div>';
+          html += '</div>';
+        }
+        html += '</div>';
+        list.innerHTML = html;
+      }
+
+      refresh();
+      setInterval(refresh, 30000);
+    })();
+    </script>
 
     <!-- Info grid -->
     <div class="info-grid">
