@@ -117,14 +117,14 @@
       <a href="/calendar/" class="active">Calendrier</a>
     </nav>
     <div class="cal-right">
-      <a href="https://dashboard.mia-ia-system.com" class="btn-dash" target="_blank">Dashboard</a>
+      <a href="https://dashboard.mia-ia-system.com" class="btn-dash" target="_blank" rel="noopener noreferrer">Dashboard</a>
     </div>
   </header>
 
   <div class="cal-container">
 
     <h1 class="cal-title"><span class="gradient">Calendrier Economique</span></h1>
-    <p class="cal-sub">Evenements impactant ES, NQ, RTY — Donnees temps reel via TradingView</p>
+    <p class="cal-sub">Evenements impactant ES, NQ, RTY — Donnees ForexFactory via API MIA (cache 6h)</p>
     <span class="cal-warn">&#9888; MIA bloque automatiquement le trading 15 min avant les evenements critiques</span>
 
     <!-- Legende -->
@@ -160,7 +160,7 @@
         <span class="widget-title">Calendrier Temps Reel - <span id="eco-source-label">Source MIA</span></span>
         <div class="widget-links">
           <a href="https://www.forexfactory.com/calendar" target="_blank" rel="noopener">ForexFactory &#8599;</a>
-          <a href="https://dashboard.mia-ia-system.com/calendar" target="_blank">Dashboard MIA &#8599;</a>
+          <a href="https://dashboard.mia-ia-system.com/calendar" target="_blank" rel="noopener noreferrer">Dashboard MIA &#8599;</a>
         </div>
       </div>
       <div style="padding:1rem 1.25rem;">
@@ -212,6 +212,14 @@
       var DASHBOARD_API = "https://dashboard.mia-ia-system.com";
       var $eco = function(id) { return document.getElementById(id); };
 
+      // FIX C1 review code-reviewer (XSS) : escape les champs externes
+      // (ForexFactory cache = source tierce, repo PUBLIC = surface attaque).
+      function _esc(s) {
+        var d = document.createElement("div");
+        d.textContent = s == null ? "" : String(s);
+        return d.innerHTML;
+      }
+
       function _impactColor(impact, isBlocking, isCritical) {
         if (isCritical) return { bg: "rgba(244,67,54,0.18)", fg: "#ef5350", label: "CRITIQUE" };
         if (isBlocking) return { bg: "rgba(255,152,0,0.18)", fg: "#ffa726", label: "HIGH" };
@@ -256,9 +264,27 @@
           fetch(DASHBOARD_API + "/api/calendar/today").then(function (r) { return r.json(); }).catch(function () { return null; })
         ]).then(function (arr) {
           var status = arr[0], today = arr[1];
-          if (status && status.ok) renderStatus(status);
+          if (status && status.ok) renderStatus(status); else renderStatusError();
           if (today && today.ok) renderEvents(today.events || [], today.cme_trading_day, today.current_session);
+          else renderEventsError();
         });
+      }
+
+      // FIX S1 review : fallback UX si API down (au lieu de "Chargement..." infini)
+      function renderStatusError() {
+        var badge = $eco("eco-block-badge");
+        if (badge) {
+          badge.style.background = "rgba(255,255,255,0.04)";
+          badge.style.color = "#94A3B8";
+          badge.style.border = "1px solid rgba(255,255,255,0.08)";
+          badge.textContent = "Calendrier momentanement indisponible";
+        }
+      }
+      function renderEventsError() {
+        var list = $eco("eco-events-list");
+        if (list) {
+          list.innerHTML = '<div style="text-align:center;padding:2rem;color:#64748B;">Calendrier momentanement indisponible &mdash; voir <a href="https://www.forexfactory.com/calendar" target="_blank" rel="noopener noreferrer" style="color:#00B4DC;">ForexFactory &#8599;</a></div>';
+        }
       }
 
       function renderStatus(s) {
@@ -282,7 +308,7 @@
           var min = Math.floor((ne.in_seconds || 0) / 60);
           var h = Math.floor(min / 60), m = min % 60;
           var eta = h > 0 ? (h + "h" + m + "min") : (m + "min");
-          next.innerHTML = 'Prochain event blocking : <strong style="color:#00B4DC;">' + ne.title + '</strong> dans ' + eta + ' (' + _fmt(ne.ts_utc) + ')';
+          next.innerHTML = 'Prochain event blocking : <strong style="color:#00B4DC;">' + _esc(ne.title) + '</strong> dans ' + eta + ' (' + _fmt(ne.ts_utc) + ')';
         } else {
           next.textContent = "Aucun event blocking restant cette semaine";
         }
@@ -317,11 +343,11 @@
           html += '<div style="display:flex;align-items:center;gap:0.5rem;margin-bottom:0.25rem;">';
           html += '<span style="font-family:JetBrains Mono,monospace;font-weight:700;color:#fff;">' + time + '</span>';
           html += '<span style="font-size:0.6875rem;font-weight:700;letter-spacing:0.5px;color:' + c.fg + ';">' + c.label + '</span>';
-          html += '<span style="font-size:0.6875rem;color:#94A3B8;background:rgba(255,255,255,0.05);padding:0.0625rem 0.375rem;border-radius:0.25rem;">' + (e.country || "?") + '</span>';
+          html += '<span style="font-size:0.6875rem;color:#94A3B8;background:rgba(255,255,255,0.05);padding:0.0625rem 0.375rem;border-radius:0.25rem;">' + _esc(e.country || "?") + '</span>';
           if (e.is_blocking) html += '<span style="margin-left:auto;font-size:0.625rem;color:' + c.fg + ';font-weight:700;">[BLOCK -15/+30]</span>';
           html += '</div>';
-          html += '<div style="font-size:0.8125rem;color:#fff;margin-bottom:0.25rem;">' + (e.title || "?") + '</div>';
-          html += '<div style="font-size:0.6875rem;color:#94A3B8;font-family:JetBrains Mono,monospace;">prev: ' + prev + '  ·  fcst: ' + fcst + '</div>';
+          html += '<div style="font-size:0.8125rem;color:#fff;margin-bottom:0.25rem;">' + _esc(e.title || "?") + '</div>';
+          html += '<div style="font-size:0.6875rem;color:#94A3B8;font-family:JetBrains Mono,monospace;">prev: ' + _esc(prev) + '  ·  fcst: ' + _esc(fcst) + '</div>';
           html += '</div>';
         }
         html += '</div>';
@@ -357,7 +383,7 @@
     <div class="cal-cta">
       <h3>Protegez votre capital automatiquement</h3>
       <p>Le dashboard MIA bloque le trading avant chaque event critique et affiche un countdown en temps reel.</p>
-      <a href="https://dashboard.mia-ia-system.com" class="cal-cta-btn" target="_blank">Acceder au Dashboard &#8594;</a>
+      <a href="https://dashboard.mia-ia-system.com" class="cal-cta-btn" target="_blank" rel="noopener noreferrer">Acceder au Dashboard &#8594;</a>
     </div>
 
   </div>
@@ -365,7 +391,7 @@
   <footer class="cal-footer">
     <p>&copy; 2026 MIA IA SYSTEM. Tous droits reserves.</p>
     <p style="margin-top:0.5rem;"><a href="/terms/">CGU</a> &middot; <a href="/privacy/">Confidentialite</a> &middot; <a href="/risk/">Risques</a> &middot; <a href="mailto:contact@mia-ia-system.com">Contact</a></p>
-    <p style="margin-top:0.5rem;color:#475569;">Donnees fournies par TradingView &middot; Heures en heure locale</p>
+    <p style="margin-top:0.5rem;color:#475569;">Donnees ForexFactory via API MIA &middot; Heures en heure locale navigateur</p>
   </footer>
 
   <script src="/ticker.js" defer></script>
