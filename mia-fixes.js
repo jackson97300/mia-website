@@ -14,6 +14,7 @@
     setupNewsletterForm();
     setupLanguageSelector();
     setupDashboardRedirect();
+    setupCalendarHardReload();  // FIX 30/04 (Jackson) : force reload sur /calendar
     setupNavbarAutoHide();
     setupMenuAnchors();
     setupScrollReveal();
@@ -29,6 +30,29 @@
     fixHeaderOpaque();
     fixTicker();
     injectSEO();
+  }
+
+  // ─── #G CALENDAR HARD RELOAD ───
+  // FIX 30/04 (Jackson) : Le site marketing utilise Next.js client-side routing
+  // qui charge le bundle compile `_next/static/.../calendar/page-*.js` au lieu
+  // du fichier statique `calendar/index.html` que je modifie. Resultat : F5
+  // affiche la nouvelle version (HTTP load) mais navigation interne (clic
+  // "Calendrier" dans navbar/footer) montre l'ancien bundle Next.js.
+  //
+  // Solution : intercepter tous les clics sur les liens vers /calendar et
+  // forcer `window.location.href` (vrai navigation HTTP -> serve mon HTML).
+  function setupCalendarHardReload() {
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a');
+      if (!link) return;
+      var href = link.getAttribute('href') || '';
+      // Match /calendar, /calendar/, /calendar?... mais pas /calendar-other
+      if (/^\/calendar\/?(\?|#|$)/.test(href)) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.location.href = '/calendar/';
+      }
+    }, true);
   }
 
   // ─── #B CONTACT FORM → Discord webhook + email ───
